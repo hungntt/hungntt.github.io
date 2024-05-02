@@ -3,7 +3,7 @@ layout: plain
 name: index
 title: Personal Website
 description: >
-  Personal Website of Bo Zhang, researcher of Microsoft research asia.
+  Personal Website of Hung Nguyen, PhD researcher of University of New Brunswick and National Research Council Canada.
 hide_description: true
 cover: true
 ---
@@ -22,105 +22,51 @@ cover: true
 </style>
 
 <h2 class="h1" style="color: rgb(1,92,171)" id="about">Short Bio </h2>
-I am currently a researcher at [Visual Computing Group](https://www.microsoft.com/en-us/research/group/visual-computing/) of [Microsoft research asia](https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/) (MSRA).
+I am currently a PhD researcher at [Visual Computing Group](https://www.microsoft.com/en-us/research/group/visual-computing/) of [Microsoft research asia](https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/) (MSRA).
 
-I received my Ph.D. degree with the Department of Electronic and Computer Engineering at Hong Kong University of Science and Technology ([HKUST](https://hkust.edu.hk/)) in 2019, under the supervision of [Amine Bermak](https://scholar.google.com/citations?user=uiKoUMQAAAAJ&hl=en) and [Pedro V. Sander](https://www.cse.ust.hk/~psander/). Prior to that, I received my Bachelor degree of Engineering at Zhejiang University in 2013. I joined the Microsoft Research Asia in May 2019.
+I received my Master degree of Artificial Intelligence at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Germany in 2023 and my Bachelor degree of Computer Science at Frankfurt University of Applied Sciences (FRA-UAS), Germany and Vietnamese-German University (VGU), Vietnam in 2020. 
+I started my PhD position at Analytics Everywhere Lab, University of New Brunswick (UNB), Canada and Research Assistant at National Research Council Canada (NRC-CNRC), Canada, under the supervision of [Hung Cao](https://www.hungcao.me/) and [Rene Richard](https://nrc.canada.ca/en/corporate/contact-us/nrc-directory-science-professionals/rene-richard) in January 2024.
 
-My research interest involves computational photography, image synthesis, low-level computer vision and smart imaging system. 
-
-We are seeking long-term internship candidates and looking for research collaboration. Please send email to me if you are interested in joining us.
+My research interest involves Explainable Artificial Intelligence (XAI), Computer Vision, Edge Computing, Biomedical Signal/Image Analysis, and Reinforcement Learning.
 
 <div class="body-social sidebar-social">
   <ul>
-    <li> <a href="https://www.microsoft.com/en-us/research/people/zhanbo/" title="Google Scholar" class="no-mark-external" target="_blank"> <span class="icon-link"></span> <span aria-hidden="true">Microsoft homepage </span><span class="sr-only">Bo Zhang's Microsoft homepage</span></a></li>
-    <li> <a href="https://scholar.google.com/citations?user=PefHCMUAAAAJ&hl=en" title="Google Scholar" class="no-mark-external" target="_blank"> <span class="icon-googlescholar"></span> <span aria-hidden="true">Google Scholar </span><span class="sr-only">Bo Zhang's Google Scholar profile</span></a></li>
-    <li> <a href="https://twitter.com/zhangboknight" title="Twitter" class="no-mark-external" target="_blank"> <span class="icon-twitter"></span> <span aria-hidden="true">Twitter </span><span class="sr-only">Bo Zhang's Twitter</span></a></li>
-    <li> <a href="https://www.linkedin.com/in/bo-zhang-8b753792/" title="LinkedIn" class="no-mark-external" target="_blank"> <span class="icon-linkedin2"></span> <span aria-hidden="true">LinkedIn </span><span class="sr-only">Bo Zhang's LinkedIn profile</span></a></li>
+    <li> <a href="https://www.cs.unb.ca/~hcao3/team/" title="AELab" class="no-mark-external" target="_blank"> <span class="icon-link"></span> <span aria-hidden="true">AELab homepage </span><span class="sr-only">Hung Nguyen's AELab Page</span></a></li>
+    <li> <a href="https://scholar.google.com/citations?user=U_v7A40AAAAJ&hl=en" title="Google Scholar" class="no-mark-external" target="_blank"> <span class="icon-googlescholar"></span> <span aria-hidden="true">Google Scholar </span><span class="sr-only">Hung Nguyen's Google Scholar profile</span></a></li>
+    <li> <a href="https://www.facebook.com/nguyentruongthanhhung/" title="Facebook" class="no-mark-external" target="_blank"> <span class="icon-facebook"></span> <span aria-hidden="true">Facebook </span><span class="sr-only">Hung Nguyen's Facebook</span></a></li>
+    <li> <a href="https://www.linkedin.com/in/hungntt/" title="LinkedIn" class="no-mark-external" target="_blank"> <span class="icon-linkedin2"></span> <span aria-hidden="true">LinkedIn </span><span class="sr-only">Hung Nguyen's LinkedIn profile</span></a></li>
+    <li> <a href="https://orcid.org/my-orcid?orcid=0000-0002-6750-9536" title="ORCID" class="no-mark-external" target="_blank"> <span class="icon-orcid"></span> <span aria-hidden="true">ORCID </span><span class="sr-only">Hung Nguyen's ORCID profile</span></a></li>
   </ul>
 </div>
-
-<!-- <h2 class="h1" style="color: rgb(1,92,171)" id="research">Research </h2> -->
-
-<!-- <h3 class="h2">Current Projects</h3>
-**projct title**  
-*Advisor: Pedro V. Sander
-
-In this project, ... -->
 
 
 ---
 <h2 class="h1" style="color: rgb(1,92,171)" id="publications">Publications </h2>
 
-* Pan Zhang, <strong>Bo Zhang</strong>, Ting Zhang, Dong Chen, Yong Wang, Fang Wen. "<strong>Prototypical Pseudo Label Denoising and Target Structure Learning for Domain Adaptive Semantic Segmentation</strong>", arxiv preprint, Jan 2021. [<a href="https://arxiv.org/abs/2101.10979">paper</a>]
+* Quoc Khanh Nguyen, **Truong Thanh Hung Nguyen**, Vo Thanh Khang Nguyen, Van Binh Truong, Tuong Phan, Hung Cao. "<strong>Efficient and Concise Explanations for Object Detection with Gaussian-Class Activation Mapping Explainer</strong>", The 37th Canadian Conference on Artificial Intelligence (Canadian AI 2024), May 2024. [<a href="https://arxiv.org/abs/2404.13417">paper</a>][<a href="https://github.com/khanhnguyenuet/GCAME/">code</a>]
 
-* Xingran Zhou, <strong>Bo Zhang</strong>, Ting Zhang, Pan Zhang, Jianmin Bao, Dong Chen, Zhongfei Zhang, Fang Wen. "<strong>Full-Resolution Correspondence Learning for Image Translation</strong>", arxiv preprint, Jan 2021. [<a href="https://arxiv.org/abs/2012.02047">paper</a>]
-
-* Xiaoyu Li, <strong>Bo Zhang</strong>, Jing Liao, Pedro V. Sander. "<strong>Deep Sketch-guided Cartoon Video Inbetweening</strong>", IEEE transactions on Visualization and Computer Graphics (TVCG 2021). [<a href="https://arxiv.org/abs/2008.04149">paper</a>]
-
-* Ziyu Wan, <strong>Bo Zhang</strong>, Dongdong Chen, Pan Zhang, Dong Chen, Jing Liao, Fang Wen. "<strong>Old Photo Restoration via Deep Latent Space Translation</strong>", arxiv preprint, Sep 2020. [<a href="https://arxiv.org/abs/2009.07047">paper</a>]
-
-* Pan Zhang, <strong>Bo Zhang</strong>, Dong Chen, Lu Yuan, Fang Wen. "<strong>Cross-domain Correspondence Learning for Exemplar-based Image Translation</strong>", 2020 IEEE Conference on Computer Vision and Pattern Recognition <b style="color: rgb(220,129,0)">(CVPR 2020 Oral)</b>. [<a href="https://panzhang0212.github.io/CoCosNet/">project</a>][<a href="https://arxiv.org/abs/2004.05571">paper</a>][<a href="https://github.com/microsoft/CoCosNet">code</a>][<a href="https://panzhang0212.github.io/CoCosNet/supplementary.pdf">supplementary</a>][<a href="https://www.dropbox.com/s/g7dezxm2mhw6gqo/CoCosNet%20slides.pptx?dl=0">slides</a>]
-
-* Ziyu Wan, <strong>Bo Zhang</strong>, Dongdong Chen, Pan Zhang, Dong Chen, Jing Liao, Fang Wen. "<strong>Bringing Old Photos Back to Life</strong>", 2020 IEEE Conference on Computer Vision and Pattern Recognition <b style="color: rgb(220,129,0)">(CVPR 2020 Oral)</b>. [<a href="http://raywzy.com/Old_Photo/">project</a>][<a href="https://arxiv.org/abs/2004.09484">paper</a>][<a href="https://github.com/microsoft/Bringing-Old-Photos-Back-to-Life">code</a>][<a href="https://drive.google.com/file/d/10cCTMu06yFHACkFlwkV4DFQ5Aqktueff/view">supplementary</a>] (<i>Welcome to try our <a href="https://colab.research.google.com/drive/1NEm6AsybIiC5TwTU_4DqDkQO0nFRB-uA?usp=sharing">Colab demo</a></i>)
-
-* Xiaoyu Li, <strong>Bo Zhang</strong>, Jing Liao, Pedro V. Sander. "<strong>Document Image Rectification using a Patch-based CNN</strong>", ACM Transactions on Graphics 38(6), 168:1-168:11 (Siggraph Asia 2019). [<a href="https://xiaoyu258.github.io/projects/docproj/">project</a>][<a href="https://arxiv.org/abs/1909.09470">paper</a>][<a href="https://github.com/xiaoyu258/DocProj">code</a>]
-
-* <strong>Bo Zhang</strong>, Jing Liao, Pedro V. Sander, Amine Bermak. "<strong>Deep Exemplar-based Video Colorization</strong>", 2019 IEEE Conference on Computer Vision and Pattern Recognition (CVPR 2019). [<a href="https://arxiv.org/abs/1906.09909">paper</a>][<a href="https://www.microsoft.com/en-us/research/uploads/prod/2020/03/cvpr19_poster_Bo.pptx">slides</a>][<a href="https://www.microsoft.com/en-us/research/uploads/prod/2020/03/cvpr19_poster_Bo.pdf">poster</a>][<a href="https://github.com/zhangmozhe/video-colorization">code</a>][<a href="https://www.youtube.com/watch?v=HXWR5h5vVYI">youtube video demo</a>]
-
-* Xiaoyu Li, <strong>Bo Zhang</strong>, Jing Liao, Pedro V. Sander. "<strong>Blind Geometric Distortion Correction on Images Through Deep Learning</strong>", 2019 IEEE Conference on Computer Vision and Pattern Recognition (CVPR 2019). [<a href="https://xiaoyu258.github.io/projects/geoproj/">project</a>][<a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Li_Blind_Geometric_Distortion_Correction_on_Images_Through_Deep_Learning_CVPR_2019_paper.pdf">paper</a>][<a href="https://github.com/xiaoyu258/GeoProj">code</a>]
-
-* <strong>Bo Zhang</strong>, Pedro V. Sander, Chi-Ying Tsui and Amine Bermak. "<strong>Microshift: An Efficient Image Compression Algorithm for Hardware</strong>", IEEE Transactions on Circuits and Systems for Video Technology (TCSVT), 2018. [<a href="https://ieeexplore.ieee.org/document/8529272">paper</a>][<a href="https://github.com/zhangmozhe/microshift_compression/blob/master/paper.pdf">arxiv</a>][<a href="https://github.com/zhangmozhe/microshift_compression">code</a>]
-
-* Xiaopeng Zhong, <strong>Bo Zhang</strong>, Amine Bermak, Chi-Ying Tsui, Man-Kay Law. "<strong>A Low-Power Compression-Based CMOS Image Sensor With Microshift-Guided SAR ADC</strong>", IEEE Transactions on Circuits and Systems II (TCAS-II), 2018. [<a href="https://ieeexplore.ieee.org/document/8418781">paper</a>]
-
-* <strong>Bo Zhang</strong>, Pedro V. Sander, Amine Bermak. "<strong>Registration Based Retargeted Image Quality Assessment</strong>", in 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2017). [<a href="https://ieeexplore.ieee.org/document/7952358">paper</a>][<a href="https://github.com/zhangmozhe/retarget_IQA">code</a>]
-
-* <strong>Bo Zhang</strong>, Pedro V. Sander, Amine Bermak. "<strong>Gradient Magnitude Similarity Deviation On Multiple Scales For Color Image Quality Assessment</strong>", in 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2017). [<a href="https://ieeexplore.ieee.org/document/7952357">paper</a>]
-
-* <strong>Bo Zhang</strong>, Xiaopeng Zhong, Bo Wang, Pedro V. Sander, and Amine Bermak. "<strong>Wide Dynamic Range PSD algorithms and Their Implementation for Compressive Imaging</strong>", in 2016 IEEE International Symposium on Circuits and Systems (ISCAS 2016). [<a href="https://ieeexplore.ieee.org/document/7539156">paper</a>]
-
-* Xiaopeng Zhong, <strong>Bo Zhang</strong>, and Amine Bermak. "<strong>A Background Subtraction based Column-parallel Analog-to-information Converter for Motion-triggered Vision Sensor</strong>", in 2016 IEEE International Symposium on Circuits and Systems (ISCAS 2016). [<a href="https://ieeexplore.ieee.org/document/7527518/">paper</a>]
-
-* Liu, Dong, Yongying Yang, Zhongtao Cheng, Hanlu Huang, <strong>Bo Zhang</strong>, Tong Ling, and Yibing Shen. "<strong>Retrieval and analysis of a polarized high-spectral-resolution lidar for profiling aerosol optical properties</strong>", Optics Express, 2013. [<a href="https://www.osapublishing.org/DirectPDFAccess/ADB87C05-042E-616B-AD867FEAF8C63B00_253755/oe-21-11-13084.pdf?da=1&amp;id=253755&amp;seq=0&amp;mobile=no">paper</a>]
-
-* Liu, Dong, Yongying Yang, Zhongtao Cheng, Hanlu Huang, <strong>Bo Zhang</strong>, and Yibing Shen. "<strong>Development of the ZJU polarized near-infrared high spectral resolution lidar</strong>", in International Symposium on Photoelectronic Detection and Imaging 2013. [<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/8905/1/Development-of-the-ZJU-polarized-near-infrared-high-spectral-resolution/10.1117/12.2035435.full?SSO=1">paper</a>]
-  
+* Van Binh Truong, **Truong Thanh Hung Nguyen**, Vo Thanh Khang Nguyen, Quoc Khanh Nguyen, Quoc Hung Cao. "<strong>Towards Better Explanations for Object Detection</strong>", The 15th Asian Conference on Machine Learning (ACML 2023), November 2023. [<a href="https://arxiv.org/abs/2404.13417">paper</a>][<a href="https://github.com/khanhnguyenuet/GCAME/">code</a>]
 ---
 <h2 class="h1" style="color: rgb(1,92,171)" id="services">Academic Services</h2>
 
 <h3 class="h2">Conference Reviewer</h3>
 <p>
-<!-- <i><span">Coference Reviewer: </span></i><br/>  -->
-IEEE Conference on Computer Vision and Pattern Recognition (CVPR)<br/>
-International Conference on Computer Vision (ICCV)<br/>
-ACM SIGGRAPH<br/>
-ACM SIGGRAPH Asia<br/>
-IEEE Winter Conference on Application of Computer Vision (WACV)
+<!-- <i><span">Conference Reviewer: </span></i><br/>  -->
+Canadian AI Conference<br/>
 </p>
 <h3 class="h2">Journal Reviewer</h3>
 <p>
-<!-- <i><span">Journal Reviewer: </span></i><br/>  -->
-International Journal on Computer Vision (IJCV)<br/>
-ACM Transactions on Graphics (TOG)<br/>
-IEEE Transactions on Visualization and Computer Graphics (TVCG) <br/>
-IEEE Transactions on Circuits and Systems for Video Technology (TCSVT)<br/>
-IEEE Transactions on Multimedia (TMM)<br/>
-Computer Vision and Image Understanding (CVIU)<br/>
-The Visual Computer (TVCJ)<br/>
+IGI Global Book Chapter [Navigating the Circular Age of a Sustainable Digital Revolution]<br/>
+IET Smart Cities<br/>
 </p>
 
 <h2 class="h1" style="color: rgb(1,92,171)" id="honors">Honors and Awards</h2>
 <p>
-Bronze medal, International RoboCup 2013 competition<br/>
-First prize, Optical Science Technology Competition of Zhejiang Province<br/>
-Meritorious Winner (First prize), International Mathematical Contest in Modeling (MCM)<br/>
-First prize, China Undergraduate Mathematical Contest in Modeling (CUMCM)<br/>
-First prize, Undergraduate Physics Innovation Competition of Zhejiang Province<br/>
-First prize, Undergraduate Calculus Competition of Zhejiang Province, China<br/>
-Excellent award, Stars of Tomorrow Internship Program, Microsoft Research Asia (MSRA)<br/>
-Graduate Research Scholarship of HKUST<br/>
-Outstanding Undergraduate of Zhejiang University<br/>
-Outstanding Undergraduate of Zhejiang Province, China<br/>
+Best Presentation Award at the IEEE 42nd International Conference on Consumer Electronics (ICCE 2024)<br/>
+Best Contribution Award at the IEEE 42nd International Conference on Consumer Electronics (ICCE 2024)<br/>
+Best Runner-up Paper Award at the Australasian Joint Conference on Artificial Intelligence 2023 (AJCAI 2023)<br/>
+DAAD Scholarship for Master Studies in Germany (2021-2023)<br/>
+DAAD Scholarship for Exchange Bachelor Studies in Germany (2016-2020)<br/>
 </p>
 
 
