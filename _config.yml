@@ -3,7 +3,7 @@
 
 # Uncomment and set the URL of your site (with protocol, e.g. `https://`)
 # NOTE: You don't need to provide this property when hosting on GitHub Pages or Netlify.
-url: https://bo-zhang.me
+url: ""
 
 # Uncomment and set the "base URL" of your site.
 # When your site is in a subdirectory, set to `/<name of directory>`,
@@ -19,12 +19,12 @@ baseurl: ""
 lang: en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title: Bo Zhang
+title: Hung Nguyen
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description: >
-  Bo Zhang - Microsoft Research Asia
+  Hung Nguyen - @UNB @NRC-CNRC
 
 # A shorter description for the sidebar.
 tagline: Researcher at Microsoft Research Asia
@@ -77,7 +77,7 @@ legal:
   #   url: /CHANGELOG/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright: © 2021 Bo Zhang. All rights reserved.
+copyright: © 2024 Hung Nguyen. All rights reserved.
 
 # Format of the permalinks
 permalink: /:categories/:year-:month-:day-:title/
@@ -90,7 +90,7 @@ paginate_path: /blog/page-:num/
 # ---------------------------------------------------------------------------------------
 
 theme: jekyll-theme-hydejack
-# remote_theme: hydecorp/hydejack@v9.0.0-rc.6
+remote_theme: hydecorp/hydejack@v9.0.0-rc.6
 
 # Customizaton
 # ----------------------------------------------------------------------------------------
