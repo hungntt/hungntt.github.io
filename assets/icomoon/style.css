@@ -112,7 +112,7 @@
 .icon-telegram:before {
   content: "\ea95";
 }
-.icon-facebook:before {
+.icon-twitter:before {
   content: "\ea96";
 }
 .icon-vine:before {
@@ -252,4 +252,7 @@
 }
 .icon-box-add:before {
   content: "\e95e";
+}
+.icon-orcid:before {
+  content: "\e900";
 }
