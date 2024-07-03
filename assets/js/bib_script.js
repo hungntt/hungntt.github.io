@@ -18,3 +18,8 @@ function showBibTex(toggleLinkElement) {
     display = nextByClass(toggleLinkElement, "bibtex");
     display.style.display = display.style.display == "block" ? "none" : "block";
 }
+
+function showAbstract(toggleLinkElement) {
+    display = nextByClass(toggleLinkElement, "abstract");
+    display.style.display = display.style.display == "block" ? "none" : "block";
+}
