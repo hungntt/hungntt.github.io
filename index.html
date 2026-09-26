@@ -346,7 +346,7 @@ button{font:inherit;color:inherit}
 .term .prompt{color:#D7D7D7}
 .log{margin:6px 0 8px;padding:0;list-style:none}
 .log li{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 12px;padding:3px 0}
-.log .d{flex:none;color:var(--cyan);min-width:10ch}
+.log .d{flex:none;color:var(--cyan);min-width:18ch}
 .log .w{flex:1 1 300px;color:#E4F1FF}
 .log .w em{font-style:normal;color:var(--text-dim)}
 .log .st{flex:none;margin-left:auto;color:#35D46A}
@@ -441,7 +441,7 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .chip-award{background:linear-gradient(#FFF3B0,#FFD84A)}
 .chip-if{background:#F4F4F4}
 .chip-extra{background:#fff;border-style:dashed}
-.chip-topic{background:#071426;color:var(--cyan);border-color:#0B3C7D;box-shadow:inset -1px -1px 0 rgba(0,0,0,.4), inset 1px 1px 0 rgba(110,217,255,.25)}
+.chip-topic{--tc:var(--cyan);background:#071426;color:var(--tc);border-color:var(--tc);box-shadow:inset -1px -1px 0 rgba(0,0,0,.4), inset 1px 1px 0 color-mix(in srgb, var(--tc) 30%, transparent)}
 .chips{display:flex;flex-wrap:wrap;gap:4px}
 
 /* ==========================================================================
@@ -461,8 +461,6 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .svc th,.svc td{padding:9px 12px;border:1px solid rgba(110,217,255,.35);text-align:left;vertical-align:top}
 .svc thead th{background:rgba(22,141,218,.28);color:#fff;font:bold 11px/1.2 var(--f-ui);letter-spacing:.8px;text-transform:uppercase}
 .svc tbody th{width:1%;white-space:nowrap;color:var(--cyan);font:19px/1.2 var(--f-term);font-weight:normal;background:rgba(11,60,125,.25)}
-.svc td.tags{width:1%;white-space:nowrap}
-.svc .none{color:var(--text-dim);font:17px var(--f-term)}
 .links-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));gap:10px;margin:0;padding:0;list-style:none}
 .link-tile{display:grid;grid-template-columns:32px minmax(0,1fr);gap:1px 11px;align-items:center;padding:10px 12px;background:var(--silver);box-shadow:var(--raised);color:#000!important;text-decoration:none!important;text-shadow:none!important}
 .link-tile .ico{grid-row:span 2;width:32px;height:32px}
@@ -1083,7 +1081,7 @@ body.crt .crt-overlay{display:block}
           <!-- EDIT: bio text -->
           <p>I am currently a PhD candidate at Analytics Everywhere Lab, University of New Brunswick (UNB), Canada and Research Assistant at National Research Council Canada (NRC-CNRC), Canada, under the supervision of <a href="https://www.hungcao.me/">Prof. Hung Cao</a> and <a href="https://nrc.canada.ca/en/corporate/contact-us/nrc-directory-science-professionals/rene-richard">Rene Richard</a> in January 2024.</p>
           <p>I received my Master degree of Artificial Intelligence at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Germany in 2023 and my Bachelor degree of Computer Science at Frankfurt University of Applied Sciences (FRA-UAS), Germany and Vietnamese-German University (VGU), Vietnam in 2020.
-          <p>My research interest involves Self-Evolving Multi-agent Systems, Contestable/Explainable Artificial Intelligence (C/XAI), Computer Vision, Edge Computing, Biomedical Signal/Image Analysis, Quantum Machine Learning, and Reinforcement Learning.</p>
+          <p>My research interest involves Self-Evolving Multi-agent Systems, Contestable/Explainable Artificial Intelligence (C/XAI), Computer Vision, Edge Computing, Biomedical Signal/Image Analysis, Quantum Machine Learning, Reinforcement Learning, and Cheminformatics.</p>
         </div>
         <aside class="win nest" aria-labelledby="props-t">
           <div class="titlebar"><span class="ico tb-ico" data-icon="monitor"></span><span class="titlebar-text" id="props-t">System Properties</span></div>
@@ -1113,15 +1111,25 @@ body.crt .crt-overlay{display:block}
     <section class="sec" id="education" data-section="Education" aria-labelledby="edu-h">
       <div class="sec-head"><span class="sec-no" aria-hidden="true">02/</span><h2 id="edu-h">Education &amp; Positions</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\CAREER.LOG</span></div>
       <div class="win nest">
-        <div class="titlebar"><span class="ico tb-ico" data-icon="monitor"></span><span class="titlebar-text">MS-DOS Prompt — career.log</span></div>
+        <div class="titlebar"><span class="ico tb-ico" data-icon="monitor"></span><span class="titlebar-text">MS-DOS Prompt — C:\HUNG</span></div>
         <div class="term">
-          <div class="prompt" aria-hidden="true">C:\HUNG&gt; type career.log</div>
           <!-- EDIT: education & positions -->
+          <div class="prompt" aria-hidden="true">C:\HUNG&gt; type education.log</div>
+          <h3 class="sr-only">Education &amp; academic positions</h3>
           <ul class="log">
-            <li><span class="d">[2024.01]</span><span class="w">PhD Candidate — Analytics Everywhere Lab, University of New Brunswick (UNB), Canada</span><span class="st run">[ RUNNING ]</span></li>
-            <li><span class="d">[2024.01]</span><span class="w">Research Assistant — National Research Council Canada (NRC-CNRC)</span><span class="st run">[ RUNNING ]</span></li>
-            <li><span class="d">[2023]</span><span class="w">Master's degree, Artificial Intelligence — Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Germany <em>· DAAD scholar</em></span><span class="st">[ OK ]</span></li>
-            <li><span class="d">[2020]</span><span class="w">Bachelor's degree, Computer Science — Frankfurt University of Applied Sciences (FRA-UAS), Germany &amp; Vietnamese-German University (VGU), Vietnam <em>· DAAD exchange scholar</em></span><span class="st">[ OK ]</span></li>
+            <li><span class="d">[2024.01–now]</span><span class="w">PhD Candidate — Analytics Everywhere Lab, University of New Brunswick (UNB), Canada</span><span class="st run">[ RUNNING ]</span></li>
+            <li><span class="d">[2021–2023]</span><span class="w">Master's degree, Artificial Intelligence — Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Germany <em>· DAAD scholar</em></span><span class="st">[ OK ]</span></li>
+            <li><span class="d">[2021.10–2023.09]</span><span class="w">Research Assistant (work study) — FAU WiSo, Erlangen, Germany <em>· XGBoost + XAI for building electricity-consumption forecasting and anomaly detection</em></span><span class="st">[ OK ]</span></li>
+            <li><span class="d">[2016–2020]</span><span class="w">Bachelor's degree, Computer Science — Frankfurt University of Applied Sciences (FRA-UAS), Germany &amp; Vietnamese-German University (VGU), Vietnam <em>· DAAD exchange scholar</em></span><span class="st">[ OK ]</span></li>
+          </ul>
+          <div class="prompt" aria-hidden="true">C:\HUNG&gt; type industry.log</div>
+          <h3 class="sr-only">Industry positions</h3>
+          <ul class="log">
+            <li><span class="d">[2024.01–now]</span><span class="w">Research Assistant — National Research Council Canada (NRC-CNRC)</span><span class="st run">[ RUNNING ]</span></li>
+            <li><span class="d">[2024.01–2025.05]</span><span class="w">Business Unit Director — FPT Software, Canada</span><span class="st">[ OK ]</span></li>
+            <li><span class="d">[2020.08–2025.04]</span><span class="w">AI Scientist — FPT Software, Vietnam <em>· Reinforcement Learning &amp; Explainable AI; owner of the Explainable AI Tool</em></span><span class="st">[ OK ]</span></li>
+            <li><span class="d">[2019.12–2020.08]</span><span class="w">Full-stack Developer — ZIGExN Co., Ltd. (株式会社じげん), Tokyo, Japan <em>· web, DevOps &amp; data engineering for arubaito-ex.jp</em></span><span class="st">[ OK ]</span></li>
+            <li><span class="d">[2019.01–2019.07]</span><span class="w">Game Designer — milkcat, Tokyo, Japan (remote) <em>· web localization of Hitonatsu no Yume</em></span><span class="st">[ OK ]</span></li>
           </ul>
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; <span class="caret">_</span></div>
         </div>
@@ -1210,7 +1218,7 @@ body.crt .crt-overlay{display:block}
               <dl>
                 <dt><span class="chip chip-award">★ Award</span></dt><dd>Paper award</dd>
                 <dt><span class="chip chip-if">IF 5.0</span></dt><dd>Impact factor</dd>
-                <dt><span class="chip chip-topic">C/XAI</span></dt><dd>Research interest</dd>
+                <dt><span class="chip chip-topic">C/XAI</span></dt><dd>Research interest (each has its own color)</dd>
                 <dt><span class="chip chip-extra">ORAL</span></dt><dd>Custom tag</dd>
               </dl>
             </div>
@@ -1235,7 +1243,7 @@ body.crt .crt-overlay{display:block}
       <div class="sec-head"><span class="sec-no" aria-hidden="true">05/</span><h2 id="svc-h">Academic Services</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\SERVICES.TXT</span></div>
       <div class="table-wrap">
         <table class="svc">
-          <thead><tr><th scope="col">Role</th><th scope="col">Venue</th><th scope="col">Rank</th></tr></thead>
+          <thead><tr><th scope="col">Role</th><th scope="col">Venue</th></tr></thead>
           <tbody id="service-body"></tbody>
         </table>
       </div>
@@ -1572,6 +1580,8 @@ body.crt .crt-overlay{display:block}
     ".kpppppppppprrk.", "..kpppppppprrk..", "...kpppppprrk...", "....kpppprrk....", ".....kpprrk.....", "......kprk......", ".......kk......."];
   ICONS.lock = ["................", ".....kkkkkk.....", "....kssssssk....", "...kssk..kssk...", "...ksk....ksk...", "...ksk....ksk...", "..kkkkkkkkkkkk..", "..kyyyyyyyyyyk..",
     "..kyyyykkyyyyk..", "..kyyyykkyyyyk..", "..kyyyyykyyyyk..", "..kyyyyyyyyyyk..", "..kooooooooook..", "..kkkkkkkkkkkk.."];
+  ICONS.flask = ["................", ".....kkkkkk.....", "......kwsk......", "......kwsk......", "......kwsk......", "......kwsk......", ".....kwwssk.....", "....kwwsssek....",
+    "...kwwssseeek...", "..keeeeeeeeeek..", "..kewweeeeeeek..", ".keeweeeewveeek.", ".keeeeeeevveeek.", "keeeeveeeeeeeeek", "kvvvvvvvvvvvvvvk", "kkkkkkkkkkkkkkkk"];
   ICONS.fwd = ICONS.back.map((r) => r.padEnd(16, ".").split("").reverse().join(""));
 
   function pixelSVG(name) {
@@ -2197,11 +2207,13 @@ body.crt .crt-overlay{display:block}
   const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
   const LINK_LABEL = { paper: "Paper", pdf: "PDF", arxiv: "arXiv", doi: "DOI", code: "Code", slides: "Slides", video: "Video", poster: "Poster", project: "Project", bibtex: "BibTeX" };
   const SORT_LABEL = { newest: "newest first", oldest: "oldest first", title: "title A → Z", core: "CORE rank", quartile: "journal quartile" };
-  const INTERESTS = ((DATA && DATA.interests) || []).map((it) => ({
+  const TOPIC_COLORS = ["#6ED9FF", "#C9B8FF", "#FFB8DB", "#B6F2C8", "#FFD84A", "#FFB35C", "#FF7F96", "#D4F26B"];
+  const INTERESTS = ((DATA && DATA.interests) || []).map((it, i) => ({
     id: clean(it.id).toLowerCase(), name: clean(it.name) || clean(it.id), short: clean(it.short) || clean(it.id).toUpperCase(),
-    file: clean(it.file), icon: clean(it.icon) || "sparkle"
+    file: clean(it.file), icon: clean(it.icon) || "sparkle",
+    color: /^#[0-9a-f]{3,8}$/i.test(clean(it.color)) ? clean(it.color) : TOPIC_COLORS[i % TOPIC_COLORS.length]
   })).filter((it) => it.id);
-  const topicInfo = (id) => INTERESTS.find((it) => it.id === id) || { id, name: id, short: id.toUpperCase() };
+  const topicInfo = (id) => INTERESTS.find((it) => it.id === id) || { id, name: id, short: id.toUpperCase(), color: "#FFFFFF" };
   const norm = (s) => String(s == null ? "" : s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d");
   const ME = ((DATA && DATA.me) || []).map((n) => norm(n.replace(/\*/g, "")).trim());
   const isMe = (a) => ME.includes(norm(a.replace(/\*/g, "")).trim());
@@ -2300,9 +2312,9 @@ body.crt .crt-overlay{display:block}
     const re = new RegExp("(" + rawTokens.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")", "gi");
     return s.split(re).map((part, i) => (i % 2 ? "<mark>" + esc(part) + "</mark>" : esc(part))).join("");
   }
-  function chipBtn(key, val, label, cls, title) {
+  function chipBtn(key, val, label, cls, title, color) {
     const active = key === "award" ? S.award : S[key] === val;
-    return '<button type="button" class="chip ' + cls + '" data-f="' + key + '" data-v="' + esc(val) + '" title="' + esc(title) + '" aria-pressed="' + active + '">' + esc(label) + "</button>";
+    return '<button type="button" class="chip ' + cls + '"' + (color ? ' style="--tc:' + color + '"' : "") + ' data-f="' + key + '" data-v="' + esc(val) + '" title="' + esc(title) + '" aria-pressed="' + active + '">' + esc(label) + "</button>";
   }
   function qLabel(p) { const src = p.qSource.split(/\s+/)[0]; return (/^(sjr|jcr)$/i.test(src) ? src.toUpperCase() + " " : "") + p.quartile; }
 
@@ -2314,7 +2326,7 @@ body.crt .crt-overlay{display:block}
     if (p.impact) chips.push('<span class="chip chip-if" title="Impact factor">' + esc(p.impact) + "</span>");
     p.extra.forEach((t) => chips.push(chipBtn("tag", t, t, "chip-extra", "Tag " + t + ": click to filter")));
     if (p.award) chips.push(chipBtn("award", "1", "★ " + p.award, "chip-award", "Awarded paper: click to show only awarded papers"));
-    p.topics.forEach((t) => { const it = topicInfo(t); chips.push(chipBtn("topic", t, it.short, "chip-topic", "Research interest: " + it.name + " (click to filter)")); });
+    p.topics.forEach((t) => { const it = topicInfo(t); chips.push(chipBtn("topic", t, it.short, "chip-topic", "Research interest: " + it.name + " (click to filter)", it.color)); });
 
     const authors = p.authors.map((a, i) => {
       const star = /\*+$/.test(a), name = a.replace(/\*+$/, "");
@@ -2428,16 +2440,15 @@ body.crt .crt-overlay{display:block}
         '<span class="ico" aria-hidden="true">' + pixelSVG(it.icon) + "</span><b>" + esc(it.name) + "</b>" +
         "<small>" + (it.file ? '<span aria-hidden="true">' + esc(it.file) + " · </span>" : "") + n + " paper" + (n === 1 ? "" : "s") + "</small></button></li>";
     }).join("");
-    const COLORS = ["#6ED9FF", "#C9B8FF", "#FFB8DB", "#B6F2C8", "#FFD84A", "#FFB35C", "#FFFFFF"];
-    const list = INTERESTS.slice(0, 7), step = list.length > 1 ? 54 / (list.length - 1) : 0;
+    const list = INTERESTS.slice(0, 8), step = list.length > 1 ? 54 / (list.length - 1) : 0;
     $("#orbit-planets").innerHTML = list.map((it, i) => {
-      const r = Math.round(24 + i * step), a = (i * 97) % 360, c = COLORS[i % COLORS.length];
+      const r = Math.round(24 + i * step), a = (i * 97) % 360, c = it.color;
       return '<circle cx="100" cy="85" r="' + r + '" fill="none" stroke="#6ED9FF" stroke-opacity=".3"' + (i % 2 ? ' stroke-dasharray="2 4"' : "") + ' shape-rendering="auto"/>' +
         '<g><animateTransform attributeName="transform" type="rotate" from="' + a + ' 100 85" to="' + (a + 360) + ' 100 85" dur="' + (16 + i * 8) + 's" repeatCount="indefinite"/>' +
         '<rect x="' + (100 + r - 3) + '" y="82" width="6" height="6" fill="' + c + '"/></g>';
     }).join("");
     $("#orbit-legend").innerHTML = list.map((it, i) => '<li><button type="button" data-topic="' + esc(it.id) + '" aria-pressed="false" title="Show papers on ' + esc(it.name) + '">' +
-      '<i style="background:' + COLORS[i % COLORS.length] + '"></i>' + esc(it.name) + "</button></li>").join("");
+      '<i style="background:' + it.color + '"></i>' + esc(it.name) + "</button></li>").join("");
     $("#orbit-status").textContent = list.length + " bodies · orbit stable";
     document.addEventListener("click", (e) => { const b = e.target.closest("[data-topic]"); if (b) showTopic(b.dataset.topic); });
   })();
@@ -2507,10 +2518,10 @@ body.crt .crt-overlay{display:block}
     for (let i = 0; i < service.length;) {
       let j = i; while (j < service.length && service[j].role === service[i].role) j++;
       for (let k = i; k < j; k++) {
-        const s = service[k], chips = tagChips(s.tags);
+        const s = service[k];
         const venue = clean(s.url) && safeUrl(clean(s.url)) ? '<a href="' + esc(clean(s.url)) + '" target="_blank" rel="noopener">' + esc(s.venue) + "</a>" : esc(s.venue);
         h += "<tr>" + (k === i ? '<th scope="row" rowspan="' + (j - i) + '">' + esc(s.role) + "</th>" : "") +
-          "<td>" + venue + '</td><td class="tags">' + (chips ? '<span class="chips">' + chips + "</span>" : '<span class="none" aria-label="no rank tag">—</span>') + "</td></tr>";
+          "<td>" + venue + "</td></tr>";
       }
       i = j;
     }

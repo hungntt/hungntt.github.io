@@ -34,7 +34,7 @@
      year      required. A number: 2024
      type      "conference" | "journal" | "workshop" | "preprint" | "chapter" | "thesis"
      topics    Research-interest ids, e.g. ["xai", "cv"]. Each one shows as a
-               dark chip on the paper, and the paper appears when a visitor
+               chip in that interest's `color` on the paper, and the paper appears when a visitor
                clicks that interest's tile in the Bio section (or picks it in
                the "Research interest" filter). Ids come from `interests` below.
      award     Any text, e.g. "Best Paper Runner-up". Shows a gold ★ chip and
@@ -104,49 +104,64 @@ window.RESEARCH_DATA = {
       "name": "Self-Evolving Multi-agent Systems",
       "short": "SELF-EVOLVING MAS",
       "file": "swarm.exe",
-      "icon": "agents"
+      "icon": "agents",
+      "color": "#FFD84A"
     },
     {
       "id": "xai",
       "name": "Contestable / Explainable AI (C/XAI)",
       "short": "C/XAI",
       "file": "xai.exe",
-      "icon": "magnifier"
+      "icon": "magnifier",
+      "color": "#6ED9FF"
     },
     {
       "id": "cv",
       "name": "Computer Vision",
       "short": "VISION",
       "file": "vision.dll",
-      "icon": "eye"
+      "icon": "eye",
+      "color": "#B9A6FF"
     },
     {
       "id": "edge",
       "name": "Edge Computing",
       "short": "EDGE",
       "file": "edge.sys",
-      "icon": "chip"
+      "icon": "chip",
+      "color": "#FFA24C"
     },
     {
       "id": "biomed",
       "name": "Biomedical Engineering",
       "short": "BIOMED",
       "file": "biosig.dat",
-      "icon": "pulse"
+      "icon": "pulse",
+      "color": "#FF7F96"
     },
     {
       "id": "quantum",
       "name": "Quantum Machine Learning",
       "short": "QUANTUM ML",
       "file": "qubit.bin",
-      "icon": "atom"
+      "icon": "atom",
+      "color": "#F59CFF"
     },
     {
       "id": "rl",
       "name": "Reinforcement Learning",
       "short": "RL",
       "file": "agent.bin",
-      "icon": "joystick"
+      "icon": "joystick",
+      "color": "#7EE89A"
+    },
+    {
+      "id": "chem",
+      "name": "Cheminformatics",
+      "short": "CHEMINFO",
+      "file": "molecule.mol",
+      "icon": "flask",
+      "color": "#D4F26B"
     }
   ],
   "publications": [
@@ -1377,7 +1392,9 @@ window.RESEARCH_DATA = {
       "year": 2022,
       "month": "Jun",
       "type": "journal",
-      "topics": [],
+      "topics": [
+        "chem"
+      ],
       "tags": {
         "core": "",
         "coreYear": "",
@@ -1462,7 +1479,9 @@ window.RESEARCH_DATA = {
       "year": 2020,
       "month": "",
       "type": "thesis",
-      "topics": [],
+      "topics": [
+        "chem"
+      ],
       "tags": {
         "core": "",
         "coreYear": "",
