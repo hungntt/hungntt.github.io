@@ -19,11 +19,11 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Truong Thanh Hung Nguyen · Research Homepage">
 <meta property="og:description" content="PhD Candidate — University of New Brunswick & National Research Council Canada.">
-<meta property="og:image" content="https://hungntt.github.io/assets/img/avatar.jpg">
+<meta property="og:image" content="https://hungntt.github.io/assets/video/avatar-poster.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='%230B3C7D'/%3E%3Cpath fill='%236ED9FF' d='M7 1h2v4H7zM7 11h2v4H7zM1 7h4v2H1zM11 7h4v2h-4z'/%3E%3Cpath fill='%23fff' d='M6 5h4v6H6zM5 6h6v4H5z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Pixelify+Sans:wght@400;600;700&family=Silkscreen&family=VT323&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Jost:wght@300;400&family=Michroma&family=Pixelify+Sans:wght@400;600;700&family=Silkscreen&family=VT323&display=swap">
 <style>
 /* ==========================================================================
    TOKENS
@@ -473,7 +473,7 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .link-tile:focus-visible{outline:1px dotted #000!important;outline-offset:-6px!important}
 .page-foot{padding:24px clamp(16px,4vw,44px) 30px;border-top:1px solid rgba(110,217,255,.14);text-align:center;font-size:12px;color:var(--text-dim)}
 .badges{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0 0 14px}
-.credit{margin:6px auto 0;max-width:62ch;font-size:11.5px;line-height:1.6}
+.credit{margin:6px auto 0;max-width:100ch;font-size:11.5px;line-height:1.6}
 .player-wrap{max-width:760px;margin:0 auto 26px;text-align:left}
 .player .statusbar a{color:#0000EE;flex:none}
 .player-body{margin-top:2px;background:#000;box-shadow:var(--field);padding:2px}
@@ -550,6 +550,118 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .orbit-legend button:focus-visible{outline:1px dotted #000;outline-offset:-1px}
 .task[data-win="orbit-win"]{display:none}
 @media (min-width:1500px){.widget{display:block}.task[data-win="orbit-win"]{display:flex}}
+
+/* ==========================================================================
+   FOR U (secret call app)
+   ========================================================================== */
+button.desk-icon{background:none;border:0;cursor:pointer}
+.desk-lock{position:absolute;right:-5px;bottom:-4px;width:14px!important;height:14px!important}
+.foru{position:fixed;z-index:40;left:50%;top:calc(var(--menubar-h) + 18px);transform:translateX(-50%);display:flex;flex-direction:column;
+  width:min(1000px, calc(100vw - 32px));height:min(660px, calc(100vh - var(--menubar-h) - var(--taskbar-h) - 36px));color:#1d2433;font:13px/1.45 var(--f-ui)}
+.foru.is-active{z-index:45}
+.foru.win>.titlebar{position:relative;justify-content:center;min-height:30px;background:linear-gradient(#fdfdfe, #e1e4e8 55%, #cdd1d7);color:#333;box-shadow:inset 0 -1px 0 #9aa0a8;cursor:move;touch-action:none}
+.foru .titlebar-text{flex:none;font:400 15px/1 "Helvetica Neue", Arial, sans-serif;text-shadow:none;letter-spacing:.2px}
+.foru .tb-btns{position:absolute;right:4px;top:50%;transform:translateY(-50%)}
+.foru .tb-btn{width:22px;height:20px}
+.fu-body{position:relative;flex:1;min-height:0;margin-top:2px;overflow:hidden;box-shadow:var(--field);
+  background:radial-gradient(ellipse 60% 70% at 50% 45%, #f5f7fb 0 20%, #d9dfea 55%, #a4afc6 100%)}
+.fu-circuit{position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none}
+.fu-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center;overflow:auto}
+.fu-logo{width:min(220px, 40vw);height:auto;filter:drop-shadow(0 4px 6px rgba(40,50,70,.25))}
+.fu-word{margin:0;font:300 clamp(36px, 7vw, 64px)/1 "Jost", "Futura", "Century Gothic", sans-serif;letter-spacing:.42em;margin-right:-.42em;color:#4b4f7a}
+.fu-word span:nth-child(1){color:#3b3f7a}.fu-word span:nth-child(2){color:#3e4c3f}.fu-word span:nth-child(3){color:#5d7452}.fu-word span:nth-child(4){color:#cfc88a}
+.fu-word-sm{font-size:34px}
+.fu-word-xs{font-size:17px;letter-spacing:.3em;margin-right:0}
+.fu-tag{margin:6px 0 14px;font:400 clamp(11px, 1.7vw, 17px)/1.2 "Michroma", "Chakra Petch", sans-serif;color:#1e2330;letter-spacing:-.02em}
+.fu-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:6px 22px;border:1px solid #2c5c86;border-radius:3px;
+  font:18px/1 "Courier New", Courier, monospace;letter-spacing:.06em;color:#fff;cursor:pointer;text-shadow:0 1px 1px rgba(0,0,0,.35)}
+.fu-btn-blue{background:linear-gradient(#8fe0f6, #40b6e4 45%, #1c8fc9 55%, #2aa3da);box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -2px 0 rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.3)}
+.fu-btn-gray{border-color:#5f646b;background:linear-gradient(#b9bdc3, #8f949b 50%, #7d8289 51%, #92979e);box-shadow:inset 0 1px 0 rgba(255,255,255,.6), inset 0 -2px 0 rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.3)}
+.fu-btn:active{transform:translateY(1px);box-shadow:inset 0 2px 3px rgba(0,0,0,.3)}
+.fu-btn:focus-visible,.fu-arrow:focus-visible,.fu-link:focus-visible,.fu-tool:focus-visible,.fu-snap:focus-visible{outline:2px dotted #1d2433;outline-offset:2px}
+.fu-wide{width:min(340px, 70vw)}
+span.fu-btn{cursor:default}
+.fu-camrow{display:flex;align-items:center;gap:14px}
+.fu-arrow{border:0;background:none;padding:4px;font:22px/1 Arial, sans-serif;color:#8d939c;cursor:pointer;text-shadow:0 1px 0 #fff}
+.fu-arrow:hover{color:#5f646b}
+.fu-links{margin:18px 0 0;line-height:1.8}
+.fu-link{border:0;background:none;padding:0;font:18px/1.4 "Courier New", Courier, monospace;color:#3a3f9e;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.fu-link-plain{text-decoration:none}
+.fu-dot{display:inline-block;width:14px;height:14px;margin:0 6px;vertical-align:-1px;border-radius:50%;background:radial-gradient(circle at 35% 35%, #fff, #cfe7ee 60%, #9fc5d1);box-shadow:0 0 0 1px #b8c9d2}
+.fu-info{max-width:46ch;margin:4px 0 0;padding:10px 14px;background:rgba(255,255,255,.75);border:1px solid #aab3c4;font:12.5px/1.55 var(--f-ui);color:#2a3142}
+.fu-lockico{width:48px;height:48px}
+.fu-lockform{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px}
+.fu-label{font:15px/1.3 "Courier New", Courier, monospace;color:#2a3142}
+.fu-passrow{display:flex;gap:8px}
+.fu-input{width:170px;height:40px;padding:0 12px;border:0;box-shadow:var(--field);background:#fff;font:20px/1 "Courier New", monospace;letter-spacing:.3em;text-align:center;color:#1d2433}
+.fu-input:focus{outline:2px dotted #1d2433;outline-offset:2px}
+.fu-hint{margin:2px 0 0;max-width:40ch;font:13px/1.5 var(--f-ui);color:#4a5163}
+.fu-err{margin:0;font:600 13px/1.4 var(--f-ui);color:#b3261e}
+.fu-shake{animation:fu-shake .4s steps(6)}
+@keyframes fu-shake{25%{transform:translateX(-8px)}50%{transform:translateX(7px)}75%{transform:translateX(-4px)}}
+/* call screen */
+.fu-call{justify-content:flex-start;align-items:stretch;gap:10px;padding:12px 16px}
+.fu-callbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.fu-mini{display:flex;align-items:center;gap:6px;text-align:left}
+.fu-logo-xs{width:56px}
+.fu-mini small{display:block;font:6.5px/1 "Michroma", sans-serif;letter-spacing:.02em;color:#2a3142}
+.fu-timer{min-width:120px;padding:8px 16px;background:#fff;box-shadow:var(--field);font:300 24px/1 "Jost", "Helvetica Neue", sans-serif;letter-spacing:.04em;text-align:center;color:#111}
+.fu-panes{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;background:#c8ccd3;box-shadow:var(--field)}
+.fu-pane{position:relative;overflow:hidden;background:#15181d;border:3px solid;border-color:#8b9097 #f4f5f7 #f4f5f7 #8b9097}
+.fu-pane video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#15181d}
+#fu-cam{transform:scaleX(-1);transition:transform .2s}
+.fu-camoff{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;
+  background:radial-gradient(circle at 50% 40%, #2a3140, #15181d 70%);color:#c9d2e0;font:13px/1.5 var(--f-ui);text-align:center}
+.fu-camoff .ico{width:40px;height:40px}
+.fu-camoff p{margin:0;max-width:30ch}
+.fu-camoff .fu-btn{min-height:34px;font-size:15px}
+.fu-badge{position:absolute;z-index:3;top:12px;left:12px;display:flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;
+  background:linear-gradient(#fff, #e7e9ed);border:1px solid #9aa0a8;box-shadow:inset 0 1px 0 #fff, 0 1px 3px rgba(0,0,0,.25);font:15px/1 Arial, sans-serif;color:#6b7078}
+.fu-bar{width:1px;height:18px;background:#b7bcc4}
+.fu-planet{display:block;width:20px;height:20px;border-radius:50%;box-shadow:inset -3px -3px 5px rgba(0,0,0,.35)}
+.fu-planet-you{background:radial-gradient(circle at 35% 30%, #fff5f2, #f3a9b4 45%, #b8667c)}
+.fu-planet-me{background:radial-gradient(circle at 35% 30%, #eef7e8, #8fb58a 45%, #3f6b49)}
+.fu-snap{position:absolute;z-index:3;top:10px;right:10px;width:40px;height:34px;padding:5px;border:0;background:none;color:rgba(255,255,255,.85);cursor:pointer;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+.fu-snap svg{width:100%;height:100%}
+.fu-snap:hover{color:#fff}
+.fu-pane .call-grain{opacity:.18}
+.fu-bubbles{position:absolute;z-index:3;left:14px;right:14px;bottom:14px;display:flex;flex-direction:column;align-items:flex-start;gap:6px;pointer-events:none}
+.fu-bubble{margin:0;max-width:80%;padding:8px 12px;background:rgba(255,255,255,.92);border:1px solid #9aa0a8;color:#1d2433;font:14px/1.4 var(--f-ui);box-shadow:0 2px 6px rgba(0,0,0,.3);
+  animation:fu-bubble 6s ease forwards}
+@keyframes fu-bubble{0%{opacity:0;transform:translateY(8px)}8%,80%{opacity:1;transform:none}100%{opacity:0}}
+.fu-hearts{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.fu-heart{position:absolute;bottom:-30px;font-size:26px;color:#ff8fb1;text-shadow:0 0 8px rgba(255,143,177,.7);animation:fu-float 2.6s ease-out forwards}
+@keyframes fu-float{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-330px) scale(1.15);opacity:0}}
+.fu-flash{position:absolute;inset:0;z-index:5;background:#fff;opacity:0;pointer-events:none}
+.fu-flash.is-on{animation:fu-flash .45s ease-out}
+@keyframes fu-flash{0%{opacity:.9}100%{opacity:0}}
+.fu-tools{position:relative;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fu-tool{display:grid;place-items:center;min-width:40px;height:36px;padding:0 10px;border:1px solid #8b9097;border-radius:3px;background:linear-gradient(#fdfdfe, #d9dce1);
+  box-shadow:inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.2);color:#222;font:22px/1 Arial, sans-serif;cursor:pointer}
+.fu-tool svg{width:18px;height:18px;fill:currentColor}
+.fu-tool .ico{width:18px;height:18px}
+.fu-tool:active{box-shadow:inset 0 2px 3px rgba(0,0,0,.25)}
+.fu-tool[aria-pressed="false"]{background:repeating-conic-gradient(#fff 0 25%,#d7d7d7 0 50%) 0 0/2px 2px;box-shadow:inset 0 2px 3px rgba(0,0,0,.25)}
+.fu-tool[aria-pressed="false"] .ico{opacity:.45}
+.fu-seg{display:flex}
+.fu-seg .fu-tool:first-child{border-radius:3px 0 0 3px;border-right:0}
+.fu-seg .fu-tool:last-child{border-radius:0 3px 3px 0}
+.fu-spacer{flex:1}
+.fu-say{display:flex;align-items:center;gap:6px;width:min(260px, 100%);height:34px;padding:0 10px;background:#fff;border:1px solid #8b9097;border-radius:3px;box-shadow:inset 0 1px 2px rgba(0,0,0,.2);color:#555}
+.fu-say svg{width:15px;height:15px;flex:none}
+.fu-sayinp{flex:1;min-width:0;border:0;outline:0;background:none;font:14px var(--f-ui);color:#1d2433}
+.fu-say:focus-within{outline:2px dotted #1d2433;outline-offset:2px}
+.fu-end svg{width:20px;height:18px}
+.fu-pop{position:absolute;left:0;bottom:calc(100% + 6px);z-index:6;padding:10px 12px;background:var(--silver);box-shadow:var(--edge), 3px 3px 0 rgba(7,20,38,.3)}
+@media (prefers-reduced-motion:reduce){.fu-heart{animation-duration:.01s}.fu-shake{animation:none}}
+@media (max-width:700px){
+  .foru{left:6px;right:6px;top:calc(var(--menubar-h) + 6px);bottom:calc(var(--taskbar-h) + 6px);width:auto;height:auto;transform:none}
+  .fu-panes{grid-template-columns:1fr;grid-template-rows:1fr 1fr}
+  .fu-mini small{display:none}
+  .fu-timer{min-width:0;font-size:20px;padding:6px 12px}
+  .fu-say{order:5;width:100%}
+  .fu-spacer{display:none}
+}
 
 /* ==========================================================================
    TASKBAR + START MENU
@@ -794,6 +906,7 @@ body.crt .crt-overlay{display:block}
   <a class="desk-icon" href="#services"><span class="ico-wrap"><span class="ico" data-icon="doc"></span></span><span class="lbl">Services.txt</span></a>
   <a class="desk-icon" href="https://scholar.google.com/citations?user=U_v7A40AAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="ico-wrap"><span class="ico" data-icon="cap"></span></span><span class="lbl">Scholar.url</span></a>
   <a class="desk-icon" href="#contact"><span class="ico-wrap"><span class="ico" data-icon="envelope"></span></span><span class="lbl">Contact</span></a>
+  <button class="desk-icon" type="button" data-action="foru-open"><span class="ico-wrap"><span class="ico" data-icon="heart"></span><span class="ico desk-lock" data-icon="lock"></span></span><span class="lbl">For U</span></button>
 </nav>
 
 <!-- ========================= MAIN APP WINDOW =========================== -->
@@ -984,16 +1097,7 @@ body.crt .crt-overlay{display:block}
                 <dt>Lab</dt><dd>Analytics Everywhere Lab, UNB</dd>
                 <dt>Also</dt><dd>Research Assistant, NRC-CNRC</dd>
                 <dt>Supervisors</dt><dd>Hung Cao · Rene Richard</dd>
-                <dt>Since</dt><dd>January 2024</dd>
                 <dt>Email</dt><dd><a href="mailto:hung.ntt@unb.ca">hung.ntt@unb.ca</a></dd>
-              </dl>
-            </fieldset>
-            <fieldset class="group">
-              <legend>Archive</legend>
-              <dl>
-                <dt>Papers</dt><dd data-count="publications">—</dd>
-                <dt>Awards</dt><dd data-count="awards">—</dd>
-                <dt>Reviewing</dt><dd data-count="service">—</dd>
               </dl>
             </fieldset>
           </div>
@@ -1152,7 +1256,8 @@ body.crt .crt-overlay{display:block}
 
     <footer class="page-foot">
       <p>© <span id="year">2026</span> Truong Thanh Hung Nguyen · Last updated <span id="updated">—</span></p>
-      <p class="credit">Design style inspired by <b>IU</b>'s <a href="https://www.youtube.com/watch?v=nP1xjFX86Po" target="_blank" rel="noopener">“이 별로부터 (Unknown Planet)”</a>. Song © EDAM Entertainment, played through <a href="https://open.spotify.com/track/02KRPJcx4TJFLCXt9qwEUE" target="_blank" rel="noopener">Spotify's official player</a>; the music video is on <a href="https://www.youtube.com/@dlwlrma" target="_blank" rel="noopener">IU's official YouTube channel</a>.</p>
+      <p class="credit">Design style inspired by <b>IU</b>'s <a href="https://www.youtube.com/watch?v=nP1xjFX86Po" target="_blank" rel="noopener">“이 별로부터 (Unknown Planet)”</a>. </p>
+      <p class="credit">Song © EDAM Entertainment, played through <a href="https://open.spotify.com/track/02KRPJcx4TJFLCXt9qwEUE" target="_blank" rel="noopener">Spotify's official player</a>; the music video is on <a href="https://www.youtube.com/@dlwlrma" target="_blank" rel="noopener">IU's official YouTube channel</a>.</p>
     </footer>
   </main>
 
@@ -1187,12 +1292,147 @@ body.crt .crt-overlay{display:block}
   <div class="statusbar"><span class="grow" id="orbit-status">orbit stable</span></div>
 </aside>
 
+
+<!-- ============================ FOR U (secret app) ======================
+     A little planet-to-planet call app. Password-locked, but only as a
+     playful lock: everything runs in the browser, so it's not real security.
+     The camera feed stays on the visitor's device and is never uploaded. -->
+<section class="win top-level foru" id="foru-win" aria-label="For U" hidden>
+  <div class="titlebar">
+    <span class="titlebar-text">for-u.unknownplanet</span>
+    <span class="tb-btns">
+      <button class="tb-btn" type="button" data-action="fu-min" aria-label="Minimize For U"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M1 6h6v2H1z"/></svg></button>
+      <button class="tb-btn tb-close" type="button" data-action="fu-close" aria-label="Close For U"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M0 0h2v1H0zM7 0h2v1H7zM1 1h2v1H1zM6 1h2v1H6zM2 2h2v1H2zM5 2h2v1H5zM3 3h3v2H3zM2 5h2v1H2zM5 5h2v1H5zM1 6h2v1H1zM6 6h2v1H6zM0 7h2v1H0zM7 7h2v1H7z"/></svg></button>
+    </span>
+  </div>
+  <div class="fu-body">
+    <svg class="fu-circuit" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="none" stroke-linejoin="round"><path d="M0 60H120L160 100V260L220 320H300M0 90H100L140 130V300L200 360V600M30 0V40L70 80H200L240 120M0 380H80L140 440V600M0 420H60L110 470V600M180 0V30L210 60H320M260 600V520L300 480H380M0 200H40L70 230V340L110 380H170L200 410V600M0 140H20L50 170" stroke="rgba(120,132,160,.28)" stroke-width="5"/><path d="M0 60H120L160 100V260L220 320H300M0 90H100L140 130V300L200 360V600M30 0V40L70 80H200L240 120M0 380H80L140 440V600M0 420H60L110 470V600M180 0V30L210 60H320M260 600V520L300 480H380M0 200H40L70 230V340L110 380H170L200 410V600M0 140H20L50 170" stroke="rgba(255,255,255,.75)" stroke-width="2"/></g>
+      <g fill="none" stroke-linejoin="round" transform="translate(1000 0) scale(-1 1)"><path d="M0 60H120L160 100V260L220 320H300M0 90H100L140 130V300L200 360V600M30 0V40L70 80H200L240 120M0 380H80L140 440V600M0 420H60L110 470V600M180 0V30L210 60H320M260 600V520L300 480H380M0 200H40L70 230V340L110 380H170L200 410V600M0 140H20L50 170" stroke="rgba(120,132,160,.28)" stroke-width="5"/><path d="M0 60H120L160 100V260L220 320H300M0 90H100L140 130V300L200 360V600M30 0V40L70 80H200L240 120M0 380H80L140 440V600M0 420H60L110 470V600M180 0V30L210 60H320M260 600V520L300 480H380M0 200H40L70 230V340L110 380H170L200 410V600M0 140H20L50 170" stroke="rgba(255,255,255,.75)" stroke-width="2"/></g>
+    </svg>
+
+    <!-- 1. lock -->
+    <div class="fu-screen" data-screen="lock">
+      <span class="ico fu-lockico" data-icon="lock" aria-hidden="true"></span>
+      <h2 class="fu-word fu-word-sm"><span>F</span><span>O</span><span>R</span> <span>U</span></h2>
+      <!-- EDIT: data-hash is a scrambled copy of the password (see "For U" in the script to change it) -->
+      <form class="fu-lockform" id="fu-lockform" data-hash="5d907d49" autocomplete="off">
+        <label class="fu-label" for="fu-pass">This app is locked. Enter the password.</label>
+        <div class="fu-passrow">
+          <input class="fu-input" id="fu-pass" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" aria-describedby="fu-hint fu-err">
+          <button class="fu-btn fu-btn-blue" type="submit">Unlock</button>
+        </div>
+        <p class="fu-hint" id="fu-hint">Hint: DDMMYY — the day two unknown planets finally connected.</p>
+        <p class="fu-err" id="fu-err" role="alert" hidden>Not quite. Try again ♡</p>
+      </form>
+    </div>
+
+    <!-- 2. start -->
+    <div class="fu-screen" data-screen="start" hidden>
+      <svg class="fu-logo" viewBox="0 0 240 180" aria-hidden="true">
+          <defs>
+            <linearGradient id="fu-sil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#aeb4bd"/><stop offset=".55" stop-color="#f7f8fa"/><stop offset=".8" stop-color="#8d939c"/><stop offset="1" stop-color="#d9dce0"/></linearGradient>
+            <radialGradient id="fu-pearl" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#fff8f4"/><stop offset=".25" stop-color="#ffc9cf"/><stop offset=".5" stop-color="#f3a79c"/><stop offset=".72" stop-color="#eae39a"/><stop offset="1" stop-color="#a9cfae"/></radialGradient>
+            <mask id="fu-cres"><rect width="240" height="180" fill="#fff"/><circle cx="138" cy="78" r="56" fill="#000"/></mask>
+          </defs>
+          <ellipse cx="128" cy="95" rx="98" ry="34" transform="rotate(-28 128 95)" fill="none" stroke="#8d939c" stroke-width="4.5"/>
+          <ellipse cx="128" cy="95" rx="98" ry="34" transform="rotate(-28 128 95)" fill="none" stroke="url(#fu-sil)" stroke-width="3"/>
+          <circle cx="112" cy="92" r="66" fill="url(#fu-sil)" mask="url(#fu-cres)"/>
+          <ellipse cx="136" cy="84" rx="80" ry="26" transform="rotate(-28 136 84)" fill="none" stroke="#8d939c" stroke-width="5"/>
+          <ellipse cx="136" cy="84" rx="80" ry="26" transform="rotate(-28 136 84)" fill="none" stroke="url(#fu-sil)" stroke-width="3.5"/>
+          <circle cx="126" cy="88" r="30" fill="url(#fu-pearl)"/>
+          <ellipse cx="116" cy="76" rx="10" ry="6" fill="#fff" opacity=".6"/>
+          <circle cx="62" cy="128" r="4" fill="#9aa0a8" stroke="#fff"/>
+        </svg>
+      <h2 class="fu-word"><span>F</span><span>O</span><span>R</span> <span>U</span></h2>
+      <p class="fu-tag">TWO UNKNOWN PLANETS, FINALLY CONNECTED.</p>
+      <button class="fu-btn fu-btn-blue fu-wide" type="button" data-action="fu-start">Start</button>
+      <div class="fu-camrow">
+        <button class="fu-arrow" type="button" data-action="fu-camtoggle" aria-label="Switch camera on or off">◀</button>
+        <span class="fu-btn fu-btn-gray fu-wide" id="fu-camlabel" aria-live="polite">Camera: On</span>
+        <button class="fu-arrow" type="button" data-action="fu-camtoggle" aria-label="Switch camera on or off">▶</button>
+      </div>
+      <p class="fu-links">
+        <button class="fu-link" type="button" data-action="fu-what">What is For U?</button><br>
+        <button class="fu-link fu-link-plain" type="button" data-action="fu-safety">Safety <span class="fu-dot" aria-hidden="true"></span> Notice</button>
+      </p>
+      <p class="fu-info" id="fu-info" hidden></p>
+    </div>
+
+    <!-- 3. call -->
+    <div class="fu-screen fu-call" data-screen="call" hidden>
+      <div class="fu-callbar">
+        <span class="fu-mini"><svg class="fu-logo fu-logo-xs" viewBox="0 0 240 180" aria-hidden="true">
+          <defs>
+            <linearGradient id="fu-sil2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#aeb4bd"/><stop offset=".55" stop-color="#f7f8fa"/><stop offset=".8" stop-color="#8d939c"/><stop offset="1" stop-color="#d9dce0"/></linearGradient>
+            <radialGradient id="fu-pearl2" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#fff8f4"/><stop offset=".25" stop-color="#ffc9cf"/><stop offset=".5" stop-color="#f3a79c"/><stop offset=".72" stop-color="#eae39a"/><stop offset="1" stop-color="#a9cfae"/></radialGradient>
+            <mask id="fu-cres2"><rect width="240" height="180" fill="#fff"/><circle cx="138" cy="78" r="56" fill="#000"/></mask>
+          </defs>
+          <ellipse cx="128" cy="95" rx="98" ry="34" transform="rotate(-28 128 95)" fill="none" stroke="#8d939c" stroke-width="4.5"/>
+          <ellipse cx="128" cy="95" rx="98" ry="34" transform="rotate(-28 128 95)" fill="none" stroke="url(#fu-sil2)" stroke-width="3"/>
+          <circle cx="112" cy="92" r="66" fill="url(#fu-sil2)" mask="url(#fu-cres2)"/>
+          <ellipse cx="136" cy="84" rx="80" ry="26" transform="rotate(-28 136 84)" fill="none" stroke="#8d939c" stroke-width="5"/>
+          <ellipse cx="136" cy="84" rx="80" ry="26" transform="rotate(-28 136 84)" fill="none" stroke="url(#fu-sil2)" stroke-width="3.5"/>
+          <circle cx="126" cy="88" r="30" fill="url(#fu-pearl2)"/>
+          <ellipse cx="116" cy="76" rx="10" ry="6" fill="#fff" opacity=".6"/>
+          <circle cx="62" cy="128" r="4" fill="#9aa0a8" stroke="#fff"/>
+        </svg><span><b class="fu-word fu-word-xs"><span>F</span><span>O</span><span>R</span> <span>U</span></b><small>TWO UNKNOWN PLANETS, FINALLY CONNECTED.</small></span></span>
+        <span class="fu-timer" id="fu-timer" aria-label="Call time">00:00</span>
+      </div>
+      <div class="fu-panes">
+        <div class="fu-pane" id="fu-pane-you">
+          <video id="fu-cam" autoplay muted playsinline aria-label="Your camera"></video>
+          <div class="fu-camoff" id="fu-camoff">
+            <span class="ico" data-icon="cam" aria-hidden="true"></span>
+            <p id="fu-camoff-text">Your camera is off.</p>
+            <button class="fu-btn fu-btn-gray" type="button" data-action="fu-camon">Turn on camera</button>
+          </div>
+          <span class="fu-badge"><i class="fu-planet fu-planet-you" aria-hidden="true"></i><span class="fu-bar" aria-hidden="true"></span>U</span>
+          <button class="fu-snap" type="button" data-action="fu-snap" aria-label="Take a photo of this call" title="Take a photo of this call"><svg viewBox="0 0 24 20" aria-hidden="true"><path d="M8 2h8l2 3h4v13H2V5h4z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="11" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+          <div class="fu-bubbles" id="fu-bubbles" aria-live="polite"></div>
+          <span class="call-grain" aria-hidden="true"></span>
+        </div>
+        <div class="fu-pane" id="fu-pane-me">
+          <!-- EDIT: the video on the right (Hung's side of the call) -->
+          <video id="fu-me" loop playsinline preload="none" poster="assets/video/morning-poster.jpg" aria-label="Hung, on the other side of the call">
+            <source data-src="assets/video/morning-web.mp4" type='video/mp4; codecs="avc1.64001E, mp4a.40.2"'>
+            <source data-src="assets/video/morning-web.webm" type='video/webm; codecs="vp9, opus"'>
+          </video>
+          <span class="fu-badge"><i class="fu-planet fu-planet-me" aria-hidden="true"></i><span class="fu-bar" aria-hidden="true"></span>Hung</span>
+          <button class="fu-snap" type="button" data-action="fu-snap" aria-label="Take a photo of this call" title="Take a photo of this call"><svg viewBox="0 0 24 20" aria-hidden="true"><path d="M8 2h8l2 3h4v13H2V5h4z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="11" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+          <div class="fu-hearts" id="fu-hearts" aria-hidden="true"></div>
+          <span class="call-grain" aria-hidden="true"></span>
+        </div>
+        <div class="fu-flash" id="fu-flash" aria-hidden="true"></div>
+      </div>
+      <div class="fu-tools">
+        <button class="fu-tool" type="button" data-action="fu-settings" aria-expanded="false" aria-controls="fu-pop" title="Settings"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M7 0h2l.4 2.2 1.5.6 1.8-1.3 1.4 1.4-1.3 1.8.6 1.5L16 7v2l-2.2.4-.6 1.5 1.3 1.8-1.4 1.4-1.8-1.3-1.5.6L9 16H7l-.4-2.2-1.5-.6-1.8 1.3-1.4-1.4 1.3-1.8-.6-1.5L0 9V7l2.2-.4.6-1.5-1.3-1.8 1.4-1.4 1.8 1.3 1.5-.6zM8 5.5A2.5 2.5 0 1 0 8 10.5 2.5 2.5 0 0 0 8 5.5z" fill-rule="evenodd"/></svg><span class="sr-only">Settings</span></button>
+        <span class="fu-seg">
+          <button class="fu-tool" type="button" data-action="fu-zoomout" title="Zoom out" aria-label="Zoom out your camera">−</button>
+          <button class="fu-tool" type="button" data-action="fu-zoomin" title="Zoom in" aria-label="Zoom in your camera">+</button>
+        </span>
+        <button class="fu-tool" type="button" data-action="fu-camtoggle" id="fu-camtool" aria-pressed="true" title="Camera on/off"><span class="ico" data-icon="cam" aria-hidden="true"></span><span class="sr-only">Camera</span></button>
+        <span class="fu-spacer"></span>
+        <form class="fu-say" id="fu-say" autocomplete="off">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 10l4.5 4.5" stroke="currentColor" stroke-width="1.8"/></svg>
+          <input class="fu-sayinp" id="fu-sayinp" maxlength="80" placeholder="Say something…" aria-label="Say something">
+        </form>
+        <button class="fu-tool fu-end" type="button" data-action="fu-end" title="End call"><svg viewBox="0 0 16 14" aria-hidden="true"><path d="M0 5h9V0l7 7-7 7V9H0z"/></svg><span class="sr-only">End call</span></button>
+        <div class="fu-pop" id="fu-pop" hidden>
+          <label class="check"><input type="checkbox" id="fu-mirror" checked><span>Mirror my camera</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================= TASKBAR =============================== -->
 <footer class="taskbar">
   <button class="start-btn" id="start-btn" type="button" aria-expanded="false" aria-controls="start-menu"><span class="ico" data-icon="sparkle"></span>Start</button>
   <span class="task-sep" aria-hidden="true"></span>
   <div class="tasks">
     <button class="task is-active" type="button" data-win="main-win" title="Hung Nguyen's Homepage"><span class="ico" data-icon="globe"></span><span class="t">Hung Nguyen's Homepage</span></button>
+    <button class="task" type="button" data-win="foru-win" title="For U" hidden><span class="ico" data-icon="heart"></span><span class="t">For U</span></button>
     <button class="task" type="button" data-win="orbit-win" title="orbit.exe"><span class="ico" data-icon="sparkle"></span><span class="t">orbit.exe</span></button>
   </div>
   <div class="tray">
@@ -1216,6 +1456,7 @@ body.crt .crt-overlay{display:block}
     <button class="menu-item" type="button" data-action="crt" aria-pressed="false" id="start-crt"><span class="ico" data-icon="monitor"></span>CRT scanlines<span class="state">OFF</span></button>
     <hr class="menu-sep">
     <button class="menu-item" type="button" data-action="about"><span class="ico" data-icon="doc"></span>About this site…</button>
+    <button class="menu-item" type="button" data-action="foru-open"><span class="ico" data-icon="heart"></span>For U<span class="state" aria-hidden="true">🔒</span></button>
     <button class="menu-item" type="button" data-action="shutdown"><span class="ico" data-icon="chip"></span>Shut down…</button>
   </nav>
 </div>
@@ -1327,6 +1568,10 @@ body.crt .crt-overlay{display:block}
     "...cc.kppk.cc...", "..c..c.kk.c..c..", ".c....cccc....c.", ".c...cc..cc...c.", "..ccc.c..c.ccc..", "......c..c......", ".......cc......."];
   ICONS.note = ["................", "......kkkkkkkk..", "......kbbbbbbk..", "......kkkkkkkk..", "......k......k..", "......k......k..", "......k......k..", "......k......k..",
     "......k......k..", "..kkkkk..kkkkk..", ".kcccck.kcccck..", ".kcccck.kcccck..", "..kkkk...kkkk..."];
+  ICONS.heart = ["................", "................", "..kkkk....kkkk..", ".kppppk..kppppk.", "kppwwppkkppppppk", "kpwwpppppppppprk", "kpwppppppppppprk", "kpppppppppppprrk",
+    ".kpppppppppprrk.", "..kpppppppprrk..", "...kpppppprrk...", "....kpppprrk....", ".....kpprrk.....", "......kprk......", ".......kk......."];
+  ICONS.lock = ["................", ".....kkkkkk.....", "....kssssssk....", "...kssk..kssk...", "...ksk....ksk...", "...ksk....ksk...", "..kkkkkkkkkkkk..", "..kyyyyyyyyyyk..",
+    "..kyyyykkyyyyk..", "..kyyyykkyyyyk..", "..kyyyyykyyyyk..", "..kyyyyyyyyyyk..", "..kooooooooook..", "..kkkkkkkkkkkk.."];
   ICONS.fwd = ICONS.back.map((r) => r.padEnd(16, ".").split("").reverse().join(""));
 
   function pixelSVG(name) {
@@ -1631,6 +1876,7 @@ body.crt .crt-overlay{display:block}
   /* ------------------------------------------------------ action router */
   document.addEventListener("click", (e) => {
     const el = e.target.closest("[data-action]"); if (!el) return;
+    if (/^(fu-|foru-)/.test(el.dataset.action)) { fuAction(el.dataset.action, el); return; }
     switch (el.dataset.action) {
       case "print": window.print(); break;
       case "minimize": minimize(mainWin, ["Window minimized", "Hung's homepage is still running. Click it in the taskbar to bring it back."]); break;
@@ -1777,6 +2023,168 @@ body.crt .crt-overlay{display:block}
   }
   document.addEventListener("click", (e) => { if (e.target.closest("[data-np-toggle]")) toggleNP(); });
   setInterval(() => { if (call.state === "live") $("#call-time").textContent = mmss(Math.floor((Date.now() - call.t0) / 1000)); }, 1000);
+
+  /* ------------------------------------------------------ For U (secret app)
+     Password lock → start screen → call (your camera ⟷ Hung's video).
+     To change the password: run in the browser console
+       fuHash("for-u:NEWPASS")
+     and paste the result into data-hash on #fu-lockform.               */
+  const fuHash = (str) => { let h = 0x811c9dc5; for (const ch of str) { h ^= ch.codePointAt(0); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, "0"); };
+  window.fuHash = fuHash;
+  const FU = { win: $("#foru-win"), task: $('.task[data-win="foru-win"]'), camWanted: true, stream: null, zoom: 1, mirror: true, t0: 0, timer: null, drag: null };
+  topWins.push(FU.win);
+  const fuCam = $("#fu-cam"), fuMe = $("#fu-me");
+  const fuUnlocked = () => { try { return sessionStorage.getItem("foru-unlocked") === "1"; } catch (e) { return false; } };
+  function fuScreen(name) {
+    $$(".fu-screen", FU.win).forEach((sc) => { sc.hidden = sc.dataset.screen !== name; });
+    const focusEl = name === "lock" ? $("#fu-pass") : name === "start" ? $('[data-action="fu-start"]', FU.win) : null;
+    if (focusEl) setTimeout(() => focusEl.focus(), 30);
+  }
+  function fuOpen() {
+    FU.win.hidden = false; FU.task.hidden = false; setActive(FU.win);
+    if (!FU.win.dataset.screen) fuScreen(fuUnlocked() ? "start" : "lock");
+    FU.win.dataset.screen = "1";
+  }
+  function fuPaintCam() {
+    const on = !!FU.stream;
+    $("#fu-camlabel").textContent = "Camera: " + (FU.camWanted ? "On" : "Off");
+    $("#fu-camtool").setAttribute("aria-pressed", String(on));
+    $("#fu-camoff").hidden = on;
+    fuCam.style.transform = "scale(" + (FU.mirror ? -FU.zoom : FU.zoom) + "," + FU.zoom + ")";
+  }
+  async function fuCamOn() {
+    const msg = $("#fu-camoff-text");
+    if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) { msg.textContent = "This browser can't open the camera here (it needs a secure https page)."; return; }
+    msg.textContent = "Asking for your camera…";
+    try {
+      FU.stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user", width: { ideal: 1280 }, height: { ideal: 960 } }, audio: false });
+      fuCam.srcObject = FU.stream; fuCam.play().catch(() => {});
+    } catch (err) {
+      FU.stream = null;
+      msg.textContent = err && err.name === "NotAllowedError" ? "Camera access was blocked. Allow it in your browser's address bar, then try again." : "No camera found, or it's busy in another app.";
+    }
+    fuPaintCam();
+  }
+  function fuCamOff() {
+    if (FU.stream) FU.stream.getTracks().forEach((t) => t.stop());
+    FU.stream = null; fuCam.srcObject = null;
+    $("#fu-camoff-text").textContent = "Your camera is off.";
+    fuPaintCam();
+  }
+  function fuStartCall() {
+    fuScreen("call");
+    if (!fuMe.dataset.loaded) { $$("source", fuMe).forEach((so) => { so.src = so.dataset.src; }); fuMe.load(); fuMe.dataset.loaded = "1"; }
+    fuMe.muted = false;
+    fuMe.play().catch(() => { fuMe.muted = true; fuMe.play().catch(() => {}); });
+    FU.t0 = Date.now(); $("#fu-timer").textContent = "00:00";
+    clearInterval(FU.timer);
+    FU.timer = setInterval(() => { $("#fu-timer").textContent = mmss(Math.floor((Date.now() - FU.t0) / 1000)); }, 1000);
+    if (FU.camWanted) fuCamOn(); else fuPaintCam();
+  }
+  function fuEndCall() {
+    clearInterval(FU.timer); fuCamOff(); fuMe.pause();
+    $("#fu-pop").hidden = true;
+    fuScreen("start");
+  }
+  function fuHearts() {
+    const box = $("#fu-hearts");
+    for (let i = 0; i < (reduceMotion ? 1 : 6); i++) {
+      const h = document.createElement("span");
+      h.className = "fu-heart"; h.textContent = "♥";
+      h.style.left = (15 + Math.random() * 70) + "%"; h.style.animationDelay = (i * 0.18) + "s";
+      box.appendChild(h); h.addEventListener("animationend", () => h.remove());
+    }
+  }
+  function fuSnap() {
+    const W = 1280, H = 540, c = document.createElement("canvas"); c.width = W; c.height = H;
+    const g = c.getContext("2d");
+    g.fillStyle = "#d9dce1"; g.fillRect(0, 0, W, H);
+    const draw = (v, x, y, w, h, mirror, zoom) => {
+      g.fillStyle = "#15181d"; g.fillRect(x, y, w, h);
+      if (!v || v.readyState < 2 || !v.videoWidth) return;
+      const sc = Math.max(w / v.videoWidth, h / v.videoHeight) * zoom, dw = v.videoWidth * sc, dh = v.videoHeight * sc;
+      g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip();
+      g.translate(x + w / 2, y + h / 2); if (mirror) g.scale(-1, 1);
+      g.drawImage(v, -dw / 2, -dh / 2, dw, dh); g.restore();
+    };
+    draw(FU.stream ? fuCam : null, 16, 16, 616, 462, FU.mirror, FU.zoom);
+    draw(fuMe, 648, 16, 616, 462, false, 1);
+    g.fillStyle = "#3b3f7a"; g.font = "300 26px Jost, Arial, sans-serif"; g.fillText("F O R   U", 18, 516);
+    g.fillStyle = "#4a5163"; g.font = "15px Arial, sans-serif"; g.textAlign = "right"; g.fillText(new Date().toLocaleString(), W - 18, 514);
+    const fl = $("#fu-flash"); fl.classList.remove("is-on"); void fl.offsetWidth; fl.classList.add("is-on");
+    c.toBlob((blob) => {
+      if (!blob) return;
+      const a = document.createElement("a"), d = new Date();
+      a.href = URL.createObjectURL(blob);
+      a.download = "for-u-" + d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0") + ".png";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    }, "image/png");
+  }
+  function fuAction(action, btn) {
+    switch (action) {
+      case "foru-open": setStart(false); closeMenus(); fuOpen(); break;
+      case "fu-min": minimize(FU.win); break;
+      case "fu-close": fuEndCall(); minimize(FU.win); FU.task.hidden = true; break;
+      case "fu-start": fuStartCall(); break;
+      case "fu-end": fuEndCall(); break;
+      case "fu-camtoggle":
+        if ($('[data-screen="call"]', FU.win).hidden) { FU.camWanted = !FU.camWanted; fuPaintCam(); }
+        else if (FU.stream) { FU.camWanted = false; fuCamOff(); } else { FU.camWanted = true; fuCamOn(); }
+        break;
+      case "fu-camon": FU.camWanted = true; fuCamOn(); break;
+      case "fu-zoomin": FU.zoom = Math.min(2.5, FU.zoom + 0.25); fuPaintCam(); break;
+      case "fu-zoomout": FU.zoom = Math.max(1, FU.zoom - 0.25); fuPaintCam(); break;
+      case "fu-settings": { const pop = $("#fu-pop"); pop.hidden = !pop.hidden; btn.setAttribute("aria-expanded", String(!pop.hidden)); break; }
+      case "fu-snap": fuSnap(); break;
+      case "fu-what": case "fu-safety": {
+        const info = $("#fu-info");
+        const text = action === "fu-what" ? "A tiny call between two unknown planets, made just for you. Press Start, turn on your camera, and Hung is on the other side."
+          : "Your camera stays on your device: nothing is recorded, saved or sent anywhere. Photos are only saved when you press the camera button.";
+        info.hidden = !info.hidden && info.textContent === text; info.textContent = text;
+        break;
+      }
+    }
+  }
+  $("#fu-lockform").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const inp = $("#fu-pass"), form = e.currentTarget;
+    if (fuHash("for-u:" + inp.value.trim()) === form.dataset.hash) {
+      try { sessionStorage.setItem("foru-unlocked", "1"); } catch (err) {}
+      $("#fu-err").hidden = true; inp.value = "";
+      fuScreen("start");
+    } else {
+      $("#fu-err").hidden = false;
+      form.classList.remove("fu-shake"); void form.offsetWidth; form.classList.add("fu-shake");
+      inp.select();
+    }
+  });
+  $("#fu-say").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const inp = $("#fu-sayinp"), text = inp.value.trim(); if (!text) return;
+    const b = document.createElement("p"); b.className = "fu-bubble"; b.textContent = text;
+    $("#fu-bubbles").appendChild(b); b.addEventListener("animationend", () => b.remove());
+    inp.value = ""; fuHearts();
+  });
+  $("#fu-mirror").addEventListener("change", (e) => { FU.mirror = e.target.checked; fuPaintCam(); });
+  // drag the window by its title bar (desktop sizes)
+  (function () {
+    const bar = $(".titlebar", FU.win);
+    bar.addEventListener("pointerdown", (e) => {
+      if (e.target.closest("button") || e.button !== 0 || window.innerWidth <= 700) return;
+      const r = FU.win.getBoundingClientRect();
+      FU.drag = { dx: e.clientX - r.left, dy: e.clientY - r.top, w: r.width };
+      bar.setPointerCapture(e.pointerId);
+    });
+    bar.addEventListener("pointermove", (e) => {
+      if (!FU.drag) return;
+      const x = Math.min(Math.max(e.clientX - FU.drag.dx, 40 - FU.drag.w), window.innerWidth - 40);
+      const y = Math.min(Math.max(e.clientY - FU.drag.dy, 26), window.innerHeight - 70);
+      Object.assign(FU.win.style, { left: x + "px", top: y + "px", transform: "none" });
+    });
+    const end = () => { FU.drag = null; };
+    bar.addEventListener("pointerup", end); bar.addEventListener("pointercancel", end);
+  })();
 
   /* ================================================================
      PAPER FINDER
