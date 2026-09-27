@@ -183,6 +183,9 @@ button{font:inherit;color:inherit}
    ========================================================================== */
 .main-win{width:min(1120px, 74vw);margin:calc(var(--menubar-h) + 22px) auto calc(var(--taskbar-h) + 26px);z-index:10}
 .main-win.is-max{width:auto;margin-left:6px;margin-right:6px}
+/* draggable by its title bar (see draggable() in the script); active + restored sits above orbit.exe */
+@media (min-width:641px){.main-win:not(.is-max) #main-titlebar{cursor:move;touch-action:none}}
+.main-win.is-active:not(.is-max){z-index:36}
 .win-chrome{position:sticky;top:var(--menubar-h);z-index:20;background:var(--silver);margin:-3px -3px 0;padding:3px 3px 0;box-shadow:inset 1px 0 0 #fff, inset -1px 0 0 #8b8b8b}
 .win-toolbar{display:flex;align-items:center;gap:3px;margin-top:2px;padding:3px 2px 4px;background:var(--metal);border-bottom:1px solid #8B8B8B;box-shadow:0 1px 0 #fff}
 .tool-btn{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 7px;border:0;background:transparent;font:12px var(--f-ui);color:#000;cursor:pointer;white-space:nowrap}
@@ -1884,6 +1887,7 @@ body.crt .crt-overlay{display:block}
   function toggleMax() {
     const on = mainWin.classList.toggle("is-max");
     document.body.classList.toggle("max-mode", on);
+    if (on) mainWin.style.left = mainWin.style.top = "";
     maxBtn.setAttribute("aria-label", on ? "Restore window" : "Maximize window");
     maxBtn.innerHTML = on
       ? '<svg viewBox="0 0 9 8" aria-hidden="true"><path d="M3 0h6v2H3zM8 2h1v3H8zM7 4h1v1H7zM0 3h6v2H0zM0 5h1v3H0zM5 5h1v3H5zM1 7h4v1H1z"/></svg>'
@@ -1912,25 +1916,42 @@ body.crt .crt-overlay{display:block}
     $$(".desk-icon").forEach((x) => x.classList.toggle("is-selected", x === ic));
   }));
 
-  // drag orbit.exe by its title bar
-  (function dragWidget() {
-    const bar = $(".titlebar", orbitWin); let drag = null;
+  // drag windows by their title bars. Works for fixed windows (orbit.exe) and for the
+  // in-flow main window, which is nudged with position:relative offsets so the page still scrolls.
+  const canDragMain = () => !mainWin.classList.contains("is-max") && window.innerWidth > 640;
+  function moveWin(win, dx, dy) {
+    const r = win.getBoundingClientRect(), fixed = getComputedStyle(win).position === "fixed";
+    const mb = $(".menubar").getBoundingClientRect().bottom, tb = $(".taskbar").getBoundingClientRect().top;
+    // keep a grabbable strip of the title bar on screen
+    const x = Math.min(Math.max(r.left + dx, 140 - r.width), window.innerWidth - 140);
+    const y = Math.min(Math.max(r.top + dy, fixed ? mb : mb - window.scrollY), tb - 30);
+    const bx = fixed ? r.left : parseFloat(win.style.left) || 0, by = fixed ? r.top : parseFloat(win.style.top) || 0;
+    win.style.left = bx + x - r.left + "px"; win.style.top = by + y - r.top + "px";
+    if (fixed) win.style.right = "auto";
+  }
+  function draggable(win, bar, enabled) {
+    let drag = null;
     bar.addEventListener("pointerdown", (e) => {
-      if (e.target.closest("button") || e.button !== 0) return;
-      const r = orbitWin.getBoundingClientRect();
-      drag = { dx: e.clientX - r.left, dy: e.clientY - r.top, w: r.width, h: r.height };
+      if (e.target.closest("button") || e.button !== 0 || (enabled && !enabled())) return;
+      drag = { x: e.clientX, y: e.clientY, moving: false };
       bar.setPointerCapture(e.pointerId);
     });
     bar.addEventListener("pointermove", (e) => {
       if (!drag) return;
-      const top = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--mb")) || 26;
-      const x = Math.min(Math.max(e.clientX - drag.dx, 0), window.innerWidth - drag.w);
-      const y = Math.min(Math.max(e.clientY - drag.dy, top), window.innerHeight - 60);
-      orbitWin.style.left = x + "px"; orbitWin.style.top = y + "px"; orbitWin.style.right = "auto";
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.moving && Math.hypot(dx, dy) < 4) return; // leave clicks and double-clicks alone
+      drag.moving = true; bar.classList.add("is-dragging");
+      moveWin(win, dx, dy); drag.x = e.clientX; drag.y = e.clientY;
     });
-    const end = () => { drag = null; };
+    const end = () => { drag = null; bar.classList.remove("is-dragging"); };
     bar.addEventListener("pointerup", end); bar.addEventListener("pointercancel", end);
-  })();
+  }
+  draggable(orbitWin, $(".titlebar", orbitWin));
+  draggable(mainWin, $("#main-titlebar"), canDragMain);
+  window.addEventListener("resize", () => {
+    if (!canDragMain()) { mainWin.style.left = mainWin.style.top = ""; } else if (mainWin.style.left) moveWin(mainWin, 0, 0);
+    if (orbitWin.style.left && !orbitWin.hidden && getComputedStyle(orbitWin).display !== "none") moveWin(orbitWin, 0, 0);
+  });
 
   /* -------------------------------------------------------- menus / start */
   const menus = $$(".menubar details.menu");
