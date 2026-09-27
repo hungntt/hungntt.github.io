@@ -347,6 +347,8 @@ button{font:inherit;color:inherit}
 .log .d{flex:none;color:var(--cyan);min-width:18ch}
 .log .w{flex:1 1 300px;color:#E4F1FF}
 .log .w em{font-style:normal;color:var(--text-dim)}
+.log .w .cap{display:block;margin-top:1px;padding-left:1.5ch;font-size:16px;color:var(--text-dim)}
+.log .w .cap::before{content:"└ ";margin-left:-1.5ch;color:#5C7CA3}
 .log .st{flex:none;margin-left:auto;color:var(--orange)}
 .log .st.run{color:#35D46A}
 .log .st.run::before{content:"";display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:currentColor;box-shadow:0 0 6px currentColor;vertical-align:1px}
@@ -357,6 +359,7 @@ button{font:inherit;color:inherit}
    ========================================================================== */
 .finder{font:12px/1.4 var(--f-ui)}
 .finder.is-collapsed>:not(.titlebar):not(.statusbar){display:none}
+.win.nest.is-collapsed>:not(.titlebar){display:none}
 .pf-toolbar{display:flex;flex-direction:column;gap:8px;margin-top:2px;padding:8px 8px 10px;background:var(--metal);border-bottom:1px solid #8B8B8B;box-shadow:0 1px 0 #fff}
 .pf-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 10px}
 .field{display:flex;flex-direction:column;gap:3px;font:11px/1 var(--f-ui);color:#222}
@@ -876,6 +879,7 @@ body.crt .crt-overlay{display:block}
       <div class="menu-pop">
         <a class="menu-item" href="#about"><span class="ico" data-icon="monitor"></span>Short bio</a>
         <a class="menu-item" href="#education"><span class="ico" data-icon="cap"></span>Education &amp; positions</a>
+        <a class="menu-item" href="#teaching"><span class="ico" data-icon="board"></span>Teaching experience</a>
         <hr class="menu-sep">
         <button class="menu-item" type="button" data-action="about"><span class="ico"></span>About this site…</button>
       </div>
@@ -906,6 +910,7 @@ body.crt .crt-overlay{display:block}
   <a class="desk-icon" href="#publications"><span class="ico-wrap"><span class="ico" data-icon="folder"></span></span><span class="lbl">Papers</span></a>
   <a class="desk-icon" href="#honors"><span class="ico-wrap"><span class="ico" data-icon="trophy"></span></span><span class="lbl">Trophies</span></a>
   <a class="desk-icon" href="#services"><span class="ico-wrap"><span class="ico" data-icon="doc"></span></span><span class="lbl">Services.txt</span></a>
+  <a class="desk-icon" href="#teaching"><span class="ico-wrap"><span class="ico" data-icon="board"></span></span><span class="lbl">Teaching</span></a>
   <a class="desk-icon" href="https://scholar.google.com/citations?user=U_v7A40AAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="ico-wrap"><span class="ico" data-icon="cap"></span></span><span class="lbl">Scholar.url</span></a>
   <a class="desk-icon" href="#contact"><span class="ico-wrap"><span class="ico" data-icon="envelope"></span></span><span class="lbl">Contact</span></a>
   <button class="desk-icon" type="button" data-action="foru-open"><span class="ico-wrap"><span class="ico" data-icon="heart"></span><span class="ico desk-lock" data-icon="lock"></span></span><span class="lbl">For U</span></button>
@@ -1115,7 +1120,7 @@ body.crt .crt-overlay{display:block}
     <section class="sec" id="education" data-section="Education" aria-labelledby="edu-h">
       <div class="sec-head"><span class="sec-no" aria-hidden="true">02/</span><h2 id="edu-h">Education &amp; Positions</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\CAREER.LOG</span></div>
       <div class="win nest">
-        <div class="titlebar"><span class="ico tb-ico" data-icon="monitor"></span><span class="titlebar-text">MS-DOS Prompt — C:\HUNG</span></div>
+        <div class="titlebar"><span class="ico tb-ico" data-icon="monitor"></span><span class="titlebar-text">C:\HUNG</span><span class="tb-btns"><button class="tb-btn" type="button" data-action="win-collapse" aria-expanded="true" aria-label="Collapse MS-DOS Prompt" title="Collapse"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M4 2h1v1H4zM3 3h3v1H3zM2 4h5v1H2zM1 5h7v1H1z"/></svg></button></span></div>
         <div class="term">
           <!-- EDIT: education & positions -->
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat education.log</div>
@@ -1139,9 +1144,41 @@ body.crt .crt-overlay{display:block}
       </div>
     </section>
 
+    <!-- ============================ TEACHING ============================ -->
+    <section class="sec" id="teaching" data-section="Teaching" aria-labelledby="tch-h">
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">03/</span><h2 id="tch-h">Teaching Experience</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\TEACHING.LOG</span></div>
+      <div class="win nest">
+        <div class="titlebar"><span class="ico tb-ico" data-icon="board"></span><span class="titlebar-text">Lecture Hall — C:\HUNG\TEACHING</span><span class="tb-btns"><button class="tb-btn" type="button" data-action="win-collapse" aria-expanded="true" aria-label="Collapse Lecture Hall" title="Collapse"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M4 2h1v1H4zM3 3h3v1H3zM2 4h5v1H2zM1 5h7v1H1z"/></svg></button></span></div>
+        <div class="term">
+          <!-- EDIT: teaching experience -->
+          <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat certification.log</div>
+          <h3 class="sr-only">Teaching certification</h3>
+          <ul class="log">
+            <li><span class="d">[DUT]</span><span class="w">Diploma of University Teaching<span class="cap">Certified for formal training and qualification in higher education instruction</span></span><span class="st">[ CANADA ]</span></li>
+          </ul>
+          <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat teaching_assistant.log</div>
+          <h3 class="sr-only">Teaching assistant</h3>
+          <ul class="log">
+            <li><span class="d">[TA]</span><span class="w">Introduction to Machine Learning</span><span class="st">[ UNB ]</span></li>
+            <li><span class="d">[TA]</span><span class="w">Data Structures and Algorithms</span><span class="st">[ UNB ]</span></li>
+            <li><span class="d">[TA]</span><span class="w">Introduction to Numerical Methods</span><span class="st">[ UNB ]</span></li>
+          </ul>
+          <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat guest_lectures.log</div>
+          <h3 class="sr-only">Guest lectures</h3>
+          <ul class="log">
+            <li><span class="d">[GUEST]</span><span class="w">Beyond Explainable AI (XAI) — University of New Brunswick</span><span class="st">[ CANADA ]</span></li>
+            <li><span class="d">[GUEST]</span><span class="w">Introduction to Interpretable Machine Learning — Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)</span><span class="st">[ GERMANY ]</span></li>
+            <li><span class="d">[GUEST]</span><span class="w">Introduction to Explainable AI (XAI) — FPT University</span><span class="st">[ VIETNAM ]</span></li>
+            <li><span class="d">[GUEST]</span><span class="w">Introduction to Reinforcement Learning (RL) — Quy Nhon University</span><span class="st">[ VIETNAM ]</span></li>
+          </ul>
+          <div class="prompt" aria-hidden="true">C:\HUNG&gt; <span class="caret">_</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========================== PUBLICATIONS ========================== -->
     <section class="sec" id="publications" data-section="Publications" aria-labelledby="pub-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">03/</span><h2 id="pub-h">Publications</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\PAPERS\</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">04/</span><h2 id="pub-h">Publications</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\PAPERS\</span></div>
 
       <div class="win nest finder" id="finder">
         <div class="titlebar">
@@ -1169,8 +1206,10 @@ body.crt .crt-overlay{display:block}
             <label class="field"><span>Research interest</span><select class="sel" id="pf-topic" data-key="topic"></select></label>
             <label class="field"><span>Type</span><select class="sel" id="pf-type" data-key="type"></select></label>
             <label class="field"><span>Year</span><select class="sel" id="pf-year" data-key="year"></select></label>
-            <label class="field"><span>CORE rank</span><select class="sel" id="pf-core" data-key="core"></select></label>
+          </div>
+          <div class="pf-row">
             <label class="field"><span>Quartile</span><select class="sel" id="pf-quartile" data-key="quartile"></select></label>
+            <label class="field"><span>CORE rank</span><select class="sel" id="pf-core" data-key="core"></select></label>
             <label class="field" id="pf-tag-field"><span>Tag</span><select class="sel" id="pf-tag" data-key="tag"></select></label>
             <label class="check"><input type="checkbox" id="pf-first" data-key="first"><span>First author</span></label>
             <label class="check"><input type="checkbox" id="pf-award" data-key="award"><span>★ Awarded</span></label>
@@ -1238,13 +1277,13 @@ body.crt .crt-overlay{display:block}
 
     <!-- ============================= HONORS ============================= -->
     <section class="sec" id="honors" data-section="Honors &amp; awards" aria-labelledby="hon-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">04/</span><h2 id="hon-h">Honors &amp; Awards</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\TROPHY.LOG</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">05/</span><h2 id="hon-h">Honors &amp; Awards</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\TROPHY.LOG</span></div>
       <ul class="trophies" id="awards-list"></ul>
     </section>
 
     <!-- ============================ SERVICES ============================ -->
     <section class="sec" id="services" data-section="Academic services" aria-labelledby="svc-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">05/</span><h2 id="svc-h">Academic Services</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\SERVICES.TXT</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">06/</span><h2 id="svc-h">Academic Services</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\SERVICES.TXT</span></div>
       <div class="table-wrap">
         <table class="svc">
           <thead><tr><th scope="col">Role</th><th scope="col">Venue</th></tr></thead>
@@ -1255,7 +1294,7 @@ body.crt .crt-overlay{display:block}
 
     <!-- ============================= CONTACT ============================ -->
     <section class="sec" id="contact" data-section="Contact" aria-labelledby="con-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">06/</span><h2 id="con-h">Contact &amp; Links</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">NETWORK NEIGHBORHOOD</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">07/</span><h2 id="con-h">Contact &amp; Links</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">NETWORK NEIGHBORHOOD</span></div>
       <!-- EDIT: email + profile links -->
       <ul class="links-grid">
         <li><a class="link-tile" href="mailto:hung.ntt@unb.ca"><span class="ico" data-icon="envelope"></span><b>Email</b><small>hung.ntt@unb.ca</small></a></li>
@@ -1460,6 +1499,7 @@ body.crt .crt-overlay{display:block}
     <a class="menu-item" href="#publications"><span class="ico" data-icon="folder"></span>Publications</a>
     <a class="menu-item" href="#honors"><span class="ico" data-icon="trophy"></span>Honors &amp; awards</a>
     <a class="menu-item" href="#services"><span class="ico" data-icon="doc"></span>Academic services</a>
+    <a class="menu-item" href="#teaching"><span class="ico" data-icon="board"></span>Teaching</a>
     <a class="menu-item" href="#about"><span class="ico" data-icon="monitor"></span>About me</a>
     <a class="menu-item" href="#contact"><span class="ico" data-icon="envelope"></span>Contact</a>
     <a class="menu-item" href="#top"><span class="ico" data-icon="note"></span>♪ Unknown Planet — IU</a>
@@ -1588,6 +1628,8 @@ body.crt .crt-overlay{display:block}
     "...kwwssseeek...", "..keeeeeeeeeek..", "..kewweeeeeeek..", ".keeweeeewveeek.", ".keeeeeeevveeek.", "keeeeveeeeeeeeek", "kvvvvvvvvvvvvvvk", "kkkkkkkkkkkkkkkk"];
   ICONS.paper = ["....kkkkkkkkkkk.", "....ksssssssssk.", ".kkkkkkkkkkkssk.", ".kwwwwwvvvwkssk.", ".kwnnnwvvvwkssk.", ".kwwwwwvvvwkssk.", ".kwnnnwvwvwkssk.", ".kwwwwwwwwwkssk.",
     ".kwnnnnnnnwkssk.", ".kwwwwwwwwwkssk.", ".kwnnnnnnnwkssk.", ".kwwwwwwwwwkssk.", ".kwnnnnnwwwkkkk.", ".kwwwwwwwwwk....", ".kkkkkkkkkkk...."];
+  ICONS.board = ["................", ".kkkkkkkkkkkkkk.", ".kooooooooooook.", ".kovvvvvvvvvvok.", ".kovwwvwwwvvvok.", ".kovvvvvvvvvvok.", ".kovwwwwvwwvvok.", ".kovvvvvvvvvvok.",
+    ".kovwwwvvvvwvok.", ".kovvvvvvvvwvok.", ".kovvvvvvvwwvok.", ".koooossooooook.", ".kkkkkkkkkkkkkk.", "...k........k...", "..k..........k..", ".kk..........kk."];
   ICONS.fwd = ICONS.back.map((r) => r.padEnd(16, ".").split("").reverse().join(""));
 
   function pixelSVG(name) {
@@ -1911,6 +1953,7 @@ body.crt .crt-overlay{display:block}
       case "legend": { setFinderOpen(true); const l = $("#pf-legend"); l.open = !l.open; if (l.open) l.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" }); break; }
       case "pf-reset": resetFilters(); break;
       case "pf-collapse": setFinderOpen($("#finder").classList.contains("is-collapsed")); break;
+      case "win-collapse": setWinOpen(el.closest(".win"), el.closest(".win").classList.contains("is-collapsed"), el); break;
       case "call-mic": case "call-cam": case "call-hangup": case "call-redial": callAction(el.dataset.action, el); break;
     }
   });
@@ -2282,10 +2325,10 @@ body.crt .crt-overlay{display:block}
     fillSelect(el.year, "All years", [...years.keys()].sort((a, b) => b - a).map((y) => [String(y), years.get(y)]));
     const cores = countBy((p) => p.core);
     const coreKeys = CORE_ORDER.filter((c) => cores.has(c)).concat([...cores.keys()].filter((c) => !CORE_ORDER.includes(c)));
-    fillSelect(el.core, "Any CORE rank", coreKeys.map((c) => [c, cores.get(c)]), pubs.filter((p) => !p.core).length, "No CORE tag");
+    fillSelect(el.core, "Any CORE rank", coreKeys.map((c) => [c, cores.get(c)]));
     const qs = countBy((p) => p.quartile);
     const qKeys = Q_ORDER.filter((q) => qs.has(q)).concat([...qs.keys()].filter((q) => !Q_ORDER.includes(q)));
-    fillSelect(el.quartile, "Any quartile", qKeys.map((q) => [q, qs.get(q)]), pubs.filter((p) => !p.quartile).length, "No quartile tag");
+    fillSelect(el.quartile, "Any quartile", qKeys.map((q) => [q, qs.get(q)]));
     const tagCounts = new Map(); pubs.forEach((p) => p.extra.forEach((t) => tagCounts.set(t, (tagCounts.get(t) || 0) + 1)));
     fillSelect(el.tag, "Any tag", [...tagCounts.keys()].sort((a, b) => a.localeCompare(b)).map((t) => [t, tagCounts.get(t)]));
     $("#pf-tag-field").hidden = tagCounts.size === 0;
@@ -2431,6 +2474,14 @@ body.crt .crt-overlay{display:block}
     $("#finder").classList.toggle("is-collapsed", !open);
     b.setAttribute("aria-expanded", String(open));
     b.setAttribute("aria-label", (open ? "Collapse" : "Expand") + " paper_finder.exe");
+    b.title = open ? "Collapse" : "Expand";
+    $("path", b).setAttribute("d", open ? "M4 2h1v1H4zM3 3h3v1H3zM2 4h5v1H2zM1 5h7v1H1z" : "M1 2h7v1H1zM2 3h5v1H2zM3 4h3v1H3zM4 5h1v1H4z");
+  }
+  function setWinOpen(win, open, b) {
+    const name = $(".titlebar-text", win).textContent.split(" — ")[0];
+    win.classList.toggle("is-collapsed", !open);
+    b.setAttribute("aria-expanded", String(open));
+    b.setAttribute("aria-label", (open ? "Collapse " : "Expand ") + name);
     b.title = open ? "Collapse" : "Expand";
     $("path", b).setAttribute("d", open ? "M4 2h1v1H4zM3 3h3v1H3zM2 4h5v1H2zM1 5h7v1H1z" : "M1 2h7v1H1zM2 3h5v1H2zM3 4h3v1H3zM4 5h1v1H4z");
   }

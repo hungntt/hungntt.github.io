@@ -197,7 +197,8 @@ window.RESEARCH_DATA = {
       "award": "",
       "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2609.27175"
+        "paper": "https://arxiv.org/abs/2609.27175",
+        "code": "https://github.com/Analytics-Everywhere-Lab/SEMV"
       }
     },
     {
@@ -221,7 +222,7 @@ window.RESEARCH_DATA = {
         "biomed"
       ],
       "tags": {
-        "core": "",
+        "core": "A",
         "coreYear": "",
         "quartile": "",
         "quartileSource": "",
@@ -234,7 +235,6 @@ window.RESEARCH_DATA = {
       "note": "",
       "links": {
         "paper": "https://arxiv.org/abs/2609.27848",
-        "Challenge": "https://bic-mac-challenge.github.io/"
       }
     },
     {
@@ -270,6 +270,7 @@ window.RESEARCH_DATA = {
       "note": "",
       "links": {
         "paper": "https://arxiv.org/abs/2608.05107",
+        "code": "https://github.com/Analytics-Everywhere-Lab/CAIAiPCP",
       }
     },
     {
@@ -286,7 +287,7 @@ window.RESEARCH_DATA = {
       "short": "FAIEMA 2026",
       "year": 2026,
       "month": "Aug",
-      "type": "preprint",
+      "type": "conference",
       "topics": [
         "agents",
         "xai",
@@ -317,11 +318,11 @@ window.RESEARCH_DATA = {
         "Veronica Whitford",
         "Hung Cao"
       ],
-      "venue": "arXiv preprint arXiv:2607.15202",
-      "short": "arXiv 2026",
+      "venue": "The IEEE International Conference on Omni-Layer Intelligent Systems (COINS) 2026",
+      "short": "IEEE COINS 2026",
       "year": 2026,
       "month": "Jul",
-      "type": "preprint",
+      "type": "conference",
       "topics": [
         "agents",
         "xai",
@@ -367,10 +368,9 @@ window.RESEARCH_DATA = {
         ]
       },
       "award": "",
-      "note": "International Archives, XLIX-M-1-2026, pp. 33–40.",
+      "note": "",
       "links": {
-        "paper": "https://isprs-archives.copernicus.org/articles/XLIX-M-1-2026/33/2026/",
-        "doi": "https://doi.org/10.5194/isprs-archives-XLIX-M-1-2026-33-2026"
+        "paper": "https://doi.org/10.5194/isprs-archives-XLIX-M-1-2026-33-2026",
       }
     },
     {
@@ -385,11 +385,11 @@ window.RESEARCH_DATA = {
         "Loc Nguyen",
         "Hung Cao"
       ],
-      "venue": "arXiv preprint arXiv:2606.16987",
-      "short": "arXiv 2026",
+      "venue": "The 3rd International Conference of Resilience by Technology and Design (RTD 2026)",
+      "short": "RTD 2026",
       "year": 2026,
       "month": "Jun",
-      "type": "preprint",
+      "type": "conference",
       "topics": [
         "agents",
         "xai"
@@ -418,11 +418,11 @@ window.RESEARCH_DATA = {
         "Roozbeh Razavi-Far",
         "Hung Cao"
       ],
-      "venue": "arXiv preprint arXiv:2606.21428",
-      "short": "arXiv 2026",
+      "venue": "4th International Conference on Frontiers of Artificial Intelligence, Ethics, and Multidisciplinary Applications",
+      "short": "FAIEMA 2026",
       "year": 2026,
       "month": "Jun",
-      "type": "preprint",
+      "type": "conference",
       "topics": [
         "edge",
         "agents"
@@ -463,7 +463,7 @@ window.RESEARCH_DATA = {
         "cv"
       ],
       "tags": {
-        "core": "",
+        "core": "B",
         "coreYear": "",
         "quartile": "",
         "quartileSource": "",
@@ -473,8 +473,7 @@ window.RESEARCH_DATA = {
       "award": "1st Place",
       "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2605.14495",
-        "doi": "https://doi.org/10.1145/3805622.3812606",
+        "paper": "https://doi.org/10.1145/3805622.3812606",
         "code": "https://github.com/Analytics-Everywhere-Lab/MV2026_the_liems"
       }
     },
@@ -503,10 +502,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "PMLR 318:319–331.",
+      "note": "",
       "links": {
         "paper": "https://proceedings.mlr.press/v318/shaik26a.html",
-        "arxiv": "https://arxiv.org/abs/2606.25390",
         "code": "https://github.com/Analytics-Everywhere-Lab/anatomically-conditioned-LDM"
       }
     },
@@ -538,10 +536,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Final proceedings title; PMLR 318:895–902.",
+      "note": "",
       "links": {
         "paper": "https://proceedings.mlr.press/v318/cao26b.html",
-        "arxiv": "https://arxiv.org/abs/2602.18916",
         "code": "https://github.com/loc110504/ACAL"
       }
     },
@@ -570,10 +567,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "MIRAI; PMLR 318:1175–1180.",
+      "note": "",
       "links": {
         "paper": "https://proceedings.mlr.press/v318/nguyen26b.html",
-        "arxiv": "https://arxiv.org/abs/2605.14550"
       }
     },
     {
@@ -601,10 +597,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "SAC 2026, pp. 1383–1390.",
+      "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2512.05946",
-        "doi": "https://doi.org/10.1145/3748522.3779769",
+        "paper": "https://doi.org/10.1145/3748522.3779769",
         "code": "https://github.com/Analytics-Everywhere-Lab/qtrl/"
       }
     },
@@ -633,9 +628,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Final ACM DOI was not reliably exposed in the sources I could verify; arXiv link retained.",
+      "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2603.00099"
+        "paper": "https://dl.acm.org/doi/10.1145/3748522.3779788",
       }
     },
     {
@@ -670,7 +665,6 @@ window.RESEARCH_DATA = {
       "note": "",
       "links": {
         "paper": "https://doi.org/10.1145/3788686",
-        "doi": "https://doi.org/10.1145/3788686",
         "code": "https://github.com/Analytics-Everywhere-Lab/heart2mind"
       }
     },
@@ -697,15 +691,12 @@ window.RESEARCH_DATA = {
         "quartile": "",
         "quartileSource": "",
         "impact": "",
-        "extra": [
-          "Best Paper Nominee"
-        ]
+        "extra": []
       },
-      "award": "",
-      "note": "Conference held in Nov 2025; revised proceedings first published online Jul 2026.",
+      "award": "Best Paper Nominee",
+      "note": "",
       "links": {
         "paper": "https://doi.org/10.1007/978-3-032-26717-7_20",
-        "doi": "https://doi.org/10.1007/978-3-032-26717-7_20",
         "code": "https://github.com/hungdothanh/motion2meaning"
       }
     },
@@ -729,7 +720,7 @@ window.RESEARCH_DATA = {
         "cv"
       ],
       "tags": {
-        "core": "",
+        "core": "A*",
         "coreYear": "",
         "quartile": "",
         "quartileSource": "",
@@ -802,10 +793,10 @@ window.RESEARCH_DATA = {
         "quartile": "",
         "quartileSource": "",
         "impact": "",
-        "extra": []
+        "extra": [""]
       },
       "award": "",
-      "note": "arXiv metadata states that this was published as a conference paper at ICEFM 2025; add official proceedings/DOI if available.",
+      "note": "",
       "links": {
         "paper": "https://arxiv.org/abs/2508.11873"
       }
@@ -840,10 +831,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Also available as SSRN 5390384; keep as preprint until the journal version is verified.",
+      "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2507.10474",
-        "doi": "https://doi.org/10.2139/ssrn.5390384"
+        "paper": "https://doi.org/10.2139/ssrn.5390384"
       }
     },
     {
@@ -867,7 +857,7 @@ window.RESEARCH_DATA = {
         "biomed"
       ],
       "tags": {
-        "core": "",
+        "core": "B",
         "coreYear": "",
         "quartile": "",
         "quartileSource": "",
@@ -875,10 +865,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Advances in Knowledge Discovery and Data Mining, pp. 418–429.",
+      "note": "",
       "links": {
         "paper": "https://doi.org/10.1007/978-981-96-8173-0_33",
-        "doi": "https://doi.org/10.1007/978-981-96-8173-0_33"
       }
     },
     {
@@ -960,7 +949,7 @@ window.RESEARCH_DATA = {
         "Hung Cao"
       ],
       "venue": "Information Fusion",
-      "short": "Information Fusion 2025",
+      "short": "Inf. Fusion",
       "year": 2025,
       "month": "Apr",
       "type": "journal",
@@ -977,11 +966,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Volume 116, article 102782. TODO: set quartileSource to the SJR/JCR edition you want displayed.",
+      "note": "",
       "links": {
         "paper": "https://doi.org/10.1016/j.inffus.2024.102782",
-        "arxiv": "https://arxiv.org/abs/2407.11771",
-        "doi": "https://doi.org/10.1016/j.inffus.2024.102782",
         "code": "https://github.com/Analytics-Everywhere-Lab/vqixai"
       }
     },
@@ -1008,13 +995,12 @@ window.RESEARCH_DATA = {
         "quartile": "",
         "quartileSource": "",
         "impact": "",
-        "extra": []
+        "extra": ["Invited Paper"]
       },
       "award": "",
       "note": "",
       "links": {
         "paper": "https://doi.org/10.1109/ICCE-Asia63397.2024.10774046",
-        "doi": "https://doi.org/10.1109/ICCE-Asia63397.2024.10774046"
       }
     },
     {
@@ -1061,7 +1047,7 @@ window.RESEARCH_DATA = {
         "Mohamed Abdelaal",
         "Hung Cao"
       ],
-      "venue": "The 33rd International Joint Conference on Artificial Intelligence — Demonstrations Track",
+      "venue": "The 33rd International Joint Conference on Artificial Intelligence",
       "short": "IJCAI 2024",
       "year": 2024,
       "month": "Aug",
@@ -1071,7 +1057,7 @@ window.RESEARCH_DATA = {
         "cv"
       ],
       "tags": {
-        "core": "",
+        "core": "A*",
         "coreYear": "",
         "quartile": "",
         "quartileSource": "",
@@ -1081,9 +1067,9 @@ window.RESEARCH_DATA = {
         ]
       },
       "award": "",
-      "note": "IJCAI 2024 Demonstrations, pp. 8754–8758.",
+      "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2402.12525"
+        "paper": "https://doi.org/10.24963/ijcai.2024/1025"
       }
     },
     {
@@ -1184,7 +1170,7 @@ window.RESEARCH_DATA = {
       "award": "",
       "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2401.09852"
+        "paper": "https://ieeexplore.ieee.org/document/10444383"
       }
     },
     {
@@ -1216,7 +1202,7 @@ window.RESEARCH_DATA = {
       "award": "",
       "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2401.09900"
+        "paper": "https://ieeexplore.ieee.org/document/10444225/"
       }
     },
     {
@@ -1245,10 +1231,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "Best Runner-up Paper Award",
-      "note": "AI 2023: Advances in Artificial Intelligence, pp. 147–159.",
+      "note": "",
       "links": {
         "paper": "https://doi.org/10.1007/978-981-99-8391-9_12",
-        "doi": "https://doi.org/10.1007/978-981-99-8391-9_12"
       }
     },
     {
@@ -1270,7 +1255,7 @@ window.RESEARCH_DATA = {
         "cv"
       ],
       "tags": {
-        "core": "",
+        "core": "C",
         "coreYear": "",
         "quartile": "",
         "quartileSource": "",
@@ -1278,7 +1263,7 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "PMLR 222:1385–1400; conference held Nov 2023, proceedings bibliographic year 2024.",
+      "note": "",
       "links": {
         "paper": "https://proceedings.mlr.press/v222/truong24a.html"
       }
@@ -1303,7 +1288,7 @@ window.RESEARCH_DATA = {
         "biomed"
       ],
       "tags": {
-        "core": "",
+        "core": "A*",
         "coreYear": "",
         "quartile": "",
         "quartileSource": "",
@@ -1311,37 +1296,10 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Later published in Artificial Intelligence for Personalized Medicine, pp. 11–26.",
+      "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2303.04731",
-        "doi": "https://doi.org/10.1007/978-3-031-36938-4_2"
+        "paper": "https://doi.org/10.1007/978-3-031-36938-4_2"
       }
-    },
-    {
-      "title": "Understanding minerals better: Advancing mineral classification framework through explainable AI and large language model integration",
-      "authors": [
-        "Truong Thanh Hung Nguyen",
-        "Thi Cam Mai Truong"
-      ],
-      "venue": "Quy Nhon University Journal of Science",
-      "short": "QNUJS 2023",
-      "year": 2023,
-      "month": "",
-      "type": "journal",
-      "topics": [
-        "xai"
-      ],
-      "tags": {
-        "core": "",
-        "coreYear": "",
-        "quartile": "",
-        "quartileSource": "",
-        "impact": "",
-        "extra": []
-      },
-      "award": "",
-      "note": "TODO: add DOI/current article URL if you want a direct button.",
-      "links": {}
     },
     {
       "title": "SeCAM: Tightly Accelerate the Image Explanation via Region-Based Segmentation",
@@ -1370,25 +1328,27 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Vol. E105-D, No. 8, pp. 1401–1417.",
+      "note": "",
       "links": {
-        "paper": "https://www.jstage.jst.go.jp/article/transinf/E105.D/8/E105.D_2021EDP7205/_article",
-        "doi": "https://doi.org/10.1587/transinf.2021EDP7205"
+        "paper": "https://doi.org/10.1587/transinf.2021EDP7205"
       }
     },
     {
-      "title": "Construction of molecular structures using K-Nearest Neighbor with K-Dimension tree algorithm",
+      "title": "A Novel Explainable Artificial Intelligence Model in Image Classification problem",
       "authors": [
-        "Truong Thi Cam Mai",
-        "Nguyen Truong Thanh Hung"
+        "Hung Quoc Cao",
+        "Hung Truong Thanh Nguyen",
+        "Khang Vo Thanh Nguyen",
+        "Xuan Phong Nguyen"
       ],
-      "venue": "Quy Nhon University Journal of Science",
-      "short": "QNUJS 2022",
-      "year": 2022,
-      "month": "Jun",
-      "type": "journal",
+      "venue": "FPT AI Conference",
+      "short": "FAIC 2021",
+      "year": 2021,
+      "month": "Dec",
+      "type": "conference",
       "topics": [
-        "chem"
+        "xai",
+        "cv"
       ],
       "tags": {
         "core": "",
@@ -1398,11 +1358,10 @@ window.RESEARCH_DATA = {
         "impact": "",
         "extra": []
       },
-      "award": "",
-      "note": "Vol. 16, Issue 3, pp. 71–85.",
+      "award": "Best Paper Award",
+      "note": "",
       "links": {
-        "paper": "https://qnujs.vn/scholar/articles/e0d9b501-9c7d-45d3-ac3d-d28c71d6f38c/",
-        "doi": "https://doi.org/10.52111/qnjs.2022.16305"
+        "paper": "https://arxiv.org/pdf/2307.04137",
       }
     },
     {
@@ -1430,9 +1389,11 @@ window.RESEARCH_DATA = {
         "impact": "",
         "extra": []
       },
-      "award": "",
+      "award": "Best Runner-up Paper Award",
       "note": "",
-      "links": {}
+      "links": {
+        "paper": "https://www.researchgate.net/publication/362165633_Evaluation_of_Explainable_Artificial_Intelligence_SHAP_LIME_and_CAM",
+      }
     },
     {
       "title": "Can Reinforcement Learning Solve a Human Allocation Problem?",
@@ -1445,7 +1406,7 @@ window.RESEARCH_DATA = {
         "Khang Nguyen"
       ],
       "venue": "The International Conference on Automated Planning and Scheduling — PRL Workshop",
-      "short": "ICAPS PRL 2021",
+      "short": "ICAPS 2021",
       "year": 2021,
       "month": "Jun",
       "type": "workshop",
@@ -1453,7 +1414,7 @@ window.RESEARCH_DATA = {
         "rl"
       ],
       "tags": {
-        "core": "",
+        "core": "A*",
         "coreYear": "",
         "quartile": "",
         "quartileSource": "",
@@ -1462,33 +1423,10 @@ window.RESEARCH_DATA = {
       },
       "award": "",
       "note": "",
-      "links": {}
+      "links": {
+        "paper": "https://prl-theworkshop.github.io/prl2021/papers/PRL2021_paper_15.pdf",
+      }
     },
-    {
-      "title": "Analyzing and Visualizing Chemical Molecular Properties Using K-Dimensional Tree Algorithm",
-      "authors": [
-        "Hung Truong Thanh Nguyen"
-      ],
-      "venue": "Bachelor Thesis, Frankfurt University of Applied Sciences",
-      "short": "BSc Thesis 2020",
-      "year": 2020,
-      "month": "",
-      "type": "thesis",
-      "topics": [
-        "chem"
-      ],
-      "tags": {
-        "core": "",
-        "coreYear": "",
-        "quartile": "",
-        "quartileSource": "",
-        "impact": "",
-        "extra": []
-      },
-      "award": "",
-      "note": "",
-      "links": {}
-    }
   ],
   "awards": [
     {
@@ -1506,18 +1444,30 @@ window.RESEARCH_DATA = {
     {
       "year": "2025",
       "kind": "award",
+      "title": "Best Paper Nominee",
+      "event": "9th International Symposium on Chatbots and Human-Centred AI (CONVERSATIONS 2025)"
+    },
+    {
+      "year": "2025",
+      "kind": "award",
       "title": "Runner-up of the Best Poster Award",
       "event": "Atlantic Canada AI Summit"
     },
     {
       "year": "2025",
       "kind": "award",
-      "title": "Runner-up of the Best Poster Award",
+      "title": "Best Poster Award",
+      "event": "UNB Computer Science Research Expo"
+    },
+    {
+      "year": "2025",
+      "kind": "award",
+      "title": "Best Runner-up Poster Award",
       "event": "UNB Computer Science Research Expo"
     },
     {
       "year": "2024",
-      "kind": "award",
+      "kind": "scholarship",
       "title": "Colin Ware Prize in Computer Science",
       "event": "University of New Brunswick"
     },
@@ -1540,6 +1490,18 @@ window.RESEARCH_DATA = {
       "event": "Australasian Joint Conference on Artificial Intelligence (AJCAI 2023)"
     },
     {
+      "year": "2021",
+      "kind": "award",
+      "title": "Best Paper Award",
+      "event": "FPT AI Conference 2021 (FAIC 2021)"
+    },
+    {
+      "year": "2021",
+      "kind": "award",
+      "title": "Best Runner-up Paper Award",
+      "event": "FPT AI Conference 2021 (FAIC 2021)"
+    },
+    {
       "year": "2020",
       "kind": "scholarship",
       "title": "DAAD Scholarship",
@@ -1554,50 +1516,56 @@ window.RESEARCH_DATA = {
   ],
   "service": [
     {
-      "role": "Conference Reviewer",
-      "venue": "International Conference on Information Reuse and Integration for Data Science (IEEE IRI 2025)",
+      "role": "PC Member",
+      "venue": "Canadian AI Conference 2026",
       "url": "",
       "tags": {}
     },
     {
-      "role": "Conference Reviewer",
-      "venue": "The 14th Conference on Information Technology and its Applications (CITA 2025)",
+      "role": "PC Member",
+      "venue": "IEEE 44th International Conference on Consumer Electronics (IEEE ICCE 2026)",
       "url": "",
       "tags": {}
     },
     {
-      "role": "Conference Reviewer",
-      "venue": "Canadian AI Conference 2025",
+      "role": "PC Member",
+      "venue": "35th IEEE International Conference on Collaborative Advances in Software and Computing (CASCON 2025)",
       "url": "",
       "tags": {}
     },
     {
-      "role": "Conference Reviewer",
-      "venue": "The 13th Conference on Information Technology and its Applications (CITA 2024)",
+      "role": "PC Member",
+      "venue": "International Conference on Cryptography and Information Security (VCRIS 2026, 2025)",
       "url": "",
       "tags": {}
     },
     {
-      "role": "Conference Reviewer",
-      "venue": "International Conference on Cryptography and Information Security (VCRIS 2024)",
-      "url": "",
-      "tags": {}
-    },
-    {
-      "role": "Conference Reviewer",
-      "venue": "International Conference on Information Reuse and Integration for Data Science (IEEE IRI 2024)",
-      "url": "",
-      "tags": {}
-    },
-    {
-      "role": "Conference Reviewer",
-      "venue": "Canadian AI Conference 2024",
+      "role": "Judge",
+      "venue": "Canada-Wide Science Fair (Senior) 2025",
       "url": "",
       "tags": {}
     },
     {
       "role": "Journal Reviewer",
-      "venue": "IEEE Canadian Journal of Electrical and Computer Engineering",
+      "venue": "Information Processing & Management",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Journal Reviewer",
+      "venue": "Information Fusion",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Journal Reviewer",
+      "venue": "IEEE Transactions on Mobile Computing",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Journal Reviewer",
+      "venue": "European Journal of Operational Research",
       "url": "",
       "tags": {}
     },
@@ -1609,13 +1577,43 @@ window.RESEARCH_DATA = {
     },
     {
       "role": "Journal Reviewer",
-      "venue": "IGI Global Book Chapter — Navigating the Circular Age of a Sustainable Digital Revolution",
+      "venue": "IEEE Canadian Journal of Electrical and Computer Engineering",
       "url": "",
       "tags": {}
     },
     {
       "role": "Journal Reviewer",
       "venue": "IET Smart Cities",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Journal Reviewer",
+      "venue": "IGI Global Book Chapter — Navigating the Circular Age of a Sustainable Digital Revolution",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Conference Reviewer",
+      "venue": "Canadian AI Conference 2026, 2025, 2024",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Conference Reviewer",
+      "venue": "Conference on Information Technology and its Applications (CITA 2025, 2024)",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Conference Reviewer",
+      "venue": "International Conference on Cryptography and Information Security (VCRIS 2024)",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Conference Reviewer",
+      "venue": "International Conference on Information Reuse and Integration for Data Science (IEEE IRI 2025, 2024)",
       "url": "",
       "tags": {}
     }
