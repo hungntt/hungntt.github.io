@@ -300,6 +300,9 @@ p{margin:0 0 4px}
       '<li class="row"><span class="y">' + esc(a.year) + "</span><span><b>" + esc(a.title) + "</b>" + (clean(a.event) ? ' — <span class="e">' + esc(a.event) + "</span>" : "") + "</span></li>").join("") + "</ul>");
     if (H.teaching.length) h += sec("Teaching Experience", H.teaching.reduce((t, g) => t + g.items.length, 0), H.teaching.map((g) =>
       (g.heading ? "<h3>" + esc(g.heading) + "</h3>" : "") + '<ul class="entries">' + g.items.map(entryHTML).join("") + "</ul>").join(""));
+    const mentorship = DATA.mentorship || [];
+    if (mentorship.length) h += sec("Student Mentorship", "", '<ul class="rows">' + mentorship.map((m) =>
+      '<li class="row"><span class="y">' + esc(m.count) + "</span><span>" + esc(m.level) + "</span></li>").join("") + "</ul>");
     if (svcGroups.length) h += sec("Academic Service", service.length, '<dl class="svc">' + svcGroups.map((g) =>
       "<dt>" + esc(g.role) + "</dt><dd>" + esc(g.items.join("; ")) + "</dd>").join("") + "</dl>");
 

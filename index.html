@@ -471,6 +471,11 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .trophy .ev{display:block;color:var(--text-dim);font-size:13px;line-height:1.5}
 .trophy .chips{margin-top:6px}
 .table-wrap{overflow-x:auto}
+.mentor{display:grid;grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));gap:10px;margin:0 0 6px;padding:0;list-style:none}
+.mentor li{display:flex;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(90deg, rgba(22,141,218,.22), rgba(11,60,125,.08));border:1px solid rgba(110,217,255,.25);border-left:3px solid var(--mint)}
+.mentor .n{font:44px/1 var(--f-term);color:var(--mint)}
+.mentor .lv{color:#fff;font:bold 14px/1.3 var(--f-body)}
+#mentorship-h{margin-top:4px}
 .svc{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.5}
 .svc th,.svc td{padding:9px 12px;border:1px solid rgba(110,217,255,.35);text-align:left;vertical-align:top}
 .svc thead th{background:rgba(22,141,218,.28);color:#fff;font:bold 11px/1.2 var(--f-ui);letter-spacing:.8px;text-transform:uppercase}
@@ -816,7 +821,7 @@ body.crt .crt-overlay{display:block}
   .hero-main{display:block;max-width:none;padding:0 0 12px}
   .call-controls,.call-tag,.call-cover,.call>.titlebar,.call-screen::after{display:none!important}
   .call{width:140px;margin-bottom:12px;box-shadow:none}
-  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.log .w,.term{color:#000!important;text-shadow:none}
+  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.mentor .n,.mentor .lv,.log .w,.term{color:#000!important;text-shadow:none}
   .term,.pf-list-wrap,.nest{background:#fff;box-shadow:none}
   .sec{padding:14px 0;break-inside:avoid-page}
   .player-wrap,.np{display:none!important}
@@ -915,12 +920,12 @@ body.crt .crt-overlay{display:block}
 
 <!-- ========================== DESKTOP ICONS ============================ -->
 <nav class="desk-icons" aria-label="Desktop shortcuts">
+  <a class="desk-icon" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf"><span class="ico-wrap"><span class="ico" data-icon="idcard"></span></span><span class="lbl">Resume.pdf</span></a>
   <a class="desk-icon" href="#about"><span class="ico-wrap"><span class="ico" data-icon="monitor"></span></span><span class="lbl">Hung.sys</span></a>
   <a class="desk-icon" href="#publications"><span class="ico-wrap"><span class="ico" data-icon="folder"></span></span><span class="lbl">Papers</span></a>
   <a class="desk-icon" href="#honors"><span class="ico-wrap"><span class="ico" data-icon="trophy"></span></span><span class="lbl">Trophies</span></a>
   <a class="desk-icon" href="#services"><span class="ico-wrap"><span class="ico" data-icon="doc"></span></span><span class="lbl">Services.txt</span></a>
   <a class="desk-icon" href="#teaching"><span class="ico-wrap"><span class="ico" data-icon="board"></span></span><span class="lbl">Teaching</span></a>
-  <a class="desk-icon" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf"><span class="ico-wrap"><span class="ico" data-icon="idcard"></span></span><span class="lbl">Resume.pdf</span></a>
   <a class="desk-icon" href="https://scholar.google.com/citations?user=U_v7A40AAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="ico-wrap"><span class="ico" data-icon="cap"></span></span><span class="lbl">Scholar.url</span></a>
   <a class="desk-icon" href="#contact"><span class="ico-wrap"><span class="ico" data-icon="envelope"></span></span><span class="lbl">Contact</span></a>
   <button class="desk-icon" type="button" data-action="foru-open"><span class="ico-wrap"><span class="ico" data-icon="heart"></span><span class="ico desk-lock" data-icon="lock"></span></span><span class="lbl">For U</span></button>
@@ -1040,7 +1045,7 @@ body.crt .crt-overlay{display:block}
         <div class="hero-actions">
           <a class="btn btn-default" href="#publications"><span class="ico" data-icon="folder"></span>Publications</a>
           <a class="btn" href="https://scholar.google.com/citations?user=U_v7A40AAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="ico" data-icon="cap"></span>Google Scholar</a>
-          <a class="btn" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf"><span class="ico" data-icon="idcard"></span>Download CV</a>
+          <a class="btn" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf"><span class="ico" data-icon="idcard"></span>My CV</a>
           <a class="btn" href="#contact"><span class="ico" data-icon="envelope"></span>Contact</a>
         </div>
         <!-- Now playing: IU — 이 별로부터 (Spotify's official player appears under the strip once played) -->
@@ -1138,7 +1143,7 @@ body.crt .crt-overlay{display:block}
           <h3 class="sr-only">Education &amp; academic positions</h3>
           <ul class="log">
             <li><span class="d">[2024–now]</span><span class="w"><span class="deg">PhD Candidate</span> <span class="maj">in Computer Science</span><span class="uni">University of New Brunswick (UNB)</span><span class="cap">GPA: 4.3/4.3</span></span><span class="st run"><span class="sr-only">current, </span>[ CANADA ]</span></li>
-            <li><span class="d">[2021–2023]</span><span class="w"><span class="deg">Master's degree</span> <span class="maj">in Artificial Intelligence, minor: Biomedical Engineering</span><span class="uni">Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)</span><span class="cap">German GPA: 1.7/1.0</span></span><span class="st">[ GERMANY ]</span></li>
+            <li><span class="d">[2021–2023]</span><span class="w"><span class="deg">Master's degree</span> <span class="maj">in Artificial Intelligence, minor: Biomedical Engineering</span><span class="uni">Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)<em>· DAAD Scholar</em></span><span class="cap">German GPA: 1.7/1.0</span></span><span class="st">[ GERMANY ]</span></li>
             <li><span class="d">[2016–2020]</span><span class="w"><span class="deg">Bachelor's degree</span> <span class="maj">in Computer Science</span><span class="uni">Frankfurt University of Applied Sciences (FRA-UAS) <em>· DAAD Scholar</em></span><span class="cap">German GPA: 1.6/1.0</span></span><span class="st">[ GERMANY ]</span></li>
           </ul>
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat positions.log</div>
@@ -1295,6 +1300,10 @@ body.crt .crt-overlay{display:block}
     <!-- ============================ SERVICES ============================ -->
     <section class="sec" id="services" data-section="Academic services" aria-labelledby="svc-h">
       <div class="sec-head"><span class="sec-no" aria-hidden="true">06/</span><h2 id="svc-h">Academic Services</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\SERVICES.TXT</span></div>
+      <!-- Tiles come from `mentorship` in assets/data/research-data.js -->
+      <h3 class="sub" id="mentorship-h" hidden>Student mentorship</h3>
+      <ul class="mentor" id="mentor-list" aria-labelledby="mentorship-h"></ul>
+      <h3 class="sub" id="review-h" hidden>Reviewing &amp; committees</h3>
       <div class="table-wrap">
         <table class="svc">
           <thead><tr><th scope="col">Role</th><th scope="col">Venue</th></tr></thead>
@@ -2606,6 +2615,11 @@ body.crt .crt-overlay{display:block}
     }
     $("#service-body").innerHTML = h;
   })();
+
+  const mentorship = (dataOK && DATA.mentorship) || [];
+  $("#mentor-list").innerHTML = mentorship.map((m) =>
+    '<li><span class="n">' + esc(m.count) + '</span><span class="lv">' + esc(m.level) + "</span></li>").join("");
+  if (mentorship.length) { $("#mentorship-h").hidden = false; $("#review-h").hidden = false; }
 
   /* counters */
   const counts = { publications: pubs.length, awards: awards.length, service: service.length };

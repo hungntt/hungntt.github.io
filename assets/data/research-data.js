@@ -227,9 +227,7 @@ window.RESEARCH_DATA = {
         "quartile": "",
         "quartileSource": "",
         "impact": "",
-        "extra": [
-          "Oral"
-        ]
+        "extra": []
       },
       "award": "1st Place",
       "note": "",
@@ -1509,6 +1507,16 @@ window.RESEARCH_DATA = {
       "kind": "scholarship",
       "title": "DAAD Scholarship",
       "event": "Exchange bachelor studies in Germany"
+    }
+  ],
+  "mentorship": [
+    {
+      "count": 7,
+      "level": "Master's students"
+    },
+    {
+      "count": 10,
+      "level": "Undergraduate students"
     }
   ],
   "service": [
