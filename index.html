@@ -7,6 +7,9 @@
   — open that file for the guide on adding papers and ranking tags.
   Bio, education and links are edited directly in this file (search for
   "EDIT:" comments).
+
+  The downloadable CV (cv.pdf) is printed from cv.html, which reads this
+  file and research-data.js, by the Pages workflow on every push.
 -->
 <html lang="en">
 <head>
@@ -347,6 +350,10 @@ button{font:inherit;color:inherit}
 .log .d{flex:none;color:var(--cyan);min-width:18ch}
 .log .w{flex:1 1 300px;color:#E4F1FF}
 .log .w em{font-style:normal;color:var(--text-dim)}
+.log .w .deg{color:#fff}
+.log .w .maj{color:var(--mint)}
+.log .w .uni{display:block;margin-top:2px;color:var(--lavender)}
+.log .w .uni::before{content:"@ ";color:#8C7FC0}
 .log .w .cap{display:block;margin-top:1px;padding-left:1.5ch;font-size:16px;color:var(--text-dim)}
 .log .w .cap::before{content:"└ ";margin-left:-1.5ch;color:#5C7CA3}
 .log .st{flex:none;margin-left:auto;color:var(--orange)}
@@ -852,6 +859,8 @@ body.crt .crt-overlay{display:block}
       <summary><span><u>F</u>ile</span></summary>
       <div class="menu-pop">
         <a class="menu-item" href="#content"><span class="ico" data-icon="home"></span>Home</a>
+        <a class="menu-item" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf"><span class="ico" data-icon="idcard"></span>Download CV (PDF)</a>
+        <a class="menu-item" href="cv.html"><span class="ico" data-icon="idcard"></span>View CV page</a>
         <button class="menu-item" type="button" data-action="print"><span class="ico" data-icon="doc"></span>Print / Save as PDF…</button>
         <hr class="menu-sep">
         <button class="menu-item" type="button" data-action="minimize"><span class="ico"></span>Minimize window</button>
@@ -911,6 +920,7 @@ body.crt .crt-overlay{display:block}
   <a class="desk-icon" href="#honors"><span class="ico-wrap"><span class="ico" data-icon="trophy"></span></span><span class="lbl">Trophies</span></a>
   <a class="desk-icon" href="#services"><span class="ico-wrap"><span class="ico" data-icon="doc"></span></span><span class="lbl">Services.txt</span></a>
   <a class="desk-icon" href="#teaching"><span class="ico-wrap"><span class="ico" data-icon="board"></span></span><span class="lbl">Teaching</span></a>
+  <a class="desk-icon" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf"><span class="ico-wrap"><span class="ico" data-icon="idcard"></span></span><span class="lbl">Resume.pdf</span></a>
   <a class="desk-icon" href="https://scholar.google.com/citations?user=U_v7A40AAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="ico-wrap"><span class="ico" data-icon="cap"></span></span><span class="lbl">Scholar.url</span></a>
   <a class="desk-icon" href="#contact"><span class="ico-wrap"><span class="ico" data-icon="envelope"></span></span><span class="lbl">Contact</span></a>
   <button class="desk-icon" type="button" data-action="foru-open"><span class="ico-wrap"><span class="ico" data-icon="heart"></span><span class="ico desk-lock" data-icon="lock"></span></span><span class="lbl">For U</span></button>
@@ -1030,6 +1040,7 @@ body.crt .crt-overlay{display:block}
         <div class="hero-actions">
           <a class="btn btn-default" href="#publications"><span class="ico" data-icon="folder"></span>Publications</a>
           <a class="btn" href="https://scholar.google.com/citations?user=U_v7A40AAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="ico" data-icon="cap"></span>Google Scholar</a>
+          <a class="btn" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf"><span class="ico" data-icon="idcard"></span>Download CV</a>
           <a class="btn" href="#contact"><span class="ico" data-icon="envelope"></span>Contact</a>
         </div>
         <!-- Now playing: IU — 이 별로부터 (Spotify's official player appears under the strip once played) -->
@@ -1088,8 +1099,8 @@ body.crt .crt-overlay{display:block}
       <div class="about-grid">
         <div class="bio">
           <!-- EDIT: bio text -->
-          <p>I am currently a PhD candidate at Analytics Everywhere Lab, University of New Brunswick (UNB), Canada and Research Assistant at National Research Council Canada (NRC/CNRC), Canada, under the supervision of <a href="https://www.hungcao.me/">Prof. Hung Cao</a> and <a href="https://nrc.canada.ca/en/corporate/contact-us/nrc-directory-science-professionals/rene-richard">Rene Richard</a>.</p>
-          <p>I received my Master degree of Artificial Intelligence (minor in Biomedical Engineering) at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Germany in 2023 and my Bachelor degree of Computer Science at Frankfurt University of Applied Sciences (FRA-UAS), Germany and Vietnamese-German University (VGU), Vietnam in 2020.
+          <p>I am currently a PhD candidate at Analytics Everywhere Lab, University of New Brunswick (UNB), Canada and National Research Council Canada (NRC/CNRC), Canada, under the supervision of <a href="https://www.hungcao.me/">Prof. Hung Cao</a> and <a href="https://nrc.canada.ca/en/corporate/contact-us/nrc-directory-science-professionals/rene-richard">Rene Richard</a>.</p>
+          <p>I received my Master degree of Artificial Intelligence (minor in Biomedical Engineering) at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Germany in 2023 and my Bachelor degree of Computer Science at Frankfurt University of Applied Sciences (FRA-UAS), Germany in 2020.
           <p>My research interest involves Self-Evolving Multi-agent Systems, Contestable/Explainable Artificial Intelligence (C/XAI), Computer Vision, Edge Computing, Biomedical Engineering.</p>
         </div>
         <aside class="win nest" aria-labelledby="props-t">
@@ -1126,18 +1137,18 @@ body.crt .crt-overlay{display:block}
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat education.log</div>
           <h3 class="sr-only">Education &amp; academic positions</h3>
           <ul class="log">
-            <li><span class="d">[2024–now]</span><span class="w">PhD Candidate — University of New Brunswick (UNB)</span><span class="st run"><span class="sr-only">current, </span>[ CANADA ]</span></li>
-            <li><span class="d">[2021–2023]</span><span class="w">Master's degree (Artificial Intelligence, minor in Biomedical Engineering) — Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)</span><span class="st">[ GERMANY ]</span></li>
-            <li><span class="d">[2016–2020]</span><span class="w">Bachelor's degree (Computer Science) — Frankfurt University of Applied Sciences (FRA-UAS) &amp; Vietnamese-German University (VGU) <em>· DAAD exchange scholar</em></span><span class="st">[ GERMANY · VIETNAM ]</span></li>
+            <li><span class="d">[2024–now]</span><span class="w"><span class="deg">PhD Candidate</span> <span class="maj">in Computer Science</span><span class="uni">University of New Brunswick (UNB)</span><span class="cap">GPA: 4.3/4.3</span></span><span class="st run"><span class="sr-only">current, </span>[ CANADA ]</span></li>
+            <li><span class="d">[2021–2023]</span><span class="w"><span class="deg">Master's degree</span> <span class="maj">in Artificial Intelligence, minor: Biomedical Engineering</span><span class="uni">Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)</span><span class="cap">German GPA: 1.7/1.0</span></span><span class="st">[ GERMANY ]</span></li>
+            <li><span class="d">[2016–2020]</span><span class="w"><span class="deg">Bachelor's degree</span> <span class="maj">in Computer Science</span><span class="uni">Frankfurt University of Applied Sciences (FRA-UAS) <em>· DAAD Scholar</em></span><span class="cap">German GPA: 1.6/1.0</span></span><span class="st">[ GERMANY ]</span></li>
           </ul>
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat positions.log</div>
           <h3 class="sr-only">Industry positions</h3>
           <ul class="log">
-            <li><span class="d">[2024–now]</span><span class="w">Research Assistant — National Research Council Canada (NRC/CNRC)</span><span class="st run"><span class="sr-only">current, </span>[ CANADA ]</span></li>
-            <li><span class="d">[2021–2023]</span><span class="w">Research Assistant — FAU WiSo</span><span class="st">[ GERMANY ]</span></li>
-            <li><span class="d">[2024–2025]</span><span class="w">Business Unit Director — FPT Software</span><span class="st">[ CANADA ]</span></li>
-            <li><span class="d">[2020–2025]</span><span class="w">AI Scientist — FPT Software</span><span class="st">[ VIETNAM ]</span></li>
-            <li><span class="d">[2019–2020]</span><span class="w">Full-stack Developer — ZIGExN Co., Ltd. (株式会社じげん)</span><span class="st">[ JAPAN ]</span></li>
+            <li><span class="d">[2024–now]</span><span class="w"><span class="deg">Research Assistant</span><span class="uni">National Research Council Canada (NRC/CNRC)</span></span><span class="st run"><span class="sr-only">current, </span>[ CANADA ]</span></li>
+            <li><span class="d">[2021–2023]</span><span class="w"><span class="deg">Research Assistant</span><span class="uni">FAU WiSo</span></span><span class="st">[ GERMANY ]</span></li>
+            <li><span class="d">[2024–2025]</span><span class="w"><span class="deg">Business Unit Director</span><span class="uni">FPT Software</span></span><span class="st">[ CANADA ]</span></li>
+            <li><span class="d">[2020–2025]</span><span class="w"><span class="deg">AI Scientist</span><span class="uni">FPT Software</span></span><span class="st">[ VIETNAM ]</span></li>
+            <li><span class="d">[2019–2020]</span><span class="w"><span class="deg">Full-stack Developer</span><span class="uni">ZIGExN Co., Ltd. (株式会社じげん)</span></span><span class="st">[ JAPAN ]</span></li>
           </ul>
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; <span class="caret">_</span></div>
         </div>
@@ -1502,6 +1513,7 @@ body.crt .crt-overlay{display:block}
     <a class="menu-item" href="#teaching"><span class="ico" data-icon="board"></span>Teaching</a>
     <a class="menu-item" href="#about"><span class="ico" data-icon="monitor"></span>About me</a>
     <a class="menu-item" href="#contact"><span class="ico" data-icon="envelope"></span>Contact</a>
+    <a class="menu-item" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf"><span class="ico" data-icon="idcard"></span>Download CV (PDF)</a>
     <a class="menu-item" href="#top"><span class="ico" data-icon="note"></span>♪ Unknown Planet — IU</a>
     <hr class="menu-sep">
     <button class="menu-item" type="button" data-action="trail" aria-pressed="true" id="start-trail"><span class="ico" data-icon="sparkle"></span>Sparkle trail<span class="state">ON</span></button>
@@ -2267,6 +2279,8 @@ body.crt .crt-overlay{display:block}
   const norm = (s) => String(s == null ? "" : s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d");
   const ME = ((DATA && DATA.me) || []).map((n) => norm(n.replace(/\*/g, "")).trim());
   const isMe = (a) => ME.includes(norm(a.replace(/\*/g, "")).trim());
+  // impact factor: a bare number ("8.0") is shown as "IF 8.0"; text such as "IF 7.5" or "5-yr IF 9.1" is kept as written
+  const ifLabel = (v) => { const t = clean(v); return /^\d+(\.\d+)?$/.test(t) ? "IF " + t : t; };
   const coreClass = (c) => ({ "A*": "Astar", A: "A", B: "B", C: "C" })[c] || "other";
   const safeUrl = (u) => /^(https?:|mailto:|\/|\.\/|\.\.\/|#)/i.test(u);
 
@@ -2289,7 +2303,7 @@ body.crt .crt-overlay{display:block}
     const o = {
       i, title: clean(p.title) || "Untitled", authors, meIdx, first, type,
       venue: clean(p.venue), short: clean(p.short), year: parseInt(p.year, 10) || 0, month, monthLabel: mStr,
-      core, coreYear: clean(tags.coreYear), quartile, qSource: clean(tags.quartileSource), impact: clean(tags.impact), extra,
+      core, coreYear: clean(tags.coreYear), quartile, qSource: clean(tags.quartileSource), impact: ifLabel(tags.impact), extra,
       award: clean(p.award), note: clean(p.note), links: p.links || {}, topics
     };
     o.hay = norm([o.title, authors.join(" "), o.venue, o.short, o.year, TYPE_LABEL[type] || type, core && "core " + core + " core" + core,
@@ -2373,7 +2387,7 @@ body.crt .crt-overlay{display:block}
     chips.push(chipBtn("type", p.type, TYPE_SHORT[p.type] || p.type.toUpperCase(), "chip-type type-" + esc(p.type), (TYPE_LABEL[p.type] || p.type) + ": show only this type"));
     if (p.core) chips.push(chipBtn("core", p.core, "CORE " + p.core, "core-" + coreClass(p.core), "CORE rank " + p.core + (p.coreYear ? " (" + p.coreYear + ")" : "") + ": click to filter"));
     if (p.quartile) chips.push(chipBtn("quartile", p.quartile, qLabel(p), "q-" + (Q_ORDER.includes(p.quartile) ? p.quartile : "Q4"), (p.qSource || "Journal") + " quartile " + p.quartile + ": click to filter"));
-    if (p.impact) chips.push('<span class="chip chip-if" title="Impact factor">' + esc(p.impact) + "</span>");
+    if (p.impact) chips.push('<span class="chip chip-if" title="Journal impact factor">' + esc(p.impact) + "</span>");
     p.extra.forEach((t) => chips.push(chipBtn("tag", t, t, "chip-extra", "Tag " + t + ": click to filter")));
     if (p.award) chips.push(chipBtn("award", "1", "★ " + p.award, "chip-award", "Awarded paper: click to show only awarded papers"));
     p.topics.forEach((t) => { const it = topicInfo(t); chips.push(chipBtn("topic", t, it.short, "chip-topic", "Research interest: " + it.name + " (click to filter)", it.color)); });
@@ -2564,7 +2578,7 @@ body.crt .crt-overlay{display:block}
     const core = canonCore(tags.core), q = clean(tags.quartile).toUpperCase();
     if (core) out.push('<span class="chip core-' + coreClass(core) + '" title="CORE rank ' + esc(core) + (tags.coreYear ? " (" + esc(tags.coreYear) + ")" : "") + '">CORE ' + esc(core) + "</span>");
     if (q) { const src = clean(tags.quartileSource).split(/\s+/)[0]; out.push('<span class="chip q-' + (Q_ORDER.includes(q) ? q : "Q4") + '" title="' + esc(clean(tags.quartileSource) || "Journal") + " quartile " + esc(q) + '">' + (/^(sjr|jcr)$/i.test(src) ? esc(src.toUpperCase()) + " " : "") + esc(q) + "</span>"); }
-    if (clean(tags.impact)) out.push('<span class="chip chip-if">' + esc(clean(tags.impact)) + "</span>");
+    if (clean(tags.impact)) out.push('<span class="chip chip-if" title="Journal impact factor">' + esc(ifLabel(tags.impact)) + "</span>");
     (Array.isArray(tags.extra) ? tags.extra : [tags.extra]).map(clean).filter(Boolean).forEach((t) => out.push('<span class="chip chip-extra">' + esc(t) + "</span>"));
     return out.join("");
   }

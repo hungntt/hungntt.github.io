@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!--
+  Curriculum vitae — generated from the homepage, nothing to edit here.
+
+  Everything on this page is read at load time from:
+    index.html                    name, affiliations, bio, education, positions,
+                                  teaching and contact links
+    assets/data/research-data.js  research interests, publications, awards and
+                                  academic services
+  Edit those two files and this page (and cv.pdf) follow.
+
+  cv.pdf is printed from this page by the GitHub Pages workflow on every push
+  (.github/workflows/pages.yml). To build it locally: scripts/build-cv.sh
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truong Thanh Hung Nguyen · CV</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600&family=Noto+Sans+JP:wght@400;600&display=swap">
+<style>
+:root{
+  --ink:#16202c; --muted:#5a6776; --rule:#d6dcec; --accent:#0B3C7D; --gold:#9a6b00;
+  --paper:#ffffff; --space:#071426; --desk:#0B3C7D; --blue:#168DDA; --cyan:#6ED9FF;
+  --lavender:#C9B8FF; --violet:#6A4FB3; --pink:#FFB8DB; --star:#FFD84A;
+  --nebula:linear-gradient(90deg,var(--accent),var(--violet));   /* dark blue -> purple */
+  --f-body:"Source Sans 3","Segoe UI",Helvetica,Arial,"Noto Sans JP",sans-serif;
+  --f-head:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+/* on screen the paper floats in deep space (tiny repeating star specks over a gradient) */
+html{min-height:100%;background:
+  radial-gradient(1px 1px at 23px 41px,#fff,transparent 70%),
+  radial-gradient(1px 1px at 141px 97px,#CFE8FF,transparent 70%),
+  radial-gradient(1.6px 1.6px at 211px 18px,#fff,transparent 70%),
+  radial-gradient(1px 1px at 87px 183px,#FFB8DB,transparent 70%),
+  radial-gradient(1.3px 1.3px at 263px 229px,#6ED9FF,transparent 70%),
+  radial-gradient(1px 1px at 179px 271px,#fff,transparent 70%),
+  linear-gradient(180deg,var(--space),#0B2A5A 60%,var(--desk)) fixed;
+  background-size:300px 300px,300px 300px,300px 300px,300px 300px,300px 300px,300px 300px,auto}
+body{margin:0;color:var(--ink);font:10pt/1.38 var(--f-body);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* screen toolbar */
+.bar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:10px 16px;background:rgba(7,20,38,.82);backdrop-filter:blur(6px);border-bottom:1px solid rgba(110,217,255,.25);color:#fff;font:600 13px/1 var(--f-body)}
+.bar a,.bar button{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid rgba(255,255,255,.55);border-radius:3px;background:transparent;color:#fff;font:inherit;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.14);text-decoration:none}
+.bar .primary{background:#fff;color:#0B3C7D;border-color:#fff}
+.bar .primary:hover{background:#dfe9f5}
+
+.page{max-width:8.5in;margin:28px auto;padding:.6in .65in;background:var(--paper);border-radius:4px;box-shadow:0 0 0 1px rgba(110,217,255,.25),0 0 46px rgba(110,217,255,.28)}
+@media (max-width:700px){.page{margin:0;padding:22px 16px;box-shadow:none}}
+
+/* header */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-bottom:11px;background:var(--nebula) left bottom/100% 2px no-repeat}
+.head h1{margin:0;font:600 24pt/1.05 var(--f-head);color:var(--accent);letter-spacing:.2px}
+.head .role{margin:5px 0 0;font-weight:600;font-size:11pt}
+.head .aff{margin:1px 0 0;color:var(--muted)}
+.contact{margin:0;padding:0;list-style:none;text-align:right;font-size:9.2pt;line-height:1.5}
+.contact b{font-weight:600;color:var(--violet)}
+@media (max-width:700px){.contact{text-align:left}}
+
+/* sections */
+.sec{margin-top:13px}
+/* section titles sit on a blue-to-purple rule; the whole title is a collapse toggle */
+h2{margin:0 0 6px;padding-bottom:3px;background:var(--nebula) left bottom/100% 1.5px no-repeat;
+  font:700 10.5pt/1.2 var(--f-body);letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);break-after:avoid}
+.tog{display:flex;align-items:center;gap:8px;width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;text-align:left;cursor:pointer}
+.tog .chev{display:grid;place-items:center;flex:none;width:19px;height:19px;margin-left:auto;border:1px solid var(--rule);border-radius:50%;color:var(--violet);transition:background .15s,border-color .15s}
+.tog .chev::before{content:"";width:5px;height:5px;margin-top:-2px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .2s}
+.tog .more{display:none;font-size:8.4pt;font-weight:600;letter-spacing:.3px;text-transform:none;color:var(--muted)}
+.tog:hover .chev{background:#F3EFFF;border-color:var(--lavender)}
+.tog:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+.sec.collapsed .tog .chev::before{margin-top:2px;transform:rotate(-135deg)}
+.sec.collapsed .tog .more{display:inline}
+.sec.collapsed>.body{display:none}
+.sec.collapsed h2{margin-bottom:0}
+h3{margin:9px 0 3px;font:600 9.6pt/1.2 var(--f-body);color:var(--muted);letter-spacing:.3px;break-after:avoid}
+p{margin:0 0 4px}
+.summary{color:var(--ink)}
+
+/* two-column entries (education, positions, teaching) */
+/* orbit timeline: a dashed path with a solid dot per entry; current roles are purple */
+.entries{margin:0;padding:0;list-style:none;background:linear-gradient(var(--lavender) 50%,transparent 0) 3.5px .9em/1px 4px repeat-y}
+.entry{display:flex;gap:8px;padding:3px 0;break-inside:avoid}
+.entry .r{margin-left:8px}
+.entry::before{content:"";flex:none;width:8px;height:8px;margin-top:.45em;border-radius:50%;background:var(--accent)}
+.entry.now::before{background:var(--violet)}
+.entry .l{flex:1;min-width:0}
+.entry .r{flex:none;text-align:right;white-space:nowrap}
+.entry .l>span,.entry .r>span{display:block}
+.entry .t{font-weight:600}
+.entry .t .maj{font-weight:400}
+.entry .sub{font-style:italic}
+.entry .cap{color:var(--muted);font-size:9.2pt}
+.entry .when{font-weight:600}
+.entry .where{color:var(--muted);font-size:9.2pt}
+
+/* publications */
+.pubs{margin:0;padding:0;list-style:none}
+.pub{display:grid;grid-template-columns:2.9em 1fr;gap:0 4px;padding:2.5px 0;break-inside:avoid}
+.pub .n{color:var(--violet);font-weight:600;font-variant-numeric:tabular-nums}
+.pub .pb>span{display:block}
+.pub .ttl{font-weight:600}
+.pub .meta{color:var(--muted)}
+.pub .meta .ven{color:var(--ink)}
+.pub .me{font-weight:700;text-decoration:underline;text-underline-offset:1.5px}
+.pub .ven{font-style:italic}
+.pub .tags{white-space:nowrap}
+.tag{display:inline-block;margin-left:4px;padding:0 4px;border:1px solid var(--rule);border-radius:2px;font-size:8pt;line-height:1.35;font-style:normal;font-weight:600;color:var(--muted);vertical-align:1px}
+.tag.award{border-color:#e2c46a;background:#fff6d6;color:var(--gold)}
+.tag.rank{border-color:#CDBDF5;background:#F3EFFF;color:var(--violet)}
+
+/* simple lists (awards, service) */
+.rows{margin:0;padding:0;list-style:none}
+.row{display:grid;grid-template-columns:5.2em 1fr;gap:0 10px;padding:1.5px 0;break-inside:avoid}
+.row .y{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--accent)}
+.row .e{color:var(--muted)}
+.svc{display:grid;grid-template-columns:11.5em 1fr;gap:2px 12px;margin:0}
+.svc dt{font-weight:600;color:var(--accent)}
+.svc dd{margin:0}
+
+.msg{padding:18px;border:1px dashed var(--rule);color:var(--muted)}
+
+@page{size:letter;margin:.55in .6in .6in}
+@media print{
+  html,body{background:#fff}
+  .bar,.tog .chev,.tog .more{display:none!important}
+  .sec.collapsed>.body{display:block!important}   /* printing always shows the whole CV */
+  .sec.collapsed h2{margin-bottom:6px}
+  .page{max-width:none;margin:0;padding:0;border-radius:0;box-shadow:none}
+  a{text-decoration:none!important}
+}
+</style>
+</head>
+<body>
+<nav class="bar" aria-label="CV actions">
+  <a class="primary" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf">Download PDF</a>
+  <button type="button" onclick="window.print()">Print</button>
+  <button type="button" id="toggle-all" aria-pressed="false">Collapse all</button>
+  <a href="./">Back to homepage</a>
+</nav>
+<main class="page" id="cv"><p class="msg">Loading CV…</p></main>
+
+<script src="assets/data/research-data.js"></script>
+<script>
+(function () {
+  "use strict";
+  const DATA = window.RESEARCH_DATA || {};
+  const root = document.getElementById("cv");
+  const clean = (v) => (v == null ? "" : String(v).replace(/\s+/g, " ").trim());
+  const esc = (s) => clean(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const txt = (el) => (el ? clean(el.textContent) : "");
+  const norm = (s) => clean(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d");
+  const ME = (DATA.me || []).map((n) => norm(n.replace(/\*/g, "")));
+  const isMe = (a) => ME.includes(norm(a.replace(/\*/g, "")));
+  const HOMEPAGE = { label: "Homepage", value: "hungntt.github.io", href: "https://hungntt.github.io/" };
+  const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+  const safeUrl = (u) => /^(https?:|mailto:)/i.test(clean(u));
+  const link = (href, inner) => (safeUrl(href) ? '<a href="' + esc(href) + '">' + inner + "</a>" : inner);
+
+  // text of an element without the parts that are only for screen readers or captions
+  function textWithout(el, sel) {
+    if (!el) return "";
+    const c = el.cloneNode(true);
+    c.querySelectorAll(sel).forEach((x) => x.remove());
+    return clean(c.textContent);
+  }
+  const bracketless = (s) => clean(s).replace(/^\[\s*|\s*\]$/g, "");
+  // "GERMANY · VIETNAM" -> "Germany · Vietnam"; short acronyms such as UNB or FAU stay as they are
+  const titleCase = (s) => s.replace(/\p{L}+/gu, (w) => (w.length <= 3 ? w : w[0] + w.slice(1).toLowerCase()));
+
+  /* ---------------------------------------------------- homepage content */
+  function fromHomepage(doc) {
+    const q = (s) => doc.querySelector(s);
+    const qa = (s, r) => Array.from((r || doc).querySelectorAll(s));
+    const lines = (el) => (el ? el.innerHTML.split(/<br\s*\/?>/i).map((h) => { const d = doc.createElement("div"); d.innerHTML = h; return clean(d.textContent); }).filter(Boolean) : []);
+
+    const logEntry = (li) => {
+      const d = bracketless(txt(li.querySelector(".d")));
+      let title = txt(li.querySelector(".deg")), org = txt(li.querySelector(".uni"));
+      if (!title) {
+        // plain "Title — Organisation" lines (e.g. guest lectures)
+        const parts = textWithout(li.querySelector(".w"), ".cap,.uni,.sr-only").split(" — ");
+        title = parts.shift(); if (!org) org = parts.join(" — ");
+      }
+      return {
+        when: /\d/.test(d) ? d : "",          // labels such as [TA] or [GUEST] are not dates
+        title, org,
+        major: txt(li.querySelector(".maj")),
+        cap: qa(".cap", li).map(txt),
+        where: titleCase(bracketless(textWithout(li.querySelector(".st"), ".sr-only"))),
+        now: !!li.querySelector(".st.run")      // shown on the homepage with a blinking "running" dot
+      };
+    };
+    const logGroups = (sec) => qa("ul.log", sec).map((ul) => {
+      let h = ul.previousElementSibling;
+      while (h && h.tagName !== "H3") h = h.previousElementSibling;
+      return { heading: txt(h), items: qa(":scope > li", ul).map(logEntry) };
+    });
+
+    const edu = logGroups(q("#education"));
+    return {
+      name: lines(q("#hero-name")).join(" "),
+      role: txt(q(".hero-role")),
+      aff: lines(q(".hero-aff")),
+      bio: qa("#about .bio p").map(txt).filter(Boolean),
+      // the CV lists the personal homepage (right after email) instead of the lab page
+      contacts: qa("#contact .link-tile").map((a) => ({ label: txt(a.querySelector("b")), value: txt(a.querySelector("small")), href: a.getAttribute("href") }))
+        .filter((c) => !/aelab/i.test(c.label))
+        .reduce((out, c, i) => (i === 0 ? [c, HOMEPAGE] : out.concat(c)), []),
+      education: edu[0] ? edu[0].items : [],
+      positions: edu.slice(1).flatMap((g) => g.items),
+      teaching: logGroups(q("#teaching"))
+    };
+  }
+
+  /* -------------------------------------------------------------- render */
+  function entryHTML(e) {
+    const when = e.when.replace(/\s*[-–]\s*/g, " – ").replace(/\bnow\b/i, "Present");
+    return '<li class="entry' + (e.now ? " now" : "") + '"><div class="l"><span class="t">' + esc(e.title) + (e.major ? ' <span class="maj">' + esc(e.major) + "</span>" : "") + "</span>" +
+      (e.org ? '<span class="sub">' + esc(e.org) + "</span>" : "") +
+      e.cap.map((c) => '<span class="cap">' + esc(c) + "</span>").join("") + "</div>" +
+      '<div class="r">' + (when ? '<span class="when">' + esc(when) + "</span>" : "") + (e.where ? '<span class="where">' + esc(e.where) + "</span>" : "") + "</div></li>";
+  }
+
+  const PUB_GROUPS = [
+    ["journal", "Journal Articles", "J"], ["conference", "Conference Papers", "C"], ["challenge", "Challenge Papers", "CH"],
+    ["workshop", "Workshop Papers", "W"], ["chapter", "Book Chapters", "B"], ["preprint", "Preprints & Under Review", "P"],
+    ["thesis", "Theses", "T"]
+  ];
+  function pubHTML(p, n) {
+    const authors = (Array.isArray(p.authors) ? p.authors : [p.authors]).filter(Boolean).map(String)
+      .map((a) => (isMe(a) ? '<span class="me">' + esc(a) + "</span>" : esc(a))).join(", ");
+    const L = p.links || {};
+    const url = [L.doi, L.paper, L.pdf, L.arxiv].map(clean).find(safeUrl);
+    const t = p.tags || {};
+    const tags = [];
+    if (clean(p.award)) tags.push('<span class="tag award">★ ' + esc(p.award) + "</span>");
+    if (clean(t.core)) tags.push('<span class="tag rank">CORE ' + esc(t.core) + "</span>");
+    if (clean(t.quartile)) { const src = clean(t.quartileSource).split(/\s+/)[0]; tags.push('<span class="tag rank">' + (/^(sjr|jcr)$/i.test(src) ? esc(src.toUpperCase()) + " " : "") + esc(clean(t.quartile).toUpperCase()) + "</span>"); }
+    if (clean(t.impact)) tags.push('<span class="tag rank">' + esc(/^\d+(\.\d+)?$/.test(clean(t.impact)) ? "IF " + clean(t.impact) : t.impact) + "</span>");
+    (Array.isArray(t.extra) ? t.extra : [t.extra]).map(clean).filter(Boolean).forEach((x) => tags.push('<span class="tag">' + esc(x) + "</span>"));
+    const venue = clean(p.venue) || clean(p.short);
+    const shortTag = clean(p.short) && clean(p.venue) && !clean(p.venue).includes(clean(p.short)) ? " (" + esc(p.short) + ")" : "";
+    // three lines: title / authors / venue, year and tags
+    return '<li class="pub"><span class="n">[' + n + ']</span><span class="pb">' +
+      '<span class="ttl">' + link(url, esc(p.title)) + "</span>" +
+      '<span class="au">' + authors + "</span>" +
+      '<span class="meta">' + (venue ? '<span class="ven">' + esc(venue) + "</span>" + shortTag + ", " : "") + esc(p.year) +
+      (tags.length ? ' <span class="tags">' + tags.join("") + "</span>" : "") + "</span></span></li>";
+  }
+  function publicationsHTML() {
+    const pubs = (DATA.publications || []).filter((p) => clean(p.title));
+    const key = (p) => (parseInt(p.year, 10) || 0) * 100 + (MONTHS.indexOf(clean(p.month).slice(0, 3).toLowerCase()) + 1);
+    const known = PUB_GROUPS.map((g) => g[0]);
+    const groups = PUB_GROUPS.concat([["other", "Other", "O"]]).map(([type, label, pre]) => ({
+      label, pre,
+      items: pubs.filter((p) => (type === "other" ? !known.includes(clean(p.type).toLowerCase()) : clean(p.type).toLowerCase() === type))
+        .sort((a, b) => key(b) - key(a))
+    })).filter((g) => g.items.length);
+    let h = "";
+    groups.forEach((g) => {
+      h += "<h3>" + esc(g.label) + '</h3><ol class="pubs">' + g.items.map((p, i) => pubHTML(p, g.pre + (g.items.length - i))).join("") + "</ol>";
+    });
+    return h;
+  }
+
+  function render(H) {
+    const interests = (DATA.interests || []).map((it) => clean(it.name)).filter(Boolean);
+    const awards = DATA.awards || [];
+    const service = DATA.service || [];
+    const svcGroups = [];
+    service.forEach((s) => { const g = svcGroups.find((x) => x.role === clean(s.role)); g ? g.items.push(clean(s.venue)) : svcGroups.push({ role: clean(s.role), items: [clean(s.venue)] }); });
+
+    let h = '<header class="head"><div><h1>' + esc(H.name) + "</h1>" +
+      (H.role ? '<p class="role">' + esc(H.role) + "</p>" : "") +
+      H.aff.map((a) => '<p class="aff">' + esc(a) + "</p>").join("") + "</div>" +
+      '<ul class="contact">' + H.contacts.map((c) => "<li><b>" + esc(c.label) + ":</b> " + link(c.href, esc(c.value)) + "</li>").join("") + "</ul></header>";
+
+    // every section: a title button that shows/hides its body (screen only; the PDF always prints expanded)
+    let n = 0;
+    const sec = (title, count, body) => {
+      const id = "sec-" + (++n);
+      return '<section class="sec"><h2><button type="button" class="tog" aria-expanded="true" aria-controls="' + id + '">' +
+        "<span>" + title + "</span>" + (count ? '<span class="more">' + count + " hidden</span>" : "") + '<span class="chev" aria-hidden="true"></span></button></h2>' +
+        '<div class="body" id="' + id + '">' + body + "</div></section>";
+    };
+    const nPubs = (DATA.publications || []).length;
+    if (H.bio.length) h += sec("Profile", "", '<p class="summary">' + esc(H.bio[0]) + "</p>" +
+      (interests.length ? "<p><b>Research interests:</b> " + esc(interests.join(" · ")) + "</p>" : ""));
+    if (H.education.length) h += sec("Education", H.education.length, '<ul class="entries">' + H.education.map(entryHTML).join("") + "</ul>");
+    if (H.positions.length) h += sec("Research &amp; Professional Experience", H.positions.length, '<ul class="entries">' + H.positions.map(entryHTML).join("") + "</ul>");
+    if (nPubs) h += sec("Publications", nPubs, publicationsHTML());
+    if (awards.length) h += sec("Honors, Awards &amp; Scholarships", awards.length, '<ul class="rows">' + awards.map((a) =>
+      '<li class="row"><span class="y">' + esc(a.year) + "</span><span><b>" + esc(a.title) + "</b>" + (clean(a.event) ? ' — <span class="e">' + esc(a.event) + "</span>" : "") + "</span></li>").join("") + "</ul>");
+    if (H.teaching.length) h += sec("Teaching Experience", H.teaching.reduce((t, g) => t + g.items.length, 0), H.teaching.map((g) =>
+      (g.heading ? "<h3>" + esc(g.heading) + "</h3>" : "") + '<ul class="entries">' + g.items.map(entryHTML).join("") + "</ul>").join(""));
+    if (svcGroups.length) h += sec("Academic Service", service.length, '<dl class="svc">' + svcGroups.map((g) =>
+      "<dt>" + esc(g.role) + "</dt><dd>" + esc(g.items.join("; ")) + "</dd>").join("") + "</dl>");
+
+    root.innerHTML = h;
+    document.title = H.name + " · CV";
+  }
+
+  /* ------------------------------------------------------ collapse/expand */
+  const allBtn = document.getElementById("toggle-all");
+  function setOpen(secEl, open) {
+    secEl.classList.toggle("collapsed", !open);
+    secEl.querySelector(".tog").setAttribute("aria-expanded", String(open));
+  }
+  function syncAll() {
+    const secs = Array.from(root.querySelectorAll(".sec"));
+    const allClosed = secs.length && secs.every((x) => x.classList.contains("collapsed"));
+    allBtn.textContent = allClosed ? "Expand all" : "Collapse all";
+    allBtn.setAttribute("aria-pressed", String(allClosed));
+  }
+  root.addEventListener("click", (e) => {
+    const b = e.target.closest(".tog"); if (!b) return;
+    const secEl = b.closest(".sec");
+    setOpen(secEl, secEl.classList.contains("collapsed"));
+    syncAll();
+  });
+  allBtn.addEventListener("click", () => {
+    const open = allBtn.getAttribute("aria-pressed") === "true";
+    root.querySelectorAll(".sec").forEach((x) => setOpen(x, open));
+    syncAll();
+  });
+
+  fetch("index.html", { cache: "no-cache" })
+    .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+    .then((html) => render(fromHomepage(new DOMParser().parseFromString(html, "text/html"))))
+    .then(() => { void root.offsetHeight; return document.fonts ? document.fonts.ready : null; })
+    .then(() => { document.documentElement.setAttribute("data-cv-ready", "1"); })
+    .catch((err) => {
+      root.innerHTML = '<p class="msg">Could not read the homepage (' + esc(err.message) + ").<br>" +
+        (location.protocol === "file:" ? "Open this page through a web server, e.g. run <code>python3 -m http.server</code> in the site folder and visit http://localhost:8000/cv.html." : "") + "</p>";
+      document.documentElement.setAttribute("data-cv-ready", "error");
+    });
+})();
+</script>
+</body>
+</html>

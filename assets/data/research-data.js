@@ -50,7 +50,7 @@
        coreYear:       "CORE2023",  // which CORE edition you checked (shown on hover)
        quartile:       "Q1",        // "Q1" | "Q2" | "Q3" | "Q4"
        quartileSource: "SJR 2024",  // or "JCR 2024". The chip then reads "SJR Q1"
-       impact:         "IF 7.5",    // free text, shown as a plain chip
+       impact:         "7.5",       // journal impact factor; a bare number shows as "IF 7.5"
        extra:          ["Oral"]     // any custom chips. Each becomes a "Tag" filter option
      }
 
@@ -155,14 +155,14 @@ window.RESEARCH_DATA = {
       "icon": "joystick",
       "color": "#7EE89A"
     },
-    {
-      "id": "chem",
-      "name": "Cheminformatics",
-      "short": "CHEMINFO",
-      "file": "molecule.mol",
-      "icon": "flask",
-      "color": "#D4F26B"
-    }
+    // {
+    //   "id": "chem",
+    //   "name": "Cheminformatics",
+    //   "short": "CHEMINFO",
+    //   "file": "molecule.mol",
+    //   "icon": "flask",
+    //   "color": "#D4F26B"
+    // }
   ],
   "publications": [
     {
@@ -658,7 +658,7 @@ window.RESEARCH_DATA = {
         "coreYear": "",
         "quartile": "Q1",
         "quartileSource": "",
-        "impact": "",
+        "impact": "8.0",
         "extra": []
       },
       "award": "",
@@ -676,9 +676,9 @@ window.RESEARCH_DATA = {
         "Hung Truong Thanh Nguyen",
         "Hung Cao"
       ],
-      "venue": "9th International Symposium on Chatbots and Human-Centred AI (CONVERSATIONS 2025), Lecture Notes in Computer Science 16440",
+      "venue": "9th International Symposium on Chatbots and Human-Centred AI (CONVERSATIONS 2025)",
       "short": "CONVERSATIONS 2025",
-      "year": 2026,
+      "year": 2025,
       "month": "Jul",
       "type": "conference",
       "topics": [
@@ -726,14 +726,12 @@ window.RESEARCH_DATA = {
         "quartileSource": "",
         "impact": "",
         "extra": [
-          "Grand Challenge"
         ]
       },
       "award": "",
-      "note": "ACM Multimedia 2025, pp. 14034–14040.",
+      "note": "",
       "links": {
-        "paper": "https://arxiv.org/abs/2507.04410",
-        "doi": "https://doi.org/10.1145/3746027.3762033"
+        "paper": "https://doi.org/10.1145/3746027.3762033"
       }
     },
     {
@@ -963,6 +961,7 @@ window.RESEARCH_DATA = {
         "coreYear": "",
         "quartile": "Q1",
         "quartileSource": "",
+        "impact": "18.6",
         "extra": []
       },
       "award": "",
@@ -1062,9 +1061,7 @@ window.RESEARCH_DATA = {
         "quartile": "",
         "quartileSource": "",
         "impact": "",
-        "extra": [
-          "Demo"
-        ]
+        "extra": []
       },
       "award": "",
       "note": "",
