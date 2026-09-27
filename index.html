@@ -567,6 +567,107 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .orbit-legend button:focus-visible{outline:1px dotted #000;outline-offset:-1px}
 .task[data-win="orbit-win"]{display:none}
 @media (min-width:1500px){.widget{display:block}.task[data-win="orbit-win"]{display:flex}}
+.orbit-open{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.orbit-open:focus-visible{outline:1px dotted #fff;outline-offset:-3px}
+.orbit-hint{position:absolute;right:5px;bottom:3px;font:15px/1 var(--f-term);color:var(--cyan);opacity:0;transition:opacity .15s}
+.orbit-open:hover .orbit-hint,.orbit-open:focus-visible .orbit-hint{opacity:.95}
+
+/* ==========================================================================
+   ORBIT MAP (orbit.exe maximized)
+   ========================================================================== */
+dialog.orbit-map{position:fixed;inset:var(--menubar-h) 0 var(--taskbar-h);margin:auto;width:min(1240px, calc(100vw - 24px));height:min(820px, calc(100% - 16px));max-width:none;max-height:none;
+  padding:3px;border:0;color:#000;font:12px/1.5 var(--f-ui);flex-direction:column;transform-origin:0 0}
+dialog.orbit-map[open]{display:flex}
+dialog.orbit-map::backdrop{background:repeating-conic-gradient(rgba(7,20,38,.5) 0 25%,transparent 0 50%) 0 0/2px 2px}
+.om-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:2px;padding:4px 4px 5px;background:var(--metal);border-bottom:1px solid #8B8B8B;box-shadow:0 1px 0 #fff}
+.om-find{flex:1 1 240px;display:flex}
+.om-find .inp{flex:1}
+.om-field{display:flex;align-items:center;gap:6px;font:11px var(--f-ui)}
+.om-zoom{display:flex;gap:2px}
+.om-zoom .btn{min-height:24px;min-width:30px;padding:2px 8px}
+.om-play{min-height:24px;min-width:84px;padding:2px 10px}
+.om-main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:3px;margin-top:3px}
+.om-stage{position:relative;min-height:0;overflow:hidden;background:#040814;box-shadow:var(--field);touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.om-stage.has-astro,.om-stage.has-astro *{cursor:none}
+.om-sky{position:absolute;inset:-40px;background:radial-gradient(ellipse at 30% 30%, #16305E, #040814 70%) center/cover no-repeat;pointer-events:none}
+.om-astro{position:absolute;left:0;top:0;z-index:3;pointer-events:none;transform-origin:42px 9px;filter:drop-shadow(0 0 4px rgba(110,217,255,.35))}
+.om-astro svg{display:block}
+.om-astro .spark{opacity:0;transition:opacity .12s}
+.om-astro.is-pointing .spark{opacity:1}
+.om-stage.is-panning{cursor:grabbing}
+.om-stage svg{position:relative;display:block;width:100%;height:100%}
+.om-help{position:absolute;left:8px;bottom:6px;margin:0;font:16px/1 var(--f-term);color:var(--text-dim);opacity:.85;pointer-events:none;text-shadow:0 1px 2px #000}
+.om-tip{position:absolute;z-index:2;max-width:300px;padding:5px 8px;background:#FFFFE1;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,.35);color:#000;font:11px/1.4 var(--f-ui);pointer-events:none}
+.om-tip b{display:block;font-size:12px}
+.om-tip span{color:#444}
+
+/* the solar system */
+.om-orbit{fill:none;stroke:#E4F1FF;stroke-opacity:.3;vector-effect:non-scaling-stroke}
+.om-pp,.om-spoke{display:none;vector-effect:non-scaling-stroke;pointer-events:none}
+.om-pp{stroke-opacity:.35}
+.om-spoke{stroke-width:1.2;stroke-opacity:.85;stroke-dasharray:3 4}
+.om-pp.is-shown,.om-spoke.is-shown{display:inline}
+.om-pp.is-lit{stroke-opacity:.9}
+.om-node{cursor:pointer;outline:none;transition:opacity .15s}
+.om-glyph{transition:transform .12s}
+.om-paper:hover .om-glyph,.om-paper:focus-visible .om-glyph,.om-paper.is-sel .om-glyph{transform:scale(1.45)}
+.om-hub:hover .om-glyph,.om-hub:focus-visible .om-glyph,.om-hub.is-sel .om-glyph{transform:scale(1.06)}
+.om-sel-ring{fill:none;stroke:#fff;stroke-width:1.5;stroke-dasharray:3 2;opacity:0;vector-effect:non-scaling-stroke}
+.om-node.is-sel .om-sel-ring,.om-node:focus-visible .om-sel-ring{opacity:1}
+.om-node.is-hit .om-sel-ring{opacity:1;stroke:#FFD84A;stroke-dasharray:none}
+.om-decor{transition:opacity .15s}
+/* --u = map units per screen pixel, so labels keep one on-screen size at any zoom */
+.om-hub-label{font-family:var(--f-caps);font-size:calc(11px * var(--u, 1));letter-spacing:calc(.5px * var(--u, 1));text-anchor:middle;paint-order:stroke;stroke:#040814;stroke-width:calc(3px * var(--u, 1));stroke-linejoin:round;pointer-events:none}
+.om-plabel{display:none;font-family:var(--f-term);font-size:calc(15px * var(--u, 1));fill:#E4F1FF;paint-order:stroke;stroke:#040814;stroke-width:calc(3px * var(--u, 1));stroke-linejoin:round;pointer-events:none}
+.om-zoomed .om-moons-front .om-plabel,.om-node.is-sel .om-plabel,.om-node:hover .om-plabel{display:block}
+.om-dim .om-node:not(.is-lit){opacity:.22}
+.om-dim .om-planet:not(.is-lit) .om-decor{opacity:.3}
+/* planet close-up */
+.om-planet,.om-sun,.om-orbits{transition:opacity .4s}
+.om-focus .om-planet:not(.is-focus),.om-focus .om-sun,.om-focus .om-orbits{opacity:.1;pointer-events:none}
+.om-focus .om-planet.is-focus .om-decor,.om-focus .is-focus .om-hub{opacity:1}
+.om-focus .is-focus .om-hub-label{opacity:0}
+.om-focus .in-focus .om-plabel{display:block;pointer-events:auto} /* labels are click targets too */
+.om-fbar{position:absolute;left:8px;top:8px;z-index:2;display:flex;align-items:center;gap:10px;max-width:calc(100% - 16px)}
+.om-fbar[hidden]{display:none}
+.om-fbar .btn{min-height:24px;padding:2px 10px;flex:none}
+#om-ftitle{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:19px/1 var(--f-term);color:#fff;text-shadow:0 1px 3px #000}
+
+/* the side panel */
+.om-panel{min-height:0;overflow:auto;padding:12px 14px;background:#fff;box-shadow:var(--field);font:12px/1.5 var(--f-body);color:#111}
+.om-panel h3{margin:0 0 6px;font:bold 14px/1.35 var(--f-body);color:#0B1F45;outline:none}
+.om-panel h4{margin:14px 0 6px;font:10px/1.2 var(--f-caps);letter-spacing:.5px;color:#555}
+.om-panel p{margin:0 0 8px}
+.om-kicker{margin:0 0 4px!important;font:16px/1 var(--f-term);color:var(--desk)}
+.om-panel .me{text-decoration:underline;text-decoration-color:var(--blue);text-underline-offset:2px}
+.om-panel .chips{margin:0 0 10px}
+.om-actions{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.om-actions .btn{min-height:24px;padding:2px 10px}
+.om-back{margin:0 0 8px}
+.om-list{margin:0;padding:0;list-style:none;border-top:1px dotted #B9BCC2}
+.om-item{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:8px;width:100%;padding:5px 4px;border:0;border-bottom:1px dotted #B9BCC2;background:none;
+  font:11.5px/1.35 var(--f-body);color:#0B1F45;text-align:left;cursor:pointer}
+.om-item:hover,.om-item:focus-visible{background:#E6F3FF;outline:none}
+.om-item .y{font:15px/1 var(--f-term);color:#555}
+.om-dots{display:inline-flex;gap:2px}
+.om-dots i{width:8px;height:8px;border:1px solid #071426}
+.om-key{display:grid;grid-template-columns:22px 1fr;gap:4px 8px;align-items:center;margin:0;font:11px/1.35 var(--f-ui)}
+.om-key svg{width:22px;height:22px}
+.om-key dd{margin:0}
+.om-hubs{margin:0;padding:0;list-style:none}
+.om-hubs button{display:flex;align-items:center;gap:8px;width:100%;padding:3px 4px;border:0;background:none;font:12px/1.3 var(--f-ui);color:#000;text-align:left;cursor:pointer}
+.om-hubs button:hover,.om-hubs button:focus-visible{background:var(--desk);color:#fff;outline:none}
+.om-hubs i{flex:none;width:10px;height:10px;border:1px solid #000}
+.om-hubs .n{margin-left:auto;font:15px/1 var(--f-term)}
+
+.pub.is-flash{animation:pub-flash 1.8s ease-out}
+@keyframes pub-flash{0%,35%{background:#FFF3B0;box-shadow:inset 3px 0 0 var(--gold)}100%{background:transparent;box-shadow:none}}
+@media (max-width:760px){
+  dialog.orbit-map{inset:0;width:100vw;height:100dvh}
+  .om-main{grid-template-columns:1fr;grid-template-rows:minmax(0,1.3fr) minmax(0,1fr)}
+  .om-help{display:none}
+}
+@media (prefers-reduced-motion:reduce){.om-glyph,.om-node{transition:none}}
 
 /* ==========================================================================
    FOR U (secret call app)
@@ -877,6 +978,7 @@ body.crt .crt-overlay{display:block}
       <div class="menu-pop">
         <a class="menu-item" href="#interests"><span class="ico" data-icon="magnifier"></span>Research interests</a>
         <button class="menu-item" type="button" data-action="find"><span class="ico" data-icon="folder"></span>Paper finder<kbd>/</kbd></button>
+        <button class="menu-item" type="button" data-action="orbit-map"><span class="ico" data-icon="sparkle"></span>Orbit map of papers</button>
         <button class="menu-item" type="button" data-action="sky"><span class="ico" data-icon="sparkle"></span>Refresh the sky</button>
       </div>
     </details>
@@ -1045,7 +1147,7 @@ body.crt .crt-overlay{display:block}
         <div class="hero-actions">
           <a class="btn btn-default" href="#publications"><span class="ico" data-icon="folder"></span>Publications</a>
           <a class="btn" href="https://scholar.google.com/citations?user=U_v7A40AAAAJ&amp;hl=en" target="_blank" rel="noopener"><span class="ico" data-icon="cap"></span>Google Scholar</a>
-          <a class="btn" href="cv.pdf" download="Truong_Thanh_Hung_Nguyen_CV.pdf"><span class="ico" data-icon="idcard"></span>My CV</a>
+          <a class="btn" href="cv.html"><span class="ico" data-icon="idcard"></span>My CV</a>
           <a class="btn" href="#contact"><span class="ico" data-icon="envelope"></span>Contact</a>
         </div>
         <!-- Now playing: IU — 이 별로부터 (Spotify's official player appears under the strip once played) -->
@@ -1216,6 +1318,7 @@ body.crt .crt-overlay{display:block}
                 <option value="quartile">Journal quartile</option>
               </select>
             </label>
+            <button class="btn" type="button" data-action="orbit-map" title="See how the papers connect"><span class="ico" data-icon="sparkle"></span>Orbit map</button>
             <button class="btn" type="reset" id="pf-reset">Reset</button>
           </div>
           <div class="pf-row">
@@ -1341,23 +1444,27 @@ body.crt .crt-overlay{display:block}
 </div>
 
 <!-- ======================= FLOATING WIDGET WINDOW ====================== -->
-<aside class="win top-level widget" id="orbit-win" aria-label="orbit.exe: research interests as a star system">
+<aside class="win top-level widget" id="orbit-win" aria-label="orbit.exe: papers orbiting research interests">
   <div class="titlebar">
     <span class="ico tb-ico" data-icon="sparkle"></span>
     <span class="titlebar-text">orbit.exe</span>
     <span class="tb-btns">
       <button class="tb-btn" type="button" data-action="minimize-widget" aria-label="Minimize orbit.exe"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M1 6h6v2H1z"/></svg></button>
+      <button class="tb-btn" type="button" data-action="orbit-map" aria-label="Maximize orbit.exe to the orbit map" title="Open the orbit map"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M0 0h9v2H0zM0 2h1v6H0zM8 2h1v6H8zM1 7h7v1H1z"/></svg></button>
       <button class="tb-btn tb-close" type="button" data-action="minimize-widget" aria-label="Close orbit.exe"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M0 0h2v1H0zM7 0h2v1H7zM1 1h2v1H1zM6 1h2v1H6zM2 2h2v1H2zM5 2h2v1H5zM3 3h3v2H3zM2 5h2v1H2zM5 5h2v1H5zM1 6h2v1H1zM6 6h2v1H6zM0 7h2v1H0zM7 7h2v1H7z"/></svg></button>
     </span>
   </div>
   <div class="widget-body">
-    <svg viewBox="0 0 200 170" aria-hidden="true" shape-rendering="crispEdges">
-      <defs><filter id="o-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="5"/></filter></defs>
-      <circle cx="100" cy="85" r="18" fill="#FFD84A" opacity=".5" filter="url(#o-glow)" shape-rendering="auto"/>
-      <circle cx="100" cy="85" r="11" fill="#FFF1B0" shape-rendering="auto"/>
-      <text x="100" y="89" text-anchor="middle" font-family="VT323, monospace" font-size="13" fill="#071426">HN</text>
-      <g id="orbit-planets"></g>
-    </svg>
+    <!-- The mini graph is drawn from `publications` + `interests` in assets/data/research-data.js. Click it to open the orbit map. -->
+    <button class="orbit-open" type="button" data-action="orbit-map" aria-label="Open the orbit map: research interests as planets, papers as their moons" title="Click to open the orbit map">
+      <svg viewBox="0 0 200 170" aria-hidden="true">
+        <defs><filter id="o-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="5"/></filter></defs>
+        <g id="orbit-planets"></g>
+        <circle cx="100" cy="85" r="15" fill="#FFD84A" opacity=".45" filter="url(#o-glow)"/>
+        <circle cx="100" cy="85" r="9" fill="#FFF1B0"/>
+      </svg>
+      <span class="orbit-hint" aria-hidden="true">click to expand ⤢</span>
+    </button>
   </div>
   <ul class="orbit-legend" id="orbit-legend"></ul>
   <div class="statusbar"><span class="grow" id="orbit-status">orbit stable</span></div>
@@ -1517,6 +1624,7 @@ body.crt .crt-overlay{display:block}
   <div class="start-banner" aria-hidden="true">HNTT<span>·OS</span>&nbsp;2000</div>
   <nav class="start-list" aria-label="Start menu">
     <a class="menu-item" href="#publications"><span class="ico" data-icon="folder"></span>Publications</a>
+    <button class="menu-item" type="button" data-action="orbit-map"><span class="ico" data-icon="sparkle"></span>Orbit map of papers</button>
     <a class="menu-item" href="#honors"><span class="ico" data-icon="trophy"></span>Honors &amp; awards</a>
     <a class="menu-item" href="#services"><span class="ico" data-icon="doc"></span>Academic services</a>
     <a class="menu-item" href="#teaching"><span class="ico" data-icon="board"></span>Teaching</a>
@@ -1554,6 +1662,46 @@ body.crt .crt-overlay{display:block}
     </div>
   </div>
   <div class="dlg-actions"><button class="btn btn-default" type="button" data-close autofocus>OK</button></div>
+</dialog>
+
+<!-- ======================= ORBIT MAP (orbit.exe, maximized) ======================= -->
+<dialog class="win orbit-map" id="orbit-map" aria-labelledby="om-title">
+  <div class="titlebar">
+    <span class="ico tb-ico" data-icon="sparkle"></span>
+    <span class="titlebar-text" id="om-title">orbit.exe — Orbit Map <small id="om-count"></small></span>
+    <span class="tb-btns">
+      <button class="tb-btn" type="button" data-om="close" aria-label="Restore orbit.exe to the small widget" title="Restore"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M3 0h6v2H3zM8 2h1v3H8zM7 4h1v1H7zM0 3h6v2H0zM0 5h1v3H0zM5 5h1v3H5zM1 7h4v1H1z"/></svg></button>
+      <button class="tb-btn tb-close" type="button" data-om="close" aria-label="Close the orbit map"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M0 0h2v1H0zM7 0h2v1H7zM1 1h2v1H1zM6 1h2v1H6zM2 2h2v1H2zM5 2h2v1H5zM3 3h3v2H3zM2 5h2v1H2zM5 5h2v1H5zM1 6h2v1H1zM6 6h2v1H6zM0 7h2v1H0zM7 7h2v1H7z"/></svg></button>
+    </span>
+  </div>
+  <div class="om-toolbar">
+    <label class="om-find"><span class="sr-only">Find a paper on the map</span><input class="inp" type="search" id="om-q" autocomplete="off" spellcheck="false" placeholder="Find a paper (title, author, venue)…"></label>
+    <button class="btn om-play" type="button" data-om="play" id="om-play">❚❚ Pause</button>
+    <label class="om-field"><span>Links</span>
+      <select class="sel" id="om-links">
+        <option value="hover">When pointing</option>
+        <option value="strong">Always: 2+ shared interests</option>
+        <option value="all">Always: every shared interest</option>
+      </select>
+    </label>
+    <span class="om-zoom" role="group" aria-label="Zoom">
+      <button class="btn" type="button" data-om="zoom-out" aria-label="Zoom out" title="Zoom out">−</button>
+      <button class="btn" type="button" data-om="fit" title="Fit the whole map">Fit</button>
+      <button class="btn" type="button" data-om="zoom-in" aria-label="Zoom in" title="Zoom in">+</button>
+    </span>
+  </div>
+  <div class="om-main">
+    <div class="om-stage" id="om-stage">
+      <div class="om-sky" id="om-sky" aria-hidden="true"></div>
+      <svg id="om-svg" role="group" aria-label="Orbit map: research interests are planets circling the sun; papers are their moons"></svg>
+      <div class="om-tip" id="om-tip" hidden></div>
+      <div class="om-fbar" id="om-fbar" hidden><button class="btn" type="button" data-om-go="">← Whole system</button><span id="om-ftitle"></span></div>
+      <div class="om-astro" id="om-astro" aria-hidden="true" hidden></div>
+      <p class="om-help" aria-hidden="true">Click a planet to zoom in · drag to pan · scroll or pinch to zoom</p>
+    </div>
+    <aside class="om-panel" id="om-panel" aria-label="Details"></aside>
+  </div>
+  <div class="statusbar"><span class="grow" id="om-status" role="status" aria-live="polite"></span><span id="om-time"></span><span id="om-zoom-status">100%</span></div>
 </dialog>
 
 <dialog class="shutdown" id="dlg-shutdown" aria-label="Shut down">
@@ -1962,6 +2110,7 @@ body.crt .crt-overlay{display:block}
       case "close": minimize(mainWin, ["Nice try", "This window can't really be closed. It's waiting for you in the taskbar."]); break;
       case "maximize": toggleMax(); break;
       case "minimize-widget": minimize(orbitWin, ["orbit.exe minimized", "Click orbit.exe in the taskbar to reopen it."]); break;
+      case "orbit-map": setStart(false); orbitMap.open(el.closest("#orbit-win") ? $(".widget-body", orbitWin) : el); break;
       case "prev": goSection(-1); break;
       case "next": goSection(1); break;
       case "home": window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }); break;
@@ -2281,7 +2430,7 @@ body.crt .crt-overlay{display:block}
   const TOPIC_COLORS = ["#6ED9FF", "#C9B8FF", "#FFB8DB", "#B6F2C8", "#FFD84A", "#FFB35C", "#FF7F96", "#D4F26B"];
   const INTERESTS = ((DATA && DATA.interests) || []).map((it, i) => ({
     id: clean(it.id).toLowerCase(), name: clean(it.name) || clean(it.id), short: clean(it.short) || clean(it.id).toUpperCase(),
-    file: clean(it.file), icon: clean(it.icon) || "sparkle",
+    file: clean(it.file), icon: clean(it.icon) || "sparkle", planet: clean(it.planet).toLowerCase(),
     color: /^#[0-9a-f]{3,8}$/i.test(clean(it.color)) ? clean(it.color) : TOPIC_COLORS[i % TOPIC_COLORS.length]
   })).filter((it) => it.id);
   const topicInfo = (id) => INTERESTS.find((it) => it.id === id) || { id, name: id, short: id.toUpperCase(), color: "#FFFFFF" };
@@ -2419,7 +2568,7 @@ body.crt .crt-overlay{display:block}
       return '<a class="mini" href="' + esc(clean(p.links[k])) + '" target="_blank" rel="noopener"><span class="ico">' + pixelSVG(icon) + "</span>" + esc(LINK_LABEL[k] || k) + '<span class="sr-only"> for “' + esc(p.title) + '” (opens in a new tab)</span></a>';
     }).join("");
 
-    return '<li class="pub">' +
+    return '<li class="pub" data-pi="' + p.i + '">' +
       '<span class="pub-ico" aria-hidden="true">' + pixelSVG(p.type === "journal" ? "journal" : ["conference", "workshop", "challenge"].includes(p.type) ? "paper" : "doc") + "</span>" +
       "<div>" +
         '<div class="pub-chips">' + chips.join("") + "</div>" +
@@ -2528,18 +2677,736 @@ body.crt .crt-overlay{display:block}
       return '<li><button type="button" class="program" data-topic="' + esc(it.id) + '" aria-pressed="false" title="Show papers on ' + esc(it.name) + '">' +
         '<span class="ico" aria-hidden="true">' + pixelSVG(it.icon) + "</span><b>" + esc(it.name) + "</b></button></li>";
     }).join("");
-    const list = INTERESTS.slice(0, 8), step = list.length > 1 ? 54 / (list.length - 1) : 0;
-    $("#orbit-planets").innerHTML = list.map((it, i) => {
-      const r = Math.round(24 + i * step), a = (i * 97) % 360, c = it.color;
-      return '<circle cx="100" cy="85" r="' + r + '" fill="none" stroke="#6ED9FF" stroke-opacity=".3"' + (i % 2 ? ' stroke-dasharray="2 4"' : "") + ' shape-rendering="auto"/>' +
-        '<g><animateTransform attributeName="transform" type="rotate" from="' + a + ' 100 85" to="' + (a + 360) + ' 100 85" dur="' + (16 + i * 8) + 's" repeatCount="indefinite"/>' +
-        '<rect x="' + (100 + r - 3) + '" y="82" width="6" height="6" fill="' + c + '"/></g>';
-    }).join("");
+    const list = INTERESTS.slice(0, 8);
     $("#orbit-legend").innerHTML = list.map((it, i) => '<li><button type="button" data-topic="' + esc(it.id) + '" aria-pressed="false" title="Show papers on ' + esc(it.name) + '">' +
       '<i style="background:' + it.color + '"></i>' + esc(it.name) + "</button></li>").join("");
-    $("#orbit-status").textContent = list.length + " bodies · orbit stable";
     document.addEventListener("click", (e) => { const b = e.target.closest("[data-topic]"); if (b) showTopic(b.dataset.topic); });
   })();
+  /* ------------------------------------------------ orbit.exe: solar system */
+  // Each research interest is a planet circling the "HN" sun and each paper is a moon of one of its
+  // interests. Pointing at a body stops time and draws its links: the papers that share interests.
+  const orbitMap = (function orbitSystem() {
+    const TAU = Math.PI * 2, TILT = 0.5, SUN = 46, MOON_PERIOD = 26;
+    const f1 = (v) => Math.round(v * 100) / 100;
+    const deg = (a) => f1((a * 180) / Math.PI);
+    const WHITE = [255, 255, 255], BLACK = [0, 0, 0];
+    const rgb = (hex) => { let h = String(hex).replace("#", ""); if (h.length < 6) h = h.split("").map((c) => c + c).join(""); const n = parseInt(h.slice(0, 6), 16) || 0; return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+    const mixC = (a, b, t) => { t = Math.max(0, Math.min(1, t)); return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; };
+    const css = (c) => "rgb(" + c.map(Math.round).join(",") + ")";
+
+    /* ---- the system: planets (interests) and moons (papers) */
+    const byTopic = new Map();
+    pubs.forEach((p) => p.topics.forEach((t) => { if (!byTopic.has(t)) byTopic.set(t, []); byTopic.get(t).push(p); }));
+    const rank = (id) => { const i = INTERESTS.findIndex((it) => it.id === id); return i < 0 ? 99 : i; };
+    const STYLES = ["gas", "ringed", "desert", "swirl", "lava", "ice", "crater"];
+    const hubs = [...byTopic.keys()].sort((a, b) => byTopic.get(b).length - byTopic.get(a).length || rank(a) - rank(b)).map((id, k) => {
+      const info = topicInfo(id), list = byTopic.get(id), want = clean(info.planet);
+      return { kind: "hub", id, info, papers: list, r: 20 + Math.sqrt(list.length) * 5.2, style: STYLES.includes(want) ? want : STYLES[k % STYLES.length], moons: [], spokes: [] };
+    }).reverse(); // small planets on the inner orbits, the giants further out
+    hubs.forEach((h, k) => { h.key = "h" + k; });
+    const hubOf = new Map(hubs.map((h) => [h.id, h]));
+    const sun = { x: 0, y: 0, moons: [] };
+    const nodes = pubs.map((p) => ({ kind: "paper", key: "p" + p.i, p, hs: p.topics.map((t) => hubOf.get(t)).filter(Boolean), r: p.first ? 7 : 5.5, links: [], spokes: [] }));
+    // every paper becomes a moon of one of its interests, spread so no planet hoards them
+    nodes.slice().sort((a, b) => a.hs.length - b.hs.length || byNewest(a.p, b.p)).forEach((nd) => {
+      const host = nd.hs.slice().sort((a, b) => a.moons.length / a.r - b.moons.length / b.r)[0] || sun;
+      nd.host = host; host.moons.push(nd);
+    });
+    function shells(list, r0) { // moons ride in rings around their host; returns the outermost ring radius
+      list.sort((a, b) => byNewest(a.p, b.p));
+      let i = 0, s = 0, out = r0;
+      while (i < list.length) {
+        const n = Math.min(8 + s * 4, list.length - i);
+        for (let j = 0; j < n; j++) { const nd = list[i + j]; nd.orb = r0 + s * 16; nd.slot = (j / n) * TAU + s * 0.7; }
+        out = r0 + s * 16; i += n; s++;
+      }
+      return out;
+    }
+    let edge = SUN + 34;
+    if (sun.moons.length) edge = shells(sun.moons, SUN + 24) + 26;
+    hubs.forEach((h, k) => {
+      h.ext = h.moons.length ? shells(h.moons, h.style === "ringed" ? h.r * 2.3 : h.r + 15) + 8 : h.r * (h.style === "ringed" ? 2.1 : 1) + 6;
+      h.a = edge + h.ext * 0.5; edge = h.a + h.ext * 0.5;
+      h.b = h.a * TILT;
+      h.period = 34 * Math.pow(h.a / 150, 1.2);
+      h.phase = (k * 2.39996 + 0.6) % TAU;
+    });
+    const links = [], spokes = [];
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j], shared = a.p.topics.filter((t) => b.p.topics.includes(t));
+      if (!shared.length) continue;
+      const l = { a, b, shared };
+      links.push(l); a.links.push(l); b.links.push(l);
+    }
+    nodes.forEach((nd) => nd.hs.forEach((h) => { const sp = { a: nd, b: h, n: nd, h }; spokes.push(sp); nd.spokes.push(sp); h.spokes.push(sp); }));
+    const objs = new Map(hubs.concat(nodes).map((o) => [o.key, o]));
+    const strong = links.filter((l) => l.shared.length > 1).length;
+    const venueYear = (p) => [p.short || p.venue, p.year && !String(p.short).includes(String(p.year)) ? p.year : ""].filter(Boolean).join(" · ");
+
+    let simT = 0;
+    function place(t) {
+      hubs.forEach((h) => { const th = h.phase + (t / h.period) * TAU; h.x = h.a * Math.cos(th); h.y = h.b * Math.sin(th); });
+      nodes.forEach((nd) => {
+        const th = nd.slot + (t / MOON_PERIOD) * TAU;
+        nd.ox = nd.orb * Math.cos(th); nd.oy = nd.orb * TILT * Math.sin(th); nd.front = Math.sin(th) >= 0;
+        nd.x = nd.host.x + nd.ox; nd.y = nd.host.y + nd.oy;
+      });
+    }
+    place(0);
+
+    /* ---- the astronaut that replaces the mouse pointer */
+    const ASTRO = [
+      ".............KK.",
+      "............KWWK",
+      "...KKKKK...KWWK.",
+      "..KWWWWWK.KWGK..",
+      ".KWWWWWWWKWGK...",
+      ".KWKKKKKWKWK....",
+      ".KWKVRRKWGK.....",
+      ".KWKVVVKWK......",
+      ".KGWKKKWGK......",
+      "KDKGWWWGKK......",
+      "KDKWWOWWWK......",
+      "KDKWWWWWK.......",
+      "KDKWWWWWKK......",
+      ".KWKWDDWKWK.....",
+      ".KWKWWWWKWK.....",
+      "..KKWWKWWKK.....",
+      "...KWWKWWK......",
+      "...KGGKGGK......",
+      "..KWWWKWWWK.....",
+      "..KKKKKKKKK....."
+    ];
+    const ASTRO_C = { K: "#0B0F1E", W: "#F4F6FA", G: "#B9C2D0", D: "#6E7788", V: "#1B2340", R: "#6ED9FF", O: "#FF9A3C" };
+    function astroSVG(s, spark) {
+      let r = "";
+      ASTRO.forEach((row, y) => {
+        for (let x = 0; x < row.length;) {
+          const c = row[x]; let e = x; while (e < row.length && row[e] === c) e++;
+          if (ASTRO_C[c]) r += '<rect x="' + x + '" y="' + y + '" width="' + (e - x) + '" height="1" fill="' + ASTRO_C[c] + '"/>';
+          x = e;
+        }
+      });
+      const vb = spark ? [0, -3, 19, 23] : [0, 0, 16, 20];
+      return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="' + vb.join(" ") + '" width="' + vb[2] * s + '" height="' + vb[3] * s + '" shape-rendering="crispEdges">' + r +
+        (spark ? '<g class="spark" fill="#FFF1B0"><rect x="16" y="-3" width="1" height="3"/><rect x="15" y="-2" width="3" height="1"/></g>' : "") + "</svg>";
+    }
+    const openBtn = $(".orbit-open");
+    if (openBtn && finePointer) openBtn.style.cursor = 'url("data:image/svg+xml,' + encodeURIComponent(astroSVG(2)) + '") 28 1, zoom-in';
+
+    /* ---- the miniature in the orbit.exe widget */
+    (function drawMini() {
+      if (!hubs.length) return;
+      const X = Math.max(...hubs.map((h) => h.a + h.r)), Y = Math.max(...hubs.map((h) => h.b + h.r));
+      const k = Math.min(94 / X, 78 / Y);
+      let defs = "", rings = "", bodies = "";
+      hubs.forEach((hb, i) => {
+        const c = rgb(hb.info.color), a = f1(hb.a * k), b = f1(hb.b * k), r = f1(Math.max(2.4, hb.r * k * 0.9)), dur = f1(hb.period * 0.6);
+        defs += '<radialGradient id="om-mini-' + i + '" cx=".35" cy=".35" r=".8"><stop offset="0" stop-color="' + css(mixC(c, WHITE, 0.6)) + '"/><stop offset=".5" stop-color="' + hb.info.color + '"/><stop offset="1" stop-color="' + css(mixC(c, BLACK, 0.6)) + '"/></radialGradient>';
+        rings += '<ellipse cx="100" cy="85" rx="' + a + '" ry="' + b + '" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width=".5"/>';
+        const body = (hb.style === "ringed" ? '<ellipse rx="' + f1(r * 2) + '" ry="' + f1(r * 0.55) + '" fill="none" stroke="' + hb.info.color + '" stroke-opacity=".8" stroke-width=".8" transform="rotate(-16)"/>' : "") +
+          '<circle r="' + r + '" fill="url(#om-mini-' + i + ')"/>';
+        bodies += reduceMotion
+          ? '<g transform="translate(' + f1(100 + a * Math.cos(hb.phase)) + " " + f1(85 + b * Math.sin(hb.phase)) + ')">' + body + "</g>"
+          : "<g>" + body + '<animateMotion dur="' + dur + 's" repeatCount="indefinite" begin="-' + f1((hb.phase / TAU) * dur) + 's" path="M' + f1(100 + a) + " 85A" + a + " " + b + " 0 0 1 " + f1(100 - a) + " 85A" + a + " " + b + " 0 0 1 " + f1(100 + a) + ' 85"/></g>';
+      });
+      $("#orbit-planets").innerHTML = "<defs>" + defs + "</defs>" + rings + bodies;
+      $("#orbit-status").textContent = hubs.length + " planets · " + nodes.length + " moons";
+    })();
+
+    /* ---- painted textures: value noise on a sphere, drawn once into canvases */
+    const hashN = (x, y, z, s) => {
+      let h = Math.imul(x, 374761393) ^ Math.imul(y, 668265263) ^ Math.imul(z, 1440662683) ^ Math.imul(s + 1, 2246822519);
+      h = Math.imul(h ^ (h >>> 13), 1274126177);
+      return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+    };
+    function noise(x, y, z, s) {
+      const X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z), u = x - X, v = y - Y, w = z - Z;
+      const su = u * u * (3 - 2 * u), sv = v * v * (3 - 2 * v), sw = w * w * (3 - 2 * w), L = (a, b, t) => a + (b - a) * t, c = (i, j, k) => hashN(X + i, Y + j, Z + k, s);
+      return L(L(L(c(0, 0, 0), c(1, 0, 0), su), L(c(0, 1, 0), c(1, 1, 0), su), sv), L(L(c(0, 0, 1), c(1, 0, 1), su), L(c(0, 1, 1), c(1, 1, 1), su), sv), sw);
+    }
+    const fbm = (x, y, z, s, o) => { let t = 0, a = 0.5, f = 1, n = 0; for (let i = 0; i < o; i++) { t += a * noise(x * f, y * f, z * f, s + i * 17); n += a; a *= 0.5; f *= 2.03; } return t / n; };
+    function paintBody(style, hex, seed, S) {
+      const cv = document.createElement("canvas"); cv.width = cv.height = S;
+      const g = cv.getContext("2d"), img = g.createImageData(S, S), d = img.data, rnd = mulberry32(seed * 7919 + 13);
+      const base = rgb(hex), lite = mixC(base, WHITE, 0.55), dark = mixC(base, BLACK, 0.45), deep = mixC(base, BLACK, 0.75);
+      const spot = [0.3 - rnd() * 0.6, 0.15 + rnd() * 0.3], craters = [];
+      for (let i = 0; i < 16; i++) { const th = rnd() * TAU, z = 0.15 + rnd() * 0.85, q = Math.sqrt(1 - z * z); craters.push([q * Math.cos(th), q * Math.sin(th), z, 0.07 + rnd() * rnd() * 0.3]); }
+      for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+        const nx = ((x + 0.5) / S) * 2 - 1, ny = ((y + 0.5) / S) * 2 - 1, rr = nx * nx + ny * ny, o = (y * S + x) * 4;
+        if (rr >= 1) { d[o + 3] = 0; continue; }
+        const nz = Math.sqrt(1 - rr), px = nx * 1.6, py = ny * 1.6, pz = nz * 1.6;
+        let c;
+        if (style === "gas" || style === "ringed") {
+          const w = fbm(px, py, pz, seed, 4), band = 0.5 + 0.5 * Math.sin((ny * (style === "gas" ? 7 : 9) + w * 3.2) * 2.2);
+          c = mixC(dark, lite, band * 0.85 + fbm(px * 4, py * 4, pz * 4, seed + 5, 3) * 0.3 - 0.1);
+          const ex = nx - spot[0], ey = (ny - spot[1]) * 1.9, e = ex * ex + ey * ey;
+          if (style === "gas" && e < 0.018) c = mixC(c, mixC(deep, [190, 70, 90], 0.5), (1 - e / 0.018) * 0.85);
+        } else if (style === "swirl") {
+          const q = fbm(px * 1.2, py * 1.2, pz * 1.2, seed, 4), w = fbm(px + q * 2.5, py + q * 2.5, pz, seed + 3, 4), band = 0.5 + 0.5 * Math.sin(ny * 5 + w * 9);
+          c = mixC(dark, lite, band);
+          if (band > 0.88) c = mixC(c, WHITE, (band - 0.88) * 6);
+        } else if (style === "ice") {
+          const w = fbm(px * 1.1, py * 1.1, pz * 1.1, seed, 5);
+          c = mixC(dark, lite, 0.5 + 0.18 * Math.sin(ny * 4 + w * 7) + (w - 0.5) * 0.9);
+          const ex = nx - spot[0], ey = (ny - spot[1]) * 1.6, e = ex * ex + ey * ey;
+          if (e < 0.012) c = mixC(c, deep, (1 - e / 0.012) * 0.8);
+        } else if (style === "lava") {
+          const n = fbm(px * 2, py * 2, pz * 2, seed, 5), crack = Math.max(0, 1 - Math.abs(n - 0.5) * 15);
+          const rock = mixC([36, 36, 46], [118, 114, 124], fbm(px * 5, py * 5, pz * 5, seed + 9, 3));
+          c = mixC(rock, mixC(base, [255, 236, 170], 0.35), Math.min(1, crack * 1.4));
+        } else if (style === "desert") {
+          const n = fbm(px * 2.2, py * 2.2, pz * 2.2, seed, 5), m = fbm(px * 6, py * 6, pz * 6, seed + 2, 3);
+          c = mixC(mixC(dark, lite, n * 1.1 - 0.05), deep, Math.max(0, m - 0.6) * 2.4);
+        } else if (style === "sun") {
+          c = mixC([255, 128, 24], [255, 238, 150], fbm(px * 3, py * 3, pz * 3, seed, 5) * 1.2 - 0.1);
+        } else { // crater: a pale moon-like rock
+          c = mixC(mixC(base, [140, 142, 152], 0.55), mixC(lite, WHITE, 0.55), fbm(px * 3, py * 3, pz * 3, seed, 5));
+          for (const [cx, cy, cz, cr] of craters) {
+            const dd = Math.acos(Math.min(1, nx * cx + ny * cy + nz * cz));
+            if (dd < cr) { const u = dd / cr; c = u > 0.78 ? mixC(c, WHITE, 0.3) : mixC(c, BLACK, 0.22 + u * 0.1); }
+          }
+        }
+        const limb = style === "sun" ? 0.78 + 0.22 * nz : 0.42 + 0.58 * Math.pow(nz, 0.5);
+        const a = Math.min(1, (1 - Math.sqrt(rr)) * S * 0.5);
+        d[o] = c[0] * limb; d[o + 1] = c[1] * limb; d[o + 2] = c[2] * limb; d[o + 3] = 255 * a;
+      }
+      g.putImageData(img, 0, 0);
+      return cv.toDataURL();
+    }
+    function paintSky(W, H) {
+      const w = 240, h = 150, lo = document.createElement("canvas"); lo.width = w; lo.height = h;
+      const lg = lo.getContext("2d"), img = lg.createImageData(w, h), d = img.data;
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        const u = (x / w) * 3.2, v = (y / h) * 2, q = fbm(u, v, 0.5, 3, 4), n = fbm(u + q * 1.8, v + q * 1.8, 1.7, 9, 5);
+        const b1 = Math.exp(-((x / w - 0.14) ** 2 + (y / h - 0.3) ** 2) * 6), b2 = Math.exp(-((x / w - 0.88) ** 2 + (y / h - 0.78) ** 2) * 5);
+        const dens = Math.max(0, n - 0.4) * 2.6 * (0.3 + b1 + b2), o = (y * w + x) * 4;
+        d[o] = 4 + 46 * dens + 120 * dens * dens; d[o + 1] = 8 + 70 * dens + 60 * dens * dens; d[o + 2] = 20 + 150 * dens + 90 * dens * dens; d[o + 3] = 255;
+      }
+      lg.putImageData(img, 0, 0);
+      const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+      const g = cv.getContext("2d"), rnd = mulberry32(2026);
+      g.imageSmoothingQuality = "high"; g.drawImage(lo, 0, 0, W, H);
+      for (let i = 0; i < 900; i++) { g.fillStyle = "rgba(235,242,255," + (0.15 + rnd() * 0.6).toFixed(2) + ")"; g.beginPath(); g.arc(rnd() * W, rnd() * H, 0.3 + rnd() * rnd() * 1.4, 0, TAU); g.fill(); }
+      for (let i = 0; i < 14; i++) { // a few bright four-point stars
+        const x = rnd() * W, y = rnd() * H, L = 6 + rnd() * 16, gr = g.createRadialGradient(x, y, 0, x, y, L * 0.7);
+        gr.addColorStop(0, "rgba(255,255,255,.9)"); gr.addColorStop(1, "rgba(160,190,255,0)");
+        g.fillStyle = gr; g.beginPath(); g.arc(x, y, L * 0.7, 0, TAU); g.fill();
+        g.strokeStyle = "rgba(230,240,255,.55)"; g.lineWidth = 1;
+        g.beginPath(); g.moveTo(x - L, y); g.lineTo(x + L, y); g.moveTo(x, y - L); g.lineTo(x, y + L); g.stroke();
+      }
+      return cv.toDataURL("image/jpeg", 0.86);
+    }
+    let art = null;
+    const ensureArt = () => art || (art = {
+      sky: paintSky(1600, 1000), sun: paintBody("sun", "#FFB347", 3, 200), moon: paintBody("crater", "#C9CED8", 5, 64),
+      planets: hubs.map((h, i) => paintBody(h.style, h.info.color, 11 + i * 7, 224))
+    });
+    // paint while the page is idle when the widget is on screen, so the first click opens instantly
+    if (typeof requestIdleCallback === "function" && getComputedStyle(orbitWin).display !== "none") requestIdleCallback(ensureArt, { timeout: 5000 });
+
+    /* ---- the full map */
+    const dlg = $("#orbit-map"), svg = $("#om-svg"), stage = $("#om-stage"), sky = $("#om-sky"), tip = $("#om-tip"), panel = $("#om-panel");
+    const q = $("#om-q"), linkSel = $("#om-links"), status = $("#om-status"), zoomStatus = $("#om-zoom-status"), playBtn = $("#om-play"), timeStatus = $("#om-time");
+    const astro = $("#om-astro");
+    let built = false, bounds = null, vb = null, fitVb = null, anim = 0, bodiesG = null, order = "", shown = [];
+    let hoverK = "", selK = "", hits = null, hitIdx = -1, userPaused = reduceMotion;
+    const defaultStatus = () => hubs.length + " planets (research interests) · " + nodes.length + " moons (papers) · " + links.length + " links (" + strong + " strong)";
+
+    function ringHalf(h, front) {
+      const c = rgb(h.info.color), bands = [[1, 0.2, 0.75, mixC(c, WHITE, 0.45)], [0.84, 0.12, 0.55, c], [0.7, 0.08, 0.45, mixC(c, BLACK, 0.3)]];
+      return '<g class="om-decor" transform="rotate(-16)">' + bands.map(([s, w, op, col]) => {
+        const rx = f1(h.r * 2.05 * s), ry = f1(h.r * 0.6 * s);
+        return '<path d="M' + (front ? rx : -rx) + " 0A" + rx + " " + ry + " 0 0 1 " + (front ? -rx : rx) + ' 0" fill="none" stroke="' + css(col) + '" stroke-opacity="' + op + '" stroke-width="' + f1(h.r * w) + '"/>';
+      }).join("") + "</g>";
+    }
+    function moonHTML(nd) {
+      const p = nd.p;
+      return '<g class="om-node om-paper" data-k="' + nd.key + '" transform="translate(' + f1(nd.ox) + " " + f1(nd.oy) + ')" tabindex="0" role="button" aria-label="' +
+        esc(p.title + (p.year ? ", " + p.year : "") + ". Interests: " + (p.topics.map((t) => topicInfo(t).name).join(", ") || "none")) + '">' +
+        '<circle r="' + (nd.r + 6) + '" fill="transparent"/>' +
+        '<g class="om-glyph">' + (p.award ? '<circle r="' + (nd.r + 2.6) + '" fill="none" stroke="#FFD84A" stroke-width="1.5"/>' : "") +
+          '<use href="#om-moon-tex" transform="scale(' + nd.r + ')"/><circle r="' + nd.r + '" fill="' + (nd.host.info ? nd.host.info.color : "#FFD84A") + '" opacity=".34"/></g>' +
+        '<circle class="om-sel-ring" r="' + (nd.r + 4.5) + '"/>' +
+        '<text class="om-plabel" x="' + (nd.r + 5) + '" dy=".32em">' + esc(venueYear(p)) + "</text></g>";
+    }
+    const moonsOf = (host, front) => host.moons.filter((nd) => nd.front === front).map(moonHTML).join("");
+
+    function build() {
+      built = true;
+      const A = ensureArt();
+      sky.style.backgroundImage = 'url("' + A.sky + '")';
+      let X = SUN * 3, Y = SUN * 3;
+      hubs.forEach((h) => { X = Math.max(X, h.a + h.ext); Y = Math.max(Y, h.b + Math.max(h.ext * TILT, h.r + 26)); });
+      bounds = { x: -X - 20, y: -Y - 20, w: 2 * X + 40, h: 2 * Y + 40 };
+      let defs = '<radialGradient id="om-shade" cx=".3" cy=".5" r=".78"><stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity=".42"/><stop offset="1" stop-color="#000" stop-opacity=".72"/></radialGradient>' +
+        '<radialGradient id="om-sunglow"><stop offset=".25" stop-color="#FFD27A" stop-opacity=".8"/><stop offset=".5" stop-color="#FF9A3C" stop-opacity=".22"/><stop offset="1" stop-color="#FF7A1A" stop-opacity="0"/></radialGradient>' +
+        '<image id="om-moon-tex" href="' + A.moon + '" x="-1" y="-1" width="2" height="2"/>';
+      hubs.forEach((h, i) => { defs += '<radialGradient id="om-atm-' + i + '"><stop offset=".72" stop-color="' + h.info.color + '" stop-opacity=".5"/><stop offset="1" stop-color="' + h.info.color + '" stop-opacity="0"/></radialGradient>'; });
+      let html = "<defs>" + defs + "</defs>" +
+        '<g class="om-orbits" aria-hidden="true">' + hubs.map((h) => '<ellipse class="om-orbit" rx="' + f1(h.a) + '" ry="' + f1(h.b) + '"/>').join("") + "</g>" +
+        '<g class="om-lines" aria-hidden="true">' +
+          links.map((l) => '<line class="om-pp" data-s="' + Math.min(l.shared.length, 3) + '" stroke="' + topicInfo(l.shared[0]).color + '" stroke-width="' + l.shared.length + '"/>').join("") +
+          spokes.map((sp) => '<line class="om-spoke" stroke="' + sp.h.info.color + '"/>').join("") + "</g>";
+      html += '<g class="om-bodies">' +
+        '<g class="om-sun"><g class="om-decor" aria-hidden="true"><circle r="' + SUN * 3.4 + '" fill="url(#om-sunglow)"/></g><g class="om-moons-back">' + moonsOf(sun, false) + "</g>" +
+          '<g aria-hidden="true"><image href="' + A.sun + '" x="' + -SUN + '" y="' + -SUN + '" width="' + 2 * SUN + '" height="' + 2 * SUN + '"/></g>' +
+          '<g class="om-moons-front">' + moonsOf(sun, true) + "</g></g>" +
+        hubs.map((h, i) => '<g class="om-planet" data-h="' + i + '">' +
+          '<circle class="om-decor" r="' + f1(h.r * 1.32) + '" fill="url(#om-atm-' + i + ')"/>' +
+          '<g class="om-moons-back">' + moonsOf(h, false) + "</g>" +
+          (h.style === "ringed" ? ringHalf(h, false) : "") +
+          '<g class="om-node om-hub" data-k="' + h.key + '" tabindex="0" role="button" aria-label="' + esc(h.info.name + ": " + h.papers.length + " paper" + (h.papers.length === 1 ? "" : "s")) + '">' +
+            '<g class="om-glyph"><image href="' + A.planets[i] + '" x="' + f1(-h.r) + '" y="' + f1(-h.r) + '" width="' + f1(2 * h.r) + '" height="' + f1(2 * h.r) + '"/>' +
+            '<g class="om-shade"><circle r="' + f1(h.r + 0.3) + '" fill="url(#om-shade)"/></g></g>' +
+            '<circle class="om-sel-ring" r="' + f1(h.r + 5) + '"/></g>' +
+          (h.style === "ringed" ? ringHalf(h, true) : "") +
+          '<g class="om-moons-front">' + moonsOf(h, true) + "</g>" +
+          '<text class="om-hub-label om-decor" y="' + f1(h.r + 10) + '" dy=".9em" fill="' + h.info.color + '">' + esc(h.info.short) + "</text></g>").join("") +
+        "</g>";
+      svg.innerHTML = html;
+      bodiesG = $(".om-bodies", svg);
+      sun.g = $(".om-sun", svg); sun.back = $(".om-moons-back", sun.g); sun.front = $(".om-moons-front", sun.g);
+      hubs.forEach((h, i) => {
+        h.g = $('.om-planet[data-h="' + i + '"]', svg); h.el = $(".om-hub", h.g); h.shade = $(".om-shade", h.g);
+        h.back = $(".om-moons-back", h.g); h.front = $(".om-moons-front", h.g);
+      });
+      nodes.forEach((nd) => { nd.el = $('[data-k="' + nd.key + '"]', svg); nd.inFront = nd.front; });
+      $$(".om-pp", svg).forEach((e, i) => { links[i].el = e; });
+      $$(".om-spoke", svg).forEach((e, i) => { spokes[i].el = e; });
+      $("#om-count").textContent = "— " + hubs.length + " planets, " + nodes.length + " moons";
+      astro.innerHTML = astroSVG(3, true);
+      if (finePointer) stage.classList.add("has-astro");
+      syncLinks(); draw();
+      new ResizeObserver(() => {
+        if (!dlg.open || !vb) return;
+        const cy = vb.y + vb.h / 2, h2 = (vb.w * (stage.clientHeight || 1)) / (stage.clientWidth || 1);
+        fitView(); setVB({ x: vb.x, y: cy - h2 / 2, w: vb.w, h: h2 });
+      }).observe(stage);
+    }
+
+    /* ---- one frame: move the bodies, keep near things in front of far things, redraw live links */
+    function draw() {
+      hubs.forEach((h) => {
+        h.g.setAttribute("transform", "translate(" + f1(h.x) + " " + f1(h.y) + ")");
+        h.shade.setAttribute("transform", "rotate(" + deg(Math.atan2(-h.y, -h.x) - Math.PI) + ")");
+      });
+      nodes.forEach((nd) => {
+        nd.el.setAttribute("transform", "translate(" + f1(nd.ox) + " " + f1(nd.oy) + ")");
+        if (nd.front !== nd.inFront) { (nd.front ? nd.host.front : nd.host.back).appendChild(nd.el); nd.inFront = nd.front; }
+      });
+      const seq = hubs.map((h) => [h.g, h.y]).concat([[sun.g, 0]]).sort((a, b) => a[1] - b[1]);
+      const key = seq.map((s) => s[0].dataset.h || "s").join();
+      if (key !== order) { order = key; seq.forEach((s) => bodiesG.appendChild(s[0])); }
+      drawLines();
+    }
+    function drawLines() {
+      shown.forEach((ln) => {
+        ln.el.setAttribute("x1", f1(ln.a.x)); ln.el.setAttribute("y1", f1(ln.a.y));
+        ln.el.setAttribute("x2", f1(ln.b.x)); ln.el.setAttribute("y2", f1(ln.b.y));
+      });
+    }
+    let raf = 0, last = 0, pointer = null, tilt = 0;
+    const moving = () => !userPaused && !hoverK && !selK && !focus;
+    function tick(now) {
+      raf = requestAnimationFrame(tick);
+      const dt = last ? Math.min(0.05, (now - last) / 1000) : 0; last = now;
+      if (pointer && Math.abs(tilt) > 0.2) { tilt *= 0.9; moveAstro(); }
+      if (!moving()) return;
+      simT += dt; place(simT); draw();
+    }
+    function syncClock() {
+      playBtn.textContent = userPaused ? "▶ Play" : "❚❚ Pause";
+      playBtn.setAttribute("aria-label", userPaused ? "Play: set the planets moving" : "Pause the planets");
+      timeStatus.textContent = moving() ? "● orbiting" : userPaused ? "❚❚ paused" : "❚❚ time stopped";
+    }
+    function moveAstro() {
+      astro.style.transform = "translate(" + (pointer.x - 42) + "px," + (pointer.y - 9) + "px) rotate(" + tilt.toFixed(1) + "deg)";
+    }
+
+    /* ---- view: pan + zoom by moving the viewBox (kept at the stage's aspect ratio) */
+    function setVB(v) {
+      vb = v;
+      svg.setAttribute("viewBox", [v.x, v.y, v.w, v.h].map(f1).join(" "));
+      svg.style.setProperty("--u", (v.w / (stage.clientWidth || 1)).toFixed(4));
+      const z = fitVb ? fitVb.w / v.w : 1;
+      zoomStatus.textContent = Math.round(z * 100) + "%";
+      svg.classList.toggle("om-zoomed", z >= 2.2);
+      if (fitVb) { // the nebula drifts a little behind the planets
+        const clamp = (n) => Math.max(-36, Math.min(36, n)).toFixed(1);
+        sky.style.transform = "translate(" + clamp(((fitVb.x + fitVb.w / 2 - v.x - v.w / 2) / fitVb.w) * 60) + "px," + clamp(((fitVb.y + fitVb.h / 2 - v.y - v.h / 2) / fitVb.h) * 60) + "px)";
+      }
+    }
+    function fitView() {
+      const W = stage.clientWidth || 1, H = stage.clientHeight || 1, b = bounds, w = Math.max(b.w, (b.h * W) / H), h = (w * H) / W;
+      fitVb = { x: b.x + b.w / 2 - w / 2, y: b.y + b.h / 2 - h / 2, w, h };
+      return Object.assign({}, fitVb);
+    }
+    const clampW = (w) => Math.min(Math.max(w, fitVb.w / 8), fitVb.w * 1.5);
+    function zoomAt(cx, cy, f) {
+      const r = stage.getBoundingClientRect(), w = clampW(vb.w / f), k = w / vb.w;
+      const px = vb.x + ((cx - r.left) / r.width) * vb.w, py = vb.y + ((cy - r.top) / r.height) * vb.h;
+      setVB({ x: px - (px - vb.x) * k, y: py - (py - vb.y) * k, w, h: vb.h * k });
+    }
+    function zoomCenter(f) { const r = stage.getBoundingClientRect(); cancelAnimationFrame(anim); zoomAt(r.left + r.width / 2, r.top + r.height / 2, f); }
+    function flyTo(t) {
+      cancelAnimationFrame(anim);
+      if (reduceMotion) { setVB(t); return; }
+      const s0 = Object.assign({}, vb), t0 = performance.now();
+      (function step(now) {
+        const u = Math.min(1, (now - t0) / 340), e = 1 - Math.pow(1 - u, 3), mix = (k) => s0[k] + (t[k] - s0[k]) * e;
+        setVB({ x: mix("x"), y: mix("y"), w: mix("w"), h: mix("h") });
+        if (u < 1) anim = requestAnimationFrame(step);
+      })(t0);
+    }
+    function centerOn(o, zoomIn) {
+      const w = zoomIn ? Math.min(vb.w, fitVb.w / (o.kind === "hub" ? 1.6 : 2.2)) : vb.w, h = (w * vb.h) / vb.w;
+      flyTo({ x: o.x - w / 2, y: o.y - h / 2, w, h });
+    }
+    const inView = (o) => o.x > vb.x + 20 && o.x < vb.x + vb.w - 20 && o.y > vb.y + 20 && o.y < vb.y + vb.h - 20;
+
+    /* ---- planet close-up: every paper carrying the interest gathers in rings around its planet */
+    const FT = 0.72; // the close-up rings are seen from higher up than the system
+    const fbar = $("#om-fbar"), ftitle = $("#om-ftitle");
+    let focus = null, fset = new Set(), fxRaf = 0;
+    function tween(items, done) {
+      cancelAnimationFrame(fxRaf);
+      const t0 = performance.now(), dur = reduceMotion ? 0 : 650;
+      (function step(now) {
+        const u = dur ? Math.min(1, (now - t0) / dur) : 1, e = 1 - Math.pow(1 - u, 3);
+        items.forEach((it) => {
+          it.nd.x = it.x0 + (it.x1 - it.x0) * e; it.nd.y = it.y0 + (it.y1 - it.y0) * e;
+          it.nd.el.setAttribute("transform", "translate(" + f1(it.nd.x - it.px) + " " + f1(it.nd.y - it.py) + ")");
+        });
+        drawLines();
+        if (u < 1) fxRaf = requestAnimationFrame(step); else if (done) done();
+      })(t0);
+    }
+    function labelSide(nd, left) {
+      const t = $(".om-plabel", nd.el);
+      t.setAttribute("x", f1(left ? -(nd.r + 5) : nd.r + 5)); t.setAttribute("text-anchor", left ? "end" : "start");
+    }
+    function enterFocus(h) {
+      if (focus === h) return;
+      if (focus) exitFocus(true);
+      focus = h;
+      // papers that also share a second interest sit next to each other on the rings
+      const other = (nd) => { const t = nd.p.topics.find((x) => x !== h.id), oh = t && hubOf.get(t); return oh ? hubs.indexOf(oh) : -1; };
+      const list = nodes.filter((nd) => nd.hs.includes(h)).sort((a, b) => other(a) - other(b) || byNewest(a.p, b.p));
+      fset = new Set(list);
+      const r0 = h.style === "ringed" ? h.r * 2.6 : h.r * 1.9 + 12, items = [];
+      let i = 0, ring = 0, rOut = r0;
+      while (i < list.length) {
+        const n = Math.min(10 + ring * 6, list.length - i), R = r0 + ring * 46;
+        for (let j = 0; j < n; j++) {
+          const nd = list[i + j], th = -Math.PI / 2 + ((j + (ring % 2) * 0.5) / n) * TAU;
+          (Math.sin(th) >= 0 ? h.front : h.back).appendChild(nd.el);
+          labelSide(nd, Math.cos(th) < -0.01);
+          nd.el.classList.add("in-focus");
+          items.push({ nd, x0: nd.x, y0: nd.y, x1: h.x + R * Math.cos(th), y1: h.y + R * FT * Math.sin(th), px: h.x, py: h.y });
+        }
+        rOut = R; i += n; ring++;
+      }
+      h.g.classList.add("is-focus"); bodiesG.appendChild(h.g); order = "";
+      svg.classList.add("om-focus");
+      ftitle.textContent = h.info.name + " · " + list.length + " paper" + (list.length === 1 ? "" : "s");
+      fbar.hidden = false; tip.hidden = true;
+      tween(items);
+      const W = stage.clientWidth || 1, H = stage.clientHeight || 1, w = Math.max(2 * (rOut + 150), (2 * (rOut * FT + 80) * W) / H);
+      flyTo({ x: h.x - w / 2, y: h.y - (w * H) / W / 2, w, h: (w * H) / W });
+    }
+    function exitFocus(instant) {
+      if (!focus) return;
+      focus.g.classList.remove("is-focus"); svg.classList.remove("om-focus"); fbar.hidden = true;
+      focus = null;
+      const from = new Map([...fset].map((nd) => [nd, [nd.x, nd.y]]));
+      place(simT); // everyone's home position
+      const items = [...fset].map((nd) => {
+        (nd.front ? nd.host.front : nd.host.back).appendChild(nd.el); nd.inFront = nd.front;
+        labelSide(nd, false); nd.el.classList.remove("in-focus");
+        const [x0, y0] = from.get(nd);
+        return { nd, x0, y0, x1: nd.x, y1: nd.y, px: nd.host.x, py: nd.host.y };
+      });
+      fset = new Set();
+      const done = () => { place(simT); draw(); };
+      if (instant) { cancelAnimationFrame(fxRaf); done(); } else tween(items, done);
+    }
+
+    /* ---- highlight: the pointed/selected body, everything it links to, and search hits */
+    function paint() {
+      const k = hoverK || selK, o = k && objs.get(k);
+      $$(".is-lit", svg).forEach((e) => e.classList.remove("is-lit"));
+      const lit = (x) => { if (x.el) x.el.classList.add("is-lit"); };
+      if (o) {
+        lit(o);
+        if (o.kind === "paper") {
+          o.links.forEach((l) => { lit(l); lit(l.a === o ? l.b : l.a); });
+          o.spokes.forEach((sp) => { lit(sp); lit(sp.h); });
+        } else o.spokes.forEach((sp) => { lit(sp); lit(sp.n); });
+      } else if (hits) hits.forEach(lit);
+      hubs.forEach((h) => h.g.classList.toggle("is-lit", h.el.classList.contains("is-lit")));
+      svg.classList.toggle("om-dim", !!o || !!hits);
+      $$(".om-node.is-sel", svg).forEach((e) => e.classList.remove("is-sel"));
+      if (selK) objs.get(selK).el.classList.add("is-sel");
+      const mode = linkSel.value, on = (x) => x.el.classList.contains("is-lit");
+      shown = (focus
+        ? links.filter((l) => fset.has(l.a) && fset.has(l.b) && l.shared.length > 1 && (mode !== "hover" || on(l)))
+        : links.filter((l) => mode === "all" || (mode === "strong" && l.shared.length > 1) || on(l)))
+        .concat(spokes.filter((sp) => on(sp) && sp.h !== focus));
+      const vis = new Set(shown);
+      links.forEach((l) => l.el.classList.toggle("is-shown", vis.has(l)));
+      spokes.forEach((sp) => sp.el.classList.toggle("is-shown", vis.has(sp)));
+      shown.forEach((l) => { if (l.shared) l.el.setAttribute("stroke", topicInfo((focus && l.shared.find((t) => t !== focus.id)) || l.shared[0]).color); });
+      drawLines();
+      astro.classList.toggle("is-pointing", !!hoverK);
+      syncClock();
+    }
+    function showTip(o, cx, cy) {
+      if (!o) { tip.hidden = true; return; }
+      tip.innerHTML = o.kind === "paper"
+        ? "<b>" + esc(o.p.title) + "</b><span>" + esc(venueYear(o.p)) + (o.p.award ? " · ★ " + esc(o.p.award) : "") + "</span>"
+        : "<b>" + esc(o.info.name) + "</b><span>" + o.papers.length + " paper" + (o.papers.length === 1 ? "" : "s") + (focus === o ? "" : " · click to zoom in") + "</span>";
+      tip.hidden = false;
+      const r = stage.getBoundingClientRect();
+      let x = cx - r.left + 18, y = cy - r.top + 22;
+      if (x + tip.offsetWidth > r.width - 6) x = cx - r.left - tip.offsetWidth - 12;
+      if (y + tip.offsetHeight > r.height - 6) y = cy - r.top - tip.offsetHeight - 12;
+      tip.style.left = Math.max(4, x) + "px"; tip.style.top = Math.max(4, y) + "px";
+    }
+
+    /* ---- side panel */
+    const dots = (topics) => '<span class="om-dots" aria-hidden="true">' + topics.map((t) => '<i style="background:' + topicInfo(t).color + '"></i>').join("") + "</span>";
+    const item = (nd, topics) => '<li><button type="button" class="om-item" data-om-go="' + nd.key + '">' + dots(topics) + "<span>" + esc(nd.p.title) + '</span><span class="y">' + (nd.p.year || "") + "</span></button></li>";
+    const hubBtn = (h, count) => '<li><button type="button" data-om-go="' + h.key + '"><i style="background:' + h.info.color + '"></i>' + esc(h.info.name) + '<span class="n">' + count + "</span></button></li>";
+    const back = () => '<p class="om-back">' + (focus && selK !== focus.key ? '<button type="button" class="linkish" data-om-go="' + focus.key + '">← ' + esc(focus.info.short) + "</button> · " : "") +
+      '<button type="button" class="linkish" data-om-go="">' + (focus ? "Whole system" : "← Whole system") + "</button></p>";
+    const keySVG = (inner) => '<svg viewBox="-11 -11 22 22" aria-hidden="true">' + inner + "</svg>";
+    function panelHome() {
+      if (!nodes.length) return '<h3 tabindex="-1">No papers loaded</h3><p>Could not read the publications in research-data.js.</p>';
+      const big = hubs[hubs.length - 1], moon = (r, extra) => keySVG((extra || "") + '<image href="' + art.moon + '" x="' + -r + '" y="' + -r + '" width="' + 2 * r + '" height="' + 2 * r + '"/>');
+      return '<p class="om-kicker">C:\\HUNG\\ORBIT.MAP</p><h3 tabindex="-1">A solar system of papers</h3>' +
+        "<p>Each planet is a research interest; the more papers carry it, the bigger the planet. Each moon is a paper, orbiting one of its interests. " +
+        "Point at a planet or moon to stop time and see what it links to. Click a planet to zoom into it and its papers.</p>" +
+        '<h4>Planets</h4><ul class="om-hubs">' + hubs.slice().reverse().map((h) => hubBtn(h, h.papers.length)).join("") + "</ul>" +
+        '<h4>Key</h4><dl class="om-key">' +
+          "<dt>" + keySVG('<image href="' + art.planets[hubs.length - 1] + '" x="-10" y="-10" width="20" height="20"/>') + "</dt><dd>Planet: a research interest (" + esc(big.info.short) + " has the most papers)</dd>" +
+          "<dt>" + moon(5) + "</dt><dd>Moon: a paper</dd>" +
+          "<dt>" + moon(7) + "</dt><dd>Larger moon: first-authored</dd>" +
+          "<dt>" + moon(5, '<circle r="8" fill="none" stroke="#B8860B" stroke-width="1.6"/>') + "</dt><dd>Gold ring: awarded paper</dd>" +
+          "<dt>" + keySVG('<line x1="-10" y1="4" x2="10" y2="-4" stroke="#0B3C7D" stroke-width="2.5"/>') + "</dt><dd>Line: papers sharing interests (thicker = more shared)</dd>" +
+          "<dt>" + keySVG('<line x1="-10" y1="4" x2="10" y2="-4" stroke="#0B3C7D" stroke-width="1.5" stroke-dasharray="2 3"/>') + "</dt><dd>Dashed: a paper's interests</dd>" +
+        "</dl>";
+    }
+    function panelPaper(o) {
+      const p = o.p;
+      const authors = p.authors.map((a, i) => { const nm = esc(a.replace(/\*+$/, "")); return i === p.meIdx ? '<b class="me">' + nm + "</b>" : nm; }).join(", ");
+      const keys = Object.keys(LINK_LABEL).concat(Object.keys(p.links).filter((k) => !LINK_LABEL[k]));
+      const out = keys.filter((k) => clean(p.links[k]) && safeUrl(clean(p.links[k])))
+        .map((k) => '<a class="mini" href="' + esc(clean(p.links[k])) + '" target="_blank" rel="noopener">' + esc(LINK_LABEL[k] || k) + '<span class="sr-only"> (opens in a new tab)</span></a>').join("");
+      const nb = o.links.map((l) => ({ nd: l.a === o ? l.b : l.a, shared: l.shared })).sort((a, b) => (b.shared.length - a.shared.length) || byNewest(a.nd.p, b.nd.p));
+      return back() + '<p class="om-kicker">' + esc((TYPE_LABEL[p.type] || p.type) + (p.year ? " · " + p.year : "")) + "</p>" +
+        '<h3 tabindex="-1">' + esc(p.title) + "</h3>" +
+        (authors ? "<p>" + authors + "</p>" : "") +
+        (p.venue || p.short ? "<p><i>" + esc(p.venue || p.short) + "</i></p>" : "") +
+        (p.award ? '<p><span class="chip chip-award">★ ' + esc(p.award) + "</span></p>" : "") +
+        '<div class="chips">' + p.topics.map((t) => {
+          const it = topicInfo(t), h = hubOf.get(t);
+          return '<button type="button" class="chip chip-topic" style="--tc:' + it.color + '"' + (h ? ' data-om-go="' + h.key + '"' : "") + ' title="' + esc(it.name) + ': go to its planet">' + esc(it.short) + "</button>";
+        }).join("") + "</div>" +
+        '<div class="om-actions"><button type="button" class="btn" data-om="to-pub" data-pi="' + p.i + '">Show in paper list</button>' + out + "</div>" +
+        "<h4>Linked papers (" + nb.length + ")</h4>" +
+        (nb.length ? '<ul class="om-list">' + nb.map((x) => item(x.nd, x.shared)).join("") + "</ul>" : "<p>No other paper shares its interests yet.</p>");
+    }
+    function panelHub(o) {
+      const list = nodes.filter((nd) => nd.hs.includes(o)).sort((a, b) => byNewest(a.p, b.p));
+      const mix = hubs.filter((h) => h !== o).map((h) => [h, list.filter((nd) => nd.p.topics.includes(h.id)).length]).filter((x) => x[1]).sort((a, b) => b[1] - a[1]);
+      return back() + '<p class="om-kicker">Planet · research interest</p><h3 tabindex="-1">' + esc(o.info.name) + "</h3>" +
+        "<p>" + list.length + " paper" + (list.length === 1 ? " carries" : "s carry") + " this interest. They are gathered around the planet; each moon keeps the color of the planet it normally orbits. " +
+        "Lines join papers that also share another interest.</p>" +
+        '<div class="om-actions"><button type="button" class="btn" data-om="to-topic" data-t="' + esc(o.id) + '">Show ' + (list.length === 1 ? "it" : "them") + " in the paper list</button></div>" +
+        (mix.length ? '<h4>Often combined with</h4><ul class="om-hubs">' + mix.map(([h, c]) => hubBtn(h, c)).join("") + "</ul>" : "") +
+        '<h4>Papers</h4><ul class="om-list">' + list.map((nd) => item(nd, nd.p.topics)).join("") + "</ul>";
+    }
+    function select(k, how) {
+      how = how || {};
+      const o = (k && objs.get(k)) || null;
+      if (o && o.kind === "hub") enterFocus(o);
+      else if (focus && !(o && fset.has(o))) { exitFocus(); if (!o) flyTo(fitView()); }
+      selK = o ? k : "";
+      panel.innerHTML = !o ? panelHome() : o.kind === "paper" ? panelPaper(o) : panelHub(o);
+      panel.scrollTop = 0;
+      paint();
+      status.textContent = o ? (o.kind === "paper" ? o.p.title : o.info.name + " · " + o.papers.length + " papers") : defaultStatus();
+      if (o && how.center && o.kind === "paper" && !fset.has(o)) centerOn(o, how.center === "zoom");
+      if (how.focusPanel) $("h3", panel).focus({ preventScroll: true });
+    }
+    function syncLinks() {
+      ["strong", "all"].forEach((m) => svg.classList.toggle("om-links-" + m, linkSel.value === m));
+      paint();
+    }
+
+    /* ---- pointer: hover, click, drag to pan, pinch / wheel to zoom, and the astronaut */
+    const ptrs = new Map();
+    let drag = null, moved = false;
+    svg.addEventListener("pointerover", (e) => {
+      if (moved || e.pointerType === "touch") return; // a tap selects; the panel shows the details
+      const g = e.target.closest(".om-node"), k = g ? g.dataset.k : "";
+      if (k !== hoverK) { hoverK = k; paint(); }
+      if (g) showTip(objs.get(k), e.clientX, e.clientY);
+    });
+    svg.addEventListener("pointerout", (e) => {
+      const g = e.target.closest(".om-node");
+      if (g && !g.contains(e.relatedTarget)) { hoverK = ""; paint(); tip.hidden = true; }
+    });
+    svg.addEventListener("focusin", (e) => {
+      const g = e.target.closest(".om-node"); if (!g) return;
+      const o = objs.get(g.dataset.k);
+      if (!g.matches(":focus-visible")) return; // keyboard focus only; pointers get hover and click
+      if (!inView(o)) centerOn(o, false);
+      hoverK = o.key; paint();
+      const r = g.getBoundingClientRect(); showTip(o, r.right, r.bottom);
+    });
+    svg.addEventListener("focusout", () => { if (!hoverK) return; hoverK = ""; paint(); tip.hidden = true; });
+    svg.addEventListener("keydown", (e) => {
+      const g = e.target.closest(".om-node");
+      if (g && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); select(g.dataset.k); }
+    });
+    const startGesture = () => { drag = { vb: Object.assign({}, vb), pts: [...ptrs.values()].map((p) => Object.assign({}, p)) }; };
+    stage.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      moved = false; cancelAnimationFrame(anim); startGesture();
+    });
+    stage.addEventListener("pointermove", (e) => {
+      if (e.pointerType === "mouse") {
+        const r = stage.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+        if (pointer) tilt += (Math.max(-16, Math.min(16, (x - pointer.x) * 1.2)) - tilt) * 0.35;
+        pointer = { x, y }; astro.hidden = false; moveAstro();
+      }
+      if (!drag || !ptrs.has(e.pointerId)) return;
+      ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      const pts = [...ptrs.values()], r = stage.getBoundingClientRect(), s = drag.vb.w / r.width;
+      if (pts.length === 1 && drag.pts.length === 1) {
+        const dx = pts[0].x - drag.pts[0].x, dy = pts[0].y - drag.pts[0].y;
+        if (!moved && Math.hypot(dx, dy) < 5) return;
+        if (!moved) { moved = true; stage.classList.add("is-panning"); tip.hidden = true; try { stage.setPointerCapture(e.pointerId); } catch (_) {} }
+        setVB({ x: drag.vb.x - dx * s, y: drag.vb.y - dy * s, w: drag.vb.w, h: drag.vb.h });
+      } else if (pts.length === 2 && drag.pts.length === 2) {
+        moved = true; tip.hidden = true;
+        const [a0, b0] = drag.pts, [a1, b1] = pts;
+        const d0 = Math.hypot(a0.x - b0.x, a0.y - b0.y) || 1, d1 = Math.hypot(a1.x - b1.x, a1.y - b1.y) || 1;
+        const w = clampW((drag.vb.w * d0) / d1), s1 = w / r.width;
+        const sx = drag.vb.x + ((a0.x + b0.x) / 2 - r.left) * s, sy = drag.vb.y + ((a0.y + b0.y) / 2 - r.top) * s;
+        setVB({ x: sx - ((a1.x + b1.x) / 2 - r.left) * s1, y: sy - ((a1.y + b1.y) / 2 - r.top) * s1, w, h: (drag.vb.h * w) / drag.vb.w });
+      }
+    });
+    stage.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") { astro.hidden = true; pointer = null; } });
+    const endPtr = (e) => {
+      if (!ptrs.delete(e.pointerId)) return;
+      stage.classList.remove("is-panning");
+      if (ptrs.size) startGesture(); else drag = null;
+    };
+    stage.addEventListener("pointerup", endPtr);
+    stage.addEventListener("pointercancel", endPtr);
+    stage.addEventListener("click", (e) => {
+      if (moved) { moved = false; return; }
+      if (e.target.closest("button")) return;
+      const g = e.target.closest(".om-node");
+      if (!g && focus && selK && selK !== focus.key) { select(focus.key); return; } // paper → back to its planet
+      select(g ? g.dataset.k : "");
+    });
+    stage.addEventListener("wheel", (e) => {
+      e.preventDefault(); cancelAnimationFrame(anim); tip.hidden = true;
+      zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : e.ctrlKey ? 0.01 : 0.002)));
+    }, { passive: false });
+
+    /* ---- toolbar, panel and title-bar buttons */
+    dlg.addEventListener("click", (e) => {
+      const go = e.target.closest("[data-om-go]");
+      if (go) {
+        const k = go.dataset.omGo;
+        select(k, { center: k ? "zoom" : "", focusPanel: true });
+        if (!k) flyTo(fitView());
+        return;
+      }
+      const b = e.target.closest("[data-om]"); if (!b) return;
+      switch (b.dataset.om) {
+        case "close": closeMap(); break;
+        case "play": userPaused = !userPaused; last = 0; syncClock(); break;
+        case "zoom-in": zoomCenter(1.4); break;
+        case "zoom-out": zoomCenter(1 / 1.4); break;
+        case "fit": if (focus) select(""); else flyTo(fitView()); break;
+        case "to-pub": revealPaper(+b.dataset.pi); break;
+        case "to-topic": closeMap(true); showTopic(b.dataset.t); break;
+      }
+    });
+    linkSel.addEventListener("change", syncLinks);
+    q.addEventListener("input", () => {
+      const toks = norm(q.value).split(/\s+/).filter(Boolean);
+      hits = toks.length ? nodes.filter((nd) => toks.every((t) => nd.p.hay.includes(t))) : null; hitIdx = -1;
+      nodes.forEach((nd) => nd.el.classList.toggle("is-hit", !!hits && hits.includes(nd)));
+      paint();
+      status.textContent = hits ? hits.length + " paper" + (hits.length === 1 ? " matches" : "s match") + (hits.length ? " · press Enter to visit " + (hits.length === 1 ? "it" : "each in turn") : "") : defaultStatus();
+    });
+    q.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && hits && hits.length) {
+        e.preventDefault(); hitIdx = (hitIdx + 1) % hits.length;
+        select(hits[hitIdx].key, { center: "zoom" });
+        status.textContent = "Match " + (hitIdx + 1) + " of " + hits.length + ": " + hits[hitIdx].p.title;
+      } else if (e.key === "Escape" && q.value) { e.preventDefault(); q.value = ""; q.dispatchEvent(new Event("input")); }
+    });
+
+    /* ---- open: grow out of the widget; close: shrink back into it */
+    const widgetShown = () => !orbitWin.hidden && getComputedStyle(orbitWin).display !== "none";
+    let closing = false;
+    function morph(from, reverse, done) {
+      const r = from && from.getBoundingClientRect();
+      if (reduceMotion || !dlg.animate || (reverse && !(r && r.width))) { if (done) done(); return; }
+      const b = dlg.getBoundingClientRect();
+      const small = r && r.width
+        ? { transform: "translate(" + (r.left - b.left) + "px," + (r.top - b.top) + "px) scale(" + r.width / b.width + "," + r.height / b.height + ")", opacity: 0.3 }
+        : { transform: "translate(" + b.width * 0.02 + "px," + b.height * 0.02 + "px) scale(.96)", opacity: 0 };
+      const big = { transform: "none", opacity: 1 };
+      const an = dlg.animate(reverse ? [big, small] : [small, big], { duration: reverse ? 200 : 300, easing: "cubic-bezier(.2,.7,.2,1)", fill: reverse ? "forwards" : "none" });
+      if (done) an.onfinish = () => { done(); an.cancel(); };
+    }
+    function openMap(from) {
+      if (!built) build();
+      if (!dlg.open) dlg.showModal();
+      setVB(fitView());
+      select(selK);
+      tip.hidden = true;
+      morph(from, false);
+      last = 0; cancelAnimationFrame(raf); raf = requestAnimationFrame(tick);
+      if (finePointer) q.focus({ preventScroll: true });
+    }
+    function closeMap(quick) {
+      if (!dlg.open || closing) return;
+      hoverK = ""; tip.hidden = true;
+      const to = !quick && widgetShown() ? $(".widget-body", orbitWin) : null;
+      if (!to) { dlg.close(); return; }
+      closing = true;
+      morph(to, true, () => { dlg.close(); closing = false; });
+    }
+    dlg.addEventListener("cancel", (e) => { e.preventDefault(); if (focus) select(""); else closeMap(); });
+    dlg.addEventListener("close", () => { cancelAnimationFrame(raf); exitFocus(true); astro.hidden = true; pointer = null; });
+    function revealPaper(i) {
+      closeMap(true);
+      if (mainWin.hidden) restore(mainWin);
+      setFinderOpen(true);
+      render();
+      const find = () => $('.pub[data-pi="' + i + '"]', el.list);
+      let li = find();
+      if (!li) { resetFilters(); li = find(); }
+      if (!li) return;
+      li.tabIndex = -1;
+      li.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+      li.focus({ preventScroll: true });
+      li.classList.remove("is-flash"); void li.offsetWidth; li.classList.add("is-flash");
+    }
+    return { open: openMap, close: closeMap };
+  })();
+
   if (dataOK) buildOptions();
   let qTimer;
   el.q.addEventListener("input", () => { clearTimeout(qTimer); qTimer = setTimeout(() => { S.q = el.q.value; render(); }, 70); });

@@ -98,6 +98,8 @@ window.RESEARCH_DATA = {
     "Nguyen Truong Thanh Hung",
     "Hung Nguyen"
   ],
+  // Optional per interest: "planet": "gas" | "ringed" | "swirl" | "desert" | "lava" | "ice" | "crater"
+  // picks how that interest's planet looks in orbit.exe (otherwise it is chosen by size).
   "interests": [
     {
       "id": "agents",
