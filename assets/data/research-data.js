@@ -32,7 +32,7 @@
      authors   required. Your name (see `me` below) is bolded automatically.
                Add * after a name for equal contribution:  "Jane Doe*"
      year      required. A number: 2024
-     type      "conference" | "journal" | "workshop" | "preprint" | "chapter" | "thesis"
+     type      "conference" | "journal" | "workshop" | "challenge" | "preprint" | "chapter" | "thesis"
      topics    Research-interest ids, e.g. ["xai", "cv"]. Each one shows as a
                chip in that interest's `color` on the paper, and the paper appears when a visitor
                clicks that interest's tile in the Bio section (or picks it in
@@ -102,7 +102,7 @@ window.RESEARCH_DATA = {
     {
       "id": "agents",
       "name": "Self-Evolving Multi-agent Systems",
-      "short": "SELF-EVOLVING MAS",
+      "short": "MAS",
       "file": "swarm.exe",
       "icon": "agents",
       "color": "#FFD84A"
@@ -177,7 +177,7 @@ window.RESEARCH_DATA = {
         "Hung Cao"
       ],
       "venue": "arXiv preprint arXiv:2609.27175",
-      "short": "arXiv 2026",
+      "short": "arXiv",
       "year": 2026,
       "month": "Sep",
       "type": "preprint",
@@ -195,7 +195,7 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "SEMV; replace the venue if/when a peer-reviewed version is published.",
+      "note": "",
       "links": {
         "paper": "https://arxiv.org/abs/2609.27175"
       }
@@ -212,10 +212,10 @@ window.RESEARCH_DATA = {
         "Hung Cao"
       ],
       "venue": "Big Cross-Modal Attenuation Correction (BIC-MAC) Challenge at MICCAI 2026",
-      "short": "MICCAI BIC-MAC 2026",
+      "short": "MICCAI 2026",
       "year": 2026,
       "month": "Sep",
-      "type": "workshop",
+      "type": "challenge",
       "topics": [
         "cv",
         "biomed"
@@ -227,15 +227,14 @@ window.RESEARCH_DATA = {
         "quartileSource": "",
         "impact": "",
         "extra": [
-          "Challenge Paper",
           "Oral"
         ]
       },
-      "award": "",
-      "note": "Challenge paper; BIC-MAC session at MICCAI 2026.",
+      "award": "1st Place",
+      "note": "",
       "links": {
         "paper": "https://arxiv.org/abs/2609.27848",
-        "project": "https://bic-mac-challenge.github.io/"
+        "Challenge": "https://bic-mac-challenge.github.io/"
       }
     },
     {
@@ -249,7 +248,7 @@ window.RESEARCH_DATA = {
         "Rene Richard",
         "Hung Cao"
       ],
-      "venue": "NGEN-AI 2026",
+      "venue": "The 2026 International Conference on Next Generation AI Systems",
       "short": "NGEN-AI 2026",
       "year": 2026,
       "month": "",
@@ -268,10 +267,9 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Conference program verified; add proceedings/DOI when available.",
+      "note": "",
       "links": {
         "paper": "https://arxiv.org/abs/2608.05107",
-        "project": "https://ngen-ai.org/program.php"
       }
     },
     {
@@ -284,8 +282,8 @@ window.RESEARCH_DATA = {
         "René Richard",
         "Hung Cao"
       ],
-      "venue": "arXiv preprint arXiv:2608.05391",
-      "short": "arXiv 2026",
+      "venue": "4th International Conference on Frontiers of Artificial Intelligence, Ethics, and Multidisciplinary Applications",
+      "short": "FAIEMA 2026",
       "year": 2026,
       "month": "Aug",
       "type": "preprint",
@@ -303,7 +301,7 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "CANOE; replace the venue if/when a peer-reviewed version is published.",
+      "note": "",
       "links": {
         "paper": "https://arxiv.org/abs/2608.05391"
       }
@@ -365,7 +363,7 @@ window.RESEARCH_DATA = {
         "quartileSource": "",
         "impact": "",
         "extra": [
-          "Position Paper"
+          "Invited Paper"
         ]
       },
       "award": "",
@@ -405,7 +403,7 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Add the final venue if this paper is later published.",
+      "note": "",
       "links": {
         "paper": "https://arxiv.org/abs/2606.16987",
         "code": "https://github.com/Analytics-Everywhere-Lab/hts"
@@ -454,11 +452,11 @@ window.RESEARCH_DATA = {
         "Van Pham",
         "Hung Cao"
       ],
-      "venue": "The 16th ACM International Conference on Multimedia Retrieval",
+      "venue": "Grand Challenge on Multimedia Verification at The 16th ACM International Conference on Multimedia Retrieval",
       "short": "ICMR 2026",
       "year": 2026,
       "month": "Jun",
-      "type": "conference",
+      "type": "challenge",
       "topics": [
         "agents",
         "xai",
@@ -470,12 +468,10 @@ window.RESEARCH_DATA = {
         "quartile": "",
         "quartileSource": "",
         "impact": "",
-        "extra": [
-          "Grand Challenge"
-        ]
+        "extra": []
       },
-      "award": "",
-      "note": "ICMR 2026 Grand Challenge on Multimedia Verification.",
+      "award": "1st Place",
+      "note": "",
       "links": {
         "paper": "https://arxiv.org/abs/2605.14495",
         "doi": "https://doi.org/10.1145/3805622.3812606",
@@ -665,7 +661,7 @@ window.RESEARCH_DATA = {
       "tags": {
         "core": "",
         "coreYear": "",
-        "quartile": "",
+        "quartile": "Q1",
         "quartileSource": "",
         "impact": "",
         "extra": []
@@ -978,7 +974,6 @@ window.RESEARCH_DATA = {
         "coreYear": "",
         "quartile": "Q1",
         "quartileSource": "",
-        "impact": "IF 14.8",
         "extra": []
       },
       "award": "",
@@ -1497,6 +1492,18 @@ window.RESEARCH_DATA = {
   ],
   "awards": [
     {
+      "year": "2026",
+      "kind": "award",
+      "title": "1st Place Prize",
+      "event": "ICMR 2026 Grand Challenge on Multimedia Verification"
+    },
+    {
+      "year": "2026",
+      "kind": "award",
+      "title": "1st Place Prize",
+      "event": "Big Cross-Modal Attenuation Correction (BIC-MAC) Challenge at MICCAI 2026"
+    },
+    {
       "year": "2025",
       "kind": "award",
       "title": "Runner-up of the Best Poster Award",
@@ -1533,10 +1540,10 @@ window.RESEARCH_DATA = {
       "event": "Australasian Joint Conference on Artificial Intelligence (AJCAI 2023)"
     },
     {
-      "year": "2021–2023",
+      "year": "2020",
       "kind": "scholarship",
       "title": "DAAD Scholarship",
-      "event": "Master studies in Germany"
+      "event": "Sur-place scholarship"
     },
     {
       "year": "2016–2020",
