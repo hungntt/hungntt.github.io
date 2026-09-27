@@ -581,6 +581,7 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 dialog.orbit-map{position:fixed;inset:var(--menubar-h) 0 var(--taskbar-h);margin:auto;width:min(1240px, calc(100vw - 24px));height:min(820px, calc(100% - 16px));max-width:none;max-height:none;
   padding:3px;border:0;color:#000;font:12px/1.5 var(--f-ui);flex-direction:column;transform-origin:0 0}
 dialog.orbit-map[open]{display:flex}
+@media (min-width:761px){dialog.orbit-map>.titlebar{cursor:move;touch-action:none}}
 dialog.orbit-map::backdrop{background:repeating-conic-gradient(rgba(7,20,38,.5) 0 25%,transparent 0 50%) 0 0/2px 2px}
 .om-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:2px;padding:4px 4px 5px;background:var(--metal);border-bottom:1px solid #8B8B8B;box-shadow:0 1px 0 #fff}
 .om-find{flex:1 1 240px;display:flex}
@@ -1927,7 +1928,7 @@ body.crt .crt-overlay{display:block}
     const y = Math.min(Math.max(r.top + dy, fixed ? mb : mb - window.scrollY), tb - 30);
     const bx = fixed ? r.left : parseFloat(win.style.left) || 0, by = fixed ? r.top : parseFloat(win.style.top) || 0;
     win.style.left = bx + x - r.left + "px"; win.style.top = by + y - r.top + "px";
-    if (fixed) win.style.right = "auto";
+    if (fixed) Object.assign(win.style, { right: "auto", bottom: "auto", margin: "0" }); // drop centering (inset + margin:auto)
   }
   function draggable(win, bar, enabled) {
     let drag = null;
@@ -1948,7 +1949,11 @@ body.crt .crt-overlay{display:block}
   }
   draggable(orbitWin, $(".titlebar", orbitWin));
   draggable(mainWin, $("#main-titlebar"), canDragMain);
+  const omDlg = $("#orbit-map"), canDragMap = () => window.innerWidth > 760; // full-screen below that
+  draggable(omDlg, $(".titlebar", omDlg), canDragMap);
   window.addEventListener("resize", () => {
+    if (!canDragMap()) ["left", "top", "right", "bottom", "margin"].forEach((k) => { omDlg.style[k] = ""; });
+    else if (omDlg.open && omDlg.style.left) moveWin(omDlg, 0, 0);
     if (!canDragMain()) { mainWin.style.left = mainWin.style.top = ""; } else if (mainWin.style.left) moveWin(mainWin, 0, 0);
     if (orbitWin.style.left && !orbitWin.hidden && getComputedStyle(orbitWin).display !== "none") moveWin(orbitWin, 0, 0);
   });
@@ -3393,7 +3398,7 @@ body.crt .crt-overlay{display:block}
     }
     function openMap(from) {
       if (!built) build();
-      if (!dlg.open) dlg.showModal();
+      if (!dlg.open) { ["left", "top", "right", "bottom", "margin"].forEach((k) => { dlg.style[k] = ""; }); dlg.showModal(); } // re-center each time it opens
       setVB(fitView());
       select(selK);
       tip.hidden = true;
