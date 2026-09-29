@@ -5,8 +5,8 @@
   Everything on this page is read at load time from:
     index.html                    name, affiliations, bio, education, positions,
                                   teaching and contact links
-    assets/data/research-data.js  research interests, publications, awards and
-                                  academic services
+    assets/data/research-data.js  research interests, publications, awards,
+                                  intellectual property and academic services
   Edit those two files and this page (and cv.pdf) follow.
 
   cv.pdf is printed from this page by the GitHub Pages workflow on every push
@@ -120,6 +120,8 @@ p{margin:0 0 4px}
 .row{display:grid;grid-template-columns:5.2em 1fr;gap:0 10px;padding:1.5px 0;break-inside:avoid}
 .row .y{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--accent)}
 .row .e{color:var(--muted)}
+.row .au{display:block}
+.row .au .me{font-weight:700;text-decoration:underline;text-underline-offset:1.5px}
 .svc{display:grid;grid-template-columns:11.5em 1fr;gap:2px 12px;margin:0}
 .svc dt{font-weight:600;color:var(--accent)}
 .svc dd{margin:0}
@@ -298,6 +300,15 @@ p{margin:0 0 4px}
     if (nPubs) h += sec("Publications", nPubs, publicationsHTML());
     if (awards.length) h += sec("Honors, Awards &amp; Scholarships", awards.length, '<ul class="rows">' + awards.map((a) =>
       '<li class="row"><span class="y">' + esc(a.year) + "</span><span><b>" + esc(a.title) + "</b>" + (clean(a.event) ? ' — <span class="e">' + esc(a.event) + "</span>" : "") + "</span></li>").join("") + "</ul>");
+    const ip = DATA.intellectualProperty || [];
+    if (ip.length) h += sec("Intellectual Property", ip.length, '<ul class="rows">' + ip.map((r) => {
+      const authors = (Array.isArray(r.authors) ? r.authors : [r.authors]).filter(Boolean).map(String)
+        .map((a) => (isMe(a) ? '<span class="me">' + esc(a) + "</span>" : esc(a))).join(", ");
+      const detail = [clean(r.kind) && clean(r.kind) + (clean(r.number) ? " No. " + clean(r.number) : ""), clean(r.issuer), clean(r.date)].filter(Boolean);
+      return '<li class="row"><span class="y">' + esc(r.year) + "</span><span><b>" + link(r.url, esc(r.title)) + "</b>" +
+        (detail.length ? ' — <span class="e">' + esc(detail.join(", ")) + "</span>" : "") +
+        (authors ? '<span class="au">' + authors + "</span>" : "") + "</span></li>";
+    }).join("") + "</ul>");
     if (H.teaching.length) h += sec("Teaching Experience", H.teaching.reduce((t, g) => t + g.items.length, 0), H.teaching.map((g) =>
       (g.heading ? "<h3>" + esc(g.heading) + "</h3>" : "") + '<ul class="entries">' + g.items.map(entryHTML).join("") + "</ul>").join(""));
     const mentorship = DATA.mentorship || [];

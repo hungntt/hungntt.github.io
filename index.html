@@ -3,7 +3,8 @@
   Truong Thanh Hung Nguyen — personal research homepage.
   Standalone page (no Jekyll front matter, so Jekyll copies it as-is).
 
-  Papers, awards and reviewing duties live in  assets/data/research-data.js
+  Papers, awards, patents/copyrights and reviewing duties live in
+  assets/data/research-data.js
   — open that file for the guide on adding papers and ranking tags.
   Bio, education and links are edited directly in this file (search for
   "EDIT:" comments).
@@ -16,7 +17,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Truong Thanh Hung Nguyen · Research Homepage</title>
-<meta name="description" content="Personal website of Truong Thanh Hung Nguyen (Hung Nguyen), PhD researcher at the University of New Brunswick and National Research Council Canada, working on explainable AI and computer vision.">
+<meta name="description" content="Personal website of Truong Thanh Hung Nguyen (Hung Nguyen), PhD candidate at the University of New Brunswick and National Research Council Canada, working on explainable AI and computer vision.">
 <meta name="author" content="Truong Thanh Hung Nguyen">
 <meta name="theme-color" content="#0B3C7D">
 <meta property="og:type" content="website">
@@ -473,6 +474,11 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .trophy b{display:block;color:#fff;font:bold 14px/1.4 var(--f-body)}
 .trophy .ev{display:block;color:var(--text-dim);font-size:13px;line-height:1.5}
 .trophy .chips{margin-top:6px}
+.trophy.ip{border-left-color:var(--mint)}
+.trophy .au{display:block;color:var(--text-dim);font-size:13px;line-height:1.5}
+.trophy .au .me{color:#fff;font-weight:bold}
+.trophy .mini .ico{width:12px;height:12px}
+#awards-h{margin-top:4px}
 .table-wrap{overflow-x:auto}
 .mentor{display:grid;grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));gap:10px;margin:0 0 6px;padding:0;list-style:none}
 .mentor li{display:flex;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(90deg, rgba(22,141,218,.22), rgba(11,60,125,.08));border:1px solid rgba(110,217,255,.25);border-left:3px solid var(--mint)}
@@ -926,7 +932,7 @@ body.crt .crt-overlay{display:block}
   .hero-main{display:block;max-width:none;padding:0 0 12px}
   .call-controls,.call-tag,.call-cover,.call>.titlebar,.call-screen::after{display:none!important}
   .call{width:140px;margin-bottom:12px;box-shadow:none}
-  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.mentor .n,.mentor .lv,.log .w,.term{color:#000!important;text-shadow:none}
+  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.trophy .au,.mentor .n,.mentor .lv,.log .w,.term{color:#000!important;text-shadow:none}
   .term,.pf-list-wrap,.nest{background:#fff;box-shadow:none}
   .sec{padding:14px 0;break-inside:avoid-page}
   .player-wrap,.np{display:none!important}
@@ -1138,7 +1144,7 @@ body.crt .crt-overlay{display:block}
             <text x="690" y="38">PLANET XAI-24b</text>
             <text x="722" y="377" fill="#D7D7D7">MOON · CV-2</text>
             <text x="990" y="392" text-anchor="end" fill="#FFB8DB">SIG ▮▮▮▮▯</text>
-            <text x="990" y="412" text-anchor="end" fill="#A9C4E4">RA 03h47m · DEC +24°07′</text>
+            <text x="990" y="412" text-anchor="end" fill="#A9C4E4">SE 07h02m · FEB +14°98′</text>
           </g>
         </svg>
       </div>
@@ -1212,7 +1218,7 @@ body.crt .crt-overlay{display:block}
           <!-- EDIT: bio text -->
           <p>I am currently a PhD candidate at Analytics Everywhere Lab, University of New Brunswick (UNB), Canada and National Research Council Canada (NRC/CNRC), Canada, under the supervision of <a href="https://www.hungcao.me/">Prof. Hung Cao</a> and <a href="https://nrc.canada.ca/en/corporate/contact-us/nrc-directory-science-professionals/rene-richard">Rene Richard</a>.</p>
           <p>I received my Master degree of Artificial Intelligence (minor in Biomedical Engineering) at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Germany in 2023 and my Bachelor degree of Computer Science at Frankfurt University of Applied Sciences (FRA-UAS), Germany in 2020.
-          <p>My research interest involves Self-Evolving Multi-agent Systems, Contestable/Explainable Artificial Intelligence (C/XAI), Computer Vision, Edge Computing, Biomedical Engineering.</p>
+          <p>My research interest involves Self-Evolving Multi-agent Systems, Responsible AI, Computer Vision, Edge Computing, Biomedical Engineering.</p>
         </div>
         <aside class="win nest" aria-labelledby="props-t">
           <div class="titlebar"><span class="ico tb-ico" data-icon="monitor"></span><span class="titlebar-text" id="props-t">System Properties</span></div>
@@ -1384,7 +1390,7 @@ body.crt .crt-overlay{display:block}
               <dl>
                 <dt><span class="chip chip-award">★ Award</span></dt><dd>Paper award</dd>
                 <dt><span class="chip chip-if">IF 5.0</span></dt><dd>Impact factor</dd>
-                <dt><span class="chip chip-topic">C/XAI</span></dt><dd>Research interest (each has its own color)</dd>
+                <dt><span class="chip chip-topic">RAI</span></dt><dd>Research interest (each has its own color)</dd>
                 <dt><span class="chip chip-extra">ORAL</span></dt><dd>Custom tag</dd>
               </dl>
             </div>
@@ -1401,7 +1407,11 @@ body.crt .crt-overlay{display:block}
     <!-- ============================= HONORS ============================= -->
     <section class="sec" id="honors" data-section="Honors &amp; awards" aria-labelledby="hon-h">
       <div class="sec-head"><span class="sec-no" aria-hidden="true">05/</span><h2 id="hon-h">Honors &amp; Awards</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\TROPHY.LOG</span></div>
-      <ul class="trophies" id="awards-list"></ul>
+      <!-- Lists come from `awards` and `intellectualProperty` in assets/data/research-data.js -->
+      <h3 class="sub" id="awards-h" hidden>Awards &amp; scholarships</h3>
+      <ul class="trophies" id="awards-list" aria-labelledby="awards-h"></ul>
+      <h3 class="sub" id="ip-h" hidden>Intellectual property</h3>
+      <ul class="trophies" id="ip-list" aria-labelledby="ip-h" hidden></ul>
     </section>
 
     <!-- ============================ SERVICES ============================ -->
@@ -3493,6 +3503,24 @@ body.crt .crt-overlay{display:block}
       (chips ? '<span class="chips">' + chips + "</span>" : "") + "</span></li>";
   }).join("");
 
+  // patents and registered copyrights, listed under the awards
+  const ip = (dataOK && DATA.intellectualProperty) || [];
+  $("#ip-list").innerHTML = ip.map((r) => {
+    const authors = (Array.isArray(r.authors) ? r.authors : [r.authors]).filter(Boolean).map(String)
+      .map((a) => (isMe(a) ? '<strong class="me">' + esc(a) + "</strong>" : esc(a))).join(", ");
+    const owners = (Array.isArray(r.owners) ? r.owners : [r.owners]).map(clean).filter(Boolean);
+    const title = clean(r.url) && safeUrl(clean(r.url)) ? '<a href="' + esc(clean(r.url)) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
+    const ev = [clean(r.number) && "No. " + clean(r.number), clean(r.issuer), clean(r.date)].filter(Boolean).join(" · ");
+    return '<li class="trophy ip"><span class="ico" aria-hidden="true">' + pixelSVG("doc") + "</span>" +
+      '<span class="yr">' + esc(r.year) + "</span><span><b>" + title + "</b>" + (ev ? '<span class="ev">' + esc(ev) + "</span>" : "") +
+      (authors ? '<span class="au">Authors: ' + authors + "</span>" : "") +
+      (owners.length ? '<span class="au">Owners: ' + esc(owners.join("; ")) + "</span>" : "") +
+      (clean(r.kind) ? '<span class="chips"><span class="chip chip-extra">' + esc(r.kind) + "</span></span>" : "") +
+      (clean(r.url) && safeUrl(clean(r.url)) ? '<span class="pub-links"><a class="mini" href="' + esc(clean(r.url)) + '" target="_blank" rel="noopener"><span class="ico">' + pixelSVG("doc") + "</span>View certificate" +
+        '<span class="sr-only"> for “' + esc(r.title) + '” (opens in a new tab)</span></a></span>' : "") + "</span></li>";
+  }).join("");
+  if (ip.length) { $("#ip-list").hidden = false; $("#ip-h").hidden = false; $("#awards-h").hidden = !awards.length; }
+
   const service = (dataOK && DATA.service) || [];
   (function renderService() {
     let h = "";
@@ -3515,9 +3543,9 @@ body.crt .crt-overlay{display:block}
   if (mentorship.length) { $("#mentorship-h").hidden = false; $("#review-h").hidden = false; }
 
   /* counters */
-  const counts = { publications: pubs.length, awards: awards.length, service: service.length };
+  const counts = { publications: pubs.length, awards: awards.length, ip: ip.length, service: service.length };
   $$("[data-count]").forEach((d) => { d.textContent = counts[d.dataset.count]; });
-  $("#obj-count").textContent = (pubs.length + awards.length + service.length) + " objects";
+  $("#obj-count").textContent = (pubs.length + awards.length + ip.length + service.length) + " objects";
 
   /* ------------------------------------------------------------ ticker */
   (function ticker() {

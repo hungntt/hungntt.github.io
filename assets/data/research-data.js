@@ -1,8 +1,8 @@
 /* ============================================================================
    research-data.js  —  the content database behind index.html
    ============================================================================
-   The Publications, Honors & Awards and Academic Services sections are all
-   generated from this file. Edit, save, refresh. The page handles sorting,
+   The Publications, Honors & Awards (including intellectual property) and
+   Academic Services sections are all generated from this file. Edit, save, refresh. The page handles sorting,
    year grouping, counts, search, and the filter dropdowns by itself.
 
    ── ADD A PAPER ─────────────────────────────────────────────────────────────
@@ -64,6 +64,21 @@
        SJR quartiles           https://www.scimagojr.com/journalrank.php
        JCR quartiles           https://jcr.clarivate.com/
 
+   ── ADD A PATENT / COPYRIGHT ────────────────────────────────────────────────
+     Entries go in `intellectualProperty: [ ... ]`. They show under
+     "Intellectual property" in the Honors section and in the CV.
+     {
+       year:    "2024",
+       date:    "21 May 2024",                // date of grant / registration
+       kind:    "Software copyright",         // e.g. "Patent", "Utility solution"
+       title:   "",
+       authors: ["", "Truong Thanh Hung Nguyen"],
+       owners:  [""],
+       number:  "",                           // certificate / patent number
+       issuer:  "",                           // granting office
+       url:     ""
+     },
+
    ── TROUBLESHOOTING ─────────────────────────────────────────────────────────
      If the paper list says "Could not load research-data.js", this file has
      a syntax error (usually a missing comma or quote). Open the browser
@@ -111,8 +126,8 @@ window.RESEARCH_DATA = {
     },
     {
       "id": "xai",
-      "name": "Contestable / Explainable AI (C/XAI)",
-      "short": "C/XAI",
+      "name": "Responsible AI",
+      "short": "RAI",
       "file": "xai.exe",
       "icon": "magnifier",
       "color": "#6ED9FF"
@@ -1509,6 +1524,29 @@ window.RESEARCH_DATA = {
       "kind": "scholarship",
       "title": "DAAD Scholarship",
       "event": "Exchange bachelor studies in Germany"
+    }
+  ],
+  // Patents and registered copyrights (see ADD A PATENT / COPYRIGHT above)
+  "intellectualProperty": [
+    {
+      "year": "2024",
+      "date": "21 May 2024",
+      "kind": "Software copyright",
+      "title": "EVAAI Software",
+      "authors": [
+        "Vo Thanh Khang Nguyen",
+        "Van Binh Truong",
+        "Truong Thanh Hung Nguyen",
+        "Quoc Khanh Nguyen",
+        "Quoc Hung Cao"
+      ],
+      "owners": [
+        "Quoc Khanh Nguyen",
+        "FPT Software Quy Nhon Co., Ltd."
+      ],
+      "number": "3921/2024/QTG",
+      "issuer": "Copyright Office of Vietnam, Ministry of Culture, Sports and Tourism",
+      "url": "https://hungntt.github.io/assets/docs/evaai-copyright-certificate.jpg"
     }
   ],
   "mentorship": [
