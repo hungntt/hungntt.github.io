@@ -301,7 +301,7 @@ p{margin:0 0 4px}
     if (awards.length) h += sec("Honors, Awards &amp; Scholarships", awards.length, '<ul class="rows">' + awards.map((a) =>
       '<li class="row"><span class="y">' + esc(a.year) + "</span><span><b>" + esc(a.title) + "</b>" + (clean(a.event) ? ' — <span class="e">' + esc(a.event) + "</span>" : "") + "</span></li>").join("") + "</ul>");
     const ip = DATA.intellectualProperty || [];
-    if (ip.length) h += sec("Intellectual Property", ip.length, '<ul class="rows">' + ip.map((r) => {
+    if (ip.length) h += sec("Patents &amp; Copyrights", ip.length, '<ul class="rows">' + ip.map((r) => {
       const authors = (Array.isArray(r.authors) ? r.authors : [r.authors]).filter(Boolean).map(String)
         .map((a) => (isMe(a) ? '<span class="me">' + esc(a) + "</span>" : esc(a))).join(", ");
       const detail = [clean(r.kind) && clean(r.kind) + (clean(r.number) ? " No. " + clean(r.number) : ""), clean(r.issuer), clean(r.date)].filter(Boolean);
