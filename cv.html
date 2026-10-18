@@ -82,6 +82,7 @@ h2{margin:0 0 6px;padding-bottom:3px;background:var(--nebula) left bottom/100% 1
 h3{margin:9px 0 3px;font:600 9.6pt/1.2 var(--f-body);color:var(--muted);letter-spacing:.3px;break-after:avoid}
 p{margin:0 0 4px}
 .summary{color:var(--ink)}
+.summary a,.entry .cap a{color:var(--accent)}
 
 /* two-column entries (education, positions, teaching) */
 /* orbit timeline: a dashed path with a solid dot per entry; current roles are purple */
@@ -108,6 +109,7 @@ p{margin:0 0 4px}
 .pub .ttl{font-weight:600}
 .pub .meta{color:var(--muted)}
 .pub .meta .ven{color:var(--ink)}
+.pub .note{color:var(--muted);font-style:italic}
 .pub .me{font-weight:700;text-decoration:underline;text-underline-offset:1.5px}
 .pub .ven{font-style:italic}
 .pub .tags{white-space:nowrap}
@@ -172,6 +174,12 @@ p{margin:0 0 4px}
     c.querySelectorAll(sel).forEach((x) => x.remove());
     return clean(c.textContent);
   }
+  // escaped text of an element, keeping its links (e.g. supervisors' pages) as links
+  function richText(el) {
+    if (!el) return "";
+    return clean(Array.from(el.childNodes).map((n) => n.nodeType === 3 ? n.textContent.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c])
+      : n.nodeType !== 1 ? "" : n.tagName === "A" ? link(n.getAttribute("href"), richText(n)) : richText(n)).join(""));
+  }
   const bracketless = (s) => clean(s).replace(/^\[\s*|\s*\]$/g, "");
   // "GERMANY · VIETNAM" -> "Germany · Vietnam"; short acronyms such as UNB or FAU stay as they are
   const titleCase = (s) => s.replace(/\p{L}+/gu, (w) => (w.length <= 3 ? w : w[0] + w.slice(1).toLowerCase()));
@@ -194,7 +202,7 @@ p{margin:0 0 4px}
         when: /\d/.test(d) ? d : "",          // labels such as [TA] or [GUEST] are not dates
         title, org,
         major: txt(li.querySelector(".maj")),
-        cap: qa(".cap", li).map(txt),
+        cap: qa(".cap", li).map(richText),
         where: titleCase(bracketless(textWithout(li.querySelector(".st"), ".sr-only"))),
         now: !!li.querySelector(".st.run")      // shown on the homepage with a blinking "running" dot
       };
@@ -210,7 +218,7 @@ p{margin:0 0 4px}
       name: lines(q("#hero-name")).join(" "),
       role: txt(q(".hero-role")),
       aff: lines(q(".hero-aff")),
-      bio: qa("#about .bio p").map(txt).filter(Boolean),
+      bio: qa("#about .bio p").map(richText).filter(Boolean),
       // the CV lists the personal homepage (right after email) instead of the lab page
       contacts: qa("#contact .link-tile").map((a) => ({ label: txt(a.querySelector("b")), value: txt(a.querySelector("small")), href: a.getAttribute("href") }))
         .filter((c) => !/aelab/i.test(c.label))
@@ -226,7 +234,7 @@ p{margin:0 0 4px}
     const when = e.when.replace(/\s*[-–]\s*/g, " – ").replace(/\bnow\b/i, "Present");
     return '<li class="entry' + (e.now ? " now" : "") + '"><div class="l"><span class="t">' + esc(e.title) + (e.major ? ' <span class="maj">' + esc(e.major) + "</span>" : "") + "</span>" +
       (e.org ? '<span class="sub">' + esc(e.org) + "</span>" : "") +
-      e.cap.map((c) => '<span class="cap">' + esc(c) + "</span>").join("") + "</div>" +
+      e.cap.map((c) => '<span class="cap">' + c + "</span>").join("") + "</div>" +
       '<div class="r">' + (when ? '<span class="when">' + esc(when) + "</span>" : "") + (e.where ? '<span class="where">' + esc(e.where) + "</span>" : "") + "</div></li>";
   }
 
@@ -254,7 +262,8 @@ p{margin:0 0 4px}
       '<span class="ttl">' + link(url, esc(p.title)) + "</span>" +
       '<span class="au">' + authors + "</span>" +
       '<span class="meta">' + (venue ? '<span class="ven">' + esc(venue) + "</span>" + shortTag + ", " : "") + esc(p.year) +
-      (tags.length ? ' <span class="tags">' + tags.join("") + "</span>" : "") + "</span></span></li>";
+      (tags.length ? ' <span class="tags">' + tags.join("") + "</span>" : "") + "</span>" +
+      (/under review/i.test(clean(p.note)) ? '<span class="note">' + esc(clean(p.note)) + "</span>" : "") + "</span></li>";
   }
   function publicationsHTML() {
     const pubs = (DATA.publications || []).filter((p) => clean(p.title));
@@ -293,7 +302,7 @@ p{margin:0 0 4px}
         '<div class="body" id="' + id + '">' + body + "</div></section>";
     };
     const nPubs = (DATA.publications || []).length;
-    if (H.bio.length) h += sec("Profile", "", '<p class="summary">' + esc(H.bio[0]) + "</p>" +
+    if (H.bio.length) h += sec("Profile", "", '<p class="summary">' + H.bio[0] + "</p>" +
       (interests.length ? "<p><b>Research interests:</b> " + esc(interests.join(" · ")) + "</p>" : ""));
     if (H.education.length) h += sec("Education", H.education.length, '<ul class="entries">' + H.education.map(entryHTML).join("") + "</ul>");
     if (H.positions.length) h += sec("Research &amp; Professional Experience", H.positions.length, '<ul class="entries">' + H.positions.map(entryHTML).join("") + "</ul>");

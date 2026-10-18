@@ -118,7 +118,7 @@ window.RESEARCH_DATA = {
   "interests": [
     {
       "id": "agents",
-      "name": "Self-Evolving Multi-agent Systems",
+      "name": "Self-Evolving Multi-Agent Systems",
       "short": "MAS",
       "file": "swarm.exe",
       "icon": "agents",
@@ -157,12 +157,22 @@ window.RESEARCH_DATA = {
       "color": "#FF7F96"
     },
     {
+      "id": "psych",
+      "name": "Psychology",
+      "short": "PSYCH",
+      "file": "mind.exe",
+      "icon": "brain",
+      "color": "#5EEAD4",
+      "planet": "swirl"
+    },
+    {
       "id": "quantum",
       "name": "Quantum Machine Learning",
       "short": "QUANTUM ML",
       "file": "qubit.bin",
       "icon": "atom",
-      "color": "#F59CFF"
+      "color": "#F59CFF",
+      "planet": "crater"
     },
     {
       "id": "rl",
@@ -170,7 +180,8 @@ window.RESEARCH_DATA = {
       "short": "RL",
       "file": "agent.bin",
       "icon": "joystick",
-      "color": "#7EE89A"
+      "color": "#7EE89A",
+      "planet": "ice"
     },
     // {
     //   "id": "chem",
@@ -212,7 +223,7 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "",
+      "note": "Under review at Intelligent Computing (Science Partner Journal; Q1, IF 6.9).",
       "links": {
         "paper": "https://arxiv.org/abs/2609.27175",
         "code": "https://github.com/Analytics-Everywhere-Lab/SEMV"
@@ -341,7 +352,8 @@ window.RESEARCH_DATA = {
       "topics": [
         "agents",
         "xai",
-        "biomed"
+        "biomed",
+        "psych"
       ],
       "tags": {
         "core": "",
@@ -666,7 +678,8 @@ window.RESEARCH_DATA = {
       "type": "journal",
       "topics": [
         "xai",
-        "biomed"
+        "biomed",
+        "psych"
       ],
       "tags": {
         "core": "",
@@ -867,7 +880,8 @@ window.RESEARCH_DATA = {
       "type": "conference",
       "topics": [
         "xai",
-        "biomed"
+        "biomed",
+        "psych"
       ],
       "tags": {
         "core": "B",
@@ -1441,6 +1455,12 @@ window.RESEARCH_DATA = {
     },
   ],
   "awards": [
+    {
+      "year": "2026",
+      "kind": "scholarship",
+      "title": "Canada Graduate Research Scholarship – Doctoral (CGS D) (Nominated)",
+      "event": "Tri-Agency (NSERC, CIHR, SSHRC), Government of Canada"
+    },
     {
       "year": "2026",
       "kind": "award",
