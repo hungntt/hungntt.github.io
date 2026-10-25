@@ -194,6 +194,39 @@ window.RESEARCH_DATA = {
   ],
   "publications": [
     {
+      "title": "Uncertainty-Gated SHAP-Dirichlet Refinement for MRI-Based Depression Classification",
+      "authors": [
+        "Phuc Truong Loc Nguyen",
+        "Nguyen Truong Toan To",
+        "Truong Thanh Hung Nguyen",
+        "Hoang-Loc Cao",
+        "Hung Cao"
+      ],
+      "venue": "arXiv preprint arXiv:2610.25635",
+      "short": "arXiv",
+      "year": 2026,
+      "month": "Oct",
+      "type": "preprint",
+      "topics": [
+        "xai",
+        "biomed",
+        "psych"
+      ],
+      "tags": {
+        "core": "",
+        "coreYear": "",
+        "quartile": "",
+        "quartileSource": "",
+        "impact": "",
+        "extra": []
+      },
+      "award": "",
+      "note": "",
+      "links": {
+        "paper": "https://arxiv.org/abs/2610.25635"
+      }
+    },
+    {
       "title": "Self-Evolving Multimedia Verification through Memory Consolidation of Contestation Experiences",
       "authors": [
         "Truong Thanh Hung Nguyen",
@@ -1679,6 +1712,18 @@ window.RESEARCH_DATA = {
     {
       "role": "Conference Reviewer",
       "venue": "International Conference on Information Reuse and Integration for Data Science (IEEE IRI 2025, 2024)",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Book Translator",
+      "venue": "AI 2041: Ten Visions for Our Future (Kai-Fu Lee & Chen Qiufan)",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Book Translator",
+      "venue": "Co-Intelligence: Living and Working with AI (Ethan Mollick)",
       "url": "",
       "tags": {}
     }
