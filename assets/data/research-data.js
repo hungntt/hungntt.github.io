@@ -1726,6 +1726,12 @@ window.RESEARCH_DATA = {
       "venue": "Co-Intelligence: Living and Working with AI (Ethan Mollick)",
       "url": "",
       "tags": {}
+    },
+    {
+      "role": "Book Translator",
+      "venue": "Thrive: Maximizing Well-Being in the Age of AI (Ravi Bapna & Anindya Ghose)",
+      "url": "",
+      "tags": {}
     }
   ]
 };
