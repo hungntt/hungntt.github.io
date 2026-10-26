@@ -491,6 +491,18 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .svc th,.svc td{padding:9px 12px;border:1px solid rgba(110,217,255,.35);text-align:left;vertical-align:top}
 .svc thead th{background:rgba(22,141,218,.28);color:#fff;font:bold 11px/1.2 var(--f-ui);letter-spacing:.8px;text-transform:uppercase}
 .svc tbody th{width:1%;white-space:nowrap;color:var(--cyan);font:19px/1.2 var(--f-term);font-weight:normal;background:rgba(11,60,125,.25)}
+.language-list{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.language-list li{padding:10px 16px;border:1px solid rgba(110,217,255,.35);background:rgba(11,60,125,.25)}
+.language-list b{color:var(--cyan)}
+.reference-list{margin:0;padding:0;list-style:none;counter-reset:reference}
+.reference-card{padding:18px 0;border-bottom:1px solid rgba(110,217,255,.35);break-inside:avoid;counter-increment:reference}
+.reference-card:first-child{padding-top:0}
+.reference-card:last-child{border-bottom:0;padding-bottom:0}
+.reference-card h3{margin:0 0 10px;color:var(--cyan);font:700 17px/1.4 var(--f-body)}
+.reference-card h3::before{content:counter(reference) ". "}
+.reference-card dl{display:grid;grid-template-columns:7em minmax(0,1fr);gap:5px 12px;margin:0;font-size:14px;line-height:1.5}
+.reference-card dt{font-weight:700;color:var(--lavender)}
+.reference-card dd{margin:0;overflow-wrap:anywhere}
 .links-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));gap:10px;margin:0;padding:0;list-style:none}
 .link-tile{display:grid;grid-template-columns:32px minmax(0,1fr);gap:1px 11px;align-items:center;padding:10px 12px;background:var(--silver);box-shadow:var(--raised);color:#000!important;text-decoration:none!important;text-shadow:none!important}
 .link-tile .ico{grid-row:span 2;width:32px;height:32px}
@@ -1008,6 +1020,7 @@ body.crt .crt-overlay{display:block}
         <a class="menu-item" href="#about"><span class="ico" data-icon="monitor"></span>Short bio</a>
         <a class="menu-item" href="#education"><span class="ico" data-icon="cap"></span>Education &amp; positions</a>
         <a class="menu-item" href="#teaching"><span class="ico" data-icon="board"></span>Teaching experience</a>
+        <a class="menu-item" href="#languages"><span class="ico" data-icon="globe"></span>Languages</a>
         <hr class="menu-sep">
         <button class="menu-item" type="button" data-action="about"><span class="ico"></span>About this site…</button>
       </div>
@@ -1016,6 +1029,7 @@ body.crt .crt-overlay{display:block}
       <summary><span><u>C</u>ontact</span></summary>
       <div class="menu-pop">
         <a class="menu-item" href="#contact"><span class="ico" data-icon="envelope"></span>Contact &amp; links</a>
+        <a class="menu-item" href="#references"><span class="ico" data-icon="people"></span>References</a>
         <hr class="menu-sep">
         <!-- EDIT: email + external profile links (also in the Contact section below) -->
         <a class="menu-item" href="mailto:hung.ntt@unb.ca"><span class="ico" data-icon="envelope"></span>Email hung.ntt@unb.ca</a>
@@ -1256,9 +1270,9 @@ body.crt .crt-overlay{display:block}
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat education.log</div>
           <h3 class="sr-only">Education &amp; academic positions</h3>
           <ul class="log">
-            <li><span class="d">[2024–now]</span><span class="w"><span class="deg">PhD Candidate</span> <span class="maj">in Computer Science</span><span class="uni">University of New Brunswick (UNB)</span><span class="cap">GPA: 4.3/4.3</span><span class="cap">Supervisors: <a href="https://www.hungcao.me/">Prof. Hung Cao</a> and <a href="https://nrc.canada.ca/en/corporate/contact-us/nrc-directory-science-professionals/rene-richard">Rene Richard</a></span></span><span class="st run"><span class="sr-only">current, </span>[ CANADA ]</span></li>
-            <li><span class="d">[2021–2023]</span><span class="w"><span class="deg">Master's degree</span> <span class="maj">in Artificial Intelligence, minor: Biomedical Engineering</span><span class="uni">Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)<em>· DAAD Scholar</em></span><span class="cap">German GPA: 1.7/1.0</span><span class="cap">Master's thesis: 1.0/1.0 (<a href="https://en.wikipedia.org/wiki/Michael_Kohlhase">Prof. Dr. Michael Kohlhase</a> and <a href="https://www.wiso.rw.fau.eu/research/research-profile/professors/prof-dr-michael-amberg/">Prof. Dr. Michael Amberg</a>)</span></span><span class="st">[ GERMANY ]</span></li>
-            <li><span class="d">[2016–2020]</span><span class="w"><span class="deg">Bachelor's degree</span> <span class="maj">in Computer Science</span><span class="uni">Frankfurt University of Applied Sciences (FRA-UAS) <em>· DAAD Scholar</em></span><span class="cap">German GPA: 1.6/1.0</span></span><span class="st">[ GERMANY ]</span></li>
+            <li><span class="d">[2024–now]</span><span class="w"><span class="deg">PhD</span> <span class="maj">in Computer Science</span><span class="uni">University of New Brunswick (UNB)</span><span class="cap">GPA: 4.3/4.3</span><span class="cap">Thesis: Building Trustworthy Human–AI Collaboration: From Explainability and Contestability to Verified Memory-Based Agent Self-Evolution.</span><span class="cap">Supervisors: <a href="https://www.hungcao.me/">Hung Cao, Ph.D.</a></span></span><span class="st run"><span class="sr-only">current, </span>[ CANADA ]</span></li>
+            <li><span class="d">[2021–2023]</span><span class="w"><span class="deg">M.Sc.</span> <span class="maj">in Artificial Intelligence, minor: Biomedical Engineering</span><span class="uni">Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)<em>· DAAD Scholar</em></span><span class="cap">German GPA: 1.7/1.0</span><span class="cap">Thesis: Exploring the Role of Explainable Artificial Intelligence in Enhancing Interpretability and Performance of Semantic Segmentation Models in Visual Quality Inspection Systems.</span><span class="cap">Thesis grade: 1.0/1.0</span><span class="cap">Supervisors: <a href="https://en.wikipedia.org/wiki/Michael_Kohlhase">Prof. Dr. Michael Kohlhase</a> and <a href="https://www.wiso.rw.fau.eu/research/research-profile/professors/prof-dr-michael-amberg/">Prof. Dr. Michael Amberg</a></span></span><span class="st">[ GERMANY ]</span></li>
+            <li><span class="d">[2016–2020]</span><span class="w"><span class="deg">Bachelor's degree</span> <span class="maj">in Computer Science</span><span class="uni">Frankfurt University of Applied Sciences (FRA-UAS) <em>· DAAD Scholar</em></span><span class="cap">German GPA: 1.6/1.0</span><span class="cap">Thesis: Analyzing and visualizing chemical molecular properties using K-Dimensional tree algorithm.</span><span class="cap">Supervisors: Assoc. Prof. Dr. Huynh Trung Hieu, Dr. Tran Thi Thu Huong</span></span><span class="st">[ GERMANY ]</span></li>
           </ul>
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat positions.log</div>
           <h3 class="sr-only">Industry positions</h3>
@@ -1431,9 +1445,21 @@ body.crt .crt-overlay{display:block}
       </div>
     </section>
 
+    <!-- ============================ LANGUAGES =========================== -->
+    <section class="sec" id="languages" data-section="Languages" aria-labelledby="lang-h">
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">07/</span><h2 id="lang-h">Languages</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\LANGUAGES.TXT</span></div>
+      <ul class="language-list" id="language-list"></ul>
+    </section>
+
+    <!-- ============================ REFERENCES ========================== -->
+    <section class="sec" id="references" data-section="References" aria-labelledby="ref-h">
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">08/</span><h2 id="ref-h">References</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\REFERENCES.TXT</span></div>
+      <ol class="reference-list" id="reference-list"></ol>
+    </section>
+
     <!-- ============================= CONTACT ============================ -->
     <section class="sec" id="contact" data-section="Contact" aria-labelledby="con-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">07/</span><h2 id="con-h">Contact &amp; Links</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">NETWORK NEIGHBORHOOD</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">09/</span><h2 id="con-h">Contact &amp; Links</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">NETWORK NEIGHBORHOOD</span></div>
       <!-- EDIT: email + profile links -->
       <ul class="links-grid">
         <li><a class="link-tile" href="mailto:hung.ntt@unb.ca"><span class="ico" data-icon="envelope"></span><b>Email</b><small>hung.ntt@unb.ca</small></a></li>
@@ -3545,6 +3571,23 @@ body.crt .crt-overlay{display:block}
   $("#mentor-list").innerHTML = mentorship.map((m) =>
     '<li><span class="n">' + esc(m.count) + '</span><span class="lv">' + esc(m.level) + "</span></li>").join("");
   if (mentorship.length) { $("#mentorship-h").hidden = false; $("#review-h").hidden = false; }
+
+  const languages = (dataOK && DATA.languages) || [];
+  $("#language-list").innerHTML = languages.map((l) =>
+    "<li><b>" + esc(l.name) + "</b> (" + esc(l.level) + ")</li>").join("");
+
+  const references = (dataOK && DATA.references) || [];
+  $("#reference-list").innerHTML = references.map((r) => {
+    const name = clean(r.url) && safeUrl(clean(r.url)) ? '<a href="' + esc(r.url) + '">' + esc(r.name) + "</a>" : esc(r.name);
+    const details = [
+      ["Position", esc(r.position)], ["Address", esc(r.address)],
+      ["Email", '<a href="mailto:' + esc(r.email) + '">' + esc(r.email) + "</a>"],
+      ["Phone", '<a href="tel:' + esc(r.phone.replace(/[^+\d]/g, "")) + '">' + esc(r.phone) + "</a>"],
+      ["Relationship", esc(r.relationship)]
+    ];
+    return '<li class="reference-card"><h3>' + name + "</h3><dl>" + details.map(([label, value]) =>
+      "<dt>" + label + "</dt><dd>" + value + "</dd>").join("") + "</dl></li>";
+  }).join("");
 
   /* counters */
   const counts = { publications: pubs.length, awards: awards.length, ip: ip.length, service: service.length };

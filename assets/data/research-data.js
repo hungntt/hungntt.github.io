@@ -37,7 +37,7 @@
                chip in that interest's `color` on the paper, and the paper appears when a visitor
                clicks that interest's tile in the Bio section (or picks it in
                the "Research interest" filter). Ids come from `interests` below.
-     award     Any text, e.g. "Best Paper Runner-up". Shows a gold ★ chip and
+     award     Any text, e.g. "Best Paper Award – Runner-Up". Shows a gold ★ chip and
                makes the paper appear under the "Awarded" filter.
      note      Small grey line under the venue, e.g. "Oral presentation".
      links     Any of: paper, pdf, arxiv, doi, code, slides, video, poster, project.
@@ -106,6 +106,47 @@
  * ========================================================================= */
 
 window.RESEARCH_DATA = {
+  // CV-specific wording and teaching details; the homepage retains its short bio and course list.
+  "cv": {
+    "profile": "With six years of experience in applied AI research and development, I am particularly passionate about trustworthy human–AI collaboration and would be thrilled to contribute to research that makes AI systems explainable, contestable, and reliable in practice.",
+    "teachingIssuer": "University of New Brunswick (UNB)",
+    "taCourses": [
+      { "code": "CS3735", "title": "Introduction to Machine Learning", "years": "2025" },
+      { "code": "CS2383", "title": "Data Structures and Algorithms", "years": "2025, 2026" },
+      { "code": "CS3113", "title": "Introduction to Numerical Methods", "years": "2024" }
+    ]
+  },
+  "languages": [
+    { "name": "English", "level": "C1" },
+    { "name": "German", "level": "B1" }
+  ],
+  "references": [
+    {
+      "name": "Prof. Hung Cao",
+      "position": "Associate Professor, Faculty of Computer Science, University of New Brunswick; Founder and Director, Analytics Everywhere Lab",
+      "address": "Analytics Everywhere Lab, University of New Brunswick, 550 Windsor St, Room GC107, Fredericton, NB E3B 5A3, Canada",
+      "email": "hung.cao@unb.ca",
+      "phone": "+1 506 230 7789",
+      "relationship": "PhD supervisor."
+    },
+    {
+      "name": "Prof. Veronica Whitford",
+      "position": "Associate Professor and Tier 2 Canada Research Chair in Cognitive Neuroscience of Bilingual Reading Across the Lifespan, Department of Psychology, University of New Brunswick",
+      "address": "Department of Psychology, Keirstead Hall 209, University of New Brunswick, Fredericton, NB E3B 5A3, Canada",
+      "email": "veronica.whitford@unb.ca",
+      "phone": "+1 506 451 6995",
+      "relationship": "Research collaborator on human-centered AI for mental health."
+    },
+    {
+      "name": "René Richard",
+      "position": "Associate Research Officer, Scientific Data Mining team, Digital Technologies Research Center, National Research Council Canada",
+      "address": "46 Dineen Drive, Fredericton, NB E3B 9W4, Canada",
+      "email": "Rene.Richard@nrc-cnrc.gc.ca",
+      "phone": "+1 506 447 5836",
+      "relationship": "Research supervisor.",
+      "url": "https://nrc.canada.ca/en/corporate/contact-us/nrc-directory-science-professionals/rene-richard"
+    }
+  ],
   "me": [
     "Truong Thanh Hung Nguyen",
     "Hung Truong Thanh Nguyen",
@@ -1289,7 +1330,7 @@ window.RESEARCH_DATA = {
         "impact": "",
         "extra": []
       },
-      "award": "Best Runner-up Paper Award",
+      "award": "Best Paper Award – Runner-Up",
       "note": "",
       "links": {
         "paper": "https://doi.org/10.1007/978-981-99-8391-9_12",
@@ -1448,7 +1489,7 @@ window.RESEARCH_DATA = {
         "impact": "",
         "extra": []
       },
-      "award": "Best Runner-up Paper Award",
+      "award": "Best Paper Award – Runner-Up",
       "note": "",
       "links": {
         "paper": "https://www.researchgate.net/publication/362165633_Evaluation_of_Explainable_Artificial_Intelligence_SHAP_LIME_and_CAM",
@@ -1491,8 +1532,8 @@ window.RESEARCH_DATA = {
     {
       "year": "2026",
       "kind": "scholarship",
-      "title": "Canada Graduate Research Scholarship – Doctoral (CGS D) (Nominated)",
-      "event": "Tri-Agency (NSERC, CIHR, SSHRC), Government of Canada"
+      "title": "Natural Sciences and Engineering Research Council of Canada (NSERC) — Canada Graduate Research Scholarship, Doctoral (university nomination)",
+      "event": "Government of Canada"
     },
     {
       "year": "2026",
@@ -1515,7 +1556,7 @@ window.RESEARCH_DATA = {
     {
       "year": "2025",
       "kind": "award",
-      "title": "Runner-up of the Best Poster Award",
+      "title": "Best Poster Award – Runner-Up",
       "event": "Atlantic Canada AI Summit"
     },
     {
@@ -1527,7 +1568,7 @@ window.RESEARCH_DATA = {
     {
       "year": "2025",
       "kind": "award",
-      "title": "Best Runner-up Poster Award",
+      "title": "Best Poster Award – Runner-Up",
       "event": "UNB Computer Science Research Expo"
     },
     {
@@ -1551,7 +1592,7 @@ window.RESEARCH_DATA = {
     {
       "year": "2023",
       "kind": "award",
-      "title": "Best Runner-up Paper Award",
+      "title": "Best Paper Award – Runner-Up",
       "event": "Australasian Joint Conference on Artificial Intelligence (AJCAI 2023)"
     },
     {
@@ -1563,7 +1604,7 @@ window.RESEARCH_DATA = {
     {
       "year": "2021",
       "kind": "award",
-      "title": "Best Runner-up Paper Award",
+      "title": "Best Paper Award – Runner-Up",
       "event": "FPT AI Conference 2021 (FAIC 2021)"
     },
     {
@@ -1614,25 +1655,25 @@ window.RESEARCH_DATA = {
   ],
   "service": [
     {
-      "role": "PC Member",
+      "role": "Program Committee Member",
       "venue": "Canadian AI Conference 2026",
       "url": "",
       "tags": {}
     },
     {
-      "role": "PC Member",
+      "role": "Program Committee Member",
       "venue": "IEEE 44th International Conference on Consumer Electronics (IEEE ICCE 2026)",
       "url": "",
       "tags": {}
     },
     {
-      "role": "PC Member",
+      "role": "Program Committee Member",
       "venue": "35th IEEE International Conference on Collaborative Advances in Software and Computing (CASCON 2025)",
       "url": "",
       "tags": {}
     },
     {
-      "role": "PC Member",
+      "role": "Program Committee Member",
       "venue": "International Conference on Cryptography and Information Security (VCRIS 2026, 2025)",
       "url": "",
       "tags": {}

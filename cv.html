@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <!--
-  Curriculum vitae — generated from the homepage, nothing to edit here.
+  Curriculum vitae — generated from the homepage and shared research data.
 
   Everything on this page is read at load time from:
     index.html                    name, affiliations, bio, education, positions,
                                   teaching and contact links
     assets/data/research-data.js  research interests, publications, awards,
-                                  intellectual property and academic services
+                                  intellectual property, academic services, languages,
+                                  references and CV-specific wording/teaching details
   Edit those two files and this page (and cv.pdf) follow.
 
   cv.pdf is printed from this page by the GitHub Pages workflow on every push
@@ -66,8 +67,8 @@ a:hover{text-decoration:underline}
 
 /* sections */
 .sec{margin-top:13px}
-/* section titles sit on a blue-to-purple rule; the whole title is a collapse toggle */
-h2{margin:0 0 6px;padding-bottom:3px;background:var(--nebula) left bottom/100% 1.5px no-repeat;
+/* A solid 1pt border keeps every section rule the same thickness in print. */
+h2{margin:0 0 6px;padding-bottom:3px;border-bottom:1pt solid var(--accent);
   font:700 10.5pt/1.2 var(--f-body);letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);break-after:avoid}
 .tog{display:flex;align-items:center;gap:8px;width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;text-align:left;cursor:pointer}
 .tog .chev{display:grid;place-items:center;flex:none;width:19px;height:19px;margin-left:auto;border:1px solid var(--rule);border-radius:50%;color:var(--violet);transition:background .15s,border-color .15s}
@@ -124,13 +125,23 @@ p{margin:0 0 4px}
 .row .e{color:var(--muted)}
 .row .au{display:block}
 .row .au .me{font-weight:700;text-decoration:underline;text-underline-offset:1.5px}
-.svc{display:grid;grid-template-columns:11.5em 1fr;gap:2px 12px;margin:0}
+.svc{display:grid;grid-template-columns:13em 1fr;gap:2px 12px;margin:0}
 .svc dt{font-weight:600;color:var(--accent)}
 .svc dd{margin:0}
+.reference{break-inside:avoid;margin:0 0 12px}
+.reference:last-child{margin-bottom:0}
+.reference h3{color:var(--ink);margin-top:0}
+.reference dl{display:grid;grid-template-columns:7em 1fr;gap:2px 10px;margin:0}
+.reference dt{font-weight:600;color:var(--muted)}
+.reference dd{margin:0;overflow-wrap:anywhere}
 
 .msg{padding:18px;border:1px dashed var(--rule);color:var(--muted)}
 
-@page{size:letter;margin:.55in .6in .6in}
+@page{
+  size:letter;margin:.65in .6in .6in;
+  @top-left{content:var(--cv-name) " · CV";font:600 8pt var(--f-body);color:var(--muted)}
+  @top-right{content:"Page " counter(page) " of " counter(pages);font:8pt var(--f-body);color:var(--muted)}
+}
 @media print{
   html,body{background:#fff}
   .bar,.tog .chev,.tog .more{display:none!important}
@@ -225,7 +236,15 @@ p{margin:0 0 4px}
         .reduce((out, c, i) => (i === 0 ? [c, HOMEPAGE] : out.concat(c)), []),
       education: edu[0] ? edu[0].items : [],
       positions: edu.slice(1).flatMap((g) => g.items),
-      teaching: logGroups(q("#teaching"))
+      teaching: logGroups(q("#teaching")).map((g) => ({
+        ...g,
+        items: g.items.map((e) => {
+          const course = (DATA.cv?.taCourses || []).find((c) => c.title === e.title);
+          if (g.heading === "Teaching assistant" && course) return { ...e, title: course.code + ": " + course.title, when: course.years };
+          if (e.title === "Diploma of University Teaching" && DATA.cv?.teachingIssuer) return { ...e, org: DATA.cv.teachingIssuer };
+          return e;
+        })
+      }))
     };
   }
 
@@ -302,8 +321,9 @@ p{margin:0 0 4px}
         '<div class="body" id="' + id + '">' + body + "</div></section>";
     };
     const nPubs = (DATA.publications || []).length;
-    if (H.bio.length) h += sec("Profile", "", '<p class="summary">' + H.bio[0] + "</p>" +
-      (interests.length ? "<p><b>Research interests:</b> " + esc(interests.join(" · ")) + "</p>" : ""));
+    const profile = clean(DATA.cv?.profile);
+    if (profile || H.bio.length) h += sec("Profile", "", '<p class="summary">' + (profile ? esc(profile) : H.bio[0]) + "</p>");
+    if (interests.length) h += sec("Research Interests", "", "<p>" + esc(interests.join(" · ")) + "</p>");
     if (H.education.length) h += sec("Education", H.education.length, '<ul class="entries">' + H.education.map(entryHTML).join("") + "</ul>");
     if (H.positions.length) h += sec("Research &amp; Professional Experience", H.positions.length, '<ul class="entries">' + H.positions.map(entryHTML).join("") + "</ul>");
     if (nPubs) h += sec("Publications", nPubs, publicationsHTML());
@@ -325,8 +345,21 @@ p{margin:0 0 4px}
       '<li class="row"><span class="y">' + esc(m.count) + "</span><span>" + esc(m.level) + "</span></li>").join("") + "</ul>");
     if (svcGroups.length) h += sec("Academic Service", service.length, '<dl class="svc">' + svcGroups.map((g) =>
       "<dt>" + esc(g.role) + "</dt><dd>" + esc(g.items.join("; ")) + "</dd>").join("") + "</dl>");
+    const languages = DATA.languages || [];
+    if (languages.length) h += sec("Languages", "", "<p>" + languages.map((l) => esc(l.name) + " (" + esc(l.level) + ")").join(" · ") + "</p>");
+    const references = DATA.references || [];
+    if (references.length) h += sec("References", "", references.map((r, i) => {
+      const details = [
+        ["Position", esc(r.position)], ["Address", esc(r.address)],
+        ["Email", link("mailto:" + r.email, esc(r.email))], ["Phone", esc(r.phone)],
+        ["Relationship", esc(r.relationship)]
+      ];
+      return '<article class="reference"><h3>' + (i + 1) + ". " + link(r.url, esc(r.name)) + "</h3><dl>" +
+        details.map(([label, value]) => "<dt>" + label + "</dt><dd>" + value + "</dd>").join("") + "</dl></article>";
+    }).join(""));
 
     root.innerHTML = h;
+    document.documentElement.style.setProperty("--cv-name", JSON.stringify(H.name));
     document.title = H.name + " · CV";
   }
 
