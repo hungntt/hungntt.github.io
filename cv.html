@@ -99,6 +99,10 @@ p{margin:0 0 4px}
 .entry .t .maj{font-weight:400}
 .entry .sub{font-style:italic}
 .entry .cap{color:var(--muted);font-size:9.2pt}
+.entry .thesis-block{margin:5px 0 2px;padding:5px 8px;border-left:1.5pt solid var(--accent);background:#f5f7fb;break-inside:avoid}
+.entry .thesis-block .cap{display:block}
+.entry .thesis-block .cap+.cap{margin-top:2px}
+.entry .thesis-block .thesis-title{color:var(--ink);font-weight:600}
 .entry .when{font-weight:600}
 .entry .where{color:var(--muted);font-size:9.2pt}
 
@@ -213,7 +217,8 @@ p{margin:0 0 4px}
         when: /\d/.test(d) ? d : "",          // labels such as [TA] or [GUEST] are not dates
         title, org,
         major: txt(li.querySelector(".maj")),
-        cap: qa(".cap", li).map(richText),
+        cap: qa(".cap", li).filter((c) => !c.closest(".thesis")).map(richText),
+        thesis: qa(".thesis .cap", li).map(richText),
         where: titleCase(bracketless(textWithout(li.querySelector(".st"), ".sr-only"))),
         now: !!li.querySelector(".st.run")      // shown on the homepage with a blinking "running" dot
       };
@@ -253,7 +258,8 @@ p{margin:0 0 4px}
     const when = e.when.replace(/\s*[-–]\s*/g, " – ").replace(/\bnow\b/i, "Present");
     return '<li class="entry' + (e.now ? " now" : "") + '"><div class="l"><span class="t">' + esc(e.title) + (e.major ? ' <span class="maj">' + esc(e.major) + "</span>" : "") + "</span>" +
       (e.org ? '<span class="sub">' + esc(e.org) + "</span>" : "") +
-      e.cap.map((c) => '<span class="cap">' + c + "</span>").join("") + "</div>" +
+      e.cap.map((c) => '<span class="cap">' + c + "</span>").join("") +
+      (e.thesis.length ? '<span class="thesis-block">' + e.thesis.map((c, i) => '<span class="cap' + (i === 0 ? " thesis-title" : "") + '">' + c + "</span>").join("") + "</span>" : "") + "</div>" +
       '<div class="r">' + (when ? '<span class="when">' + esc(when) + "</span>" : "") + (e.where ? '<span class="where">' + esc(e.where) + "</span>" : "") + "</div></li>";
   }
 
