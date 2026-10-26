@@ -108,7 +108,7 @@
 window.RESEARCH_DATA = {
   // CV-specific wording and teaching details; the homepage retains its short bio and course list.
   "cv": {
-    "profile": "With six years of experience in applied AI research and development, I am particularly passionate about trustworthy human–AI collaboration and would be thrilled to contribute to research that makes AI systems explainable, contestable, and reliable in practice.",
+    "profile": "With 7 years of experience in responsible AI, I design human-centered systems for several domains, especially healthcare and multi-agent settings, where trust must be earned and can be challenged. I am particularly passionate about the ethics of human–AI collaboration, and I would be thrilled to contribute to research that makes responsible AI a practice, not just a principle.",
     "teachingIssuer": "University of New Brunswick (UNB)",
     "taCourses": [
       { "code": "CS3735", "title": "Introduction to Machine Learning", "years": "2025" },
