@@ -117,8 +117,10 @@ window.RESEARCH_DATA = {
     ]
   },
   "languages": [
+    { "name": "Vietnamese", "level": "Native" },
     { "name": "English", "level": "C1" },
-    { "name": "German", "level": "B1" }
+    { "name": "German", "level": "B1" },
+    { "name": "Japanese", "level": "N5" }
   ],
   "references": [
     {
@@ -1608,7 +1610,7 @@ window.RESEARCH_DATA = {
       "event": "FPT AI Conference 2021 (FAIC 2021)"
     },
     {
-      "year": "2020",
+      "year": "2021",
       "kind": "scholarship",
       "title": "DAAD Scholarship",
       "event": "Sur-place scholarship"
