@@ -362,6 +362,11 @@ button{font:inherit;color:inherit}
 .log .w .cap::before{content:"└ ";margin-left:-1.5ch;color:#5C7CA3}
 .log .w .cap a,.log .w .cap a:visited{color:inherit}
 .log .w .cap a:hover{color:#fff;background:none}
+.log .w .thesis{display:block;margin:10px 0 12px;padding:11px 14px;border:1px solid rgba(201,184,255,.2);border-left:3px solid var(--lavender);background:rgba(201,184,255,.07)}
+.log .w .thesis .cap{margin:5px 0 0;padding-left:0;font:13px/1.55 var(--f-body)}
+.log .w .thesis .cap::before{content:none}
+.log .w .thesis .thesis-title{margin-top:0;color:var(--text);font-size:14px}
+.thesis-label{display:block;margin-bottom:4px;color:var(--lavender);font:700 10px/1.4 var(--f-ui);letter-spacing:1.2px;text-transform:uppercase}
 .log .st{flex:none;margin-left:auto;color:var(--orange)}
 .log .st.run{color:#35D46A}
 .log .st.run::before{content:"";display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:currentColor;box-shadow:0 0 6px currentColor;vertical-align:1px}
@@ -948,6 +953,8 @@ body.crt .crt-overlay{display:block}
   .call{width:140px;margin-bottom:12px;box-shadow:none}
   .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.trophy .au,.mentor .n,.mentor .lv,.log .w,.term{color:#000!important;text-shadow:none}
   .term,.pf-list-wrap,.nest{background:#fff;box-shadow:none}
+  .log .w .thesis{background:#f8f8fa;border-color:#aaa}
+  .log .w .thesis .cap,.thesis-label{color:#000}
   .sec{padding:14px 0;break-inside:avoid-page}
   .player-wrap,.np{display:none!important}
 }
@@ -1270,9 +1277,34 @@ body.crt .crt-overlay{display:block}
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat education.log</div>
           <h3 class="sr-only">Education &amp; academic positions</h3>
           <ul class="log">
-            <li><span class="d">[2024–now]</span><span class="w"><span class="deg">PhD</span> <span class="maj">in Computer Science</span><span class="uni">University of New Brunswick (UNB)</span><span class="cap">GPA: 4.3/4.3</span><span class="cap">Thesis: Building Trustworthy Human–AI Collaboration: From Explainability and Contestability to Verified Memory-Based Agent Self-Evolution.</span><span class="cap">Supervisors: <a href="https://www.hungcao.me/">Hung Cao, Ph.D.</a></span></span><span class="st run"><span class="sr-only">current, </span>[ CANADA ]</span></li>
-            <li><span class="d">[2021–2023]</span><span class="w"><span class="deg">M.Sc.</span> <span class="maj">in Artificial Intelligence, minor: Biomedical Engineering</span><span class="uni">Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)<em>· DAAD Scholar</em></span><span class="cap">German GPA: 1.7/1.0</span><span class="cap">Thesis: Exploring the Role of Explainable Artificial Intelligence in Enhancing Interpretability and Performance of Semantic Segmentation Models in Visual Quality Inspection Systems.</span><span class="cap">Thesis grade: 1.0/1.0</span><span class="cap">Supervisors: <a href="https://en.wikipedia.org/wiki/Michael_Kohlhase">Prof. Dr. Michael Kohlhase</a> and <a href="https://www.wiso.rw.fau.eu/research/research-profile/professors/prof-dr-michael-amberg/">Prof. Dr. Michael Amberg</a></span></span><span class="st">[ GERMANY ]</span></li>
-            <li><span class="d">[2016–2020]</span><span class="w"><span class="deg">Bachelor's degree</span> <span class="maj">in Computer Science</span><span class="uni">Frankfurt University of Applied Sciences (FRA-UAS) <em>· DAAD Scholar</em></span><span class="cap">German GPA: 1.6/1.0</span><span class="cap">Thesis: Analyzing and visualizing chemical molecular properties using K-Dimensional tree algorithm.</span><span class="cap">Supervisors: Assoc. Prof. Dr. Huynh Trung Hieu, Dr. Tran Thi Thu Huong</span></span><span class="st">[ GERMANY ]</span></li>
+            <li><span class="d">[2024–now]</span><span class="w">
+              <span class="deg">PhD</span> <span class="maj">in Computer Science</span>
+              <span class="uni">University of New Brunswick (UNB)</span>
+              <span class="cap">GPA: 4.3/4.3</span>
+              <span class="thesis">
+                <span class="cap thesis-title"><span class="thesis-label">Thesis:</span> Building Trustworthy Human–AI Collaboration: From Explainability and Contestability to Verified Memory-Based Agent Self-Evolution.</span>
+                <span class="cap">Supervisors: <a href="https://www.hungcao.me/">Hung Cao, Ph.D.</a></span>
+              </span>
+            </span><span class="st run"><span class="sr-only">current, </span>[ CANADA ]</span></li>
+            <li><span class="d">[2021–2023]</span><span class="w">
+              <span class="deg">M.Sc.</span> <span class="maj">in Artificial Intelligence, minor: Biomedical Engineering</span>
+              <span class="uni">Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)<em>· DAAD Scholar</em></span>
+              <span class="cap">German GPA: 1.7/1.0</span>
+              <span class="thesis">
+                <span class="cap thesis-title"><span class="thesis-label">Thesis:</span> Exploring the Role of Explainable Artificial Intelligence in Enhancing Interpretability and Performance of Semantic Segmentation Models in Visual Quality Inspection Systems.</span>
+                <span class="cap">Thesis grade: 1.0/1.0</span>
+                <span class="cap">Supervisors: <a href="https://en.wikipedia.org/wiki/Michael_Kohlhase">Prof. Dr. Michael Kohlhase</a> and <a href="https://www.wiso.rw.fau.eu/research/research-profile/professors/prof-dr-michael-amberg/">Prof. Dr. Michael Amberg</a></span>
+              </span>
+            </span><span class="st">[ GERMANY ]</span></li>
+            <li><span class="d">[2016–2020]</span><span class="w">
+              <span class="deg">Bachelor's degree</span> <span class="maj">in Computer Science</span>
+              <span class="uni">Frankfurt University of Applied Sciences (FRA-UAS) <em>· DAAD Scholar</em></span>
+              <span class="cap">German GPA: 1.6/1.0</span>
+              <span class="thesis">
+                <span class="cap thesis-title"><span class="thesis-label">Thesis:</span> Analyzing and visualizing chemical molecular properties using K-Dimensional tree algorithm.</span>
+                <span class="cap">Supervisors: Assoc. Prof. Dr. Huynh Trung Hieu, Dr. Tran Thi Thu Huong</span>
+              </span>
+            </span><span class="st">[ GERMANY ]</span></li>
           </ul>
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat positions.log</div>
           <h3 class="sr-only">Industry positions</h3>
