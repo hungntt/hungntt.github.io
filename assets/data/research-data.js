@@ -33,6 +33,9 @@
                Add * after a name for equal contribution:  "Jane Doe*"
      year      required. A number: 2024
      type      "conference" | "journal" | "workshop" | "challenge" | "preprint" | "chapter" | "thesis"
+     cvType    Optional. Files the paper under another type in the CV only, e.g. a
+               preprint under review at a journal: "cvType": "journal". The
+               homepage keeps using `type`.
      topics    Research-interest ids, e.g. ["xai", "cv"]. Each one shows as a
                chip in that interest's `color` on the paper, and the paper appears when a visitor
                clicks that interest's tile in the Bio section (or picks it in
@@ -250,6 +253,7 @@ window.RESEARCH_DATA = {
       "year": 2026,
       "month": "Oct",
       "type": "preprint",
+      "cvType": "conference",
       "topics": [
         "xai",
         "biomed",
@@ -285,6 +289,7 @@ window.RESEARCH_DATA = {
       "year": 2026,
       "month": "Sep",
       "type": "preprint",
+      "cvType": "journal",
       "topics": [
         "agents",
         "xai",

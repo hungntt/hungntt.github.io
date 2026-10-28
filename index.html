@@ -467,6 +467,7 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .chip-type.type-conference,.chip-type.type-workshop{background:#0E7A55;border-color:#063824}
 .chip-type.type-journal{background:#6A2C9E;border-color:#2E0F47}
 .chip-type.type-challenge{background:#C8102E;border-color:#5A0612}
+.chip-type.type-chapter{background:#A85A12;border-color:#4A2508}
 .core-Astar{background:linear-gradient(#FFE3F1,#FFB8DB)}
 .core-A{background:linear-gradient(#DDF6FF,#6ED9FF)}
 .core-B{background:linear-gradient(#EEE8FF,#C9B8FF)}
@@ -1428,6 +1429,7 @@ body.crt .crt-overlay{display:block}
                 <dt><span class="chip chip-type type-conference">CONF</span></dt><dd>Conference paper</dd>
                 <dt><span class="chip chip-type type-workshop">WORKSHOP</span></dt><dd>Workshop paper</dd>
                 <dt><span class="chip chip-type type-challenge">CHALLENGE</span></dt><dd>Challenge paper</dd>
+                <dt><span class="chip chip-type type-chapter">CHAPTER</span></dt><dd>Book chapter</dd>
                 <dt><span class="chip chip-type">PREPRINT</span></dt><dd>Preprint / under review</dd>
               </dl>
             </div>
@@ -1891,6 +1893,8 @@ body.crt .crt-overlay{display:block}
     ".kwnnnnnnnwkssk.", ".kwwwwwwwwwkssk.", ".kwnnnnnnnwkssk.", ".kwwwwwwwwwkssk.", ".kwnnnnnwwwkkkk.", ".kwwwwwwwwwk....", ".kkkkkkkkkkk...."];
   ICONS.board = ["................", ".kkkkkkkkkkkkkk.", ".kooooooooooook.", ".kovvvvvvvvvvok.", ".kovwwvwwwvvvok.", ".kovvvvvvvvvvok.", ".kovwwwwvwwvvok.", ".kovvvvvvvvvvok.",
     ".kovwwwvvvvwvok.", ".kovvvvvvvvwvok.", ".kovvvvvvvwwvok.", ".koooossooooook.", ".kkkkkkkkkkkkkk.", "...k........k...", "..k..........k..", ".kk..........kk."];
+  ICONS.book = ["................", "................", "..kkkkk..kkkkk..", ".kwwwwwkkwwwwwk.", ".kwnnnwkkwnnnwk.", ".kwwwwwkkwwwwwk.", ".kwnnnwkkwnnnwk.", ".kwwwwwkkwwwwwk.",
+    ".kwnnwwkkwnnnwk.", ".kwwwwwkkwwwwwk.", ".kwnnnwkkwnnwwk.", ".kwwwwwkkwwwwwk.", "kowwwwwkkwwwwwok", "kooooookkooooook", ".kkkkkkkkkkkkkk."];
   ICONS.fwd = ICONS.back.map((r) => r.padEnd(16, ".").split("").reverse().join(""));
 
   function pixelSVG(name) {
@@ -2683,7 +2687,7 @@ body.crt .crt-overlay{display:block}
     }).join("");
 
     return '<li class="pub" data-pi="' + p.i + '">' +
-      '<span class="pub-ico" aria-hidden="true">' + pixelSVG(p.type === "journal" ? "journal" : ["conference", "workshop", "challenge"].includes(p.type) ? "paper" : "doc") + "</span>" +
+      '<span class="pub-ico" aria-hidden="true">' + pixelSVG(p.type === "journal" ? "journal" : p.type === "chapter" ? "book" : ["conference", "workshop", "challenge"].includes(p.type) ? "paper" : "doc") + "</span>" +
       "<div>" +
         '<div class="pub-chips">' + chips.join("") + "</div>" +
         '<h4 class="pub-title">' + hl(p.title, raw) + "</h4>" +

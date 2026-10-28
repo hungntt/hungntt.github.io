@@ -121,6 +121,12 @@ p{margin:0 0 4px}
 .tag{display:inline-block;margin-left:4px;padding:0 4px;border:1px solid var(--rule);border-radius:2px;font-size:8pt;line-height:1.35;font-style:normal;font-weight:600;color:var(--muted);vertical-align:1px}
 .tag.award{border-color:#e2c46a;background:#fff6d6;color:var(--gold)}
 .tag.rank{border-color:#CDBDF5;background:#F3EFFF;color:var(--violet)}
+.pub .lks{white-space:nowrap}
+.lk{display:inline-flex;align-items:center;gap:3px;margin-left:6px;padding:0 5px 0 3px;border:1px solid var(--rule);border-radius:2px;
+  font-size:8pt;line-height:1.35;font-style:normal;font-weight:600;color:var(--accent);vertical-align:1px}
+.lk:hover{background:#EEF4FB;text-decoration:none}
+.lk .ico{display:inline-block;width:10px;height:10px;line-height:0}
+.lk .ico svg{width:100%;height:100%;display:block}
 
 /* simple lists (awards, service) */
 .rows{margin:0;padding:0;list-style:none}
@@ -264,15 +270,51 @@ p{margin:0 0 4px}
   }
 
   const PUB_GROUPS = [
-    ["journal", "Journal Articles", "J"], ["conference", "Conference Papers", "C"], ["challenge", "Challenge Papers", "CH"],
-    ["workshop", "Workshop Papers", "W"], ["chapter", "Book Chapters", "B"], ["preprint", "Preprints & Under Review", "P"],
+    ["chapter", "Book Chapters", "B"], ["journal", "Journal Articles", "J"], ["conference", "Conference Papers", "C"],
+    ["challenge", "Challenge Papers", "CH"], ["workshop", "Workshop Papers", "W"], ["preprint", "Preprints & Under Review", "P"],
     ["thesis", "Theses", "T"]
   ];
+  // `cvType` files a paper under another group here only (e.g. a preprint under review at a journal)
+  const cvType = (p) => (clean(p.cvType) || clean(p.type)).toLowerCase();
+
+  // the homepage's pixel icons for paper/code/video links (same art as index.html)
+  const PAL = { k: "#0a0a0a", w: "#ffffff", s: "#d7d7d7", g: "#8b8b8b", n: "#0b3c7d", c: "#6ed9ff", b: "#168dda" };
+  const ICONS = {
+    doc: ["..kkkkkkkkk.....", "..kwwwwwwwkk....", "..kwwwwwwwkwk...", "..kwnnnnwwkkkk..", "..kwwwwwwwwwwk..", "..kwnnnnnnnnwk..", "..kwwwwwwwwwwk..", "..kwnnnnnnnwwk..",
+      "..kwwwwwwwwwwk..", "..kwnnnnnnnnwk..", "..kwwwwwwwwwwk..", "..kwnnnnnwwwwk..", "..kwwwwwwwwwwk..", "..kwwwwwwwwwwk..", "..kkkkkkkkkkkk.."],
+    chip: ["................", "....k.k.k.k.....", "....k.k.k.k.....", "..kkkkkkkkkkk...", "..knnnnnnnnnk...", "kkkncccccnnnkkk.", "..kncwwwcnnnk...", "kkkncwwwcnnnkkk.",
+      "..kncccccnnnk...", "kkknnnnnnnnnkkk.", "..knnnnnnnnnk...", "..kkkkkkkkkkk...", "....k.k.k.k.....", "....k.k.k.k....."],
+    monitor: ["................", ".kkkkkkkkkkkkkk.", ".kssssssssssssk.", ".ksnnnnnnnnnnsk.", ".ksnncnnnnnnnsk.", ".ksnnnnnnbnnnsk.", ".ksnnnnnbcbnnsk.", ".ksnnnnnnbnnnsk.",
+      ".ksnncnnnnnnnsk.", ".ksnnnnnnnncnsk.", ".ksssssssssssgk.", ".kkkkkkkkkkkkkk.", "......kssk......", "....kkkkkkkk....", "....kssssssk....", "....kkkkkkkk...."]
+  };
+  function pixelSVG(name) {
+    let rects = "";
+    (ICONS[name] || []).forEach((row, y) => {
+      for (let x = 0; x < row.length;) {
+        const ch = row[x];
+        if (!PAL[ch]) { x++; continue; }
+        let run = 1;
+        while (row[x + run] === ch) run++;
+        rects += '<rect x="' + x + '" y="' + y + '" width="' + run + '" height="1" fill="' + PAL[ch] + '"/>';
+        x += run;
+      }
+    });
+    return '<svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false">' + rects + "</svg>";
+  }
+  const LINK_LABEL = { paper: "Paper", pdf: "PDF", arxiv: "arXiv", doi: "DOI", code: "Code", slides: "Slides", video: "Video", poster: "Poster", project: "Project", bibtex: "BibTeX" };
+  function linksHTML(L) {
+    const keys = Object.keys(LINK_LABEL).concat(Object.keys(L).filter((k) => !LINK_LABEL[k]));
+    return keys.filter((k) => safeUrl(L[k])).map((k) => {
+      const icon = k === "code" ? "chip" : k === "video" || k === "slides" ? "monitor" : "doc";
+      return '<a class="lk" href="' + esc(L[k]) + '"><span class="ico">' + pixelSVG(icon) + "</span>" + esc(LINK_LABEL[k] || k) + "</a>";
+    }).join("");
+  }
   function pubHTML(p, n) {
     const authors = (Array.isArray(p.authors) ? p.authors : [p.authors]).filter(Boolean).map(String)
       .map((a) => (isMe(a) ? '<span class="me">' + esc(a) + "</span>" : esc(a))).join(", ");
     const L = p.links || {};
     const url = [L.doi, L.paper, L.pdf, L.arxiv].map(clean).find(safeUrl);
+    const links = linksHTML(L);
     const t = p.tags || {};
     const tags = [];
     if (clean(p.award)) tags.push('<span class="tag award">★ ' + esc(p.award) + "</span>");
@@ -287,7 +329,8 @@ p{margin:0 0 4px}
       '<span class="ttl">' + link(url, esc(p.title)) + "</span>" +
       '<span class="au">' + authors + "</span>" +
       '<span class="meta">' + (venue ? '<span class="ven">' + esc(venue) + "</span>" + shortTag + ", " : "") + esc(p.year) +
-      (tags.length ? ' <span class="tags">' + tags.join("") + "</span>" : "") + "</span>" +
+      (tags.length ? ' <span class="tags">' + tags.join("") + "</span>" : "") +
+      (links ? ' <span class="lks">' + links + "</span>" : "") + "</span>" +
       (/under review/i.test(clean(p.note)) ? '<span class="note">' + esc(clean(p.note)) + "</span>" : "") + "</span></li>";
   }
   function publicationsHTML() {
@@ -296,7 +339,7 @@ p{margin:0 0 4px}
     const known = PUB_GROUPS.map((g) => g[0]);
     const groups = PUB_GROUPS.concat([["other", "Other", "O"]]).map(([type, label, pre]) => ({
       label, pre,
-      items: pubs.filter((p) => (type === "other" ? !known.includes(clean(p.type).toLowerCase()) : clean(p.type).toLowerCase() === type))
+      items: pubs.filter((p) => (type === "other" ? !known.includes(cvType(p)) : cvType(p) === type))
         .sort((a, b) => key(b) - key(a))
     })).filter((g) => g.items.length);
     let h = "";
