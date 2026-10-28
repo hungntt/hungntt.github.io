@@ -1209,6 +1209,40 @@ window.RESEARCH_DATA = {
       }
     },
     {
+      "title": "Educational Technology and Responsible Automated Essay Scoring in the Generative AI Era",
+      "authors": [
+        "Hieu Thai",
+        "Minh Nguyen",
+        "Hung Truong Thanh Nguyen",
+        "Diem Thi Hong Vo",
+        "Binh Nguyen Thanh",
+        "Khang Nguyen",
+        "Son Ha",
+        "Tam Vi An Le"
+      ],
+      "venue": "Navigating the Circular Age of a Sustainable Digital Revolution, IGI Global Scientific Publishing",
+      "short": "IGI Global 2024",
+      "year": 2024,
+      "month": "",
+      "type": "chapter",
+      "topics": [
+        "xai"
+      ],
+      "tags": {
+        "core": "",
+        "coreYear": "",
+        "quartile": "",
+        "quartileSource": "",
+        "impact": "",
+        "extra": []
+      },
+      "award": "",
+      "note": "pp. 325–356",
+      "links": {
+        "paper": "https://www.igi-global.com/gateway/chapter/355209"
+      }
+    },
+    {
       "title": "Examining Monitoring System: Detecting Abnormal Behavior In Online Examinations",
       "authors": [
         "Dinh An Ngo",
