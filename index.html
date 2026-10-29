@@ -478,6 +478,7 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .q-Q3{background:linear-gradient(#EEFBE4,#CDEFB5)}
 .q-Q4{background:linear-gradient(#F4F4F4,#DADADA)}
 .chip-award{background:linear-gradient(#FFF3B0,#FFD84A)}
+.chip-prize{background:linear-gradient(#E9FBEF,#7EE89A)}
 .chip-if{background:#F4F4F4}
 .chip-extra{background:#fff}
 .chip-topic{--tc:var(--cyan);background:#071426;color:var(--tc);border-color:var(--tc);box-shadow:inset -1px -1px 0 rgba(0,0,0,.4), inset 1px 1px 0 color-mix(in srgb, var(--tc) 30%, transparent)}
@@ -3580,7 +3581,7 @@ body.crt .crt-overlay{display:block}
   }
   const awards = (dataOK && DATA.awards) || [];
   $("#awards-list").innerHTML = awards.map((a) => {
-    const chips = tagChips(a.tags);
+    const chips = (clean(a.prize) ? '<span class="chip chip-prize" title="Prize money">' + esc(a.prize) + "</span>" : "") + tagChips(a.tags);
     const sch = clean(a.kind).toLowerCase() === "scholarship";
     return '<li class="trophy' + (sch ? " scholarship" : "") + '"><span class="ico" aria-hidden="true">' + pixelSVG(sch ? "medal" : "trophy") + "</span>" +
       '<span class="yr">' + esc(a.year) + "</span><span><b>" + esc(a.title) + '</b><span class="ev">' + esc(a.event) + "</span>" +

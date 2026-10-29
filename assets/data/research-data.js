@@ -67,6 +67,12 @@
        SJR quartiles           https://www.scimagojr.com/journalrank.php
        JCR quartiles           https://jcr.clarivate.com/
 
+   ── AWARDS ──────────────────────────────────────────────────────────────────
+     Entries go in `awards: [ ... ]`:
+       { year: "2025", kind: "award", title: "", event: "", prize: "500 CAD" }
+     kind    "award" (trophy icon) or "scholarship" (medal icon).
+     prize   Optional prize money, shown as a chip on the homepage and a tag in the CV.
+
    ── ADD A PATENT / COPYRIGHT ────────────────────────────────────────────────
      Entries go in `intellectualProperty: [ ... ]`. They show under
      "Intellectual property" in the Honors section and in the CV.
@@ -1586,7 +1592,8 @@ window.RESEARCH_DATA = {
       "year": "2026",
       "kind": "award",
       "title": "1st Place Prize",
-      "event": "Big Cross-Modal Attenuation Correction (BIC-MAC) Challenge at MICCAI 2026"
+      "event": "Big Cross-Modal Attenuation Correction (BIC-MAC) Challenge at MICCAI 2026",
+      "prize": "400 EUR"
     },
     {
       "year": "2025",
@@ -1598,25 +1605,29 @@ window.RESEARCH_DATA = {
       "year": "2025",
       "kind": "award",
       "title": "Best Poster Award – Runner-Up",
-      "event": "Atlantic Canada AI Summit"
+      "event": "Atlantic Canada AI Summit",
+      "prize": "500 CAD"
     },
     {
       "year": "2025",
       "kind": "award",
       "title": "Best Poster Award",
-      "event": "UNB Computer Science Research Expo"
+      "event": "UNB Computer Science Research Expo",
+      "prize": "100 CAD"
     },
     {
       "year": "2025",
       "kind": "award",
       "title": "Best Poster Award – Runner-Up",
-      "event": "UNB Computer Science Research Expo"
+      "event": "UNB Computer Science Research Expo",
+      "prize": "50 CAD"
     },
     {
       "year": "2024",
       "kind": "scholarship",
       "title": "Colin Ware Prize in Computer Science",
-      "event": "University of New Brunswick"
+      "event": "University of New Brunswick",
+      "prize": "1,750 CAD"
     },
     {
       "year": "2024",
@@ -1640,25 +1651,29 @@ window.RESEARCH_DATA = {
       "year": "2021",
       "kind": "award",
       "title": "Best Paper Award",
-      "event": "FPT AI Conference 2021 (FAIC 2021)"
+      "event": "FPT AI Conference 2021 (FAIC 2021)",
+      "prize": "500 USD"
     },
     {
       "year": "2021",
       "kind": "award",
       "title": "Best Paper Award – Runner-Up",
-      "event": "FPT AI Conference 2021 (FAIC 2021)"
+      "event": "FPT AI Conference 2021 (FAIC 2021)",
+      "prize": "300 USD"
     },
     {
       "year": "2021",
       "kind": "scholarship",
       "title": "DAAD Scholarship",
-      "event": "Sur-place scholarship"
+      "event": "Sur-place scholarship",
+      "prize": "3,500 EUR"
     },
     {
       "year": "2016–2020",
       "kind": "scholarship",
       "title": "DAAD Scholarship",
-      "event": "Exchange bachelor studies in Germany"
+      "event": "Exchange bachelor studies in Germany",
+      "prize": "7,000 EUR"
     }
   ],
   // Patents and registered copyrights (see ADD A PATENT / COPYRIGHT above)

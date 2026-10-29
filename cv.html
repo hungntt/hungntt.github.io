@@ -121,6 +121,7 @@ p{margin:0 0 4px}
 .tag{display:inline-block;margin-left:4px;padding:0 4px;border:1px solid var(--rule);border-radius:2px;font-size:8pt;line-height:1.35;font-style:normal;font-weight:600;color:var(--muted);vertical-align:1px}
 .tag.award{border-color:#e2c46a;background:#fff6d6;color:var(--gold)}
 .tag.rank{border-color:#CDBDF5;background:#F3EFFF;color:var(--violet)}
+.tag.prize{border-color:#9FD9B0;background:#EAF8EE;color:#1F6B3A}
 .pub .lks{white-space:nowrap}
 .lk{display:inline-flex;align-items:center;gap:3px;margin-left:6px;padding:0 5px 0 3px;border:1px solid var(--rule);border-radius:2px;
   font-size:8pt;line-height:1.35;font-style:normal;font-weight:600;color:var(--accent);vertical-align:1px}
@@ -379,7 +380,8 @@ p{margin:0 0 4px}
     if (H.positions.length) h += sec("Research &amp; Professional Experience", H.positions.length, '<ul class="entries">' + H.positions.map(entryHTML).join("") + "</ul>");
     if (nPubs) h += sec("Publications", nPubs, publicationsHTML());
     if (awards.length) h += sec("Honors, Awards &amp; Scholarships", awards.length, '<ul class="rows">' + awards.map((a) =>
-      '<li class="row"><span class="y">' + esc(a.year) + "</span><span><b>" + esc(a.title) + "</b>" + (clean(a.event) ? ' — <span class="e">' + esc(a.event) + "</span>" : "") + "</span></li>").join("") + "</ul>");
+      '<li class="row"><span class="y">' + esc(a.year) + "</span><span><b>" + esc(a.title) + "</b>" + (clean(a.event) ? ' — <span class="e">' + esc(a.event) + "</span>" : "") +
+      (clean(a.prize) ? '<span class="tag prize">' + esc(a.prize) + "</span>" : "") + "</span></li>").join("") + "</ul>");
     const ip = DATA.intellectualProperty || [];
     if (ip.length) h += sec("Patents &amp; Copyrights", ip.length, '<ul class="rows">' + ip.map((r) => {
       const authors = (Array.isArray(r.authors) ? r.authors : [r.authors]).filter(Boolean).map(String)
