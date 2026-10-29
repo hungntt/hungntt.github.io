@@ -2544,6 +2544,8 @@ body.crt .crt-overlay{display:block}
   const Q_ORDER = ["Q1", "Q2", "Q3", "Q4"];
   const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
   const LINK_LABEL = { paper: "Paper", pdf: "PDF", arxiv: "arXiv", doi: "DOI", code: "Code", slides: "Slides", video: "Video", poster: "Poster", project: "Project", bibtex: "BibTeX" };
+  // a DOI is the paper's canonical link: it takes the "Paper" button instead of showing both
+  const paperLinks = (L) => { L = { ...(L || {}) }; if (clean(L.doi)) { L.paper = L.doi; delete L.doi; } return L; };
   const SORT_LABEL = { newest: "newest first", oldest: "oldest first", title: "title A → Z", core: "CORE rank", quartile: "journal quartile" };
   const TOPIC_COLORS = ["#6ED9FF", "#C9B8FF", "#FFB8DB", "#B6F2C8", "#FFD84A", "#FFB35C", "#FF7F96", "#D4F26B"];
   const INTERESTS = ((DATA && DATA.interests) || []).map((it, i) => ({
@@ -2580,7 +2582,7 @@ body.crt .crt-overlay{display:block}
       i, title: clean(p.title) || "Untitled", authors, meIdx, first, type,
       venue: clean(p.venue), short: clean(p.short), year: parseInt(p.year, 10) || 0, month, monthLabel: mStr,
       core, coreYear: clean(tags.coreYear), quartile, qSource: clean(tags.quartileSource), impact: ifLabel(tags.impact), extra,
-      award: clean(p.award), note: clean(p.note), links: p.links || {}, topics
+      award: clean(p.award), note: clean(p.note), links: paperLinks(p.links), topics
     };
     o.hay = norm([o.title, authors.join(" "), o.venue, o.short, o.year, TYPE_LABEL[type] || type, core && "core " + core + " core" + core,
       quartile, o.qSource, o.impact, extra.join(" "), o.award, o.note, topics.map((t) => topicInfo(t).name + " " + topicInfo(t).short).join(" ")].join(" "));

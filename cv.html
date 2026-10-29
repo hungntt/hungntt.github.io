@@ -303,6 +303,9 @@ p{margin:0 0 4px}
   }
   const LINK_LABEL = { paper: "Paper", pdf: "PDF", arxiv: "arXiv", doi: "DOI", code: "Code", slides: "Slides", video: "Video", poster: "Poster", project: "Project", bibtex: "BibTeX" };
   function linksHTML(L) {
+    // a DOI is the paper's canonical link: it takes the "Paper" button instead of showing both
+    L = { ...L };
+    if (safeUrl(L.doi)) { L.paper = L.doi; delete L.doi; }
     const keys = Object.keys(LINK_LABEL).concat(Object.keys(L).filter((k) => !LINK_LABEL[k]));
     return keys.filter((k) => safeUrl(L[k])).map((k) => {
       const icon = k === "code" ? "chip" : k === "video" || k === "slides" ? "monitor" : "doc";
@@ -326,11 +329,10 @@ p{margin:0 0 4px}
     const shortTag = clean(p.short) && clean(p.venue) && !clean(p.venue).includes(clean(p.short)) ? " (" + esc(p.short) + ")" : "";
     // three lines: title / authors / venue, year and tags
     return '<li class="pub"><span class="n">[' + n + ']</span><span class="pb">' +
-      '<span class="ttl">' + link(url, esc(p.title)) + "</span>" +
+      '<span class="ttl">' + link(url, esc(p.title)) + (links ? ' <span class="lks">' + links + "</span>" : "") + "</span>" +
       '<span class="au">' + authors + "</span>" +
       '<span class="meta">' + (venue ? '<span class="ven">' + esc(venue) + "</span>" + shortTag + ", " : "") + esc(p.year) +
-      (tags.length ? ' <span class="tags">' + tags.join("") + "</span>" : "") +
-      (links ? ' <span class="lks">' + links + "</span>" : "") + "</span>" +
+      (tags.length ? ' <span class="tags">' + tags.join("") + "</span>" : "") + "</span>" +
       (/under review/i.test(clean(p.note)) ? '<span class="note">' + esc(clean(p.note)) + "</span>" : "") + "</span></li>";
   }
   function publicationsHTML() {
