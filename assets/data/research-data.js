@@ -138,7 +138,7 @@ window.RESEARCH_DATA = {
       "address": "Analytics Everywhere Lab, University of New Brunswick, 550 Windsor St, Room GC107, Fredericton, NB E3B 5A3, Canada",
       "email": "hung.cao@unb.ca",
       "phone": "+1 506 230 7789",
-      "relationship": "PhD supervisor."
+      "relationship": "Ph.D. supervisor."
     },
     {
       "name": "Prof. Veronica Whitford",
