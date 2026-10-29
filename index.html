@@ -361,6 +361,9 @@ button{font:inherit;color:inherit}
 .log .w .cap{display:block;margin-top:1px;padding-left:1.5ch;font-size:16px;color:var(--text-dim)}
 .log .w .cap::before{content:"└ ";margin-left:-1.5ch;color:#5C7CA3}
 .log .w .cap a,.log .w .cap a:visited{color:inherit}
+.log .w .cert{display:inline-block;margin-left:8px;vertical-align:-2px;line-height:0}
+.log .w .cert .ico{width:16px;height:16px}
+.log .w .cert:hover,.log .w .cert:focus-visible{outline:1px dotted var(--cyan);outline-offset:2px}
 .log .w .cap a:hover{color:#fff;background:none}
 .log .w .thesis{position:relative;isolation:isolate;display:block;overflow:hidden;margin:10px 0 12px;padding:12px 16px;
   border:1px solid rgba(110,217,255,.35);border-radius:3px;
@@ -1348,7 +1351,7 @@ body.crt .crt-overlay{display:block}
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat certification.log</div>
           <h3 class="sr-only">Teaching certification</h3>
           <ul class="log">
-            <li><span class="d">[DUT]</span><span class="w"><span class="deg">Diploma of University Teaching</span><span class="uni">Issued by University of New Brunswick (UNB)</span><span class="cap">Certified for formal training and qualification in higher education instruction</span><span class="cap"><a href="https://hungntt.github.io/assets/docs/dut-diploma.jpg">View diploma</a></span></span><span class="st">[ CANADA ]</span></li>
+            <li><span class="d">[DUT]</span><span class="w"><span class="deg">Diploma of University Teaching</span><a class="cert" href="https://hungntt.github.io/assets/docs/dut-diploma.jpg" title="View diploma" aria-label="View diploma"><span class="ico" data-icon="doc"></span></a><span class="uni">Issued by University of New Brunswick (UNB)</span><span class="cap">Certified for formal training and qualification in higher education instruction</span></span><span class="st">[ CANADA ]</span></li>
           </ul>
           <div class="prompt" aria-hidden="true">C:\HUNG&gt; cat teaching_assistant.log</div>
           <h3 class="sr-only">Teaching assistant</h3>
