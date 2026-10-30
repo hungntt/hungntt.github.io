@@ -258,15 +258,16 @@ window.RESEARCH_DATA = {
         "Long Tran-Thanh",
         "Hung Cao"
       ],
-      "venue": "International Conference on Autonomous Agents and Multiagent Systems",
-      "short": "AAMAS 2027",
+      "venue": "arXiv preprint arXiv:2610.36151",
+      "short": "arXiv",
       "year": 2026,
       "month": "Oct",
-      "type": "conference",
+      "type": "preprint",
+      "cvType": "conference",
       "topics": ["agents", "xai"],
       "tags": {},
       "award": "",
-      "note": "Under review at AAMAS 2027.",
+      "note": "Under review at the International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2027).",
       "links": {
         "paper": "https://arxiv.org/abs/2610.36151"
       }
