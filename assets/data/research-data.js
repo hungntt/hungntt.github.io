@@ -246,6 +246,32 @@ window.RESEARCH_DATA = {
   ],
   "publications": [
     {
+      "title": "Replication or Corroboration? An Axiomatic Framework for Evidential Dependence in Multi-Agent Debate",
+      "authors": [
+        "Hoang-Loc Cao",
+        "Truong Thanh Hung Nguyen",
+        "Phuc Truong Loc Nguyen",
+        "Vo Thanh Khang Nguyen",
+        "Phuc Ho",
+        "Hung Nguyen",
+        "Duc Pham",
+        "Long Tran-Thanh",
+        "Hung Cao"
+      ],
+      "venue": "International Conference on Autonomous Agents and Multiagent Systems",
+      "short": "AAMAS 2027",
+      "year": 2026,
+      "month": "Oct",
+      "type": "conference",
+      "topics": ["agents", "xai"],
+      "tags": {},
+      "award": "",
+      "note": "Under review at AAMAS 2027.",
+      "links": {
+        "paper": "https://arxiv.org/abs/2610.36151"
+      }
+    },
+    {
       "title": "Uncertainty-Gated SHAP-Dirichlet Refinement for MRI-Based Depression Classification",
       "authors": [
         "Phuc Truong Loc Nguyen",
