@@ -133,7 +133,7 @@ window.RESEARCH_DATA = {
   ],
   "references": [
     {
-      "name": "Prof. Hung Cao",
+      "name": "Assoc. Prof. Hung Cao",
       "position": "Associate Professor, Faculty of Computer Science, University of New Brunswick; Founder and Director, Analytics Everywhere Lab",
       "address": "Analytics Everywhere Lab, University of New Brunswick, 550 Windsor St, Room GC107, Fredericton, NB E3B 5A3, Canada",
       "email": "hung.cao@unb.ca",
