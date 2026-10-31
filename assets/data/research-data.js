@@ -141,7 +141,7 @@ window.RESEARCH_DATA = {
       "relationship": "Ph.D. supervisor."
     },
     {
-      "name": "Prof. Veronica Whitford",
+      "name": "Assoc. Prof. Veronica Whitford",
       "position": "Associate Professor and Tier 2 Canada Research Chair in Cognitive Neuroscience of Bilingual Reading Across the Lifespan, Department of Psychology, University of New Brunswick",
       "address": "Department of Psychology, Keirstead Hall 209, University of New Brunswick, Fredericton, NB E3B 5A3, Canada",
       "email": "veronica.whitford@unb.ca",
