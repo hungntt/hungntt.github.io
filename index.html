@@ -524,10 +524,13 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .artifact .pub-links{margin-top:8px}
 .table-wrap{overflow-x:auto}
 .mentor{display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 320px), 1fr));gap:10px;margin:0 0 6px;padding:0;list-style:none}
-.mentor li{display:flex;flex-wrap:wrap;align-content:flex-start;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(90deg, rgba(22,141,218,.22), rgba(11,60,125,.08));border:1px solid rgba(110,217,255,.25);border-left:3px solid var(--mint)}
+.mentor>li{display:flex;flex-wrap:wrap;align-content:flex-start;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(90deg, rgba(22,141,218,.22), rgba(11,60,125,.08));border:1px solid rgba(110,217,255,.25);border-left:3px solid var(--mint)}
 .mentor .n{font:44px/1 var(--f-term);color:var(--mint)}
 .mentor .lv{color:#fff;font:bold 14px/1.3 var(--f-body)}
-.mentor .who{flex-basis:100%;color:var(--text-dim);font-size:13px;line-height:1.6}
+.mentor .who{display:grid;gap:7px;flex-basis:100%;margin:4px 0 0;padding:0;list-style:none;font-size:13px;line-height:1.45}
+.mentor .who b{color:#fff}
+.mentor .who .af{display:block;color:var(--text-dim)}
+.mentor .who .ach{display:block;color:var(--gold)}
 #mentorship-h{margin-top:4px}
 .svc{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.5}
 .svc th,.svc td{padding:9px 12px;border:1px solid rgba(110,217,255,.35);text-align:left;vertical-align:top}
@@ -988,7 +991,7 @@ body.crt .crt-overlay{display:block}
   .hero-main{display:block;max-width:none;padding:0 0 12px}
   .call-controls,.call-tag,.call-cover,.call>.titlebar,.call-screen::after{display:none!important}
   .call{width:140px;margin-bottom:12px;box-shadow:none}
-  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.trophy .au,.artifact .nm,.artifact .ds,.artifact .ven,.mentor .n,.mentor .lv,.mentor .who,.log .w,.term{color:#000!important;text-shadow:none}
+  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.trophy .au,.artifact .nm,.artifact .ds,.artifact .ven,.mentor .n,.mentor .lv,.mentor .who b,.mentor .who .af,.mentor .who .ach,.log .w,.term{color:#000!important;text-shadow:none}
   .term,.pf-list-wrap,.nest{background:#fff;box-shadow:none}
   .log .w .thesis{background:#f8f8fa;border-color:#aaa;box-shadow:none}
   .log .w .thesis::before,.log .w .thesis::after,.thesis-label::before,.thesis-label::after{display:none}
@@ -3724,10 +3727,14 @@ body.crt .crt-overlay{display:block}
   })();
 
   const mentorship = (dataOK && DATA.mentorship) || [];
+  // a student is a name, or { name, affiliation, achievements: [] }
+  const students = (m) => (m.students || []).map((s) => (typeof s === "string" ? { name: s } : s || {})).filter((s) => clean(s.name));
   $("#mentor-list").innerHTML = mentorship.map((m) => {
-    const names = (m.students || []).map(clean).filter(Boolean);
-    return '<li><span class="n">' + esc(names.length || m.count) + '</span><span class="lv">' + esc(m.level) + "</span>" +
-      (names.length ? '<span class="who">' + esc(names.join("\u00a0· ")) + "</span>" : "") + "</li>";
+    const list = students(m);
+    return '<li><span class="n">' + esc(list.length || m.count) + '</span><span class="lv">' + esc(m.level) + "</span>" +
+      (list.length ? '<ul class="who">' + list.map((s) => "<li><b>" + esc(s.name) + "</b>" +
+        (clean(s.affiliation) ? '<span class="af">' + esc(s.affiliation) + "</span>" : "") +
+        (s.achievements || []).map(clean).filter(Boolean).map((a) => '<span class="ach">★ ' + esc(a) + "</span>").join("") + "</li>").join("") + "</ul>" : "") + "</li>";
   }).join("");
   if (mentorship.length) { $("#mentorship-h").hidden = false; $("#review-h").hidden = false; }
 
