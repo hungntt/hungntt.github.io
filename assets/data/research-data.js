@@ -1640,8 +1640,8 @@ window.RESEARCH_DATA = {
         "Hung Nguyen",
         "Khang Nguyen"
       ],
-      "venue": "The International Conference on Automated Planning and Scheduling — PRL Workshop",
-      "short": "ICAPS 2021",
+      "venue": "Workshop on Bridging the Gap Between AI Planning and Reinforcement Learning (PRL-21), ICAPS 2021",
+      "short": "PRL-21",
       "year": 2021,
       "month": "Jun",
       "type": "workshop",
