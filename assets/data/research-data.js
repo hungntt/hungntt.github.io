@@ -40,6 +40,10 @@
                chip in that interest's `color` on the paper, and the paper appears when a visitor
                clicks that interest's tile in the Bio section (or picks it in
                the "Research interest" filter). Ids come from `interests` below.
+     selected  Optional. The homepage opens on "Selected" papers: Q1 journals and
+               papers at CORE A* or A venues, including their workshops and
+               challenges. `selected: true` adds a paper,
+               `selected: false` removes one.
      award     Any text, e.g. "Best Paper Award – Runner-Up". Shows a gold ★ chip and
                makes the paper appear under the "Awarded" filter.
      note      Small grey line under the venue, e.g. "Oral presentation".

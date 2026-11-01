@@ -395,6 +395,14 @@ button{font:inherit;color:inherit}
 .finder.is-collapsed>:not(.titlebar):not(.statusbar){display:none}
 .win.nest.is-collapsed>:not(.titlebar){display:none}
 .pf-toolbar{display:flex;flex-direction:column;gap:8px;margin-top:2px;padding:8px 8px 10px;background:var(--metal);border-bottom:1px solid #8B8B8B;box-shadow:0 1px 0 #fff}
+.pf-views{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 2px;margin-top:2px;padding:6px 8px 0;background:var(--metal);border-bottom:1px solid #8B8B8B}
+.pf-view{position:relative;top:1px;padding:4px 12px 5px;border:0;background:var(--silver);box-shadow:inset 1px 1px 0 #fff, inset -1px 0 0 #0a0a0a, inset -2px 0 0 #8b8b8b;font:11px/16px var(--f-ui);color:#000;cursor:pointer}
+.pf-view[aria-pressed="true"]{z-index:1;padding:6px 14px 6px;background:#fff;font-weight:bold}
+.pf-view small{color:#555;font-weight:normal}
+.pf-view:focus-visible{outline:1px dotted #000;outline-offset:-4px}
+.pf-views-note{margin:0 0 5px auto;padding-left:10px;color:#555;font:11px/1.3 var(--f-ui)}
+.finder.view-selected .pf-toolbar,.finder.view-selected .pf-active{display:none}
+.pf-more{display:flex;justify-content:center;padding:12px 10px 14px;border-top:1px solid #A9CBEA}
 .pf-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 10px}
 .field{display:flex;flex-direction:column;gap:3px;font:11px/1 var(--f-ui);color:#222}
 .field-search{flex:1 1 260px}
@@ -971,7 +979,7 @@ body.crt .crt-overlay{display:block}
    ========================================================================== */
 @media print{
   .wallpaper,.menubar,.desk-icons,.widget,.taskbar,.start-menu,.balloon,.win-chrome,.main-status,.hero-art,.hero-sky,.hero::after,.ticker,
-  .pf-toolbar,.pf-active,.pf-legend,.finder>.titlebar,.finder>.statusbar,.badges,.crt-overlay,.spark,.hero-actions,.pub-ico,.pub-year{display:none!important}
+  .pf-views,.pf-more,.pf-toolbar,.pf-active,.pf-legend,.finder>.titlebar,.finder>.statusbar,.badges,.crt-overlay,.spark,.hero-actions,.pub-ico,.pub-year{display:none!important}
   html,body,.win-body,.hero{background:#fff!important;color:#000!important}
   .main-win{width:auto;margin:0;padding:0;box-shadow:none}
   .win-body{border:0}
@@ -1398,6 +1406,11 @@ body.crt .crt-overlay{display:block}
           <span class="ico tb-ico" data-icon="folder"></span>
           <span class="titlebar-text">paper_finder.exe <small id="pf-title-count"></small></span>
           <span class="tb-btns"><button class="tb-btn" type="button" data-action="legend" aria-label="What do the tags mean?" title="What do the tags mean?"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M2 0h5v1H2zM1 1h2v1H1zM6 1h2v2H6zM5 3h2v1H5zM4 4h2v1H4zM4 6h2v2H4z"/></svg></button><button class="tb-btn" type="button" data-action="pf-collapse" id="pf-collapse" aria-expanded="true" aria-controls="finder" aria-label="Collapse paper_finder.exe" title="Collapse"><svg viewBox="0 0 9 8" aria-hidden="true"><path d="M4 2h1v1H4zM3 3h3v1H3zM2 4h5v1H2zM1 5h7v1H1z"/></svg></button></span>
+        </div>
+        <div class="pf-views" id="pf-views" role="group" aria-label="Which papers to show">
+          <button class="pf-view" type="button" data-action="pf-view" data-view="selected" aria-pressed="true">★ Selected <small id="pf-n-selected"></small></button>
+          <button class="pf-view" type="button" data-action="pf-view" data-view="all" aria-pressed="false">All papers <small id="pf-n-all"></small></button>
+          <span class="pf-views-note">Selected: Q1 journals and CORE A*/A venues</span>
         </div>
         <form class="pf-toolbar" id="pf-form" role="search" aria-label="Search and filter publications">
           <div class="pf-row">
@@ -2275,6 +2288,12 @@ body.crt .crt-overlay{display:block}
       case "crt": crtOn = !crtOn; store.set("hntt-crt", crtOn ? "1" : "0"); syncFx(); break;
       case "legend": { setFinderOpen(true); const l = $("#pf-legend"); l.open = !l.open; if (l.open) l.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" }); break; }
       case "pf-reset": resetFilters(); break;
+      case "pf-view": {
+        const fromMore = !!el.closest(".pf-more");
+        setFinderOpen(true); setView(el.dataset.view);
+        if (fromMore) { $("#publications").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }); $('.pf-view[data-view="all"]').focus({ preventScroll: true }); }
+        break;
+      }
       case "pf-collapse": setFinderOpen($("#finder").classList.contains("is-collapsed")); break;
       case "win-collapse": setWinOpen(el.closest(".win"), el.closest(".win").classList.contains("is-collapsed"), el); break;
       case "call-mic": case "call-cam": case "call-hangup": case "call-redial": callAction(el.dataset.action, el); break;
@@ -2619,6 +2638,9 @@ body.crt .crt-overlay{display:block}
       core, coreYear: clean(tags.coreYear), quartile, qSource: clean(tags.quartileSource), impact: ifLabel(tags.impact), extra,
       award: clean(p.award), note: clean(p.note), links: paperLinks(p.links), topics
     };
+    // homepage "Selected" view: Q1 journals and papers at CORE A*/A venues (incl. their workshops and challenges);
+    // `selected: true/false` overrides
+    o.selected = typeof p.selected === "boolean" ? p.selected : (type === "journal" && quartile === "Q1") || (type !== "preprint" && (core === "A*" || core === "A"));
     o.hay = norm([o.title, authors.join(" "), o.venue, o.short, o.year, TYPE_LABEL[type] || type, core && "core " + core + " core" + core,
       quartile, o.qSource, o.impact, extra.join(" "), o.award, o.note, topics.map((t) => topicInfo(t).name + " " + topicInfo(t).short).join(" ")].join(" "));
     return o;
@@ -2627,6 +2649,8 @@ body.crt .crt-overlay{display:block}
   const pubs = dataOK ? DATA.publications.map(normalizePub) : [];
   const S0 = { q: "", topic: "", type: "", year: "", core: "", quartile: "", tag: "", first: false, award: false, sort: "newest" };
   const S = Object.assign({}, S0);
+  const nSelected = pubs.filter((p) => p.selected).length;
+  S.view = nSelected ? "selected" : "all";   // kept out of S0 so "Reset filters" stays on the full list
   const el = {
     form: $("#pf-form"), q: $("#pf-q"), sort: $("#pf-sort"), topic: $("#pf-topic"), type: $("#pf-type"), year: $("#pf-year"), core: $("#pf-core"),
     quartile: $("#pf-quartile"), tag: $("#pf-tag"), first: $("#pf-first"), award: $("#pf-award"),
@@ -2672,6 +2696,7 @@ body.crt .crt-overlay{display:block}
   };
 
   function matches(p, tokens) {
+    if (S.view === "selected" && !p.selected) return false;
     if (S.topic && (S.topic === "__none" ? p.topics.length > 0 : !p.topics.includes(S.topic))) return false;
     if (S.type && p.type !== S.type) return false;
     if (S.year && String(p.year) !== S.year) return false;
@@ -2765,6 +2790,7 @@ body.crt .crt-overlay{display:block}
       el.status.textContent = "Error: data file missing";
       return;
     }
+    if (activeFilters().length) S.view = "all";   // searching or filtering always looks at every paper
     const raw = S.q.trim().split(/\s+/).filter(Boolean);
     const tokens = raw.map(norm);
     const list = pubs.filter((p) => matches(p, tokens)).sort(SORTS[S.sort] || byNewest);
@@ -2779,8 +2805,15 @@ body.crt .crt-overlay{display:block}
     } else if (list.length) {
       h = '<h3 class="sr-only">Results</h3><ol class="pf-ol">' + list.map((p) => renderItem(p, raw)).join("") + "</ol>";
     }
+    const total = pubs.length;
+    if (S.view === "selected") h += '<div class="pf-more"><button class="btn" type="button" data-action="pf-view" data-view="all">Show all ' + total + " papers, with search &amp; filters →</button></div>";
     el.list.innerHTML = h;
     el.empty.hidden = list.length > 0;
+    $("#finder").classList.toggle("view-selected", S.view === "selected");
+    $("#pf-views").hidden = !nSelected;
+    $$(".pf-view").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === S.view)));
+    $("#pf-n-selected").textContent = "(" + nSelected + ")";
+    $("#pf-n-all").textContent = "(" + total + ")";
 
     const af = activeFilters();
     el.active.hidden = af.length === 0;
@@ -2788,8 +2821,7 @@ body.crt .crt-overlay{display:block}
       af.map(([k, label]) => '<button type="button" class="pill" data-clear="' + k + '" aria-label="Remove filter ' + esc(label) + '">' + esc(label) + '<span class="x">' + X_SVG + "</span></button>").join("") +
       '<button type="button" class="linkish" data-action="pf-reset">Clear all</button>' : "";
 
-    const total = pubs.length;
-    el.status.textContent = (list.length === total ? total + " paper" + (total === 1 ? "" : "s") : list.length + " of " + total + " papers shown");
+    el.status.textContent = S.view === "selected" ? list.length + " selected of " + total + " papers" : (list.length === total ? total + " paper" + (total === 1 ? "" : "s") : list.length + " of " + total + " papers shown");
     el.titleCount.textContent = "— " + total + " object" + (total === 1 ? "" : "s");
     el.sortStatus.textContent = "Sorted: " + SORT_LABEL[S.sort];
     syncControls();
@@ -2812,9 +2844,11 @@ body.crt .crt-overlay{display:block}
     b.title = open ? "Collapse" : "Expand";
     $("path", b).setAttribute("d", open ? "M4 2h1v1H4zM3 3h3v1H3zM2 4h5v1H2zM1 5h7v1H1z" : "M1 2h7v1H1zM2 3h5v1H2zM3 4h3v1H3zM4 5h1v1H4z");
   }
+  function setView(v) { S.view = v; render(); }
   function focusFinder() {
     if (mainWin.hidden) restore(mainWin);
     setFinderOpen(true);
+    if (S.view !== "all") setView("all");
     $("#publications").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
     el.q.focus({ preventScroll: true });
   }
@@ -3552,7 +3586,7 @@ body.crt .crt-overlay{display:block}
       render();
       const find = () => $('.pub[data-pi="' + i + '"]', el.list);
       let li = find();
-      if (!li) { resetFilters(); li = find(); }
+      if (!li) { S.view = "all"; resetFilters(); li = find(); }
       if (!li) return;
       li.tabIndex = -1;
       li.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
