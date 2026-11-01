@@ -2004,48 +2004,56 @@ window.RESEARCH_DATA = {
     {
       "role": "Journal Reviewer",
       "venue": "Information Processing & Management",
+      "publisher": "Elsevier",
       "url": "",
       "tags": {}
     },
     {
       "role": "Journal Reviewer",
       "venue": "Information Fusion",
+      "publisher": "Elsevier",
       "url": "",
       "tags": {}
     },
     {
       "role": "Journal Reviewer",
       "venue": "IEEE Transactions on Mobile Computing",
+      "publisher": "IEEE",
       "url": "",
       "tags": {}
     },
     {
       "role": "Journal Reviewer",
       "venue": "European Journal of Operational Research",
+      "publisher": "Elsevier",
       "url": "",
       "tags": {}
     },
     {
       "role": "Journal Reviewer",
       "venue": "International Journal of Human–Computer Interaction",
+      "publisher": "Taylor & Francis",
       "url": "",
       "tags": {}
     },
     {
       "role": "Journal Reviewer",
       "venue": "IEEE Canadian Journal of Electrical and Computer Engineering",
+      "publisher": "IEEE",
       "url": "",
       "tags": {}
     },
     {
       "role": "Journal Reviewer",
       "venue": "IET Smart Cities",
+      "publisher": "Wiley",
       "url": "",
       "tags": {}
     },
     {
-      "role": "Journal Reviewer",
-      "venue": "IGI Global Book Chapter — Navigating the Circular Age of a Sustainable Digital Revolution",
+      "role": "Book Chapter Reviewer",
+      "venue": "Navigating the Circular Age of a Sustainable Digital Revolution",
+      "publisher": "IGI Global",
       "url": "",
       "tags": {}
     },

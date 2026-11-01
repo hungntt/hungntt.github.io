@@ -3731,7 +3731,8 @@ body.crt .crt-overlay{display:block}
       let j = i; while (j < service.length && service[j].role === service[i].role) j++;
       for (let k = i; k < j; k++) {
         const s = service[k];
-        const venue = clean(s.url) && safeUrl(clean(s.url)) ? '<a href="' + esc(clean(s.url)) + '" target="_blank" rel="noopener">' + esc(s.venue) + "</a>" : esc(s.venue);
+        const name = esc(s.venue) + (clean(s.publisher) ? " (" + esc(clean(s.publisher)) + ")" : "");   // journals and books show their publisher
+        const venue = clean(s.url) && safeUrl(clean(s.url)) ? '<a href="' + esc(clean(s.url)) + '" target="_blank" rel="noopener">' + name + "</a>" : name;
         h += "<tr>" + (k === i ? '<th scope="row" rowspan="' + (j - i) + '">' + esc(s.role) + "</th>" : "") +
           "<td>" + venue + "</td></tr>";
       }

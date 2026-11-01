@@ -129,7 +129,7 @@ p{margin:0 0 4px}
 .lk .ico{display:inline-block;width:10px;height:10px;line-height:0}
 .lk .ico svg{width:100%;height:100%;display:block}
 
-/* bullet lists: knowledge transfer artifacts and mentored students */
+/* bullet lists: knowledge transfer artifacts, mentored students and academic service */
 .tools{margin:0;padding:0;list-style:none}
 .tool{position:relative;padding:1.5px 0 1.5px 12px;break-inside:avoid}
 .tool::before{content:"";position:absolute;left:1px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--violet)}
@@ -146,10 +146,6 @@ p{margin:0 0 4px}
 .tool .af{color:var(--muted)}
 .tool .ach{color:var(--gold)}
 .row .au .me{font-weight:700;text-decoration:underline;text-underline-offset:1.5px}
-.svc{display:grid;grid-template-columns:13em 1fr;gap:2px 12px;margin:0}
-.svc dt{font-weight:600;color:var(--accent)}
-.svc dd{margin:0}
-.svc dt,.svc dd{break-inside:avoid}
 .reference{break-inside:avoid;margin:0 0 12px}
 .reference:last-child{margin-bottom:0}
 .reference h3{color:var(--ink);margin-top:0}
@@ -430,7 +426,9 @@ p{margin:0 0 4px}
     const awards = DATA.awards || [];
     const service = DATA.service || [];
     const svcGroups = [];
-    service.forEach((s) => { const g = svcGroups.find((x) => x.role === clean(s.role)); g ? g.items.push(clean(s.venue)) : svcGroups.push({ role: clean(s.role), items: [clean(s.venue)] }); });
+    // a journal's publisher follows its name
+    const svcItem = (s) => clean(s.venue) + (clean(s.publisher) ? " (" + clean(s.publisher) + ")" : "");
+    service.forEach((s) => { const g = svcGroups.find((x) => x.role === clean(s.role)); g ? g.items.push(svcItem(s)) : svcGroups.push({ role: clean(s.role), items: [svcItem(s)] }); });
 
     let h = '<header class="head"><div><h1>' + esc(H.name) + "</h1>" +
       (H.role ? '<p class="role">' + esc(H.role) + "</p>" : "") +
@@ -480,8 +478,8 @@ p{margin:0 0 4px}
           (ach.length ? ' — <span class="ach">' + esc(ach.join("; ")) + "</span>" : "") + "</li>";
       }).join("") + "</ul>" : "");
     }).join(""));
-    if (svcGroups.length) h += sec("Academic Service", service.length, '<dl class="svc">' + svcGroups.map((g) =>
-      "<dt>" + esc(g.role) + "</dt><dd>" + esc(g.items.join("; ")) + "</dd>").join("") + "</dl>");
+    if (svcGroups.length) h += sec("Academic Service", service.length, svcGroups.map((g) =>
+      "<h3>" + esc(g.role) + '</h3><ul class="tools">' + g.items.map((v) => '<li class="tool">' + esc(v) + "</li>").join("") + "</ul>").join(""));
     const languages = DATA.languages || [];
     if (languages.length) h += sec("Languages", "", "<p>" + languages.map((l) => esc(l.name) + " (" + esc(l.level) + ")").join(" · ") + "</p>");
     const references = DATA.references || [];
