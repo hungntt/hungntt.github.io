@@ -129,7 +129,7 @@ p{margin:0 0 4px}
 .lk .ico{display:inline-block;width:10px;height:10px;line-height:0}
 .lk .ico svg{width:100%;height:100%;display:block}
 
-/* bullet lists: knowledge transfer artifacts, mentored students and academic service */
+/* bullet lists: knowledge transfer artifacts, mentored students, academic service and skills */
 .tools{margin:0;padding:0;list-style:none}
 .tool{position:relative;padding:1.5px 0 1.5px 12px;break-inside:avoid}
 .tool::before{content:"";position:absolute;left:1px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--violet)}
@@ -480,6 +480,9 @@ p{margin:0 0 4px}
     }).join(""));
     if (svcGroups.length) h += sec("Academic Service", service.length, svcGroups.map((g) =>
       "<h3>" + esc(g.role) + '</h3><ul class="tools">' + g.items.map((v) => '<li class="tool">' + esc(v) + "</li>").join("") + "</ul>").join(""));
+    const skills = (DATA.skills || []).filter((g) => clean(g.area));
+    if (skills.length) h += sec("Technical Skills", "", '<ul class="tools">' + skills.map((g) =>
+      '<li class="tool"><span class="nm">' + esc(g.area) + ":</span> " + esc((g.items || []).map(clean).filter(Boolean).join(", ")) + "</li>").join("") + "</ul>");
     const languages = DATA.languages || [];
     if (languages.length) h += sec("Languages", "", "<p>" + languages.map((l) => esc(l.name) + " (" + esc(l.level) + ")").join(" · ") + "</p>");
     const references = DATA.references || [];

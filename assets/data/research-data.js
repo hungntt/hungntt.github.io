@@ -142,6 +142,17 @@ window.RESEARCH_DATA = {
       { "code": "CS3113", "title": "Introduction to Numerical Methods", "years": "Fall 2024" }
     ]
   },
+  // Technical skills, drawn from the code released with the publications
+  "skills": [
+    { "area": "Programming languages", "items": ["Python", "C/C++", "Java", "Ruby", "JavaScript", "Arduino"] },
+    { "area": "Machine learning & deep learning", "items": ["PyTorch", "TensorFlow/Keras", "scikit-learn", "Hugging Face Transformers", "Ultralytics YOLO", "Segmentation Models PyTorch", "OpenCV"] },
+    { "area": "LLMs & multi-agent systems", "items": ["LangChain", "LangGraph", "Model Context Protocol (MCP)", "OpenAI, Anthropic & Gemini APIs", "Ollama", "llama.cpp", "RAG with ChromaDB, FAISS & Sentence-Transformers"] },
+    { "area": "Edge, federated & quantum AI", "items": ["Flower (federated learning)", "TensorRT", "Neural architecture search", "Cirq & TensorFlow Quantum"] },
+    { "area": "Medical imaging & biosignals", "items": ["Latent diffusion models", "SimpleITK & NiBabel", "Wearable ECG/HRV (Polar H10, Bleak)", "EEG (Muse)"] },
+    { "area": "Frameworks", "items": ["React", "Next.js", "Node.js", "Vite", "React Flow", "FastAPI", "Flask", "Django", "Ruby on Rails", "Gradio", "Plotly Dash"] },
+    { "area": "Mobile development", "items": ["iOS (Swift, SwiftUI)", "Android (Kotlin, Java)", "React Native", "Flutter"] },
+    { "area": "Tools & deployment", "items": ["Docker", "PostgreSQL/pgvector"] }
+  ],
   "languages": [
     { "name": "Vietnamese", "level": "Native" },
     { "name": "English", "level": "C1" },
