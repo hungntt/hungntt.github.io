@@ -851,6 +851,26 @@ window.RESEARCH_DATA = {
       }
     },
     {
+      "title": "AiP-301: Artificial Intelligence and Analytics for Aging in Place",
+      "authors": [
+        "René Richard",
+        "Hélène Fournier",
+        "Hung Cao",
+        "Hung Nguyen",
+        "Alireza Rahimi"
+      ],
+      "venue": "D-CGA@home project, National Research Council Canada",
+      "short": "NRC 2025",
+      "year": 2025,
+      "month": "",
+      "type": "report",
+      "topics": ["biomed"],
+      "tags": {},
+      "award": "",
+      "note": "",
+      "links": {}
+    },
+    {
       "title": "Motion2Meaning: A Clinician-Centered Framework for Contestable LLM in Parkinson’s Disease Gait Interpretation",
       "authors": [
         "Loc Phuc Truong Nguyen",
