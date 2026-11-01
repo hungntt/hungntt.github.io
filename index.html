@@ -505,6 +505,15 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .trophy .au .me{color:#fff;font-weight:bold}
 .trophy .mini .ico{width:12px;height:12px}
 #awards-h{margin-top:4px}
+.artifacts{display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 320px), 1fr));gap:8px;margin:0;padding:0;list-style:none}
+.artifact{display:grid;grid-template-columns:32px minmax(0,1fr);gap:14px;align-items:start;padding:10px 14px 12px 12px;
+  background:linear-gradient(90deg, rgba(22,141,218,.22), rgba(11,60,125,.08));border:1px solid rgba(110,217,255,.25);border-left:3px solid var(--cyan)}
+.artifact.prototype{border-left-color:var(--orange)}
+.artifact>.ico{width:32px;height:32px}
+.artifact .nm{display:block;font:20px/1.1 var(--f-term);color:var(--cyan)}
+.artifact .ds{display:block;margin-top:3px;color:#fff;font-size:13.5px;line-height:1.5}
+.artifact .ven{display:block;color:var(--text-dim);font-size:13px;line-height:1.5}
+.artifact .pub-links{margin-top:8px}
 .table-wrap{overflow-x:auto}
 .mentor{display:grid;grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));gap:10px;margin:0 0 6px;padding:0;list-style:none}
 .mentor li{display:flex;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(90deg, rgba(22,141,218,.22), rgba(11,60,125,.08));border:1px solid rgba(110,217,255,.25);border-left:3px solid var(--mint)}
@@ -970,7 +979,7 @@ body.crt .crt-overlay{display:block}
   .hero-main{display:block;max-width:none;padding:0 0 12px}
   .call-controls,.call-tag,.call-cover,.call>.titlebar,.call-screen::after{display:none!important}
   .call{width:140px;margin-bottom:12px;box-shadow:none}
-  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.trophy .au,.mentor .n,.mentor .lv,.log .w,.term{color:#000!important;text-shadow:none}
+  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.trophy .au,.artifact .nm,.artifact .ds,.artifact .ven,.mentor .n,.mentor .lv,.log .w,.term{color:#000!important;text-shadow:none}
   .term,.pf-list-wrap,.nest{background:#fff;box-shadow:none}
   .log .w .thesis{background:#f8f8fa;border-color:#aaa;box-shadow:none}
   .log .w .thesis::before,.log .w .thesis::after,.thesis-label::before,.thesis-label::after{display:none}
@@ -1037,6 +1046,7 @@ body.crt .crt-overlay{display:block}
       <summary><span><u>A</u>rchive</span></summary>
       <div class="menu-pop">
         <a class="menu-item" href="#publications"><span class="ico" data-icon="folder"></span>Publications</a>
+        <a class="menu-item" href="#transfer"><span class="ico" data-icon="chip"></span>Knowledge transfer</a>
         <a class="menu-item" href="#honors"><span class="ico" data-icon="trophy"></span>Honors &amp; awards</a>
         <a class="menu-item" href="#services"><span class="ico" data-icon="doc"></span>Academic services</a>
       </div>
@@ -1480,9 +1490,20 @@ body.crt .crt-overlay{display:block}
       </div>
     </section>
 
+    <!-- ======================== KNOWLEDGE TRANSFER ====================== -->
+    <section class="sec" id="transfer" data-section="Knowledge transfer" aria-labelledby="kt-h">
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">05/</span><h2 id="kt-h">Knowledge Transfer</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\TOOLS\</span></div>
+      <!-- Cards come from `artifacts` in assets/data/research-data.js -->
+      <p>Open-source code, public demos and benchmarks released with my peer-reviewed papers to support reproducibility, transparency and research translation.</p>
+      <h3 class="sub" id="software-h" hidden>Open-source software &amp; research demos</h3>
+      <ul class="artifacts" id="software-list" aria-labelledby="software-h"></ul>
+      <h3 class="sub" id="prototype-h" hidden>Prototypes</h3>
+      <ul class="artifacts" id="prototype-list" aria-labelledby="prototype-h" hidden></ul>
+    </section>
+
     <!-- ============================= HONORS ============================= -->
     <section class="sec" id="honors" data-section="Honors &amp; awards" aria-labelledby="hon-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">05/</span><h2 id="hon-h">Honors &amp; Awards</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\TROPHY.LOG</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">06/</span><h2 id="hon-h">Honors &amp; Awards</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\TROPHY.LOG</span></div>
       <!-- Lists come from `awards` and `intellectualProperty` in assets/data/research-data.js -->
       <h3 class="sub" id="awards-h" hidden>Awards &amp; scholarships</h3>
       <ul class="trophies" id="awards-list" aria-labelledby="awards-h"></ul>
@@ -1492,7 +1513,7 @@ body.crt .crt-overlay{display:block}
 
     <!-- ============================ SERVICES ============================ -->
     <section class="sec" id="services" data-section="Academic services" aria-labelledby="svc-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">06/</span><h2 id="svc-h">Academic Services</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\SERVICES.TXT</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">07/</span><h2 id="svc-h">Academic Services</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\SERVICES.TXT</span></div>
       <!-- Tiles come from `mentorship` in assets/data/research-data.js -->
       <h3 class="sub" id="mentorship-h" hidden>Student mentorship</h3>
       <ul class="mentor" id="mentor-list" aria-labelledby="mentorship-h"></ul>
@@ -1507,19 +1528,19 @@ body.crt .crt-overlay{display:block}
 
     <!-- ============================ LANGUAGES =========================== -->
     <section class="sec" id="languages" data-section="Languages" aria-labelledby="lang-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">07/</span><h2 id="lang-h">Languages</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\LANGUAGES.TXT</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">08/</span><h2 id="lang-h">Languages</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\LANGUAGES.TXT</span></div>
       <ul class="language-list" id="language-list"></ul>
     </section>
 
     <!-- ============================ REFERENCES ========================== -->
     <section class="sec" id="references" data-section="References" aria-labelledby="ref-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">08/</span><h2 id="ref-h">References</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\REFERENCES.TXT</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">09/</span><h2 id="ref-h">References</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\REFERENCES.TXT</span></div>
       <ol class="reference-list" id="reference-list"></ol>
     </section>
 
     <!-- ============================= CONTACT ============================ -->
     <section class="sec" id="contact" data-section="Contact" aria-labelledby="con-h">
-      <div class="sec-head"><span class="sec-no" aria-hidden="true">09/</span><h2 id="con-h">Contact &amp; Links</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">NETWORK NEIGHBORHOOD</span></div>
+      <div class="sec-head"><span class="sec-no" aria-hidden="true">10/</span><h2 id="con-h">Contact &amp; Links</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">NETWORK NEIGHBORHOOD</span></div>
       <!-- EDIT: email + profile links -->
       <ul class="links-grid">
         <li><a class="link-tile" href="mailto:hung.ntt@unb.ca"><span class="ico" data-icon="envelope"></span><b>Email</b><small>hung.ntt@unb.ca</small></a></li>
@@ -1727,6 +1748,7 @@ body.crt .crt-overlay{display:block}
   <nav class="start-list" aria-label="Start menu">
     <a class="menu-item" href="#publications"><span class="ico" data-icon="folder"></span>Publications</a>
     <button class="menu-item" type="button" data-action="orbit-map"><span class="ico" data-icon="sparkle"></span>Orbit map of papers</button>
+    <a class="menu-item" href="#transfer"><span class="ico" data-icon="chip"></span>Knowledge transfer</a>
     <a class="menu-item" href="#honors"><span class="ico" data-icon="trophy"></span>Honors &amp; awards</a>
     <a class="menu-item" href="#services"><span class="ico" data-icon="doc"></span>Academic services</a>
     <a class="menu-item" href="#teaching"><span class="ico" data-icon="board"></span>Teaching</a>
@@ -3578,6 +3600,39 @@ body.crt .crt-overlay{display:block}
     if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey) return;
     const t = e.target; if (t.closest && t.closest("input, textarea, select, [contenteditable]")) return;
     e.preventDefault(); focusFinder();
+  });
+
+  /* ------------------------------------------- knowledge transfer cards */
+  // each artifact names the start of its paper's title; the paper supplies the venue and link
+  const ARTIFACT_LINKS = { code: ["Code", "chip"], demo: ["Demo", "monitor"], benchmark: ["Benchmark", "doc"], webpage: ["Webpage", "globe"], dataset: ["Dataset", "doc"] };
+  const artifacts = (dataOK && DATA.artifacts) || [];
+  function artifactHTML(a) {
+    const L = a.links || {};
+    const paper = clean(a.paper) && ((dataOK && DATA.publications) || []).find((p) => clean(p.title).toLowerCase().startsWith(clean(a.paper).toLowerCase()));
+    let ven = "";
+    if (paper) {
+      const PL = paper.links || {};
+      const url = [PL.doi, PL.paper, PL.pdf, PL.arxiv].map(clean).find((u) => u && safeUrl(u));
+      // journals read better in full ("Information Fusion"); conferences by their short name
+      const label = (clean(paper.type) === "journal" && clean(paper.venue)) || clean(paper.short) || clean(paper.venue);
+      const name = esc(label + (String(label).includes(String(paper.year)) ? "" : " " + paper.year));
+      ven = '<span class="ven">Published in ' + (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + name + "</a>" : name) + "</span>";
+    }
+    const keys = Object.keys(ARTIFACT_LINKS).concat(Object.keys(L).filter((k) => !ARTIFACT_LINKS[k]));
+    const links = keys.filter((k) => clean(L[k]) && safeUrl(clean(L[k]))).map((k) => {
+      const [label, icon] = ARTIFACT_LINKS[k] || [k, "doc"];
+      return '<a class="mini" href="' + esc(clean(L[k])) + '" target="_blank" rel="noopener"><span class="ico">' + pixelSVG(icon) + "</span>" + esc(label) + '<span class="sr-only"> for ' + esc(a.name) + " (opens in a new tab)</span></a>";
+    }).join("");
+    const proto = clean(a.kind).toLowerCase() === "prototype";
+    return '<li class="artifact' + (proto ? " prototype" : "") + '"><span class="ico" aria-hidden="true">' + pixelSVG(proto ? "satellite" : "chip") + "</span>" +
+      '<span><span class="nm">' + esc(a.name) + '</span><span class="ds">' + esc(a.summary) + ".</span>" + ven +
+      (links ? '<span class="pub-links">' + links + "</span>" : "") + "</span></li>";
+  }
+  [["software", (a) => clean(a.kind).toLowerCase() !== "prototype"], ["prototype", (a) => clean(a.kind).toLowerCase() === "prototype"]].forEach(([id, keep]) => {
+    const list = artifacts.filter(keep);
+    $("#" + id + "-list").innerHTML = list.map(artifactHTML).join("");
+    $("#" + id + "-list").hidden = !list.length;
+    $("#" + id + "-h").hidden = !list.length;
   });
 
   /* -------------------------------------------------- awards + services */

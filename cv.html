@@ -129,6 +129,14 @@ p{margin:0 0 4px}
 .lk .ico{display:inline-block;width:10px;height:10px;line-height:0}
 .lk .ico svg{width:100%;height:100%;display:block}
 
+/* knowledge transfer: one line per artifact */
+.tools{margin:0;padding:0;list-style:none}
+.tool{position:relative;padding:1.5px 0 1.5px 12px;break-inside:avoid}
+.tool::before{content:"";position:absolute;left:1px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--violet)}
+.tool .nm{font-weight:700;color:var(--accent)}
+.tool .ven{font-style:italic}
+.intro{color:var(--muted);font-style:italic;break-inside:avoid;break-after:avoid}
+
 /* simple lists (awards, service) */
 .rows{margin:0;padding:0;list-style:none}
 .row{display:grid;grid-template-columns:5.2em 1fr;gap:0 10px;padding:1.5px 0;break-inside:avoid}
@@ -313,12 +321,14 @@ p{margin:0 0 4px}
   const cvType = (p) => (clean(p.cvType) || clean(p.type)).toLowerCase();
 
   // the homepage's pixel icons for paper/code/video links (same art as index.html)
-  const PAL = { k: "#0a0a0a", w: "#ffffff", s: "#d7d7d7", g: "#8b8b8b", n: "#0b3c7d", c: "#6ed9ff", b: "#168dda" };
+  const PAL = { k: "#0a0a0a", w: "#ffffff", s: "#d7d7d7", g: "#8b8b8b", n: "#0b3c7d", c: "#6ed9ff", b: "#168dda", e: "#7ee89a" };
   const ICONS = {
     doc: ["..kkkkkkkkk.....", "..kwwwwwwwkk....", "..kwwwwwwwkwk...", "..kwnnnnwwkkkk..", "..kwwwwwwwwwwk..", "..kwnnnnnnnnwk..", "..kwwwwwwwwwwk..", "..kwnnnnnnnwwk..",
       "..kwwwwwwwwwwk..", "..kwnnnnnnnnwk..", "..kwwwwwwwwwwk..", "..kwnnnnnwwwwk..", "..kwwwwwwwwwwk..", "..kwwwwwwwwwwk..", "..kkkkkkkkkkkk.."],
     chip: ["................", "....k.k.k.k.....", "....k.k.k.k.....", "..kkkkkkkkkkk...", "..knnnnnnnnnk...", "kkkncccccnnnkkk.", "..kncwwwcnnnk...", "kkkncwwwcnnnkkk.",
       "..kncccccnnnk...", "kkknnnnnnnnnkkk.", "..knnnnnnnnnk...", "..kkkkkkkkkkk...", "....k.k.k.k.....", "....k.k.k.k....."],
+    globe: ["................", ".....kkkkkk.....", "...kkbbccbbkk...", "..kbbeebbbbcbk..", ".kbeeeebbbbbbbk.", ".kbeeeeebbbeebk.", "kbbbeeebbbeeeebk", "kbbbbeebbbbeeebk",
+      "kbbbbbbbbbbeebbk", "kbbbbbbeebbbbbbk", ".kbbbbeeeebbbbk.", ".kbbbbbeeebbbbk.", "..kbbbbbebbbbk..", "...kkbbbbbbkk...", ".....kkkkkk....."],
     monitor: ["................", ".kkkkkkkkkkkkkk.", ".kssssssssssssk.", ".ksnnnnnnnnnnsk.", ".ksnncnnnnnnnsk.", ".ksnnnnnnbnnnsk.", ".ksnnnnnbcbnnsk.", ".ksnnnnnnbnnnsk.",
       ".ksnncnnnnnnnsk.", ".ksnnnnnnnncnsk.", ".ksssssssssssgk.", ".kkkkkkkkkkkkkk.", "......kssk......", "....kkkkkkkk....", "....kssssssk....", "....kkkkkkkk...."]
   };
@@ -385,6 +395,34 @@ p{margin:0 0 4px}
     return h;
   }
 
+  // each artifact names the start of its paper's title; the paper supplies the venue and link
+  const ARTIFACT_LINKS = { code: ["Code", "chip"], demo: ["Demo", "monitor"], benchmark: ["Benchmark", "doc"], webpage: ["Webpage", "globe"], dataset: ["Dataset", "doc"] };
+  function toolHTML(a) {
+    const L = a.links || {};
+    const paper = clean(a.paper) && (DATA.publications || []).find((p) => clean(p.title).toLowerCase().startsWith(clean(a.paper).toLowerCase()));
+    let ven = "";
+    if (paper) {
+      const PL = paper.links || {};
+      // journals read better in full ("Information Fusion"); conferences by their short name
+      const label = (clean(paper.type) === "journal" && clean(paper.venue)) || clean(paper.short) || clean(paper.venue);
+      ven = " Published in " + link([PL.doi, PL.paper, PL.pdf, PL.arxiv].map(clean).find(safeUrl),
+        '<span class="ven">' + esc(label + (label.includes(String(paper.year)) ? "" : " " + paper.year)) + "</span>") + ".";
+    }
+    const keys = Object.keys(ARTIFACT_LINKS).concat(Object.keys(L).filter((k) => !ARTIFACT_LINKS[k]));
+    const links = keys.filter((k) => safeUrl(L[k])).map((k) => {
+      const [label, icon] = ARTIFACT_LINKS[k] || [k, "doc"];
+      return '<a class="lk" href="' + esc(L[k]) + '"><span class="ico">' + pixelSVG(icon) + "</span>" + esc(label) + "</a>";
+    }).join("");
+    return '<li class="tool"><span class="nm">' + esc(a.name) + "</span> — " + esc(a.summary) + "." + ven +
+      (links ? ' <span class="lks">' + links + "</span>" : "") + "</li>";
+  }
+  function artifactsHTML(list) {
+    const isProto = (a) => clean(a.kind).toLowerCase() === "prototype";
+    return [["Selected Open-Source Software, Public Code &amp; Research Demos", list.filter((a) => !isProto(a))], ["Other Prototypes &amp; Research Artifacts", list.filter(isProto)]]
+      .filter(([, items]) => items.length)
+      .map(([label, items]) => "<h3>" + label + '</h3><ul class="tools">' + items.map(toolHTML).join("") + "</ul>").join("");
+  }
+
   function render(H) {
     const interests = (DATA.interests || []).map((it) => clean(it.name)).filter(Boolean);
     const awards = DATA.awards || [];
@@ -412,6 +450,9 @@ p{margin:0 0 4px}
     if (H.education.length) h += sec("Education", H.education.length, '<ul class="entries">' + H.education.map(entryHTML).join("") + "</ul>");
     if (H.positions.length) h += sec("Research &amp; Professional Experience", H.positions.length, '<ul class="entries">' + H.positions.map(entryHTML).join("") + "</ul>");
     if (nPubs) h += sec("Publications", nPubs, publicationsHTML());
+    const artifacts = (DATA.artifacts || []).filter((a) => clean(a.name));
+    if (artifacts.length) h += sec("Knowledge Mobilization &amp; Technology Transfer", artifacts.length,
+      '<p class="intro">Publicly available code, demos and benchmarks released with peer-reviewed publications to support reproducibility, transparency and research translation.</p>' + artifactsHTML(artifacts));
     if (awards.length) h += sec("Honors, Awards &amp; Scholarships", awards.length, '<ul class="rows">' + awards.map((a) =>
       '<li class="row"><span class="y">' + esc(a.year) + "</span><span><b>" + esc(a.title) + "</b>" + (clean(a.event) ? ' — <span class="e">' + esc(a.event) + "</span>" : "") +
       (clean(a.prize) ? '<span class="tag prize">' + esc(a.prize) + "</span>" : "") + "</span></li>").join("") + "</ul>");

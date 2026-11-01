@@ -88,6 +88,18 @@
        url:     ""
      },
 
+   ── ADD AN ARTIFACT (code, demo, prototype) ─────────────────────────────────
+     Entries go in `artifacts: [ ... ]`. They show under "Knowledge Transfer" on
+     the homepage and "Knowledge Mobilization & Technology Transfer" in the CV.
+     {
+       name:    "",                           // short tool name, e.g. "LangXAI"
+       kind:    "software",                   // "software" or "prototype"
+       summary: "",                           // one line, no final period
+       paper:   "",                           // start of the related paper's title;
+                                              // its venue and link are filled in
+       links:   { code: "", demo: "", benchmark: "", webpage: "", dataset: "" }
+     },
+
    ── TROUBLESHOOTING ─────────────────────────────────────────────────────────
      If the paper list says "Could not load research-data.js", this file has
      a syntax error (usually a missing comma or quote). Open the browser
@@ -812,6 +824,7 @@ window.RESEARCH_DATA = {
       "note": "",
       "links": {
         "paper": "https://dl.acm.org/doi/10.1145/3748522.3779788",
+        "code": "https://github.com/Analytics-Everywhere-Lab/neural-architecture-search"
       }
     },
     {
@@ -1270,7 +1283,10 @@ window.RESEARCH_DATA = {
       "award": "",
       "note": "",
       "links": {
-        "paper": "https://doi.org/10.24963/ijcai.2024/1025"
+        "paper": "https://doi.org/10.24963/ijcai.2024/1025",
+        "code": "https://github.com/hungntt/LangXAI",
+        "video": "https://www.youtube.com/watch?v=ClSt89lXLEc",
+        "project": "https://analytics-everywhere-lab.github.io/langxai.io/"
       }
     },
     {
@@ -1662,6 +1678,131 @@ window.RESEARCH_DATA = {
         "paper": "https://prl-theworkshop.github.io/prl2021/papers/PRL2021_paper_15.pdf",
       }
     },
+  ],
+  // Open-source code and demos (see ADD AN ARTIFACT above)
+  "artifacts": [
+    {
+      "name": "Heart2Mind",
+      "kind": "software",
+      "summary": "Open-source code for a human-centered contestable and explainable AI system for psychiatric disorder diagnosis",
+      "paper": "Heart2Mind:",
+      "links": {
+        "code": "https://github.com/Analytics-Everywhere-Lab/heart2mind",
+        "demo": "https://www.youtube.com/watch?v=LYiKLxj3vTE"
+      }
+    },
+    {
+      "name": "XEdgeAI",
+      "kind": "software",
+      "summary": "Implementation of a human-centered, explainable edge AI framework for industrial inspection",
+      "paper": "XEdgeAI:",
+      "links": {
+        "code": "https://github.com/Analytics-Everywhere-Lab/vqixai"
+      }
+    },
+    {
+      "name": "A-QBAF",
+      "kind": "software",
+      "summary": "Open-source multimedia verification tool built on arena-based quantitative bipolar argumentation",
+      "paper": "Contestable Multi-Agent Debate with Arena-based",
+      "links": {
+        "code": "https://github.com/Analytics-Everywhere-Lab/MV2026_the_liems"
+      }
+    },
+    {
+      "name": "ALDM",
+      "kind": "software",
+      "summary": "Implementation of an anatomically-conditioned latent diffusion model for few-shot cross-domain 3D glioma MRI synthesis",
+      "paper": "Anatomically-conditioned Latent Diffusion Model",
+      "links": {
+        "code": "https://github.com/Analytics-Everywhere-Lab/anatomically-conditioned-LDM",
+        "demo": "https://www.youtube.com/watch?v=OARkHCNygmY"
+      }
+    },
+    {
+      "name": "ACAL",
+      "kind": "software",
+      "summary": "Adaptive collaboration of arena-based argumentative LLMs for contestable legal reasoning",
+      "paper": "Neuro-Symbolic Adaptive Collaboration",
+      "links": {
+        "code": "https://github.com/loc110504/ACAL"
+      }
+    },
+    {
+      "name": "SEval-NAS",
+      "kind": "software",
+      "summary": "Implementation of a search-agnostic metric-evaluation mechanism for neural architecture search",
+      "paper": "SEval-NAS:",
+      "links": {
+        "code": "https://github.com/Analytics-Everywhere-Lab/neural-architecture-search",
+        "benchmark": "https://github.com/Analytics-Everywhere-Lab/neural-architecture-search/tree/main/HW-NAS-Bench"
+      }
+    },
+    {
+      "name": "VQR-DQN",
+      "kind": "software",
+      "summary": "Implementation of a variational quantum Rainbow deep Q-network for resource allocation",
+      "paper": "Variational Quantum Rainbow",
+      "links": {
+        "code": "https://github.com/Analytics-Everywhere-Lab/qtrl"
+      }
+    },
+    {
+      "name": "Motion2Meaning",
+      "kind": "software",
+      "summary": "Clinician-centered tool for contestable LLM interpretation of Parkinson’s disease gait",
+      "paper": "Motion2Meaning:",
+      "links": {
+        "code": "https://github.com/hungdothanh/motion2meaning"
+      }
+    },
+    {
+      "name": "ODExAI",
+      "kind": "software",
+      "summary": "Toolkit and evaluation benchmarks for explainable AI methods in object detection",
+      "paper": "ODExAI:",
+      "links": {
+        "code": "https://github.com/Analytics-Everywhere-Lab/odexai"
+      }
+    },
+    {
+      "name": "XGD",
+      "kind": "software",
+      "summary": "Implementation of explainable AI-guided knowledge distillation for semantic segmentation",
+      "paper": "XGD:",
+      "links": {
+        "code": "https://github.com/Analytics-Everywhere-Lab/xaiseg"
+      }
+    },
+    {
+      "name": "LangXAI",
+      "kind": "software",
+      "summary": "Code and public demo for a multimodal framework that generates textual explanations for visual perception tasks",
+      "paper": "LangXAI:",
+      "links": {
+        "code": "https://github.com/hungntt/LangXAI",
+        "demo": "https://www.youtube.com/watch?v=ClSt89lXLEc",
+        "webpage": "https://analytics-everywhere-lab.github.io/langxai.io/"
+      }
+    },
+    {
+      "name": "G-CAME",
+      "kind": "software",
+      "summary": "Official implementation of the Gaussian Class Activation Mapping Explainer for object detection",
+      "paper": "Efficient and Concise Explanations for Object Detection",
+      "links": {
+        "code": "https://github.com/khanhnguyenuet/GCAME"
+      }
+    },
+    {
+      "name": "UGIF",
+      "kind": "prototype",
+      "summary": "Unified geospatial intelligence prototype for climate risk mitigation and adaptive evacuation planning",
+      "paper": "Toward a Unified Geospatial Intelligence Framework",
+      "links": {
+        "demo": "https://youtu.be/oWlT2svvwiE"
+      }
+    }
   ],
   "awards": [
     {
