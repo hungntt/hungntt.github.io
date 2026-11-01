@@ -246,6 +246,26 @@ window.RESEARCH_DATA = {
   ],
   "publications": [
     {
+      "title": "Oculomotor Signatures of Aging in Bilinguals: A Machine Learning Approach Using Reading and Antisaccade Tasks",
+      "authors": [
+        "N. Byers",
+        "Truong Thanh Hung Nguyen",
+        "Hung Cao",
+        "D. Titone",
+        "Veronica Whitford"
+      ],
+      "venue": "Canadian Association on Gerontology (CAG) Conference, Charlottetown, PEI, Canada",
+      "short": "CAG 2026",
+      "year": 2026,
+      "month": "",
+      "type": "conference",
+      "topics": ["psych"],
+      "tags": {},
+      "award": "",
+      "note": "",
+      "links": {}
+    },
+    {
       "title": "Age Classification from Eye Movements During Naturalistic Reading and Non-Linguistic Oculomotor Tasks: A Machine Learning Approach",
       "authors": [
         "N. Byers",
@@ -1875,6 +1895,12 @@ window.RESEARCH_DATA = {
     {
       "role": "Book Translator",
       "venue": "Thrive: Maximizing Well-Being in the Age of AI (Ravi Bapna & Anindya Ghose)",
+      "url": "",
+      "tags": {}
+    },
+    {
+      "role": "Book Translator",
+      "venue": "AI and the Future of Education (Priten Shah, Wiley)",
       "url": "",
       "tags": {}
     }
