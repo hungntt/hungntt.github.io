@@ -1928,14 +1928,40 @@ window.RESEARCH_DATA = {
       "url": "https://hungntt.github.io/assets/docs/evaai-copyright-certificate.jpg"
     }
   ],
+  // Students mentored; the count shown is the number of names (or `count` if no names are listed)
   "mentorship": [
     {
-      "count": 7,
-      "level": "Master's students"
+      "level": "Master's students",
+      "students": [
+        "Phat Lam",
+        "Phuc Truong Loc Nguyen",
+        "Hung Thanh Do",
+        "Alfarizy Alfarizy",
+        "Emad Bazmandegan",
+        "Rayhan Hajlaoui",
+        "Abid Hasan Muin",
+        "Sultana Razia"
+      ]
     },
     {
-      "count": 10,
-      "level": "Undergraduate students"
+      "level": "Undergraduate students",
+      "students": [
+        "Gia-Khanh Truong",
+        "Salman Basha Shaik",
+        "Hoang-Loc Cao",
+        "Phuc Ho",
+        "Van Pham",
+        "Xuan Loc Nguyen",
+        "Tri Duong",
+        "Dinh Thien Loc Nguyen",
+        "Van Binh Truong",
+        "Quoc Khanh Nguyen",
+        "Huy Hoan Le",
+        "Van Sy Thinh Nguyen",
+        "Thi Le Chi Dang",
+        "Mohammed Anas Shaik",
+        "Bohdan Savchuk"
+      ]
     }
   ],
   "service": [
