@@ -942,7 +942,7 @@ window.RESEARCH_DATA = {
       }
     },
     {
-      "title": "Privacy-Preserving Multi-Stage Fall Detection Framework with Semi-supervised Federated Learning and Robotic Vision Confirmation",
+      "title": "A Privacy-Preserving Multi-Stage Fall Detection Framework with Semi-supervised Federated Learning and Robotic Vision Confirmation",
       "authors": [
         "Seyed Alireza Rahimi Azghadi",
         "Truong-Thanh-Hung Nguyen",
@@ -953,10 +953,11 @@ window.RESEARCH_DATA = {
         "Hung Cao"
       ],
       "venue": "arXiv preprint arXiv:2507.10474",
-      "short": "arXiv 2025",
-      "year": 2025,
-      "month": "Jul",
+      "short": "arXiv",
+      "year": 2026,
+      "month": "",
       "type": "preprint",
+      "cvType": "journal",
       "topics": [
         "edge",
         "biomed",
@@ -971,7 +972,7 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "",
+      "note": "Submitted to Knowledge-Based Systems (Q1, IF 7.6).",
       "links": {
         "paper": "https://doi.org/10.2139/ssrn.5390384"
       }

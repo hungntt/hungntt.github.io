@@ -336,7 +336,7 @@ p{margin:0 0 4px}
       '<span class="au">' + authors + "</span>" +
       '<span class="meta">' + (venue ? '<span class="ven">' + esc(venue) + "</span>" + shortTag + ", " : "") + esc(p.year) +
       (tags.length ? ' <span class="tags">' + tags.join("") + "</span>" : "") + "</span>" +
-      (/under review/i.test(clean(p.note)) ? '<span class="note">' + esc(clean(p.note)) + "</span>" : "") + "</span></li>";
+      (/under review|submitted/i.test(clean(p.note)) ? '<span class="note">' + esc(clean(p.note)) + "</span>" : "") + "</span></li>";
   }
   function publicationsHTML() {
     const pubs = (DATA.publications || []).filter((p) => clean(p.title));
