@@ -191,10 +191,11 @@ p{margin:0 0 4px}
     ["matsuba hiroya", { given: "Hiroya", family: "Matsuba" }],
     ["nguyen truong thanh hung", { given: "Truong Thanh Hung", family: "Nguyen" }]
   ]);
-  function authorInitials(name) {
+  function authorInitials(name, self = isMe(name)) {
     const full = clean(name);
     const suffix = (full.match(/\*+$/) || [""])[0];
     const bare = full.replace(/\*+$/, "").trim();
+    if (self) return "T. T. H. Nguyen" + suffix;
     const words = bare.split(/\s+/);
     if (words.length < 2) return bare + suffix;
     const parts = AUTHOR_PARTS.get(norm(bare)) || { given: words.slice(0, -1).join(" "), family: words[words.length - 1] };
@@ -204,9 +205,16 @@ p{margin:0 0 4px}
     }).filter(Boolean).join("-")).join(" ");
     return initials + " " + parts.family + suffix;
   }
-  function authorHTML(name) {
-    const label = esc(authorInitials(name));
-    return isMe(name) ? '<span class="me">' + label + "</span>" : label;
+  function authorsHTML(values) {
+    const authors = (Array.isArray(values) ? values : [values]).filter(Boolean).map(String);
+    const nameKey = (name) => norm(name.replace(/\*/g, ""));
+    // When a full self-name is present, "Hung Nguyen" identifies another coauthor.
+    const hasFullSelfName = authors.some((name) => isMe(name) && nameKey(name) !== "hung nguyen");
+    return authors.map((name) => {
+      const self = isMe(name) && !(hasFullSelfName && nameKey(name) === "hung nguyen");
+      const label = esc(authorInitials(name, self));
+      return self ? '<span class="me">' + label + "</span>" : label;
+    }).join(", ");
   }
   const HOMEPAGE = { label: "Homepage", value: "hungntt.github.io", href: "https://hungntt.github.io/" };
   const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -340,8 +348,7 @@ p{margin:0 0 4px}
     }).join("");
   }
   function pubHTML(p, n) {
-    const authors = (Array.isArray(p.authors) ? p.authors : [p.authors]).filter(Boolean).map(String)
-      .map(authorHTML).join(", ");
+    const authors = authorsHTML(p.authors);
     const L = p.links || {};
     const url = [L.doi, L.paper, L.pdf, L.arxiv].map(clean).find(safeUrl);
     const links = linksHTML(L);
@@ -410,8 +417,7 @@ p{margin:0 0 4px}
       (clean(a.prize) ? '<span class="tag prize">' + esc(a.prize) + "</span>" : "") + "</span></li>").join("") + "</ul>");
     const ip = DATA.intellectualProperty || [];
     if (ip.length) h += sec("Patents &amp; Copyrights", ip.length, '<ul class="rows">' + ip.map((r) => {
-      const authors = (Array.isArray(r.authors) ? r.authors : [r.authors]).filter(Boolean).map(String)
-        .map(authorHTML).join(", ");
+      const authors = authorsHTML(r.authors);
       const detail = [clean(r.kind) && clean(r.kind) + (clean(r.number) ? " No. " + clean(r.number) : ""), clean(r.issuer), clean(r.date)].filter(Boolean);
       return '<li class="row"><span class="y">' + esc(r.year) + "</span><span><b>" + link(r.url, esc(r.title)) + "</b>" +
         (detail.length ? ' — <span class="e">' + esc(detail.join(", ")) + "</span>" : "") +
