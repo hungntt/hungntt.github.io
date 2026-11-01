@@ -246,6 +246,26 @@ window.RESEARCH_DATA = {
   ],
   "publications": [
     {
+      "title": "Age Classification from Eye Movements During Naturalistic Reading and Non-Linguistic Oculomotor Tasks: A Machine Learning Approach",
+      "authors": [
+        "N. Byers",
+        "Truong Thanh Hung Nguyen",
+        "D. Titone",
+        "Hung Cao",
+        "Veronica Whitford"
+      ],
+      "venue": "Cognitive Science",
+      "short": "Cognitive Science",
+      "year": 2026,
+      "month": "",
+      "type": "journal",
+      "topics": ["psych"],
+      "tags": {},
+      "award": "",
+      "note": "Submitted to Cognitive Science (Q1, IF 2.5).",
+      "links": {}
+    },
+    {
       "title": "Replication or Corroboration? An Axiomatic Framework for Evidential Dependence in Multi-Agent Debate",
       "authors": [
         "Hoang-Loc Cao",
