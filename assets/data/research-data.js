@@ -869,6 +869,24 @@ window.RESEARCH_DATA = {
       }
     },
     {
+      "title": "AiP-301: AI Analytics Development – Milestone 97787",
+      "authors": [
+        "René Richard",
+        "Truong Thanh Hung Nguyen",
+        "Hung Cao"
+      ],
+      "venue": "D-CGA@home project, National Research Council Canada",
+      "short": "NRC 2026",
+      "year": 2026,
+      "month": "Oct",
+      "type": "report",
+      "topics": ["biomed"],
+      "tags": {},
+      "award": "",
+      "note": "",
+      "links": {}
+    },
+    {
       "title": "AiP-301: Artificial Intelligence and Analytics for Aging in Place",
       "authors": [
         "René Richard",
@@ -2002,6 +2020,13 @@ window.RESEARCH_DATA = {
       "tags": {}
     },
     {
+      "role": "Book Chapter Reviewer",
+      "venue": "Navigating the Circular Age of a Sustainable Digital Revolution",
+      "publisher": "IGI Global",
+      "url": "",
+      "tags": {}
+    },
+    {
       "role": "Journal Reviewer",
       "venue": "Information Processing & Management",
       "publisher": "Elsevier",
@@ -2047,13 +2072,6 @@ window.RESEARCH_DATA = {
       "role": "Journal Reviewer",
       "venue": "IET Smart Cities",
       "publisher": "Wiley",
-      "url": "",
-      "tags": {}
-    },
-    {
-      "role": "Book Chapter Reviewer",
-      "venue": "Navigating the Circular Age of a Sustainable Digital Revolution",
-      "publisher": "IGI Global",
       "url": "",
       "tags": {}
     },
