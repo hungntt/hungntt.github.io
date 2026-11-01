@@ -1513,7 +1513,7 @@ window.RESEARCH_DATA = {
         "Quoc Khanh Nguyen"
       ],
       "venue": "The 7th International Workshop on Health Intelligence (W3PHIAI-23), AAAI 2023",
-      "short": "W3PHIAI 2023",
+      "short": "W3PHIAI-23",
       "year": 2023,
       "month": "Feb",
       "type": "workshop",
