@@ -136,9 +136,10 @@ window.RESEARCH_DATA = {
     "profile": "With 7 years of experience in responsible AI, I design human-centered systems across domains, especially healthcare and multi-agent settings, where trust must be earned and can be challenged. I am passionate about the ethics of human–AI collaboration, and I would be thrilled to contribute to research that makes responsible AI a practice, not just a principle.",
     "teachingIssuer": "University of New Brunswick (UNB)",
     "taCourses": [
-      { "code": "CS3735", "title": "Introduction to Machine Learning", "years": "2025" },
-      { "code": "CS2383", "title": "Data Structures and Algorithms", "years": "2025, 2026" },
-      { "code": "CS3113", "title": "Introduction to Numerical Methods", "years": "2024" }
+      { "code": "CS1023", "title": "Data Structures and Algorithms for Engineers", "years": "Fall 2026" },
+      { "code": "CS3735", "title": "Introduction to Machine Learning", "years": "Winter 2026" },
+      { "code": "CS2383", "title": "Data Structures and Algorithms", "years": "Fall 2025" },
+      { "code": "CS3113", "title": "Introduction to Numerical Methods", "years": "Fall 2024" }
     ]
   },
   "languages": [
