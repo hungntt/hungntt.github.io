@@ -1961,9 +1961,9 @@ window.RESEARCH_DATA = {
         { "name": "Dinh Thien Loc Nguyen", "affiliation": "University of Science, VNU-HCM, Vietnam" },
         { "name": "Van Binh Truong", "affiliation": "VNU University of Engineering and Technology (VNU-UET), Vietnam" },
         { "name": "Quoc Khanh Nguyen", "affiliation": "VNU University of Engineering and Technology (VNU-UET), Vietnam" },
-        { "name": "Huy Hoan Le", "affiliation": "FPT University, Quy Nhon, Vietnam" },
-        { "name": "Van Sy Thinh Nguyen", "affiliation": "FPT University, Quy Nhon, Vietnam" },
-        { "name": "Thi Le Chi Dang", "affiliation": "FPT University, Quy Nhon, Vietnam" },
+        { "name": "Huy Hoan Le", "affiliation": "FPT University, Vietnam" },
+        { "name": "Van Sy Thinh Nguyen", "affiliation": "FPT University, Vietnam" },
+        { "name": "Thi Le Chi Dang", "affiliation": "FPT University, Vietnam" },
         { "name": "Mohammed Anas Shaik", "affiliation": "University of New Brunswick, Canada" },
         { "name": "Bohdan Savchuk", "affiliation": "University of New Brunswick, Canada", "achievements": ["IEEE Canada Foundation Gargantini-Strybosch Scholarship (CAD 5,000)"] }
       ]
