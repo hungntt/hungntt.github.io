@@ -523,14 +523,14 @@ button.chip:active{transform:translate(1px,1px);box-shadow:inset 1px 1px 0 rgba(
 .artifact .ven{display:block;color:var(--text-dim);font-size:13px;line-height:1.5}
 .artifact .pub-links{margin-top:8px}
 .table-wrap{overflow-x:auto}
-.mentor{display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 320px), 1fr));gap:10px;margin:0 0 6px;padding:0;list-style:none}
-.mentor>li{display:flex;flex-wrap:wrap;align-content:flex-start;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(90deg, rgba(22,141,218,.22), rgba(11,60,125,.08));border:1px solid rgba(110,217,255,.25);border-left:3px solid var(--mint)}
-.mentor .n{font:44px/1 var(--f-term);color:var(--mint)}
-.mentor .lv{color:#fff;font:bold 14px/1.3 var(--f-body)}
-.mentor .who{display:grid;gap:7px;flex-basis:100%;margin:4px 0 0;padding:0;list-style:none;font-size:13px;line-height:1.45}
-.mentor .who b{color:#fff}
-.mentor .who .af{display:block;color:var(--text-dim)}
-.mentor .who .ach{display:block;color:var(--gold)}
+.mentor{margin-bottom:6px}
+.svc.mentor tbody th.grp{width:auto;padding:7px 12px;background:rgba(22,141,218,.16);font-size:19px}
+.svc.mentor .grp small{margin-left:8px;color:var(--mint);font:inherit}
+.svc.mentor .nm{width:1%;white-space:nowrap;color:#fff;font-weight:bold}
+.svc.mentor .af{color:var(--text-dim)}
+.svc.mentor .ach{margin:0;padding:0;list-style:none;color:var(--gold)}
+.svc.mentor .ach li+li{margin-top:3px}
+.svc.mentor .none{color:rgba(169,196,228,.45)}
 #mentorship-h{margin-top:4px}
 .svc{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.5}
 .svc th,.svc td{padding:9px 12px;border:1px solid rgba(110,217,255,.35);text-align:left;vertical-align:top}
@@ -967,6 +967,14 @@ body.crt .crt-overlay{display:block}
   .trophy .ico{width:28px;height:28px;grid-row:span 2}
   .trophy .yr{font-size:18px}
   .svc tbody th{white-space:normal}
+  /* each student becomes a small block: name, then affiliation, then awards */
+  .svc.mentor thead{display:none}
+  .svc.mentor tr,.svc.mentor td,.svc.mentor th.grp{display:block}
+  .svc.mentor td{padding:0 12px;border:0}
+  .svc.mentor tr:not(.grp-row){padding:9px 0;border:1px solid rgba(110,217,255,.35);border-top:0}
+  .svc.mentor .nm{width:auto;white-space:normal}
+  .svc.mentor .ach{margin-top:3px}
+  .svc.mentor .none{display:none}
   .task{flex-basis:160px}
 }
 /* The main window's chrome is only sticky when it fits comfortably */
@@ -991,7 +999,7 @@ body.crt .crt-overlay{display:block}
   .hero-main{display:block;max-width:none;padding:0 0 12px}
   .call-controls,.call-tag,.call-cover,.call>.titlebar,.call-screen::after{display:none!important}
   .call{width:140px;margin-bottom:12px;box-shadow:none}
-  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.trophy .au,.artifact .nm,.artifact .ds,.artifact .ven,.mentor .n,.mentor .lv,.mentor .who b,.mentor .who .af,.mentor .who .ach,.log .w,.term{color:#000!important;text-shadow:none}
+  .hero-kicker,.hero-role,.hero-aff,.bio,.trophy b,.trophy .ev,.trophy .au,.artifact .nm,.artifact .ds,.artifact .ven,.svc.mentor .nm,.svc.mentor .af,.svc.mentor .ach,.log .w,.term{color:#000!important;text-shadow:none}
   .term,.pf-list-wrap,.nest{background:#fff;box-shadow:none}
   .log .w .thesis{background:#f8f8fa;border-color:#aaa;box-shadow:none}
   .log .w .thesis::before,.log .w .thesis::after,.thesis-label::before,.thesis-label::after{display:none}
@@ -1531,9 +1539,14 @@ body.crt .crt-overlay{display:block}
     <!-- ============================ SERVICES ============================ -->
     <section class="sec" id="services" data-section="Academic services" aria-labelledby="svc-h">
       <div class="sec-head"><span class="sec-no" aria-hidden="true">07/</span><h2 id="svc-h">Academic Services</h2><span class="sec-rule" aria-hidden="true"></span><span class="fname" aria-hidden="true">C:\HUNG\SERVICES.TXT</span></div>
-      <!-- Tiles come from `mentorship` in assets/data/research-data.js -->
+      <!-- Rows come from `mentorship` in assets/data/research-data.js -->
       <h3 class="sub" id="mentorship-h" hidden>Student mentorship</h3>
-      <ul class="mentor" id="mentor-list" aria-labelledby="mentorship-h"></ul>
+      <div class="table-wrap">
+        <table class="svc mentor" aria-labelledby="mentorship-h">
+          <thead><tr><th scope="col">Student</th><th scope="col">Affiliation</th><th scope="col">Achievements</th></tr></thead>
+          <tbody id="mentor-body"></tbody>
+        </table>
+      </div>
       <h3 class="sub" id="review-h" hidden>Reviewing &amp; committees</h3>
       <div class="table-wrap">
         <table class="svc">
@@ -3729,13 +3742,16 @@ body.crt .crt-overlay{display:block}
   const mentorship = (dataOK && DATA.mentorship) || [];
   // a student is a name, or { name, affiliation, achievements: [] }
   const students = (m) => (m.students || []).map((s) => (typeof s === "string" ? { name: s } : s || {})).filter((s) => clean(s.name));
-  $("#mentor-list").innerHTML = mentorship.map((m) => {
+  $("#mentor-body").innerHTML = mentorship.map((m) => {
     const list = students(m);
-    return '<li><span class="n">' + esc(list.length || m.count) + '</span><span class="lv">' + esc(m.level) + "</span>" +
-      (list.length ? '<ul class="who">' + list.map((s) => "<li><b>" + esc(s.name) + "</b>" +
-        (clean(s.affiliation) ? '<span class="af">' + esc(s.affiliation) + "</span>" : "") +
-        (s.achievements || []).map(clean).filter(Boolean).map((a) => '<span class="ach">★ ' + esc(a) + "</span>").join("") + "</li>").join("") + "</ul>" : "") + "</li>";
+    return '<tr class="grp-row"><th class="grp" colspan="3">' + esc(m.level) + "<small>" + esc(list.length || m.count) + "</small></th></tr>" +
+      list.map((s) => {
+        const ach = (s.achievements || []).map(clean).filter(Boolean);
+        return '<tr><td class="nm">' + esc(s.name) + '</td><td class="af">' + esc(clean(s.affiliation)) + "</td><td>" +
+          (ach.length ? '<ul class="ach">' + ach.map((a) => "<li>★ " + esc(a) + "</li>").join("") + "</ul>" : '<span class="none" aria-label="None">—</span>') + "</td></tr>";
+      }).join("");
   }).join("");
+  $(".svc.mentor").closest(".table-wrap").hidden = !mentorship.length;
   if (mentorship.length) { $("#mentorship-h").hidden = false; $("#review-h").hidden = false; }
 
   const languages = (dataOK && DATA.languages) || [];

@@ -129,7 +129,7 @@ p{margin:0 0 4px}
 .lk .ico{display:inline-block;width:10px;height:10px;line-height:0}
 .lk .ico svg{width:100%;height:100%;display:block}
 
-/* knowledge transfer: one line per artifact */
+/* bullet lists: knowledge transfer artifacts and mentored students */
 .tools{margin:0;padding:0;list-style:none}
 .tool{position:relative;padding:1.5px 0 1.5px 12px;break-inside:avoid}
 .tool::before{content:"";position:absolute;left:1px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--violet)}
@@ -143,8 +143,8 @@ p{margin:0 0 4px}
 .row .y{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--accent)}
 .row .e{color:var(--muted)}
 .row .au{display:block}
-.row .stu{display:block;padding-left:.9em;text-indent:-.9em}
-.row .stu .ach{color:var(--gold)}
+.tool .af{color:var(--muted)}
+.tool .ach{color:var(--gold)}
 .row .au .me{font-weight:700;text-decoration:underline;text-underline-offset:1.5px}
 .svc{display:grid;grid-template-columns:13em 1fr;gap:2px 12px;margin:0}
 .svc dt{font-weight:600;color:var(--accent)}
@@ -471,15 +471,15 @@ p{margin:0 0 4px}
     const mentorship = DATA.mentorship || [];
     // a student is a name, or { name, affiliation, achievements: [] }
     const students = (m) => (m.students || []).map((s) => (typeof s === "string" ? { name: s } : s || {})).filter((s) => clean(s.name));
-    if (mentorship.length) h += sec("Student Mentorship", "", '<ul class="rows">' + mentorship.map((m) => {
+    // one sub-heading per level with its count, then a bullet per student
+    if (mentorship.length) h += sec("Student Mentorship", "", mentorship.map((m) => {
       const list = students(m);
-      return '<li class="row"><span class="y">' + esc(list.length || m.count) + "</span><span><b>" + esc(m.level) + "</b>" +
-        list.map((s) => {
-          const ach = (s.achievements || []).map(clean).filter(Boolean);
-          return '<span class="stu">' + esc(s.name) + (clean(s.affiliation) ? ', <span class="e">' + esc(s.affiliation) + "</span>" : "") +
-            (ach.length ? ' — <span class="ach">' + esc(ach.join("; ")) + "</span>" : "") + "</span>";
-        }).join("") + "</span></li>";
-    }).join("") + "</ul>");
+      return "<h3>" + esc(m.level) + " (" + esc(list.length || m.count) + ")</h3>" + (list.length ? '<ul class="tools">' + list.map((s) => {
+        const ach = (s.achievements || []).map(clean).filter(Boolean);
+        return '<li class="tool"><span class="nm">' + esc(s.name) + "</span>" + (clean(s.affiliation) ? ', <span class="af">' + esc(s.affiliation) + "</span>" : "") +
+          (ach.length ? ' — <span class="ach">' + esc(ach.join("; ")) + "</span>" : "") + "</li>";
+      }).join("") + "</ul>" : "");
+    }).join(""));
     if (svcGroups.length) h += sec("Academic Service", service.length, '<dl class="svc">' + svcGroups.map((g) =>
       "<dt>" + esc(g.role) + "</dt><dd>" + esc(g.items.join("; ")) + "</dd>").join("") + "</dl>");
     const languages = DATA.languages || [];
