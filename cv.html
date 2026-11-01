@@ -449,13 +449,13 @@ p{margin:0 0 4px}
     if (interests.length) h += sec("Research Interests", "", "<p>" + esc(interests.join(" · ")) + "</p>");
     if (H.education.length) h += sec("Education", H.education.length, '<ul class="entries">' + H.education.map(entryHTML).join("") + "</ul>");
     if (H.positions.length) h += sec("Research &amp; Professional Experience", H.positions.length, '<ul class="entries">' + H.positions.map(entryHTML).join("") + "</ul>");
+    if (awards.length) h += sec("Honors, Awards &amp; Scholarships", awards.length, '<ul class="rows">' + awards.map((a) =>
+      '<li class="row"><span class="y">' + esc(a.year) + "</span><span><b>" + esc(a.title) + "</b>" + (clean(a.event) ? ' — <span class="e">' + esc(a.event) + "</span>" : "") +
+      (clean(a.prize) ? '<span class="tag prize">' + esc(a.prize) + "</span>" : "") + "</span></li>").join("") + "</ul>");
     if (nPubs) h += sec("Publications", nPubs, publicationsHTML());
     const artifacts = (DATA.artifacts || []).filter((a) => clean(a.name));
     if (artifacts.length) h += sec("Knowledge Mobilization &amp; Technology Transfer", artifacts.length,
       '<p class="intro">Publicly available code, demos and benchmarks released with peer-reviewed publications to support reproducibility, transparency and research translation.</p>' + artifactsHTML(artifacts));
-    if (awards.length) h += sec("Honors, Awards &amp; Scholarships", awards.length, '<ul class="rows">' + awards.map((a) =>
-      '<li class="row"><span class="y">' + esc(a.year) + "</span><span><b>" + esc(a.title) + "</b>" + (clean(a.event) ? ' — <span class="e">' + esc(a.event) + "</span>" : "") +
-      (clean(a.prize) ? '<span class="tag prize">' + esc(a.prize) + "</span>" : "") + "</span></li>").join("") + "</ul>");
     const ip = DATA.intellectualProperty || [];
     if (ip.length) h += sec("Patents &amp; Copyrights", ip.length, '<ul class="rows">' + ip.map((r) => {
       const authors = authorsHTML(r.authors);
