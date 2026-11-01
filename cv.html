@@ -139,6 +139,7 @@ p{margin:0 0 4px}
 .svc{display:grid;grid-template-columns:13em 1fr;gap:2px 12px;margin:0}
 .svc dt{font-weight:600;color:var(--accent)}
 .svc dd{margin:0}
+.svc dt,.svc dd{break-inside:avoid}
 .reference{break-inside:avoid;margin:0 0 12px}
 .reference:last-child{margin-bottom:0}
 .reference h3{color:var(--ink);margin-top:0}
@@ -184,6 +185,29 @@ p{margin:0 0 4px}
   const norm = (s) => clean(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d");
   const ME = (DATA.me || []).map((n) => norm(n.replace(/\*/g, "")));
   const isMe = (a) => ME.includes(norm(a.replace(/\*/g, "")));
+  // CV-only name parts for compound surnames and names supplied surname-first.
+  const AUTHOR_PARTS = new Map([
+    ["seyed alireza rahimi azghadi", { given: "Seyed Alireza", family: "Rahimi Azghadi" }],
+    ["matsuba hiroya", { given: "Hiroya", family: "Matsuba" }],
+    ["nguyen truong thanh hung", { given: "Truong Thanh Hung", family: "Nguyen" }]
+  ]);
+  function authorInitials(name) {
+    const full = clean(name);
+    const suffix = (full.match(/\*+$/) || [""])[0];
+    const bare = full.replace(/\*+$/, "").trim();
+    const words = bare.split(/\s+/);
+    if (words.length < 2) return bare + suffix;
+    const parts = AUTHOR_PARTS.get(norm(bare)) || { given: words.slice(0, -1).join(" "), family: words[words.length - 1] };
+    const initials = parts.given.split(/\s+/).map((word) => word.split("-").map((part) => {
+      const first = part.match(/\p{L}/u)?.[0];
+      return first ? first.toUpperCase() + "." : "";
+    }).filter(Boolean).join("-")).join(" ");
+    return initials + " " + parts.family + suffix;
+  }
+  function authorHTML(name) {
+    const label = esc(authorInitials(name));
+    return isMe(name) ? '<span class="me">' + label + "</span>" : label;
+  }
   const HOMEPAGE = { label: "Homepage", value: "hungntt.github.io", href: "https://hungntt.github.io/" };
   const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
   const safeUrl = (u) => /^(https?:|mailto:)/i.test(clean(u));
@@ -317,7 +341,7 @@ p{margin:0 0 4px}
   }
   function pubHTML(p, n) {
     const authors = (Array.isArray(p.authors) ? p.authors : [p.authors]).filter(Boolean).map(String)
-      .map((a) => (isMe(a) ? '<span class="me">' + esc(a) + "</span>" : esc(a))).join(", ");
+      .map(authorHTML).join(", ");
     const L = p.links || {};
     const url = [L.doi, L.paper, L.pdf, L.arxiv].map(clean).find(safeUrl);
     const links = linksHTML(L);
@@ -387,7 +411,7 @@ p{margin:0 0 4px}
     const ip = DATA.intellectualProperty || [];
     if (ip.length) h += sec("Patents &amp; Copyrights", ip.length, '<ul class="rows">' + ip.map((r) => {
       const authors = (Array.isArray(r.authors) ? r.authors : [r.authors]).filter(Boolean).map(String)
-        .map((a) => (isMe(a) ? '<span class="me">' + esc(a) + "</span>" : esc(a))).join(", ");
+        .map(authorHTML).join(", ");
       const detail = [clean(r.kind) && clean(r.kind) + (clean(r.number) ? " No. " + clean(r.number) : ""), clean(r.issuer), clean(r.date)].filter(Boolean);
       return '<li class="row"><span class="y">' + esc(r.year) + "</span><span><b>" + link(r.url, esc(r.title)) + "</b>" +
         (detail.length ? ' — <span class="e">' + esc(detail.join(", ")) + "</span>" : "") +
