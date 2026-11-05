@@ -238,6 +238,16 @@
       .map(([label, items]) => "<h3>" + label + '</h3><ul class="tools">' + items.map(toolHTML).join("") + "</ul>").join("");
   }
 
+  function ipHTML(ip) {
+    return '<ul class="rows">' + ip.map((r) => {
+      const authors = authorsHTML(r.authors);
+      const detail = [clean(r.kind) && clean(r.kind) + (clean(r.number) ? " No. " + clean(r.number) : ""), clean(r.issuer), clean(r.date)].filter(Boolean);
+      return '<li class="row"><span class="y">' + esc(r.year) + "</span><span><b>" + link(r.url, esc(r.title)) + "</b>" +
+        (detail.length ? ' — <span class="e">' + esc(detail.join(", ")) + "</span>" : "") +
+        (authors ? '<span class="au">' + authors + "</span>" : "") + "</span></li>";
+    }).join("") + "</ul>";
+  }
+
   function render(H) {
     let h = '<header class="head"><div><h1>' + esc(H.name) + "</h1>" +
       (H.role ? '<p class="role">' + esc(H.role) + "</p>" : "") +
@@ -259,9 +269,11 @@
       document.title = title;
     };
 
-    // the publication list: the CV's publications, one section per type
+    const ip = DATA.intellectualProperty || [];
+    // the publication list: the CV's publications, one section per type, then patents and copyrights
     if (PAGE === "publications") {
       h += pubGroups().map((g) => sec(esc(g.label), g.items.length, pubListHTML(g))).join("");
+      if (ip.length) h += sec("Patents &amp; Copyrights", ip.length, ipHTML(ip));
       return show("Publications");
     }
 
@@ -286,14 +298,7 @@
     const artifacts = (DATA.artifacts || []).filter((a) => clean(a.name));
     if (artifacts.length) h += sec("Knowledge Mobilization &amp; Technology Transfer", artifacts.length,
       '<p class="intro">Publicly available code, demos and benchmarks released with peer-reviewed publications to support reproducibility, transparency and research translation.</p>' + artifactsHTML(artifacts));
-    const ip = DATA.intellectualProperty || [];
-    if (ip.length) h += sec("Patents &amp; Copyrights", ip.length, '<ul class="rows">' + ip.map((r) => {
-      const authors = authorsHTML(r.authors);
-      const detail = [clean(r.kind) && clean(r.kind) + (clean(r.number) ? " No. " + clean(r.number) : ""), clean(r.issuer), clean(r.date)].filter(Boolean);
-      return '<li class="row"><span class="y">' + esc(r.year) + "</span><span><b>" + link(r.url, esc(r.title)) + "</b>" +
-        (detail.length ? ' — <span class="e">' + esc(detail.join(", ")) + "</span>" : "") +
-        (authors ? '<span class="au">' + authors + "</span>" : "") + "</span></li>";
-    }).join("") + "</ul>");
+    if (ip.length) h += sec("Patents &amp; Copyrights", ip.length, ipHTML(ip));
     if (H.teaching.length) h += sec("Teaching Experience", H.teaching.reduce((t, g) => t + g.items.length, 0), H.teaching.map((g) =>
       (g.heading ? "<h3>" + esc(g.heading) + "</h3>" : "") + '<ul class="entries">' + g.items.map(entryHTML).join("") + "</ul>").join(""));
     const mentorship = DATA.mentorship || [];
