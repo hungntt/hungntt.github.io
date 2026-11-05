@@ -1,0 +1,146 @@
+/* Shared by cv.html and publications.html, which assets/js/cv.js renders. */
+:root{
+  --ink:#16202c; --muted:#5a6776; --rule:#d6dcec; --accent:#0B3C7D; --gold:#9a6b00;
+  --paper:#ffffff; --space:#071426; --desk:#0B3C7D; --blue:#168DDA; --cyan:#6ED9FF;
+  --lavender:#C9B8FF; --violet:#6A4FB3; --pink:#FFB8DB; --star:#FFD84A;
+  --nebula:linear-gradient(90deg,var(--accent),var(--violet));   /* dark blue -> purple */
+  --f-body:"Source Serif 4",Georgia,"Times New Roman","Noto Sans JP",serif;   /* same formal serif as the name */
+  --f-head:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+/* on screen the paper floats in deep space (tiny repeating star specks over a gradient) */
+html{min-height:100%;background:
+  radial-gradient(1px 1px at 23px 41px,#fff,transparent 70%),
+  radial-gradient(1px 1px at 141px 97px,#CFE8FF,transparent 70%),
+  radial-gradient(1.6px 1.6px at 211px 18px,#fff,transparent 70%),
+  radial-gradient(1px 1px at 87px 183px,#FFB8DB,transparent 70%),
+  radial-gradient(1.3px 1.3px at 263px 229px,#6ED9FF,transparent 70%),
+  radial-gradient(1px 1px at 179px 271px,#fff,transparent 70%),
+  linear-gradient(180deg,var(--space),#0B2A5A 60%,var(--desk)) fixed;
+  background-size:300px 300px,300px 300px,300px 300px,300px 300px,300px 300px,300px 300px,auto}
+body{margin:0;color:var(--ink);font:10pt/1.38 var(--f-body);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* screen toolbar */
+.bar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:10px 16px;background:rgba(7,20,38,.82);backdrop-filter:blur(6px);border-bottom:1px solid rgba(110,217,255,.25);color:#fff;font:600 13px/1 var(--f-body)}
+.bar a,.bar button{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid rgba(255,255,255,.55);border-radius:3px;background:transparent;color:#fff;font:inherit;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.14);text-decoration:none}
+.bar .primary{background:#fff;color:#0B3C7D;border-color:#fff}
+.bar .primary:hover{background:#dfe9f5}
+
+.page{max-width:8.5in;margin:28px auto;padding:.6in .65in;background:var(--paper);border-radius:4px;box-shadow:0 0 0 1px rgba(110,217,255,.25),0 0 46px rgba(110,217,255,.28)}
+@media (max-width:700px){.page{margin:0;padding:22px 16px;box-shadow:none}}
+
+/* header */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-bottom:11px;background:var(--nebula) left bottom/100% 2px no-repeat}
+.head h1{margin:0;font:600 24pt/1.05 var(--f-head);color:var(--accent);letter-spacing:.2px}
+.head .role{margin:5px 0 0;font-weight:600;font-size:11pt}
+.head .aff{margin:1px 0 0;color:var(--muted)}
+.contact{margin:0;padding:0;list-style:none;text-align:right;font-size:9.2pt;line-height:1.5}
+.contact b{font-weight:600;color:var(--violet)}
+@media (max-width:700px){.contact{text-align:left}}
+
+/* sections */
+.sec{margin-top:13px}
+/* A solid 1pt border keeps every section rule the same thickness in print. */
+h2{margin:0 0 6px;padding-bottom:3px;border-bottom:1pt solid var(--accent);
+  font:700 10.5pt/1.2 var(--f-body);letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);break-after:avoid}
+.tog{display:flex;align-items:center;gap:8px;width:100%;margin:0;padding:0;border:0;background:none;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;text-align:left;cursor:pointer}
+.tog .chev{display:grid;place-items:center;flex:none;width:19px;height:19px;margin-left:auto;border:1px solid var(--rule);border-radius:50%;color:var(--violet);transition:background .15s,border-color .15s}
+.tog .chev::before{content:"";width:5px;height:5px;margin-top:-2px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .2s}
+.tog .more{display:none;font-size:8.4pt;font-weight:600;letter-spacing:.3px;text-transform:none;color:var(--muted)}
+.tog:hover .chev{background:#F3EFFF;border-color:var(--lavender)}
+.tog:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+.sec.collapsed .tog .chev::before{margin-top:2px;transform:rotate(-135deg)}
+.sec.collapsed .tog .more{display:inline}
+.sec.collapsed>.body{display:none}
+.sec.collapsed h2{margin-bottom:0}
+h3{margin:9px 0 3px;font:600 9.6pt/1.2 var(--f-body);color:var(--muted);letter-spacing:.3px;break-after:avoid}
+p{margin:0 0 4px}
+.summary{color:var(--ink)}
+.summary a,.entry .cap a{color:var(--accent)}
+
+/* two-column entries (education, positions, teaching) */
+/* orbit timeline: a dashed path with a solid dot per entry; current roles are purple */
+.entries{margin:0;padding:0;list-style:none;background:linear-gradient(var(--lavender) 50%,transparent 0) 3.5px .9em/1px 4px repeat-y}
+.entry{display:flex;gap:8px;padding:3px 0;break-inside:avoid}
+.entry .r{margin-left:8px}
+.entry::before{content:"";flex:none;width:8px;height:8px;margin-top:.45em;border-radius:50%;background:var(--accent)}
+.entry.now::before{background:var(--violet)}
+.entry .l{flex:1;min-width:0}
+.entry .r{flex:none;text-align:right;white-space:nowrap}
+.entry .l>span,.entry .r>span{display:block}
+.entry .t{font-weight:600}
+.entry .t .maj{font-weight:400}
+.entry .sub{font-style:italic}
+.entry .cap{color:var(--muted);font-size:9.2pt}
+.entry .thesis-block{margin:5px 0 2px;padding:5px 8px;border-left:1.5pt solid var(--accent);background:#f5f7fb;break-inside:avoid}
+.entry .thesis-block .cap{display:block}
+.entry .thesis-block .cap+.cap{margin-top:2px}
+.entry .thesis-block .thesis-title{color:var(--ink);font-weight:600}
+.entry .when{font-weight:600}
+.entry .where{color:var(--muted);font-size:9.2pt}
+
+/* publications */
+.pubs{margin:0;padding:0;list-style:none}
+.pub{display:grid;grid-template-columns:2.9em 1fr;gap:0 4px;padding:2.5px 0;break-inside:avoid}
+.pub .n{color:var(--violet);font-weight:600;font-variant-numeric:tabular-nums}
+.pub .pb>span{display:block}
+.pub .ttl{font-weight:600}
+.pub .meta{color:var(--muted)}
+.pub .meta .ven{color:var(--ink)}
+.pub .note{color:var(--muted);font-style:italic}
+.pub .me{font-weight:700;text-decoration:underline;text-underline-offset:1.5px}
+.pub .ven{font-style:italic}
+.pub .tags{white-space:nowrap}
+.tag{display:inline-block;margin-left:4px;padding:0 4px;border:1px solid var(--rule);border-radius:2px;font-size:8pt;line-height:1.35;font-style:normal;font-weight:600;color:var(--muted);vertical-align:1px}
+.tag.award{border-color:#e2c46a;background:#fff6d6;color:var(--gold)}
+.tag.rank{border-color:#CDBDF5;background:#F3EFFF;color:var(--violet)}
+.tag.prize{border-color:#9FD9B0;background:#EAF8EE;color:#1F6B3A}
+.pub .lks{white-space:nowrap}
+.lk{display:inline-flex;align-items:center;gap:3px;margin-left:6px;padding:0 5px 0 3px;border:1px solid var(--rule);border-radius:2px;
+  font-size:8pt;line-height:1.35;font-style:normal;font-weight:600;color:var(--accent);vertical-align:1px}
+.lk:hover{background:#EEF4FB;text-decoration:none}
+.lk .ico{display:inline-block;width:10px;height:10px;line-height:0}
+.lk .ico svg{width:100%;height:100%;display:block}
+
+/* bullet lists: knowledge transfer artifacts, mentored students, academic service and skills */
+.tools{margin:0;padding:0;list-style:none}
+.tool{position:relative;padding:1.5px 0 1.5px 12px;break-inside:avoid}
+.tool::before{content:"";position:absolute;left:1px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--violet)}
+.tool .nm{font-weight:700;color:var(--accent)}
+.tool .ven{font-style:italic}
+.intro{color:var(--muted);font-style:italic;break-inside:avoid;break-after:avoid}
+
+/* simple lists (awards, service) */
+.rows{margin:0;padding:0;list-style:none}
+.row{display:grid;grid-template-columns:5.2em 1fr;gap:0 10px;padding:1.5px 0;break-inside:avoid}
+.row .y{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--accent)}
+.row .e{color:var(--muted)}
+.row .au{display:block}
+.tool .af{color:var(--muted)}
+.tool .ach{color:var(--gold)}
+.row .au .me{font-weight:700;text-decoration:underline;text-underline-offset:1.5px}
+.reference{break-inside:avoid;margin:0 0 12px}
+.reference:last-child{margin-bottom:0}
+.reference h3{color:var(--ink);margin-top:0}
+.reference dl{display:grid;grid-template-columns:7em 1fr;gap:2px 10px;margin:0}
+.reference dt{font-weight:600;color:var(--muted)}
+.reference dd{margin:0;overflow-wrap:anywhere}
+
+.msg{padding:18px;border:1px dashed var(--rule);color:var(--muted)}
+
+@page{
+  size:letter;margin:.65in .6in .6in;
+  @top-left{content:var(--cv-title);font:600 8pt var(--f-body);color:var(--muted)}
+  @top-right{content:"Page " counter(page) " of " counter(pages);font:8pt var(--f-body);color:var(--muted)}
+}
+@media print{
+  html,body{background:#fff}
+  .bar,.tog .chev,.tog .more{display:none!important}
+  .sec.collapsed>.body{display:block!important}   /* printing always shows the whole CV */
+  .sec.collapsed h2{margin-bottom:6px}
+  .page{max-width:none;margin:0;padding:0;border-radius:0;box-shadow:none}
+  a{text-decoration:none!important}
+}

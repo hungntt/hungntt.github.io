@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Prints cv.html (which reads index.html + assets/data/research-data.js) to cv.pdf.
-# Runs in the GitHub Pages workflow on every push; run it locally to preview:
-#   scripts/build-cv.sh            -> writes ./cv.pdf
+# Prints cv.html and publications.html (which read index.html + assets/data/research-data.js)
+# to cv.pdf and publications.pdf. Runs in the GitHub Pages workflow on every push;
+# run it locally to preview:
+#   scripts/build-cv.sh            -> writes ./cv.pdf and ./publications.pdf
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-OUT="${1:-cv.pdf}"
 PORT="${CV_PORT:-8765}"
 
 CHROME="${CHROME:-}"
@@ -22,14 +22,18 @@ SERVER=$!
 trap 'kill $SERVER 2>/dev/null || true' EXIT
 for _ in $(seq 1 50); do curl -fs "http://127.0.0.1:$PORT/cv.html" >/dev/null && break; sleep 0.1; done
 
-URL="http://127.0.0.1:$PORT/cv.html"
 FLAGS=(--headless=new --disable-gpu --no-sandbox --hide-scrollbars --run-all-compositor-stages-before-draw --virtual-time-budget=20000)
 
-# Make sure the page actually rendered from the homepage before printing.
-if ! "$CHROME" "${FLAGS[@]}" --dump-dom "$URL" 2>/dev/null | grep -q 'data-cv-ready="1"'; then
-  echo "build-cv: cv.html did not finish rendering" >&2; exit 1
-fi
+for PAGE in cv publications; do
+  URL="http://127.0.0.1:$PORT/$PAGE.html"
+  OUT="$PAGE.pdf"
 
-"$CHROME" "${FLAGS[@]}" --no-pdf-header-footer --print-to-pdf="$OUT" "$URL" 2>/dev/null
-[ -s "$OUT" ] || { echo "build-cv: $OUT was not written" >&2; exit 1; }
-echo "build-cv: wrote $OUT ($(wc -c < "$OUT" | tr -d ' ') bytes)"
+  # Make sure the page actually rendered from the homepage before printing.
+  if ! "$CHROME" "${FLAGS[@]}" --dump-dom "$URL" 2>/dev/null | grep -q 'data-cv-ready="1"'; then
+    echo "build-cv: $PAGE.html did not finish rendering" >&2; exit 1
+  fi
+
+  "$CHROME" "${FLAGS[@]}" --no-pdf-header-footer --print-to-pdf="$OUT" "$URL" 2>/dev/null
+  [ -s "$OUT" ] || { echo "build-cv: $OUT was not written" >&2; exit 1; }
+  echo "build-cv: wrote $OUT ($(wc -c < "$OUT" | tr -d ' ') bytes)"
+done

@@ -1,5 +1,5 @@
 # Deploys the site to GitHub Pages as plain static files. The only build step
-# prints cv.html to cv.pdf so the downloadable CV always matches the site.
+# prints cv.html and publications.html to PDFs so the downloads always match the site.
 name: Deploy site to Pages
 
 on:
@@ -27,8 +27,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Build CV PDF
-        run: scripts/build-cv.sh cv.pdf
+      - name: Build CV and publication list PDFs
+        run: scripts/build-cv.sh
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:

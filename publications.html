@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+  Publication list — the CV's publications on their own page, grouped by type.
+
+  Everything on this page is read at load time from:
+    index.html                    name, affiliations and contact links
+    assets/data/research-data.js  publications
+  Edit those two files and this page (and publications.pdf) follow. Styles and
+  the renderer are shared with cv.html: assets/css/cv.css and assets/js/cv.js.
+
+  publications.pdf is printed from this page by the GitHub Pages workflow on every push
+  (.github/workflows/pages.yml). To build it locally: scripts/build-cv.sh
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truong Thanh Hung Nguyen · Publications</title>
+<meta name="description" content="Full publication list of Truong Thanh Hung Nguyen (Hung Nguyen), Ph.D. candidate at the University of New Brunswick and National Research Council Canada: journal articles, conference papers, workshop papers, book chapters, technical reports and preprints.">
+<meta name="author" content="Truong Thanh Hung Nguyen">
+<link rel="canonical" href="https://hungntt.github.io/publications.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Truong Thanh Hung Nguyen · Publications">
+<meta property="og:description" content="Full publication list — University of New Brunswick & National Research Council Canada.">
+<meta property="og:url" content="https://hungntt.github.io/publications.html">
+<meta property="og:image" content="https://hungntt.github.io/assets/video/avatar-poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Noto+Sans+JP:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/cv.css">
+</head>
+<body>
+<nav class="bar" aria-label="Publication list actions">
+  <a class="primary" href="publications.pdf" download="Truong_Thanh_Hung_Nguyen_Publications.pdf">Download PDF</a>
+  <button type="button" onclick="window.print()">Print</button>
+  <button type="button" id="toggle-all" aria-pressed="false">Collapse all</button>
+  <a href="cv.html">Full CV</a>
+  <a href="./">Back to homepage</a>
+</nav>
+<main class="page" id="cv" data-page="publications"><p class="msg">Loading publications…</p></main>
+
+<script src="assets/data/research-data.js"></script>
+<script src="assets/js/cv.js"></script>
+</body>
+</html>
