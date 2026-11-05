@@ -133,7 +133,7 @@
   const PUB_GROUPS = [
     ["chapter", "Book Chapters", "B"], ["journal", "Journal Articles", "J"], ["conference", "Conference Papers", "C"],
     ["challenge", "Challenge Papers", "CH"], ["workshop", "Workshop Papers", "W"], ["report", "Technical Reports", "R"],
-    ["preprint", "Preprints & Under Review", "P"], ["thesis", "Theses", "T"]
+    ["preprint", "Preprints", "P"], ["thesis", "Theses", "T"]
   ];
   // `cvType` files a paper under another group here only (e.g. a preprint under review at a journal)
   const cvType = (p) => (clean(p.cvType) || clean(p.type)).toLowerCase();
