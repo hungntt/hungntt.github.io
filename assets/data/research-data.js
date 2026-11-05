@@ -402,7 +402,7 @@ window.RESEARCH_DATA = {
         "quartile": "",
         "quartileSource": "",
         "impact": "",
-        "extra": []
+        "extra": ["Invited Paper"]
       },
       "award": "",
       "note": "Submitted to Intelligent Computing (Science Partner Journal; Q1, IF 6.9).",
