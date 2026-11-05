@@ -335,7 +335,7 @@ window.RESEARCH_DATA = {
       "topics": ["agents", "xai"],
       "tags": {},
       "award": "",
-      "note": "Under review at the International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2027).",
+      "note": "Submitted to the International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2027).",
       "links": {
         "paper": "https://arxiv.org/abs/2610.36151"
       }
@@ -405,7 +405,7 @@ window.RESEARCH_DATA = {
         "extra": []
       },
       "award": "",
-      "note": "Under review at Intelligent Computing (Science Partner Journal; Q1, IF 6.9).",
+      "note": "Submitted to Intelligent Computing (Science Partner Journal; Q1, IF 6.9).",
       "links": {
         "paper": "https://arxiv.org/abs/2609.27175",
         "code": "https://github.com/Analytics-Everywhere-Lab/SEMV"
