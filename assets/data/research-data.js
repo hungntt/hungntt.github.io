@@ -1981,7 +1981,7 @@ window.RESEARCH_DATA = {
     {
       "level": "Undergraduate students",
       "students": [
-        { "name": "Truong Thinh Nguyen", "affiliation": "USTH", "achievements": ["Odon Vallet Scholarship", "First Prize, USTH Student Scientific Research Competition", "USTH Merit Scholarship (100%)"] },
+        { "name": "Truong Thinh Nguyen", "affiliation": "University of Science and Technology of Hanoi (USTH), Vietnam", "achievements": ["Odon Vallet Scholarship", "First Prize, USTH Student Scientific Research Competition", "USTH Merit Scholarship (100%)"] },
         { "name": "Gia-Khanh Truong", "affiliation": "University of New Brunswick, Canada", "achievements": ["Edwin Jacob Special University Scholarship", "Class of 1987 Scholarship"] },
         { "name": "Salman Basha Shaik", "affiliation": "University of New Brunswick, Canada", "achievements": ["Computer Science Prize for Best Senior Honours Thesis", "Alumni Undergraduate Scholarship", "Admitted to the MSc program at the University of Waterloo"] },
         { "name": "Hoang-Loc Cao", "affiliation": "University of Science, VNU-HCM, Vietnam", "achievements": ["1st Place, BIC-MAC Challenge at MICCAI 2026", "1st Place, Grand Challenge on Multimedia Verification at ICMR 2026"] },
