@@ -1975,7 +1975,9 @@ window.RESEARCH_DATA = {
         { "name": "Emad Bazmandegan", "affiliation": "University of New Brunswick, Canada" },
         { "name": "Rayhan Hajlaoui", "affiliation": "University of New Brunswick, Canada", "achievements": ["Masters International Differential Tuition Scholarship 2026"] },
         { "name": "Abid Hasan Muin", "affiliation": "University of New Brunswick, Canada" },
-        { "name": "Sultana Razia", "affiliation": "University of New Brunswick, Canada" }
+        { "name": "Sultana Razia", "affiliation": "University of New Brunswick, Canada" },
+        { "name": "Phuc Linh Ngo", "affiliation": "Technische Universität Darmstadt, Germany" },
+        { "name": "Thang Nguyen Duc", "affiliation": "Technische Universität Darmstadt, Germany" }
       ]
     },
     {
