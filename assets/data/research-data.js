@@ -1969,13 +1969,13 @@ window.RESEARCH_DATA = {
       "level": "Master's students",
       "students": [
         { "name": "Phat Lam", "affiliation": "University of New Brunswick, Canada" },
-        { "name": "Phuc Truong Loc Nguyen", "affiliation": "FAU Erlangen-Nürnberg, Germany", "achievements": ["1st Place, BIC-MAC Challenge at MICCAI 2026", "Best Paper Nominee, CONVERSATIONS 2025"] },
-        { "name": "Hung Thanh Do", "affiliation": "FAU Erlangen-Nürnberg, Germany", "achievements": ["Best Paper Nominee, CONVERSATIONS 2025"] },
         { "name": "Alfarizy Alfarizy", "affiliation": "University of New Brunswick, Canada", "achievements": ["1st Prize (winning team), Fredericton BOOST: Ideation Camp 2026", "Geoff Flood Atlantic Big Data Congress Scholarship"] },
         { "name": "Emad Bazmandegan", "affiliation": "University of New Brunswick, Canada" },
         { "name": "Rayhan Hajlaoui", "affiliation": "University of New Brunswick, Canada", "achievements": ["Masters International Differential Tuition Scholarship 2026"] },
         { "name": "Abid Hasan Muin", "affiliation": "University of New Brunswick, Canada" },
         { "name": "Sultana Razia", "affiliation": "University of New Brunswick, Canada" },
+        { "name": "Phuc Truong Loc Nguyen", "affiliation": "FAU Erlangen-Nürnberg, Germany", "achievements": ["1st Place, BIC-MAC Challenge at MICCAI 2026", "Best Paper Nominee, CONVERSATIONS 2025"] },
+        { "name": "Hung Thanh Do", "affiliation": "FAU Erlangen-Nürnberg, Germany", "achievements": ["Best Paper Nominee, CONVERSATIONS 2025"] },
         { "name": "Phuc Linh Ngo", "affiliation": "Technische Universität Darmstadt, Germany" },
         { "name": "Thang Nguyen Duc", "affiliation": "Technische Universität Darmstadt, Germany" }
       ]
@@ -1983,22 +1983,22 @@ window.RESEARCH_DATA = {
     {
       "level": "Undergraduate students",
       "students": [
-        { "name": "Truong Thinh Nguyen", "affiliation": "University of Science and Technology of Hanoi (USTH), Vietnam", "achievements": ["Odon Vallet Scholarship", "First Prize, USTH Student Scientific Research Competition", "USTH Merit Scholarship (100%)"] },
         { "name": "Gia-Khanh Truong", "affiliation": "University of New Brunswick, Canada", "achievements": ["Edwin Jacob Special University Scholarship", "Class of 1987 Scholarship"] },
         { "name": "Salman Basha Shaik", "affiliation": "University of New Brunswick, Canada", "achievements": ["Computer Science Prize for Best Senior Honours Thesis", "Alumni Undergraduate Scholarship", "Admitted to the MSc program at the University of Waterloo"] },
+        { "name": "Van Pham", "affiliation": "University of New Brunswick, Canada", "achievements": ["1st Place, Grand Challenge on Multimedia Verification at ICMR 2026"] },
+        { "name": "Tri Duong", "affiliation": "University of New Brunswick, Canada" },
+        { "name": "Mohammed Anas Shaik", "affiliation": "University of New Brunswick, Canada" },
+        { "name": "Bohdan Savchuk", "affiliation": "University of New Brunswick, Canada", "achievements": ["IEEE Canada Foundation Gargantini-Strybosch Scholarship (CAD 5,000)"] },
+        { "name": "Truong Thinh Nguyen", "affiliation": "University of Science and Technology of Hanoi (USTH), Vietnam", "achievements": ["Odon Vallet Scholarship", "First Prize, USTH Student Scientific Research Competition", "USTH Merit Scholarship (100%)"] },
         { "name": "Hoang-Loc Cao", "affiliation": "University of Science, VNU-HCM, Vietnam", "achievements": ["1st Place, BIC-MAC Challenge at MICCAI 2026", "1st Place, Grand Challenge on Multimedia Verification at ICMR 2026"] },
         { "name": "Phuc Ho", "affiliation": "University of Science, VNU-HCM, Vietnam", "achievements": ["1st Place, BIC-MAC Challenge at MICCAI 2026", "1st Place, Grand Challenge on Multimedia Verification at ICMR 2026"] },
-        { "name": "Van Pham", "affiliation": "University of New Brunswick, Canada", "achievements": ["1st Place, Grand Challenge on Multimedia Verification at ICMR 2026"] },
         { "name": "Xuan Loc Nguyen", "affiliation": "University of Science, VNU-HCM, Vietnam", "achievements": ["1st Place, BIC-MAC Challenge at MICCAI 2026"] },
-        { "name": "Tri Duong", "affiliation": "University of New Brunswick, Canada" },
         { "name": "Dinh Thien Loc Nguyen", "affiliation": "University of Science, VNU-HCM, Vietnam" },
         { "name": "Van Binh Truong", "affiliation": "VNU University of Engineering and Technology (VNU-UET), Vietnam" },
         { "name": "Quoc Khanh Nguyen", "affiliation": "VNU University of Engineering and Technology (VNU-UET), Vietnam" },
         { "name": "Huy Hoan Le", "affiliation": "FPT University, Vietnam" },
         { "name": "Van Sy Thinh Nguyen", "affiliation": "FPT University, Vietnam" },
-        { "name": "Thi Le Chi Dang", "affiliation": "FPT University, Vietnam" },
-        { "name": "Mohammed Anas Shaik", "affiliation": "University of New Brunswick, Canada" },
-        { "name": "Bohdan Savchuk", "affiliation": "University of New Brunswick, Canada", "achievements": ["IEEE Canada Foundation Gargantini-Strybosch Scholarship (CAD 5,000)"] }
+        { "name": "Thi Le Chi Dang", "affiliation": "FPT University, Vietnam" }
       ]
     }
   ],
