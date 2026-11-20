@@ -1844,14 +1844,14 @@ window.RESEARCH_DATA = {
       "kind": "scholarship",
       "title": "Graduate Research Award (GRA) and Graduate Student Teaching Assistantship (GSTA)",
       "event": "University of New Brunswick — PhD in Computer Science funding",
-      "prize": "40,000 CAD total during PhD"
+      "prize": "40,000 CAD"
     },
     {
       "year": "2024–now",
       "kind": "scholarship",
       "title": "UNB PhD International Subsidy (international differential tuition fee support)",
       "event": "University of New Brunswick — PhD in Computer Science",
-      "prize": "21,000 CAD total during PhD"
+      "prize": "21,000 CAD"
     },
     {
       "year": "2026",
